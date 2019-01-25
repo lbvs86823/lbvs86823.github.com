@@ -1,0 +1,447 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="lbvs86823">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+
+<title>Linux VI 命令详解 | lbvs86823</title>
+
+
+    <link rel="alternate" href="atom/.xml" title="lbvs86823" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="bibi">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 不懂的就记下来...... </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">lbvs86823</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>归档</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Linux VI 命令详解">
+            
+	            Linux VI 命令详解
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/linux">
+            linux
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/linux" title="linux">
+                        linux
+                    </a>
+                
+                    <a href="/tags/vi" title="vi">
+                        vi
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2010/10/07</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>3032</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h3 id="Linux-VI-命令详解"><a href="#Linux-VI-命令详解" class="headerlink" title="Linux VI 命令详解"></a>Linux VI 命令详解</h3><h5 id="一-vi的三种操作模式"><a href="#一-vi的三种操作模式" class="headerlink" title="一. vi的三种操作模式:"></a><strong>一.</strong> vi的三种操作模式:</h5><ul>
+<li>命令模式(Command mode): 控制屏幕光标的移动，字符或光标的删除，移动复制某区段及进入 Insert mode下，或者到 Last line mode。    </li>
+<li>插入模式(Insert mode): 唯有在该模式下，才可做文字数据输入，按Esc等可回到Comand mode。</li>
+<li>底线命令模式(Last line mode): 将储存文件或离开编辑器，也可设置编辑环境，如寻找字符串、列出行号等。</li>
+</ul>
+<hr>
+<h5 id="二-进入vi的命令："><a href="#二-进入vi的命令：" class="headerlink" title="二. 进入vi的命令："></a><strong>二.</strong> 进入vi的命令：</h5><pre><code>vi fileName             打开或新建文件，并将光标置于第一行首 
+vi +n fileName          打开文件，并将光标置于第n行首 
+vi + fileName           打开文件，并将光标置于最后一行首 
+vi +/pattern fileName   打开文件，并将光标置于第一个与pattern匹配的串处 
+vi -r fileName          在上次正用vi编辑时发生系统崩溃，恢复fileName 
+vi fileName....fileName 打开多个文件，依次进行编辑 
+</code></pre><hr>
+<h5 id="三-命令模式-Command-mode-下的常用操作："><a href="#三-命令模式-Command-mode-下的常用操作：" class="headerlink" title="三. 命令模式(Command mode)下的常用操作："></a><strong>三.</strong> 命令模式(Command mode)下的常用操作：</h5><p><strong>(1) 光标的移动：</strong></p>
+<pre><code>h、j、k、l        分别控制光标左、下、上、右移一格
+
+Ctrl+G           在状态栏显示当前进度
+num+G            移动到第num行，例：15G
+
+Ctrl+B           屏幕往后移动一页  [常用]
+Ctrl+F           屏幕往前移动一页  [常用]
+
+Ctrl+U           屏幕往后移动半页
+Ctrl+D           屏幕往前移动半页
+
+H                光标移至屏幕顶行 
+M                光标移至屏幕中间行 
+L                光标移至屏幕最后行 
+
+gg               移动文章的开头     [常用]
+G                移动到文章的最后   [常用]
+
+0[数字零]         移到光标所在行的开头位置  [常用] 
+$                移到光标所在行的行尾     [常用]
+
+w                光标跳到下个word的开头   [常用]
+e                光标跳到下个word的字尾
+b                光标回到上个word的开头  
+</code></pre><p>　　<br><strong>(2) 复杂操作：</strong>   </p>
+<p>同时编辑2个文件，拷贝一个文件中的文本并粘贴到另一个文件中</p>
+<pre><code>---- vi file1 file2 
+---- yy 在文件1的光标处拷贝所在行 
+---- :n 切换到文件2 (n=next) 
+---- p 在文件2的光标所在处粘贴所拷贝的行     
+---- :n 切换回文件1 
+</code></pre><p>替换文件中的路径</p>
+<pre><code>使用命令“:%s#/usr/bin#/bin#g”可以把文件中所有路径/usr/bin换成/bin。也可以使用命令“:%s//usr/bin//bin/g”实现，其中“”是转义字符，表明其后的“/”字符是具有实际意义的字符，不是分隔符。
+</code></pre><p><strong>(3) 选项设置操作：</strong></p>
+<pre><code>all           列出所有选项设置情况 
+term          设置终端类型 
+ignorance     在搜索中忽略大小写 
+list          显示制表位(Ctrl+I)和行尾标志（$) 
+number        显示行号 
+report        显示由面向行的命令修改过的数目 
+terse         显示简短的警告信息 
+warn          在转到别的文件时若没保存当前文件则显示NO write信息 
+nomagic       允许在搜索模式中，使用前面不带“\”的特殊字符 
+nowrapscan    禁止vi在搜索到达文件两端时，又从另一端开始 
+mesg          允许vi显示其他用户用write写到自己终端上的信息 
+</code></pre><p><strong>(4) 删除，复制，粘贴操作：</strong></p>
+<pre><code>x,X  : 在一行中，x为向后删除一个字符（相当于del键），X为向前删除一个字符（相当于backspace键)
+dd   : 删除光标所在的那一整行。
+ndd  : n 为数字。从光标开始，删除向下n列。
+yy   : 复制光标所在的那一行。   
+nyy  : n为数字。复制光标所在的向下n行。
+p,P  : p 为将已复制的数据粘贴到光标的下一行，P则为贴在光标的上一行。
+u    : 复原前一个操作
+CTRL + r : 重做上一个操作。
+小数点&apos;.&apos;: 重复前一个动作。
+
+yw：将光标所在处到字尾的字符复制到缓冲区中。
+p：将缓冲区内的字符粘贴到光标所在位置(指令&apos;yw&apos;与&apos;p必须搭配使用)。
+yy：复制光标所在行。[超常用]
+p：复制单行到您想粘贴之处。(指令&apos;yy&apos;与&apos;p&apos;必须搭配使用)
+#yy：如：6yy表示拷贝从光标所在的该行往下数6行之文字。[常用]
+p: 复制多行到您想粘贴之处。(指令&apos;#yy&apos;与&apos;p&apos;必须搭配使用)
+ayy：将复制行放入buffer a, vi提供buffer功能，可将常用的数据存在buffer
+ap：将放在buffer a的数据粘贴。
+b3yy：将三行数据存入buffer b。
+b3p：将存在buffer b的资料粘贴
+</code></pre><p><strong>(5) 删除操作：</strong></p>
+<pre><code>do                删至行首 
+d$                删至行尾 
+ndd               删除当前行及其后n-1行 
+Ctrl+u            撤销输入方式下所输入的文本 
+x或X              删除一个字符，x删除光标后的，而X删除光标前的
+ndw或ndW          删除光标处开始及其后的n-1个        
+</code></pre><p><strong>(6) 寄存器操作：</strong></p>
+<pre><code>&quot;?nyy     将当前行及其下n行的内容保存到寄存器？中，其中?为一个字母，n为一个数字 
+&quot;?nyw     将当前行及其下n个字保存到寄存器？中，其中?为一个字母，n为一个数字 
+&quot;?nyl     将当前行及其下n个字符保存到寄存器？中，其中?为一个字母，n为一个数字 
+&quot;?p       取出寄存器？中的内容并将其放到光标位置处。这里？可以是一个字母，也可以是一个数字 
+ndd       将当前行及其下共n行文本删除，并将所删内容放到1号删除寄存器中。
+</code></pre><p>shift+zz                        保存并退出，功能同:wq [常用]</p>
+<hr>
+<h5 id="四-插入模式-Insert-mode-下的常用操作："><a href="#四-插入模式-Insert-mode-下的常用操作：" class="headerlink" title="四. 插入模式(Insert mode)下的常用操作："></a><strong>四.</strong> 插入模式(Insert mode)下的常用操作：</h5><p>切换至 <strong>Insert mode</strong> 编辑文件在 <strong>Command mode</strong> 下按 <strong>‘i’、‘a’、‘o’、‘O’</strong> 都可进入 <strong>Insert mode</strong> ；<br><strong>Insert mode</strong> 切换至 <strong>Command mode</strong>，按 <strong>Esc</strong> 键</p>
+<pre><code>i              在光标前 
+I              在当前行首 
+a              光标后 
+A              在当前行尾 
+o              在当前行之下新开一行 
+O              在当前行之上新开一行 
+r              替换当前字符 
+R              替换当前字符及其后的字符，直至按ESC键 
+s              从当前光标位置处开始，以输入的文本替代指定数目的字符 
+S              删除指定数目的行，并以所输入文本代替之 
+nCC            修改指定数目的行
+ncw 或 nCW     修改指定数目的字 
+</code></pre><hr>
+<h5 id="五-底线命令模式-Last-line-mode-下的常用操作："><a href="#五-底线命令模式-Last-line-mode-下的常用操作：" class="headerlink" title="五. 底线命令模式(Last line mode)下的常用操作："></a><strong>五.</strong> 底线命令模式(Last line mode)下的常用操作：</h5><p>在<strong>Command mode</strong>下，可按 “<strong>:</strong>”、 “<strong>/</strong>”、 “<strong>?</strong>” 键都可以进入 <strong>Last line mode</strong> 模式</p>
+<p><strong>(1) 行号相关操作：</strong></p>
+<pre><code>:set nu        显示行号
+:set nonu      隐藏行号             
+:num&lt;Enter&gt;    跳到第num行
+</code></pre><p><strong>(2) 查找与替换相关操作：</strong></p>
+<pre><code>/pattern&lt;Enter&gt;  向下查找pattern匹配字符串 [按n查找下一个匹配的字符串，按N查找上一个匹配的字符串]
+?pattern&lt;Enter&gt;  向上查找pattern匹配字符串 [按n查找下一个匹配的字符串，按N查找上一个匹配的字符串]
+:s/w1/w2/g       将当前行中所有w1均用w2替代      [g : 表示全部取代不必确认]
+:n1,n2s/w1/w2/g  将第n1至n2行中所有w1均用w2替代  [g : 表示全部取代不必确认]
+:g/w1/s//w2/g    将文件中所有w1均用w2替换        [g : 表示全部取代不必确认]
+</code></pre><p><strong>(3) 退出VI相关操作：</strong></p>
+<pre><code>:w                              保存
+:w fileName                     另存为: fileName
+:n1,n2 w fileName               将文件中的n1到n2行的内容写入到文件fileName 
+:wq                             保存并退出 [常用]
+:q                              退出,不存储
+:q!                             强制退出,不存储 [常用]
+:n1,n2 co n3                    将n1行到n2行之间的内容拷贝到第n3行下 
+:n1,n2 m n3                     将n1行到n2行之间的内容移至到第n3行下 
+:n1,n2 d                        将n1行到n2行之间的内容删除
+:!command                       执行shell命令command
+:r!command                      将命令command的输出结果放到当前行 
+:n1,n2 w!command                将文件中n1行至n2行的内容作为command的输入并执行之
+:w!command                      将整个文件内容作为command的输入并执行之 
+</code></pre><p>　　</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://lbvs86823.github.com" target="_blank">lbvs86823</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2010/12/10/server/jetty/" class="pre-post btn btn-default" title="Jetty 嵌入式开发">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Jetty 嵌入式开发</span>
+        </a>
+    
+    
+        <a href="/2010/09/27/js/jquery/jueryPlugin/" class="next-post btn btn-default" title="JQuery开发插件的机种方式讨论">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">JQuery开发插件的机种方式讨论</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh_CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux-VI-命令详解"><span class="toc-text">Linux VI 命令详解</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#一-vi的三种操作模式"><span class="toc-text">一. vi的三种操作模式:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#二-进入vi的命令："><span class="toc-text">二. 进入vi的命令：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#三-命令模式-Command-mode-下的常用操作："><span class="toc-text">三. 命令模式(Command mode)下的常用操作：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#四-插入模式-Insert-mode-下的常用操作："><span class="toc-text">四. 插入模式(Insert mode)下的常用操作：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#五-底线命令模式-Last-line-mode-下的常用操作："><span class="toc-text">五. 底线命令模式(Last line mode)下的常用操作：</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

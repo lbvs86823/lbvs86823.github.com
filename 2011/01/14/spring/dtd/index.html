@@ -1,0 +1,697 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="lbvs86823">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+
+<title>DTD文档类型定义简介 | lbvs86823</title>
+
+
+    <link rel="alternate" href="atom/.xml" title="lbvs86823" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="bibi">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 不懂的就记下来...... </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">lbvs86823</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>归档</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="DTD文档类型定义简介">
+            
+	            DTD文档类型定义简介
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/DTD">
+            DTD
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/spring" title="spring">
+                        spring
+                    </a>
+                
+                    <a href="/tags/DTD" title="DTD">
+                        DTD
+                    </a>
+                
+                    <a href="/tags/xml" title="xml">
+                        xml
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2011/01/14</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>2932</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h4 id="1-DTD文档类型定义简介"><a href="#1-DTD文档类型定义简介" class="headerlink" title="1.DTD文档类型定义简介"></a>1.DTD文档类型定义简介</h4><p>DTD全称为Decument Type Definition，它是文档类型定义，其中规定XML文档中的元素、属性、标记、文档中的实体及其相互关系。DTD为XML文档结构制定了一套规则。</p>
+<p><strong>DTD采用了非XML的语法描述语义约束，可以提供如下功能：</strong> </p>
+<ol>
+<li>DTD可以为应用程序提供一种统一的XML文档格式 </li>
+<li>DTD有助于数据交流与共享 </li>
+<li>DTD可以使用脱离实际数据就能知道文档的逻辑结构 </li>
+<li>DTD可以验证数据的有效性 </li>
+<li>通过使用DTD可以让每个XML文件带有一个有关其自身的格式描述 </li>
+<li>不同的公司、组织可一致的使用某个标准的DTD来交换数据 </li>
+<li>应用程序也可以使用某个标准的DTD验证所介绍的XML文档是否符合语义约束 </li>
+<li>开发者可以使用DTD来验证所创建的XML文档 </li>
+</ol>
+<p><strong>DTD约束包括以下几个方面:</strong> </p>
+<ol>
+<li>定义XML的根元素、内容和结构 </li>
+<li>定义XML文档中可以接受哪些元素 </li>
+<li>定义XML文档里每个元素接受的合法内容,包括是否可以为空、是否可以是文本、可以接受哪些子元素、子元素出现的顺序及子元素出现的次数等 </li>
+<li>定义XML文档中每个元素能接受哪些属性 </li>
+<li>定义XML文档中每个属性的类型、能接受哪些值以及元素对属性的约束等 </li>
+<li>定义属性的固定值和默认值 </li>
+<li>定义XML文档以及DTD文档中可以使用的实体 </li>
+</ol>
+<p>注：一个合法的文档必须符合DTD指定的约束条件，而且它的基本元素必须是在文档类型声明中指定的。只有符合DTD规则的XML文档才是有效地文档。</p>
+<h4 id="2-DTD的文档结构"><a href="#2-DTD的文档结构" class="headerlink" title="2.DTD的文档结构"></a>2.DTD的文档结构</h4><p><strong>DTD的文档结构如下：</strong>   </p>
+<pre><code>第一行是DTD声明部分该声明与xml文档的生命语法格式相同    
+0到多个注释部分,DTD注释与xml文档的注释完全相同(&lt;!-- 注释内容 --&gt;) 
+0到多个&lt;!ENTITY…..&gt;定义，每个它就是一个实体    
+0到多个&lt;!ELEMENT…..&gt;定义，每个它就是一个xml元素 
+0到多个&lt;!ATTLIST…..&gt;定义，每个它就是一个xml元素的属性 
+0到多个&lt;!NOTATION…..&gt;定义，每个它定义一个符号 
+</code></pre><p>注：彼此之间完全独立，无须相互嵌套。</p>
+<p><strong>DTD的四种标记声明:</strong></p>
+<pre><code>ELEMENT    xml元素类型声明
+ATTLIST    特定元素类型可设置的属性&amp;属性的允许值声明
+ENTITY     可重用的内容声明 
+NOTATION   不要解析的外部内容的格式声明。
+</code></pre><h5 id="一、-定义元素"><a href="#一、-定义元素" class="headerlink" title="一、 定义元素"></a>一、 定义元素</h5><p>元素类型的定义的全称是:Element Type Defintion,简称ETD,它不但会定义每个文件中可能存在的元素给定名称,而且会定义元素的具体类型。</p>
+<p>元素类型描述主要有5种：   </p>
+<ol>
+<li>任意类型(可以是以下四种类型) 语法格式: &lt;!ELEMENT 元素名 ANY&gt; </li>
+<li>字符串值 语法格式：&lt;!ELEMENT 元素名 (#PCDATA)&gt; </li>
+<li>空元素(<br>) 语法格式：&lt;!ELEMENT 元素名 EMPTY&gt; </li>
+<li>包含子元素 语法格式：（name1 | name2) 或者 (name3，name4，name5）</li>
+<li>混合类型 语法格式：#PCDATA 以它开头的是混合类型  </li>
+</ol>
+<p><strong>定义任意类型:</strong></p>
+<pre><code>&lt;!--任意类型 无效的XML文档 但是 格式良好的XML文档--&gt; 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; 
+&lt;!DOCTYPE book[ 
+    &lt;!ELEMENT book ANY&gt; 
+]&gt; 
+</code></pre><p><strong>定义字符串内容的元素:</strong></p>
+<pre><code>格式：&lt;!ELEMENT 元素名 (#PCDATA)&gt; 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; 
+&lt;!ELEMENT book (computer)*&gt; 
+&lt;!ELEMENT computer (book_name,price,author)&gt; 
+&lt;!ELEMENT book_name (#PCDATA)&gt; 
+&lt;!ELEMENT price (#PCDATA)&gt; 
+&lt;!ELEMENT author (#PCDATA)&gt; 
+</code></pre><p><strong>定义空元素：</strong></p>
+<pre><code>&lt;!--空元素   有效的XML文档--&gt; 
+格式：&lt;!ELEMENT 元素名 EMPTY&gt; 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; 
+&lt;!DOCTYPE book[ 
+    &lt;!ELEMENT book EMPTY&gt; 
+]&gt; 
+</code></pre><p><strong>定义子元素：</strong>    </p>
+<p><em>1. 有序的子元素(,) 逗号(,)用于分隔有序的子元素</em> </p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; 
+&lt;!DOCTYPE book[ 
+    &lt;!ELEMENT book (computer)*&gt; 
+    &lt;!ELEMENT computer (book_name,price,author)&gt; 
+    &lt;!ELEMENT book_name (#PCDATA)&gt; 
+    &lt;!ELEMENT price (#PCDATA)&gt; 
+    &lt;!ELEMENT author (#PCDATA)&gt; 
+]&gt; 
+&lt;book&gt; 
+    &lt;computer&gt; 
+        &lt;book_name&gt;JavaWeb开发&lt;/book_name&gt; 
+        &lt;price&gt;30.0&lt;/price&gt; 
+        &lt;author&gt;redarmychen&lt;/author&gt; 
+    &lt;/computer&gt; 
+    &lt;computer&gt; 
+        &lt;book_name&gt;CSS应用程序的开发&lt;/book_name&gt; 
+        &lt;price&gt;1000&lt;/price&gt; 
+        &lt;author&gt;redarmy_Chen&lt;/author&gt; 
+    &lt;/computer&gt; 
+&lt;/book&gt; 
+</code></pre><p>解析：book_name、price、author三者之间的循序不能颠倒。</p>
+<p><em>2. 互斥的子元素，用(|)符号分隔互斥的子元素</em><br>互斥的子元素表明一系列的子元素中只能出现其中之一。 </p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; 
+&lt;!DOCTYPE book[ 
+    &lt;!ELEMENT book (computer)*&gt; 
+    &lt;!ELEMENT computer (book_name|price|author)&gt; 
+    &lt;!ELEMENT book_name (#PCDATA)&gt; 
+    &lt;!ELEMENT price (#PCDATA)&gt; 
+    &lt;!ELEMENT author (#PCDATA)&gt; 
+]&gt; 
+&lt;book&gt; 
+    &lt;computer&gt; 
+        &lt;book_name&gt;JavaWeb开发&lt;/book_name&gt; 
+    &lt;/computer&gt; 
+    &lt;computer&gt; 
+        &lt;price&gt;30&lt;/price&gt; 
+    &lt;/computer&gt; 
+    &lt;computer&gt; 
+        &lt;author&gt;redarmy_Chen&lt;/author&gt; 
+    &lt;/computer&gt; 
+&lt;/book&gt;
+</code></pre><p>解析：book_name、price、author只能出现一个</p>
+<p><em>3. 子元素出现的频率</em></p>
+<pre><code>+: 一次或多次 (书+) 
+?: 0次或一次 (书?) 
+*: 0次或多次  (书*) 
+</code></pre><p>注意：混合类型的频率只能安如下方式加： </p>
+<pre><code>&lt;!ELEMENT computer (#PCDATA|book_name|price|author)*&gt; 
+//#PCDATA 以它开头的是混合类型,频率只能在最后加 
+</code></pre><p><em>4. 组合子元素</em> </p>
+<pre><code>&lt;!ELEMENT computer (book_name|price|author)&gt; 
+</code></pre><p><em>5. 无序的子元素</em> </p>
+<p><strong>定义混合内容：</strong></p>
+<pre><code>&lt;!--定义混合内容--&gt; 
+格式：&lt;!ELEMENT 父元素名(#PCDATA|子元素1|子元素2|子元素3|........)*&gt; 
+</code></pre><p>注：    </p>
+<pre><code>1. #PCDATA必须放在最前面    
+2. #PCDATA只能用|与各个子元素分隔    
+3. 不要试图在各个子元素之后添加?、*、+等表示频率的修饰符    
+</code></pre><p><strong>综合案例：</strong></p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; 
+&lt;!DOCTYPE book[ 
+    &lt;!ELEMENT book (computer)*&gt; 
+    &lt;!ELEMENT computer (#PCDATA|book_name|price|author)&gt; 
+    &lt;!ELEMENT book_name (#PCDATA)&gt; 
+    &lt;!ELEMENT price (#PCDATA)&gt; 
+    &lt;!ELEMENT author (#PCDATA)&gt; 
+]&gt; 
+&lt;book&gt; 
+    &lt;computer&gt; 
+        &lt;book_name&gt;JavaWeb开发&lt;/book_name&gt; 
+        &lt;price&gt;30.0&lt;/price&gt; 
+        &lt;author&gt;redarmy_chen&lt;/author&gt; 
+    &lt;/computer&gt; 
+    &lt;computer&gt; 
+        &lt;book_name&gt;CSS应用程序的开发&lt;/book_name&gt; 
+        &lt;price&gt;1000&lt;/price&gt; 
+        &lt;author&gt;redarmy_Chen&lt;/author&gt; 
+    &lt;/computer&gt; 
+&lt;/book&gt; 
+</code></pre><h5 id="二、-定义属性"><a href="#二、-定义属性" class="headerlink" title="二、 定义属性"></a>二、 定义属性</h5><p>语法格式：</p>
+<pre><code>&lt;!ATTLIST属性所属元素  属性名  属性类型[元素对属性的约束][默认值]&gt; 
+</code></pre><p>元素对属性的约束,默认值是可选的对于它们的使用有如下的情况： </p>
+<ol>
+<li>在没有指定”元素对属性的约束”时,必须为该属性增加默认值。 </li>
+<li>在元素对属性的约束是:#REQUIRED时，不能为该属性指定默认值。 </li>
+<li>在元素对属性的约束是:#IMPLIED时，不能为该属性指定默认值 </li>
+<li>在元素对属性的约束是:#FIXED时，必须为该属性指定默认值</li>
+</ol>
+<p><strong>属性约束</strong></p>
+<pre><code>#REQUIRED：必须的属性 
+#IMPLIED：可有可无 
+#FIXED：固定值 
+</code></pre><p><strong>属性类型</strong>  </p>
+<pre><code>类型                         说明 
+CDATA                 字符串数据 character data 
+enumerated            列出该属性的取值范围，一次只能有一个属性值能够赋予属性
+nmtoken               表示属性值只能由字母、数字、下划线、. 、：、-这些符号组成
+nmtokens              表示属性值能够由多个nmtoken组成，每个nmtoken之间用空格隔开
+(e1|e2|e3)            该属性是一系列枚举值之一 
+ID                    Id必须是唯一的 
+IDREF                 引用自己已经定义的id 
+IDREFS                空格区分多个id 
+ENTITY                是一个外部的实体 
+ENTITIES              多个外部实体,多个外部实体之间用空格分隔 
+notation              属性值是在dtd中声明过的notation（声明用什么应用软件解读某些二进制文件，如图片）
+Xml:                  预定义的xml值 
+</code></pre><p>比如：在XML的规范中，还规定了两个内定的属性，即：xml:space和xml:lang ，内定的属性名称以xml:开头，而你自己定义的属性名不能以xml:开头，否则在解析时会发生错误。  </p>
+<p><strong>案例三</strong><br>&lt;水果 品名=”苹果” 颜色=”绿色”&gt;关于水果的元素&lt;/水果&gt; </p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; 
+&lt;!DOCTYPE 购物车[ 
+    &lt;!ELEMENT 购物车 (肉*,水果*,玩具)&gt; 
+    &lt;!ELEMENT 肉 EMPTY&gt; 
+    &lt;!ELEMENT 水果 EMPTY&gt; 
+    &lt;!ELEMENT 玩具 EMPTY&gt; 
+
+    &lt;!ATTLIST 肉 类型 (鸡肉|牛肉|狗肉) #REQUIRED&gt; 
+    &lt;!ATTLIST 水果  类型  (苹果|梨|香蕉) #IMPLIED&gt; 
+    &lt;!ATTLIST 玩具 类型  CDATA #FIXED &quot;魔方&quot;&gt; 
+]&gt; 
+ &lt;购物车&gt; 
+    &lt;肉 类型=&quot;狗肉&quot;/&gt; 
+    &lt;水果/&gt; 
+    &lt;玩具 类型=&quot;地雷&quot;/&gt; 
+&lt;/购物车&gt; 
+</code></pre><p>案例解析：魔方为固定的不可改变的不写也行，水果中的元素可有可无，而肉中的元素必须有其中之一。 </p>
+<h5 id="三、-定义实体"><a href="#三、-定义实体" class="headerlink" title="三、 定义实体"></a>三、 定义实体</h5><p>所谓实体就是用一个字符串代替另一个字符串。其作用如下： </p>
+<ol>
+<li>提高代码复用、方便修改 </li>
+<li>使用某些特殊的符号 </li>
+<li>减少字符输入量 </li>
+</ol>
+<p><strong>预定义实体:</strong></p>
+<pre><code>&lt;                   &amp;it;
+&gt;                   &amp;gt;
+&amp;                   &amp;amp;
+&apos;(单引号)            &amp;apos;
+&quot;(双引号)            &amp;quot;
+</code></pre><p><strong>引用实体:</strong>             </p>
+<pre><code>内部形式: &lt;!ENTITY  实体名  “实体值”&gt; 
+外部形式: &lt;!ENTITY  实体名  SYSTEM &quot;外部文本的URL地址&quot;&gt;
+</code></pre><p>注：<br>使用 <em>引用实体</em> 的语法格式为: <strong>&amp;实体名;</strong>  (引用实体必须以“&amp;“符号开始，以“;”结束)<br>当实体引用在解析过程中被替换为置换文本时，其结果必须是正规的xml格式<br>属性值中不能引用可解析的外部实体，实体不能包含直接或间接的对自身的引用 </p>
+<p><strong>参数实体:</strong><br>  仅仅在DTD中使用的解析实体称为参数实体。<br>  这样能够简便的引用或修改DTD中常用的结构。但是扩展结构时，仍然需要编辑DTD。<br>  参数实体声明:ENTITY关键字、百分号、名称和替换字。   </p>
+<pre><code>  内部形式: &lt;!ENTITY % 实体名  “实体值”&gt; 
+外部形式: &lt;!ENTITY % 实体名  SYSTEM &quot;外部文本的URL地址&quot;&gt;
+</code></pre><p>在DTD中，所有参数实体必须在引用之前进行声明。所以DTD内部子集不能引用在外部子集中声明的参数实体，因为解析器首先读取内部子集。<br>参数实体遵循文档规则，用置换文本取代实体引用后，要复合文档规则。<br>参数实体的置换文本也可以位于外部文本中。       </p>
+<pre><code>&lt;!ENTITY % peopleParameters &quot;age CDATE #IMPLIED weight CDATA #IMPLIED height CDATA #REQUIRED&quot;&gt;
+&lt;!ENTITY % myParam SYSTEM &quot;http://www.worx.com/Wroxdecls.ent&quot;&gt;
+</code></pre><p>使用 <em>参数实体</em> 的语法格式为: <strong>%实体名;</strong> (引用实体必须以“%“符号开始，以“;”结束) </p>
+<pre><code>&lt;!ATTLIST InsuredPerson 
+    %peopleParameters; 
+    carrier CDATA #REQUIRED&gt;
+</code></pre><p>以上代码等价于  </p>
+<pre><code>&lt;!ATTLIST InsuredPerson
+   age         CDATA  #IMPLIED
+   weight      CDATA  #IMPLIED
+   height      CDATA  #REQUIRED    
+   carrier     CDATA  #REQUIRED&gt;
+</code></pre><p><strong>案例四</strong><br>包含DTD的outherdtd.dtd文件 </p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; 
+&lt;!ELEMENT books (book*)&gt; 
+&lt;!ELEMENT book (book_name,author,price,state)&gt; 
+&lt;!ELEMENT book_name (#PCDATA)&gt; 
+&lt;!ELEMENT author (#PCDATA)&gt; 
+&lt;!ELEMENT price (#PCDATA)&gt; 
+&lt;!ELEMENT state (#PCDATA)&gt; 
+
+&lt;!ENTITY % boolean &quot;yes|no|true|false&quot;&gt; 
+&lt;!ATTLIST state islast (%boolean;) #IMPLIED&gt;  
+&lt;!ENTITY javaname &quot;JAVA编程精炼的最好的世界最牛书&quot;&gt; 
+&lt;!ENTITY outer SYSTEM &quot;test.txt&quot;&gt; 
+</code></pre><p>拥有外部DTD的XML文档 </p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt; 
+&lt;!DOCTYPE books SYSTEM &quot;outerdtd.dtd&quot;&gt; 
+&lt;books&gt; 
+    &lt;book&gt; 
+        &lt;book_name&gt;&amp;javaname;&lt;/book_name&gt; 
+        &lt;author&gt;乔峰&lt;/author&gt; 
+        &lt;price&gt;&amp;outer;&lt;/price&gt; 
+        &lt;state&gt;暂无销售&lt;/state&gt; 
+    &lt;/book&gt; 
+&lt;/books&gt; 
+</code></pre><p>案例解析：引用了外部dtd文件 &javaname; 相当于dtd文件中javaname 的值即”JAVA编程精炼的最好的世界最牛书 </p>
+<pre><code>参数实体：语法格式： &lt;!ENTITY   %实体名     “实体值”&gt; 
+另一种格式： &lt;!ENTITY  % 实体值名称   SYSYTEM   “外部XML文档的URL”&gt; 
+</code></pre><p><strong>案例五</strong>   </p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; 
+&lt;!DOCTYPE books[ 
+    &lt;!ELEMENT books (book*)&gt; 
+    &lt;!ELEMENT book (book_name,author,price,state)&gt; 
+    &lt;!ELEMENT book_name (#PCDATA)&gt; 
+    &lt;!ELEMENT author (#PCDATA)&gt; 
+    &lt;!ELEMENT price (#PCDATA)&gt; 
+    &lt;!ELEMENT state (#PCDATA)&gt; 
+
+    &lt;!ENTITY %boolean &quot;yes|no|true|false&quot;&gt; 
+    &lt;!ATTLIST state islast (%boolean;) #IMPLIED&gt; 
+    &lt;!ENTITY javaname &quot;JAVA编程精炼的最好的世界最牛书&quot;&gt; 
+]&gt; 
+&lt;books&gt; 
+    &lt;book&gt; 
+        &lt;book_name&gt;JAVA编程精炼的最好的世界最牛书&lt;/book_name&gt; 
+        &lt;author&gt;redarmy_chen&lt;/author&gt; 
+        &lt;price&gt;1&lt;/price&gt; 
+        &lt;state&gt;暂无销售&lt;/state&gt; 
+    &lt;/book&gt; 
+    &lt;book&gt; 
+        &lt;book_name&gt;&amp;javaname;&lt;/book_name&gt; 
+        &lt;author&gt;m_j&lt;/author&gt; 
+        &lt;price&gt;1000&lt;/price&gt; 
+        &lt;state islast=&quot;yes&quot;&gt;10000&lt;/state&gt; 
+    &lt;/book&gt;
+    &lt;book&gt; 
+        &lt;book_name&gt;&lt;/book_name&gt; 
+        &lt;author&gt;&lt;/author&gt; 
+        &lt;price&gt;&lt;/price&gt; 
+        &lt;state&gt;&lt;/state&gt; 
+    &lt;/book&gt; 
+&lt;/books&gt; 
+</code></pre><p>案例解析：<br>&lt;!ENTITY % boolean “yes|no|true|false”&gt;  表示实体值为yes、no、true、false<br>&lt;!ATTLIST state islast (%boolean;) #IMPLIED&gt;  含义是引用实体表示书是不是最后一本，#IMPLIED表示可有可无。</p>
+<h4 id="3-DTD的使用-引入方式"><a href="#3-DTD的使用-引入方式" class="headerlink" title="3.DTD的使用(引入方式)"></a>3.DTD的使用(引入方式)</h4><ol>
+<li>内部引用方式 </li>
+<li>外部引用方式 </li>
+</ol>
+<p>其中外部引用方式可划分为两种即SYSYTEM引用方式、PUBLIC引用方式。</p>
+<p><strong>内部DTD方式：</strong><br>DTD语义约束与xml文档的内容放在同一个XML文档中。<br>内部DTD紧跟在XML声明和处理指令之后，以”&lt;!DOCTYPE “开始,以”]&gt;”结束。其语法格式如下:      </p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt; 
+&lt;!DOCTYPE 根元素名[ 
+    元素描述[DTD的内容] 
+]&gt; 
+XML文档主体部分
+</code></pre><p><strong>案例一:</strong> </p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt; 
+&lt;!DOCTYPE book[ 
+    &lt;!ELEMENT book (computer)*&gt; 
+    &lt;!ELEMENT computer (book_name,price,author)&gt; 
+    &lt;!ELEMENT book_name(#PCDATA)&gt; 
+    &lt;!ELEMENT price (#PCDATA)&gt; 
+    &lt;!ELEMENT author (#PCDATA)&gt; 
+]&gt; 
+&lt;book&gt; 
+    &lt;computer&gt; 
+        &lt;author&gt;张三丰&lt;/author&gt; 
+        &lt;book_name&gt;JavaWeb开发&lt;/book_name&gt; 
+        &lt;price&gt;30.0&lt;/price&gt; 
+    &lt;/computer&gt; 
+    &lt;computer&gt; 
+        &lt;book_name&gt;CSS应用程序的开发&lt;/book_name&gt; 
+        &lt;price&gt;1000&lt;/price&gt; 
+        &lt;author&gt;张无忌&lt;/author&gt; 
+    &lt;/computer&gt; 
+&lt;/book&gt; 
+</code></pre><p><strong>案例分析：</strong><br>第一行 XML声明语句中的standalone属性取”yes”值表示所有必须的实体声明都包含的文档中,说明该文档是独立文档。<br>第二行 声明DTD约束<br>第三行 定义book元素有多个相同的元素即 computer元素<br>第四行 定义computer元素中有三个元素：book_name、price、author<br>第五行 定义book_name元素为 #PCDATA类型<br>第六行 定义price元素为 #PCDATA 类型<br>第七行 定义author元素为 #PCDATA 类型<br>第八行 为声明的结束标志<br>第九行 后面是描述book信息的XML文档    </p>
+<p><strong>外部DTD方式：</strong><br>1、SYSTEM引用方式语法格式表示如下： </p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt; 
+&lt;!DOCTYPE 根元素名 SYSTEM &quot;外部的DTD的URL地址&quot;&gt; 
+XML文档主体部分
+</code></pre><p>注：SYSYTEM, DOCTYPE 是关键字必须要大写, URL 路径可以是相对路径也可以是绝对路径,该语句必须出现在XML文档的序言区。</p>
+<p><strong>案例二：</strong><br>包含DTD的book.dtd文件 </p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; 
+&lt;!ELEMENT book (computer)*&gt; 
+&lt;!ELEMENT computer (book_name,price,author)&gt; 
+&lt;!ELEMENT book_name (#PCDATA)&gt; 
+&lt;!ELEMENT price (#PCDATA)&gt; 
+&lt;!ELEMENT author (#PCDATA)&gt; 
+</code></pre><p>拥有外部DTD的XML文档 </p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt; 
+&lt;!DOCTYPE book SYSTEM &quot;book.dtd&quot;&gt; 
+&lt;book&gt; 
+    &lt;computer&gt; 
+        &lt;book_name&gt;JavaWeb开发&lt;/book_name&gt; 
+        &lt;price&gt;30.0&lt;/price&gt; 
+        &lt;author&gt;redarmychen&lt;/author&gt; 
+    &lt;/computer&gt; 
+    &lt;computer&gt; 
+        &lt;book_name&gt;CSS应用程序的开发&lt;/book_name&gt; 
+        &lt;price&gt;1000&lt;/price&gt; 
+        &lt;author&gt;redarmy_Chen&lt;/author&gt; 
+    &lt;/computer&gt; 
+&lt;/book&gt; 
+</code></pre><p><strong>案例分析：</strong><br>book.dtd 文件与案例一大似相同在此不作讲解。<br>XML中standalone的值设置为”no”, 这是因为XML文档不是独立的需要外部的实体声明。    </p>
+<p>2、PUBLIC引用方式语法格式表示如下: </p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt; 
+&lt;!DOCTYPE 根元素名 PUBLIC  &quot;DTD的标识名&quot;  &quot;公用的DTD的URL地址&quot;&gt;
+XML文档主体部分 
+</code></pre><p>注：PUBLIC为关键字 必须大写并表明该外部DTD具有 名称”DTD的标识名”为XML文档所引用的外部公共DTD的名称<br>“公用的DTD的URL地址”为外部DTD文件的路径，含义与SYSTEM引用方式中的”DTD_URL”一致该语句必须出现在XML文档的序言区。 </p>
+<h4 id="4-Schema简介"><a href="#4-Schema简介" class="headerlink" title="4.Schema简介"></a>4.Schema简介</h4><p>DTD的语法相当复杂，并且它不符合XML文件的标准，自成一个体系。上面的介绍也仅仅是作了一个简介，目的是帮助大家能读懂DTD文件以及在必要时创建简单的DTD文件，因为现在很多的XML应用是建立在DTD之上的。</p>
+<p>另外，一个代替DTD的就是W3C定义的Schema，Schema相对于DTD的明显好处是XML Schema文档本身也是XML文档，而不是像DTD 一样使用自成一体的语法。<br>这就方便了用户和开发者，因为可以使用相同的工具来处理XML Schema和其他XML信息，而不必专门为Schema使用特殊工具。      Schema简单易懂，懂得XML语法、规则的人都可以立刻理解它。<br>Schema 的概念提出已久，但W3C的标准最近才出来，相应的应用支持尚 未完善，但采用Schema已成为XML发展的一个趋势。 </p>
+<p><strong>案例：</strong>  </p>
+<p>DTD定义区:</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot; ?&gt;
+ &lt;!DOCTYPE 参考资料 [
+     &lt;!ELEMENT 参考资料 (书籍)&gt;
+     &lt;!ELEMENT 书籍 (名称,作者,价格)&gt;
+     &lt;!ELEMENT 名称 (#PCDATA)&gt;
+     &lt;!ELEMENT 作者 (#PCDATA)&gt;
+     &lt;!ELEMENT 价格 (#PCDATA)&gt;
+     &lt;!ATTLIST 价格 货币单位 CDATA #REQUIRED&gt;
+ ]&gt;    
+</code></pre><p>xml文档数据区：</p>
+<pre><code>&lt;参考资料&gt;
+    &lt;书籍&gt;
+        &lt;名称&gt;XML入门精解&lt;/名称&gt;
+        &lt;作者&gt;张三&lt;/作者&gt;
+        &lt;价格 货币单位=&quot;人民币&quot;&gt;20.00&lt;/价格&gt;
+    &lt;/书籍&gt;
+    &lt;书籍&gt;
+        &lt;名称&gt;XML语法&lt;/名称&gt;
+        &lt;!-- 即将出版 --&gt;
+        &lt;作者&gt;李四&lt;/作者&gt;
+        &lt;价格 货币单位=&quot;人民币&quot;&gt;18.00&lt;/价格&gt;
+    &lt;/书籍&gt;
+&lt;/参考资料&gt;
+</code></pre>
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://lbvs86823.github.com" target="_blank">lbvs86823</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2011/04/16/spring/spring session/" class="pre-post btn btn-default" title="spring session 相关代码详解">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">spring session 相关代码详解</span>
+        </a>
+    
+    
+        <a href="/2011/01/10/spring/cron_trigger/" class="next-post btn btn-default" title="cron 表达式">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">cron 表达式</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh_CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-DTD文档类型定义简介"><span class="toc-text">1.DTD文档类型定义简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-DTD的文档结构"><span class="toc-text">2.DTD的文档结构</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#一、-定义元素"><span class="toc-text">一、 定义元素</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#二、-定义属性"><span class="toc-text">二、 定义属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#三、-定义实体"><span class="toc-text">三、 定义实体</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-DTD的使用-引入方式"><span class="toc-text">3.DTD的使用(引入方式)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-Schema简介"><span class="toc-text">4.Schema简介</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

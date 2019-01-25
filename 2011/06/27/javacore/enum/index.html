@@ -1,0 +1,533 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="lbvs86823">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+
+<title>Java enum 的用法详解 | lbvs86823</title>
+
+
+    <link rel="alternate" href="atom/.xml" title="lbvs86823" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="bibi">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 不懂的就记下来...... </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">lbvs86823</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>归档</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Java enum 的用法详解">
+            
+	            Java enum 的用法详解
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/javacore">
+            javacore
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/Java" title="Java">
+                        Java
+                    </a>
+                
+                    <a href="/tags/enum" title="enum">
+                        enum
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2011/06/27</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>2768</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h4 id="Java-enum-的用法详解"><a href="#Java-enum-的用法详解" class="headerlink" title="Java enum 的用法详解"></a>Java enum 的用法详解</h4><h5 id="Java-Enum-原理"><a href="#Java-Enum-原理" class="headerlink" title="Java Enum 原理"></a>Java Enum 原理</h5><p>Java Enum类型的语法结构尽管和java类的语法不一样，应该说差别比较大。但是经过编译器编译之后产生的是一个class文件。该class文件经过反编译可以看到实际上是生成了一个final类，该类继承了java.lang.Enum<e>.   </e></p>
+<p> (1) 构造器只是在构造枚举值的时候被调用。<br> (2) 构造器只能私有private，绝对不允许有public构造器。<br> (3) 所有枚举类都继承了Enum的方法。</p>
+<p>下面我们详细介绍Enum的这些方法：</p>
+<ol>
+<li><p>ordinal()方法: 返回枚举值在枚举类种的顺序。这个顺序根据枚举值声明的顺序而定。    </p>
+<p> Color.RED.ordinal();   //返回结果：0<br> Color.BLUE.ordinal();  //返回结果：1</p>
+</li>
+<li><p>compareTo()方法: Enum实现了java.lang.Comparable接口，因此可以比较象与指定对象的顺序。Enum中的compareTo返回的是两个枚举值的顺序之差。<br>当然，前提是两个枚举值必须属于同一个枚举类，否则会抛出ClassCastException()异常。   </p>
+<p> Color.RED.compareTo(Color.BLUE);  //返回结果 -1</p>
+</li>
+<li><p>values()方法：静态方法，返回一个包含全部枚举值的数组。</p>
+<p> Color[] colors=Color.values();<br> for(Color c:colors){   </p>
+<pre><code>System.out.print(c + &quot;,&quot;);     
+</code></pre><p> }//返回结果：RED,BLUE,BLACK YELLOW,GREEN,   </p>
+</li>
+<li><p>toString()方法：返回枚举常量的名称。</p>
+<p> Color c=Color.RED;<br> System.out.println(c);//返回结果: RED</p>
+</li>
+<li><p>valueOf()方法：这个方法和toString方法是相对应的，返回带指定名称的指定枚举类型的枚举常量。</p>
+<p> Color.valueOf(“BLUE”);   //返回结果: Color.BLUE</p>
+</li>
+<li><p>equals()方法：比较两个枚举类对象的引用。</p>
+</li>
+</ol>
+<h5 id="1-常量定义"><a href="#1-常量定义" class="headerlink" title="1.常量定义"></a>1.常量定义</h5><p>在JDK1.5 之前，我们定义常量都是： public static fianl…. 。现在好了，有了枚举，可以把相关的常量分组到一个枚举类型里，而且枚举提供了比常量更多的方法。<br>用常量的好处是显而易见的，不仅可以保证单例，且比较时候可以用”==”来替换equals，是一种好的习惯。<br>JDK1.5之前没有Enum这个类型，那时候一般用接口常量来替代。有了Java Enum 之后，可以更贴近的表示这种常量。  </p>
+<p><strong>案例：</strong></p>
+<pre><code>public enum Color {  
+      RED, GREEN, BLANK, YELLOW  
+} 
+</code></pre><h5 id="2-switch-状态转换"><a href="#2-switch-状态转换" class="headerlink" title="2.switch 状态转换"></a>2.switch 状态转换</h5><p>JDK1.6之前的switch语句只支持int,char,enum类型，使用枚举，能让我们的代码可读性更强。  </p>
+<p><strong>案例：</strong></p>
+<pre><code>enum Signal {
+    GREEN, YELLOW, RED
+}
+
+public class TrafficLight {
+    Signal color = Signal.RED;
+
+    public void change() {
+        switch (color) {
+        case RED:
+            color = Signal.GREEN;
+            break;
+        case YELLOW:
+            color = Signal.RED;
+            break;
+        case GREEN:
+            color = Signal.YELLOW;
+            break;
+        }
+    }
+}
+</code></pre><h5 id="3-向枚举中添加自定义方法"><a href="#3-向枚举中添加自定义方法" class="headerlink" title="3.向枚举中添加自定义方法"></a>3.向枚举中添加自定义方法</h5><p>如果打算自定义自己的方法，那么必须在enum实例序列的最后添加一个分号。而且 Java 要求必须先定义 enum 实例。</p>
+<p><strong>案例：</strong></p>
+<pre><code>public enum Color {
+    RED(&quot;红色&quot;, 1), GREEN(&quot;绿色&quot;, 2), BLANK(&quot;白色&quot;, 3), YELLO(&quot;黄色&quot;, 4);
+    // 成员变量
+    private String name;
+    private int index;
+
+    // 构造方法
+    private Color(String name, int index) {
+        this.name = name;
+        this.index = index;
+    }
+
+    // 普通方法
+    public static String getName(int index) {
+        for (Color c : Color.values()) {
+            if (c.getIndex() == index) {
+                return c.name;
+            }
+        }
+        return null;
+    }
+
+    // get set 方法
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+}
+</code></pre><h5 id="4-覆盖枚举的方法"><a href="#4-覆盖枚举的方法" class="headerlink" title="4.覆盖枚举的方法"></a>4.覆盖枚举的方法</h5><p><strong>案例：</strong></p>
+<pre><code>public class Test {
+    public enum Color {
+        RED(&quot;红色&quot;, 1), GREEN(&quot;绿色&quot;, 2), BLANK(&quot;白色&quot;, 3), YELLO(&quot;黄色&quot;, 4);
+        // 成员变量
+        private String name;
+        private int index;
+
+        // 构造方法
+        private Color(String name, int index) {
+            this.name = name;
+            this.index = index;
+        }
+
+        // 覆盖方法
+        @Override
+        public String toString() {
+            return this.index + &quot;_&quot; + this.name;
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(Color.RED.toString());
+    }
+} 
+</code></pre><h5 id="5-实现接口"><a href="#5-实现接口" class="headerlink" title="5.实现接口"></a>5.实现接口</h5><p>所有的枚举都继承自java.lang.Enum类。由于Java 不支持多继承，所以枚举对象不能再继承其他类。</p>
+<p><strong>案例</strong></p>
+<pre><code>public interface Behaviour {
+    void print();
+
+    String getInfo();
+}
+
+public enum Color implements Behaviour {
+    RED(&quot;红色&quot;, 1), GREEN(&quot;绿色&quot;, 2), BLANK(&quot;白色&quot;, 3), YELLO(&quot;黄色&quot;, 4);
+    // 成员变量
+    private String name;
+    private int index;
+
+    // 构造方法
+    private Color(String name, int index) {
+        this.name = name;
+        this.index = index;
+    }
+
+    // 接口方法
+    @Override
+    public String getInfo() {
+        return this.name;
+    }
+
+    // 接口方法
+    @Override
+    public void print() {
+        System.out.println(this.index + &quot;:&quot; + this.name);
+    }
+}
+</code></pre><h5 id="6-使用接口组织枚举"><a href="#6-使用接口组织枚举" class="headerlink" title="6.使用接口组织枚举"></a>6.使用接口组织枚举</h5><p><strong>案例</strong></p>
+<pre><code>public interface Food {
+    enum Coffee implements Food {
+        BLACK_COFFEE, DECAF_COFFEE, LATTE, CAPPUCCINO
+    }
+
+    enum Dessert implements Food {
+        FRUIT, CAKE, GELATO
+    }
+}    
+</code></pre><h5 id="7-枚举集合的使用"><a href="#7-枚举集合的使用" class="headerlink" title="7.枚举集合的使用"></a>7.枚举集合的使用</h5><p>java.util.EnumSet和java.util.EnumMap是两个枚举集合。<br>EnumSet保证集合中的元素不重复;EnumMap中的 key是enum类型，而value则可以是任意类型。 </p>
+<h5 id="8-枚举和常量定义的区别"><a href="#8-枚举和常量定义的区别" class="headerlink" title="8.枚举和常量定义的区别"></a>8.枚举和常量定义的区别</h5><p><strong>通常定义常量方法如下：</strong> </p>
+<pre><code>public class Light {
+    /* 红灯 */
+    public final static int RED = 1;
+
+    /* 绿灯 */
+    public final static int GREEN = 3;
+
+    /* 黄灯 */
+    public final static int YELLOW = 2;
+}  
+</code></pre><p><strong>枚举类型定义常量方法如下：</strong></p>
+<pre><code>public enum Light {
+    RED, GREEN, YELLOW;
+}   
+</code></pre><p>我们只能够表示出红灯、绿灯和黄灯，但是具体的值我们没办法表示出来。<br>别急，既然枚举类型提供了构造函数，我们可以通过构造函数和覆写toString方法来实现。<br>首先给Light枚举类型增加构造方法，然后每个枚举类型的值通过构造函数传入对应的参数，同时覆写toString方法，在该方法中返回从构造函数中传入的参数，改造后的代码如下：    </p>
+<pre><code>public enum Light {
+    // 利用构造函数传参
+    RED(1), GREEN(3), YELLOW(2);
+
+    // 定义私有变量
+    private int nCode;
+
+    // 构造函数，枚举类型只能为私有
+    private Light(int _nCode) {
+        this.nCode = _nCode;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(this.nCode);
+    }
+}
+</code></pre><h5 id="9-杂谈"><a href="#9-杂谈" class="headerlink" title="9.杂谈"></a>9.杂谈</h5><pre><code>public class State {
+    public static final int ON = 1;
+    public static final Int OFF= 0;
+}
+</code></pre><p>有什么不好了，大家都这样用了很长时间了，没什么问题啊。<br>首先，它不是类型安全的。你必须确保是int<br>其次，你还要确保它的范围是0和1<br>最后，很多时候你打印出来的时候，你只看到 1 和 0<br>但其没有看到代码的人并不知道你的企图，抛弃你所有旧的public static final常量吧！    </p>
+<ol>
+<li><p>可以创建一个enum类，把它看做一个普通的类。除了它不能继承其他类了。(java是单继承，它已经继承了Enum),<br>可以添加其他方法，覆盖它本身的方法。</p>
+</li>
+<li><p>switch()参数可以使用enum了.</p>
+</li>
+<li><p>values()方法是编译器插入到enum定义中的static方法，所以，当你将enum实例向上转型为父类Enum是，values()就不可访问了。解决办法：在Class中有一个getEnumConstants()方法，所以即便Enum接口中没有values()方法，我们仍然可以通过Class对象取得所有的enum实例.</p>
+</li>
+<li><p>无法从enum继承子类，如果需要扩展enum中的元素，在一个接口的内部，创建实现该接口的枚举，以此将元素进行分组。达到将枚举元素进行分组。</p>
+</li>
+<li><p>使用EnumSet代替标志。enum要求其成员都是唯一的，但是enum中不能删除添加元素。</p>
+</li>
+<li><p>EnumMap的key是enum，value是任何其他Object对象。</p>
+</li>
+<li><p>enum允许程序员为eunm实例编写方法。所以可以为每个enum实例赋予各自不同的行为。</p>
+</li>
+<li><p>使用enum的职责链(Chain of Responsibility) .这个关系到设计模式的职责链模式。以多种不同的方法来解决一个问题。然后将他们链接在一起。当一个请求到来时，遍历这个链，直到链中的某个解决方案能够处理该请求。</p>
+</li>
+<li><p>使用enum的状态机</p>
+</li>
+<li><p>使用enum多路分发</p>
+</li>
+</ol>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://lbvs86823.github.com" target="_blank">lbvs86823</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2011/06/29/javacore/hashMap/" class="pre-post btn btn-default" title="HashMap实现原理解析">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">HashMap实现原理解析</span>
+        </a>
+    
+    
+        <a href="/2011/06/15/spring/oauth2.0/" class="next-post btn btn-default" title="Spring oauth2 相关概念解释">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Spring oauth2 相关概念解释</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh_CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Java-enum-的用法详解"><span class="toc-text">Java enum 的用法详解</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Java-Enum-原理"><span class="toc-text">Java Enum 原理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-常量定义"><span class="toc-text">1.常量定义</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-switch-状态转换"><span class="toc-text">2.switch 状态转换</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-向枚举中添加自定义方法"><span class="toc-text">3.向枚举中添加自定义方法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-覆盖枚举的方法"><span class="toc-text">4.覆盖枚举的方法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-实现接口"><span class="toc-text">5.实现接口</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-使用接口组织枚举"><span class="toc-text">6.使用接口组织枚举</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-枚举集合的使用"><span class="toc-text">7.枚举集合的使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-枚举和常量定义的区别"><span class="toc-text">8.枚举和常量定义的区别</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#9-杂谈"><span class="toc-text">9.杂谈</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

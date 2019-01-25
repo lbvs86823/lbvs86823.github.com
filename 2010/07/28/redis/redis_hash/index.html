@@ -1,0 +1,513 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="lbvs86823">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+
+<title>redis入门之hashes数据类型(三) | lbvs86823</title>
+
+
+    <link rel="alternate" href="atom/.xml" title="lbvs86823" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="bibi">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 不懂的就记下来...... </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">lbvs86823</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>归档</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="redis入门之hashes数据类型(三)">
+            
+	            redis入门之hashes数据类型(三)
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/redis">
+            redis
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/redis" title="redis">
+                        redis
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2010/07/28</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>3102</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>##一，hashes数据类型介绍</p>
+<p>Redis hash是一个string类型的field和value的映射表。它的添加、删除操作都是0(1)( 平均)。<br>hash特别适合用于存储对象。相较于将对象的每个字段存成单个string类型。 将一个对象存储在hash类型中会占用更少的 内存,并且可以更方便的存取整个对象。</p>
+<p>##二，hashes数据类型相关操作</p>
+<p>###【注意操作命令在链接到服务器上的客户端上面都是不区分大小写的】</p>
+<p>###set<br><strong>作用：</strong> 设置key对应的值为string类型的value<br><strong>语法：</strong> set key value<br><strong>返回值：</strong>设置成功返回 OK<br><strong>注意：</strong> 对一个key重复设置，会被覆盖。<br><strong>样例：</strong> 设置key1的值为100</p>
+<pre><code>127.0.0.1:6379&gt; set key1 100
+OK
+127.0.0.1:6379&gt; get key1
+&quot;100&quot;
+127.0.0.1:6379&gt; set key1 200
+OK
+127.0.0.1:6379&gt; get key1
+&quot;200&quot;
+</code></pre><p>###setnx<br><strong>作用：</strong> 设置key对应的值为string类型的value,如果key已经存在,则不会再设置(nx是not exist的意思)    <br><strong>语法：</strong> setnx key value<br><strong>返回值：</strong>设置成功返回 1; 设置失败(该key对应的值已经存在)返回 0；<br><strong>注意：</strong> 对一个key重复设置，不会被设置成功。<br><strong>样例：</strong> 设置key1的值为100</p>
+<pre><code>127.0.0.1:6379&gt; get key1
+&quot;200&quot;
+127.0.0.1:6379&gt; setnx key1 300
+(integer) 0
+127.0.0.1:6379&gt; get key1
+&quot;200&quot;
+127.0.0.1:6379&gt; setnx key2 300
+(integer) 1
+127.0.0.1:6379&gt; get key2
+&quot;300&quot;
+</code></pre><p>###setex<br><strong>作用：</strong> 设置key对应的值为string类型的value,并 指定此键值对应的有效期(ex是expires的意思)。    <br><strong>语法：</strong> setex key time value<br><strong>返回值：</strong>设置成功返回 OK,<br><strong>注意：</strong> 有效期的单位是<strong>秒</strong>，如果对相同的key重复设置时间和值都会被覆盖。<br><strong>样例：</strong> 添加一个 key3=500 的键值对,并指定有效期为10秒 </p>
+<pre><code>127.0.0.1:6379&gt; setex key3 10 500
+OK
+127.0.0.1:6379&gt; get key3
+&quot;500&quot;
+127.0.0.1:6379&gt;(等待10秒过后，再查询该key4对应的值) 
+127.0.0.1:6379&gt; get key3
+(nil)
+</code></pre><p>###setrange<br><strong>作用：</strong> 替换指定key对应value值的指定位置开始替换字符串。    <br><strong>语法：</strong> setrange key pos replaceValue<br><strong>返回值：</strong>设置成功返回替换后的对应值的字符串长度<br><strong>注意：</strong> pos为开始替换的位置(从0开始的)，如果原字符串被替换后，尾部还有字符没有替换，会原样保留；如果key不存在或者pos越界则会先对其设置值，然后再补位。<br><strong>样例：</strong> 将<a href="mailto:key=redis@163.com" target="_blank" rel="noopener">key=redis@163.com</a> 的邮箱替换成google的邮箱</p>
+<pre><code>127.0.0.1:6379&gt; set key3 redis@163.com
+OK
+127.0.0.1:6379&gt; get key3
+&quot;redis@163.com&quot;
+127.0.0.1:6379&gt; setrange key3 4 google.com.hk
+(integer) 18
+127.0.0.1:6379&gt; get key3
+&quot;redis@google.com.hk&quot;
+
+127.0.0.1:6379&gt; set key4 redis@163.com.shawxyztyuig
+OK
+127.0.0.1:6379&gt; get key4
+&quot;redis@163.com.shawxyztyuig&quot;
+127.0.0.1:6379&gt; setrange key4 4 google.com.hk
+(integer) 26
+127.0.0.1:6379&gt; get key4
+&quot;redigoogle.com.hkwxyztyuig&quot;
+
+127.0.0.1:6379&gt; setrange ke78 4 hhjj
+(integer) 8
+127.0.0.1:6379&gt; get ke78
+&quot;\x00\x00\x00\x00hhjj&quot;
+127.0.0.1:6379&gt; set key20 50
+OK
+127.0.0.1:6379&gt; setrange key20 3 77
+(integer) 5
+127.0.0.1:6379&gt; get key20
+&quot;50\x0077&quot;
+</code></pre><p>###mset<br><strong>作用：</strong> 一次设置多个key的值(批量设置)。    <br><strong>语法：</strong> mset key1 value1 key2 value2 … keyN valueN<br><strong>返回值：</strong>设置成功返回 OK,表示都设置成功， 设置失败返回 0, 表示没有任何值被设置<br><strong>注意：</strong> 多个key-value对设置时，有一个不成功，都不成功;重复设置相同key的值会被覆盖。<br><strong>样例：</strong> </p>
+<pre><code>127.0.0.1:6379&gt; mset key1 100 key2 200
+OK
+127.0.0.1:6379&gt; get key1
+&quot;100&quot;
+127.0.0.1:6379&gt; get key2
+&quot;200&quot;
+127.0.0.1:6379&gt; mset key2 250 key3 400
+OK
+127.0.0.1:6379&gt; get key1
+&quot;100&quot;
+127.0.0.1:6379&gt; get key2
+&quot;250&quot;
+127.0.0.1:6379&gt; get key3
+&quot;400&quot;
+</code></pre><p>###msetnx<br><strong>作用：</strong> 一次设置多个key的值(批量设置),但是<strong>不会覆盖已经存在的key</strong>.    <br><strong>语法：</strong> msetnx key1 value1 key2 value2 … keyN valueN<br><strong>返回值：</strong>设置成功返回 OK,表示都设置成功， 设置失败返回 0, 表示没有任何值被设置<br><strong>注意：</strong> 多个key-value对设置时，有一个不成功，都不成功;重复设置相同key的值不会被设置成功。<br><strong>样例：</strong> </p>
+<pre><code>127.0.0.1:6379&gt; msetnx key6 400 key7 500
+(integer) 1
+127.0.0.1:6379&gt; get key6 
+&quot;400&quot;
+127.0.0.1:6379&gt; get key7
+&quot;500&quot;
+127.0.0.1:6379&gt; msetnx key7 550 key8 800
+(integer) 0
+127.0.0.1:6379&gt; get key6
+&quot;400&quot;
+127.0.0.1:6379&gt; get key7
+&quot;500&quot;
+127.0.0.1:6379&gt; get key8
+(nil)
+</code></pre><p>###get<br><strong>作用：</strong> 获取key对应的string值, 如果key不存在返回 <strong>nil</strong>。<br><strong>语法：</strong> get key<br><strong>返回值：</strong>获取成功返回 对应key的value,失败返回nil<br><strong>注意：</strong><br><strong>样例：</strong></p>
+<pre><code>127.0.0.1:6379&gt; get key9
+(nil)
+127.0.0.1:6379&gt; set key9 900
+OK
+127.0.0.1:6379&gt; get key9
+&quot;900&quot; 
+</code></pre><p>###getset<br><strong>作用：</strong> 设置key的值,并返回key的旧值。<br><strong>语法：</strong> getset key value<br><strong>返回值：</strong>获取成功返回 对应key的原来的oldValue,如果原来没有值就返回 nil<br><strong>注意：</strong><br><strong>样例：</strong></p>
+<pre><code>127.0.0.1:6379&gt; getset key10 10
+(nil)
+127.0.0.1:6379&gt; get key10
+&quot;10&quot;
+127.0.0.1:6379&gt; getset key10 100
+&quot;10&quot;
+127.0.0.1:6379&gt; get key10
+&quot;100&quot;
+</code></pre><p>###getrange<br><strong>作用：</strong> 获取key的value值的子字符串。<br><strong>语法：</strong> getrange key startPos endPos<br><strong>返回值：</strong>获取成功返回 对应key的value的字串,失败返回nil<br><strong>注意：</strong>  endPos 为-1时表示value字符串长度的最后一位,大于最大长度时，就取最大长度； startPos为负数的时候表示从字符串的尾部开始数数。<br><strong>样例：</strong></p>
+<pre><code>127.0.0.1:6379&gt; set key15 123456789
+OK
+127.0.0.1:6379&gt; get key15
+&quot;123456789&quot;
+127.0.0.1:6379&gt; getrange key15 0 5
+&quot;123456&quot;
+127.0.0.1:6379&gt; get key15
+&quot;123456789&quot;
+127.0.0.1:6379&gt; getrange key15 0 -1
+&quot;123456789&quot;
+127.0.0.1:6379&gt; getrange key15 -2 -1
+&quot;89&quot;
+127.0.0.1:6379&gt; getrange key15 -3 -1
+&quot;789&quot;
+127.0.0.1:6379&gt; getrange key15 0 15
+&quot;123456789&quot;
+</code></pre><p>###mget<br><strong>作用：</strong> 一次获取多个key的值,如果对应key不存 在则对应返回 <strong>nil</strong>。<br><strong>语法：</strong> mget key1 key2 … keyN<br><strong>返回值：</strong>获取成功返回 对应key的value,失败返回nil<br><strong>注意：</strong><br><strong>样例：</strong></p>
+<pre><code>127.0.0.1:6379&gt; mget key1 key2 key3
+1) &quot;100&quot;
+2) &quot;250&quot;
+3) &quot;400&quot;
+127.0.0.1:6379&gt; mget key1 key2 key30
+1) &quot;100&quot;
+2) &quot;250&quot;
+3) (nil)
+</code></pre><p>###incr<br><strong>作用：</strong> 对key的值做<strong>加加操作</strong>,并返回新的值。key不存在时候会设置key,并认为原来的value是0。<br><strong>语法：</strong> incr key<br><strong>返回值：</strong>返回增加成功后的值<br><strong>注意：</strong>  如果value不是一个整数可能会出错。<br><strong>样例：</strong>    </p>
+<pre><code>127.0.0.1:6379&gt; get key99
+(nil)
+127.0.0.1:6379&gt; incr key99
+(integer) 1
+127.0.0.1:6379&gt; get key99
+&quot;1&quot;
+127.0.0.1:6379&gt; incr key99
+(integer) 2
+127.0.0.1:6379&gt; get key99
+&quot;2&quot;
+127.0.0.1:6379&gt; set key80 yjk
+OK
+127.0.0.1:6379&gt; get key80
+&quot;yjk&quot;
+127.0.0.1:6379&gt; incr key80
+(error) ERR value is not an integer or out of range
+</code></pre><p>###incrby<br><strong>作用：</strong> 同incr类似,<strong>加指定值</strong>,key不存在时候会设置key,并认为原来的value是0。<br><strong>语法：</strong> incrby key num<br><strong>返回值：</strong>返回增加成功后的值<br><strong>注意：</strong> 如果value不是一个整数可能会出错, num为负数的时候表示减少指定的值。<br><strong>样例：</strong>    </p>
+<pre><code>127.0.0.1:6379&gt; get key70
+(nil)
+127.0.0.1:6379&gt; incrby key70 2
+(integer) 2
+127.0.0.1:6379&gt; get key70
+&quot;2&quot;
+127.0.0.1:6379&gt; incrby key70 5
+(integer) 7
+127.0.0.1:6379&gt; get key70
+&quot;7&quot;
+127.0.0.1:6379&gt; incrby key70 -2
+(integer) 5
+127.0.0.1:6379&gt; get key70
+&quot;5&quot;
+</code></pre><p>###decr<br><strong>作用：</strong> 对key的值做<strong>减减操作</strong>,key不存在时候会设置key,并认为原来的value是0。<br><strong>语法：</strong> decr key<br><strong>返回值：</strong>返回增加成功后的值<br><strong>注意：</strong> 如果value不是一个整数可能会出错<br><strong>样例：</strong></p>
+<pre><code>127.0.0.1:6379&gt; get key70
+&quot;6&quot;
+127.0.0.1:6379&gt; decr key70
+(integer) 5
+127.0.0.1:6379&gt; get key70
+&quot;5&quot;
+</code></pre><p>###decrby<br><strong>作用：</strong> 同decr类似,<strong>减少指定值</strong>,key不存在时候会设置key,并认为原来的value是0。<br><strong>语法：</strong> decrby key num<br><strong>返回值：</strong>返回增加成功后的值<br><strong>注意：</strong> 如果value不是一个整数可能会出错, num为负数的时候表示增加指定的值。<br><strong>样例：</strong></p>
+<pre><code>127.0.0.1:6379&gt; get key70
+&quot;5&quot;
+127.0.0.1:6379&gt; decrby key70 2
+(integer) 3
+127.0.0.1:6379&gt; get key70
+&quot;3&quot;
+127.0.0.1:6379&gt; decrby key70 -5
+(integer) 8
+127.0.0.1:6379&gt; get key70
+&quot;8&quot;
+</code></pre><p>###append<br><strong>作用：</strong> 给指定key的字符串追加value,返回新字 符串值的长度。<br><strong>语法：</strong> append key appendValue<br><strong>返回值：</strong>返回追加成功后的新字符串长度<br><strong>注意：</strong> 如果key不存在则自动进行设置为追加字符串。<br><strong>样例：</strong></p>
+<pre><code>127.0.0.1:6379&gt; get key50
+(nil)
+127.0.0.1:6379&gt; append key50 yui
+(integer) 3
+127.0.0.1:6379&gt; get key50
+&quot;yui&quot;
+127.0.0.1:6379&gt; append key50 dhdg
+(integer) 7
+127.0.0.1:6379&gt; get key50
+&quot;yuidhdg&quot;
+</code></pre><p>###strlen<br><strong>作用：</strong> 取指定key的value值的长度。<br><strong>语法：</strong> strlen key<br><strong>返回值：</strong>返回字符串长度<br><strong>注意：</strong> 如果key不存在则认为长度为0。<br><strong>样例：</strong></p>
+<pre><code>127.0.0.1:6379&gt; get key44
+(nil)
+127.0.0.1:6379&gt; strlen key44
+(integer) 0
+127.0.0.1:6379&gt; set key44 123456789
+OK
+127.0.0.1:6379&gt; get key44
+&quot;123456789&quot;
+127.0.0.1:6379&gt; strlen key44
+(integer) 9
+</code></pre>
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://lbvs86823.github.com" target="_blank">lbvs86823</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2010/09/27/js/jquery/jueryPlugin/" class="pre-post btn btn-default" title="JQuery开发插件的机种方式讨论">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">JQuery开发插件的机种方式讨论</span>
+        </a>
+    
+    
+        <a href="/2010/07/24/redis/redis_string/" class="next-post btn btn-default" title="redis入门之Strings数据类型(二)">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">redis入门之Strings数据类型(二)</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh_CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <p>暂无目录</p>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="lbvs86823">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+
+<title>Shiro 第四章 Realms | lbvs86823</title>
+
+
+    <link rel="alternate" href="atom/.xml" title="lbvs86823" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="bibi">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 不懂的就记下来...... </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">lbvs86823</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>归档</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Shiro 第四章 Realms">
+            
+	            Shiro 第四章 Realms
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/shiro">
+            shiro
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/shiro" title="shiro">
+                        shiro
+                    </a>
+                
+                    <a href="/tags/Realms" title="Realms">
+                        Realms
+                    </a>
+                
+                    <a href="/tags/SecurityManager" title="SecurityManager">
+                        SecurityManager
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2010/12/18</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>2960</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h4 id="1-Realm-概述："><a href="#1-Realm-概述：" class="headerlink" title="1.Realm 概述："></a>1.Realm 概述：</h4><p>Realm 是一个能够访问应用程序特定的安全数据(如用户、角色及权限)的组件。Realm 将应用程序特定的数据转 换成一种 Shiro 能够理解的格式,这样 Shiro 能够提供一个单一的易理解的 Subject 编程 API</p>
+<p>Realm 通常和数据源是一对一的对应关系,如关系数据库,LDAP 目录,文件系统,或其他类似资源。因此,Realm 接口的实现使用数据源特定的 API 来展示授权数据(角色,权限等),如 JDBC,文件 IO,Hibernate 或 JPA,或其他 数据访问 API。</p>
+<p>Realm 实质上就是一个特定安全的 DAO 因为这些数据源大多通常存储身份验证数据(如密码的凭证)以及授权数据(如角色或权限),每个 Shiro Realm 能够执行身份验证和授权操作。</p>
+<h4 id="2-Realm-配置"><a href="#2-Realm-配置" class="headerlink" title="2.Realm 配置"></a>2.Realm 配置</h4><p>如果使用 Shiro 的 INI 配置文件,你能够自定义及引用 Realm,就像在[main]项中的任何其他对象一样,但它们在 securityManager 中采用两种方法之一进行配置:显式或隐式。</p>
+<p><em>Explicit Assignment</em><br>基于迄今的 INI 配置知识,这是一个显示的配置方法。在定义一个或多个 Realm 后,你将它们作为 securityManager 对象的集合属性。<br>例如:</p>
+<pre><code>fooRealm = com.company.foo.Realm 
+barRealm = com.company.another.Realm 
+bazRealm = com.company.baz.Realm
+securityManager.realms = $fooRealm, $barRealm, $bazRealm
+</code></pre><p>显式分配是确定的——你控制具体使用哪一个 Realm 及它们用于身份验证和授权的顺序。Realm 顺序的作用在<br>Authentication 章的 Authentication Sequence 节进行了详细的介绍。</p>
+<p><em>Implicit Assignment</em>    Not Preferred(不推荐)<br>这种方法可能引发意想不到的行为,如果你改变 realm 定义的顺序的话。建议你避免使用此方法,并使用显式分配, 它拥有确定的行为。该功能很可能在未来的 Shiro 版本中被废弃或移除。</p>
+<h4 id="3-Realm-Authentication"><a href="#3-Realm-Authentication" class="headerlink" title="3.Realm Authentication"></a>3.Realm Authentication</h4><p>当你理解了 Shiro 的主要 Authentication 工作流后,了解在一个授权尝试中当 Authenticator 与 Realm 交互时到底发 生了什么是很重要的。</p>
+<h4 id="4-Supporting-AuthenticationTokens"><a href="#4-Supporting-AuthenticationTokens" class="headerlink" title="4.Supporting AuthenticationTokens"></a>4.Supporting AuthenticationTokens</h4><p>在 authentication sequence 中已经提到,当在 Realm 被访问来执行一个授权尝试之前,它的 supports 方法被调用。 如果返回值为 true,则只有这样它的 getAuthenticationInfo(token)方法才会被调用。</p>
+<h4 id="5-Handling-supported-AuthenticationTokens"><a href="#5-Handling-supported-AuthenticationTokens" class="headerlink" title="5.Handling supported AuthenticationTokens"></a>5.Handling supported AuthenticationTokens</h4><p>若 Realm 支持一个提交的 AuthenticationToken,那么 Authenticator 将会调用该 Realm 的 getAuthenticationInfo(token) 方法。这有效地代表了一个与 Realm 的后备数据源的授权尝试。该方法按以下方法进行:</p>
+<ol>
+<li>为主要的识别信息(帐户识别信息)检查 token。</li>
+<li>基于 principal 在数据源中寻找相吻合的帐户数据。</li>
+<li>确保 token 支持的 credentials 匹配那些存储在数据源的。</li>
+<li>若 credentials 匹配,返回一个封装了 Shiro 能够理解的帐户数据格式的 AuthenticationInfo 实例。</li>
+<li>若 credentials 不匹配,则抛出 AuthenticationException 异常。</li>
+</ol>
+<p>这是对所有 Realm getAuthenticationInfo 实现的最高级别的工作流。在此方法中,Realm 可以自由地做任何它们想做 的,如记录在审计日志的尝试,更新数据记录,或任何其他可以对该数据存储的身份验证尝试有意义的东西。</p>
+<p>直接实现 Realm 接口可能导致时间消耗及错误。大多数人民选择 AuthorizingRealm 抽象类的子类而不是从头开始。 这个类实现了常用的 authentication 及 authorization 工作流来节省你的时间和精力。</p>
+<h4 id="6-Realm-Credentials-Matching"><a href="#6-Realm-Credentials-Matching" class="headerlink" title="6.Realm Credentials Matching"></a>6.Realm Credentials Matching</h4><p>这是每个 Realm 的责任,去匹配提交的 credentials 和那些存储在 Realm 后备数据存储中的 credentials,而不是 Authenticator 的责任。每个 Realm 拥有有关私人信息的 credentials 格式,存储及能够执行详细的 credentials 匹配, 然而 Authenticator 只是一个普通的工作量组件。</p>
+<p>credentials 的匹配过程在所有应用程序中几乎一样,通常不一样的是进行比较的数据。为了确保该过程是可插入及 可定制的如果需要的话,AuthenticatingRealm 及它的子类支持 CredentialsMatcher 来执行 credentials 对比的概念。</p>
+<p>Shiro 拥有某些可以让你立即使用的 CredentialsMatcher 实现,如 SimpleCredenticalsMatcher 和 HashedCredentialsMatcher,但如果你想为自定义的逻辑配置一个自定义的实现,你可以像下面一样直接做:</p>
+<pre><code>Realm myRealm = new com.company.shiro.realm.MyRealm();
+CredentialsMatcher customMatcher = new com.company.shiro.realm.CustomCredentialsMatcher();     myRealm.setCredentialsMatcher(customMatcher);
+</code></pre><p>所有 Shiro 立即可用的 Realm 的实现默认使用 SimpleCredentialsMatcher。SimpleCredentialsMatcher 执行一个普通的 直接平等检查,关于存储的帐户 credentials 与在 AuthenticationToken 所提交的之间的检查。</p>
+<h4 id="7-Hashing-Credentials"><a href="#7-Hashing-Credentials" class="headerlink" title="7.Hashing Credentials"></a>7.Hashing Credentials</h4><p>并非是存储 credentials 在其原始的 form 及执行原始/普通的比较,一个更安全的方式存储终端用户的 credential(s 如, 密码)是在存储它们到数据存储之前将它们单向散列化。</p>
+<p>为了支持这些首选的加密哈希策略,Shiro 提供了 HashedCredentialsMatcher 的实现配置在 realm 上而不是上述 SimpleCredentialsMatcher。</p>
+<h4 id="8-Disabling-Authentication"><a href="#8-Disabling-Authentication" class="headerlink" title="8.Disabling Authentication"></a>8.Disabling Authentication</h4><p>如果出于某些原因,你不想用 Realm 对数据源执行身份验证(也许是由于你只想 Realm 执行授权),你可以彻底地 禁用 Realm 对身份验证的支持通过从 Realm 的 support 方法返回 false。然后你的 realm 在身份验证尝试中永远不会 被访问到。</p>
+<p>当然,至少需要一个能够支持 AuthenticationTokens 且已配置的 Realm,如果你想验证 Subjects。</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://lbvs86823.github.com" target="_blank">lbvs86823</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2010/12/20/shiro/shiro_05/" class="pre-post btn btn-default" title="Shiro 第五章 Session Management">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Shiro 第五章 Session Management</span>
+        </a>
+    
+    
+        <a href="/2010/12/17/shiro/shiro_03/" class="next-post btn btn-default" title="Shiro 第三章 身份授权">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Shiro 第三章 身份授权</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh_CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Realm-概述："><span class="toc-text">1.Realm 概述：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Realm-配置"><span class="toc-text">2.Realm 配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Realm-Authentication"><span class="toc-text">3.Realm Authentication</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-Supporting-AuthenticationTokens"><span class="toc-text">4.Supporting AuthenticationTokens</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Handling-supported-AuthenticationTokens"><span class="toc-text">5.Handling supported AuthenticationTokens</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-Realm-Credentials-Matching"><span class="toc-text">6.Realm Credentials Matching</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-Hashing-Credentials"><span class="toc-text">7.Hashing Credentials</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-Disabling-Authentication"><span class="toc-text">8.Disabling Authentication</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

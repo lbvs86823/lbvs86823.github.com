@@ -1,0 +1,375 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="lbvs86823">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+
+<title>maven的安装与配置 | lbvs86823</title>
+
+
+    <link rel="alternate" href="atom/.xml" title="lbvs86823" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="bibi">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 不懂的就记下来...... </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">lbvs86823</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>归档</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="maven的安装与配置">
+            
+	            maven的安装与配置
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/maven">
+            maven
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/maven" title="maven">
+                        maven
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2010/05/18</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>3174</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>##一，maven介绍</p>
+<p>Maven是一跨平台的项目管理工具。Maven 主要服务于基于 Java 平台的项目构建、依赖管理和项目信息管理。无论是小型的开源类库项目，还是大型的企业级应用；无论是传统的瀑布式开发，还是流行的敏捷模式，Maven 都能大显身手</p>
+<p>Maven 不仅是构建工具，还是一个依赖管理工具和项目信息管理工具。它提供了中央仓库，能帮我们自动下载构件。<br>它是一个异常强大的构建工具，能够帮我们自动化构建过程，从清理、编译、测试到生成报告，再到打包和部署。   </p>
+<p>我们一直在不停地寻找避免重复的方法。设计的重复、编码的重复、文档的重复，当然还有构建的重复。Maven 最大化地消除了构建的重复，抽象了构建生命周期，并且为绝大部分的构建任务提供了已实现的插件，我们不再需要定义过程，甚至不需要再去实现这些过程中的一些任务。     </p>
+<p>使用 Maven 还能享受一个额外的好处，即 Maven 对于项目目录结构、测试用例命名方式等内容都有既定的规则，只要遵循了这些成熟的规则，用户在项目间切换的时候就免去了额外的学习成本，可以说是约定优于配置。</p>
+<p>##二，Maven 的安装和配置</p>
+<p>首先<a href="http://maven.apache.org/download.cgi" target="_blank" rel="noopener">下载</a> maven最新的安装包(apache-maven-3.2.1-bin.tar.gz)。</p>
+<p>#####Windows环境下的安装：</p>
+<ol>
+<li>设置java环境变量:<br> JAVA_HOME = C:\Java\jdk1.6.31     </li>
+<li>解压安装包，设置maven环境变量：<br> M2_HOME = D:\apache-maven-3.2.1       </li>
+<li>添加Path环境变量：<br> path = .;%JAVA_HOME%\bin;%M2_HOME%\bin     </li>
+<li>测试是否安装成功：<br>在命令行输入： mvn -v  后可以看相关系统和java版本以及maven版本信息即安装成功了。          </li>
+</ol>
+<p>#####Linux环境下的安装：</p>
+<ol>
+<li>设置java环境变量:<br> export JAVA_HOME = /home/wda/jdk1.6.31     </li>
+<li>解压安装包，设置maven环境变量：<br> tar -xvzf apache-maven-3.2.1-bin.tar.gz<br> export M2_HOME=/home/wda/apache-maven-3.2.1           </li>
+<li>添加Path环境变量：<br> export PATH=$PATH:$M2_HOME/bin   </li>
+<li>测试是否安装成功：<br>在终端输入： mvn -v  后可以看相关系统和java版本以及maven版本信息即安装成功了。   </li>
+</ol>
+<p>注意：<br>一般为了以后升级maven方便，在安装目录旁平行的创建一个符号链接如下：<br>    $ ln -s apache-maven-3.2.1 apache-maven<br>然后，让M2_HOME指向链接文件，而不指向具体的版本。<br>    export M2_HOME=/home/wda/apache-maven<br>    export PATH=$PATH:$M2_HOME/bin<br>当要升级maven的时候就可以只需要重新指定链接的文件就可以了，如下：<br>    $ rm  apache-maven<br>    $ ln -s apache-maven-3.2.1 apache-maven<br>这样简单的就完成了maven的升级了。        </p>
+<p>#####Mac环境下的安装：    </p>
+<ol>
+<li>启动终端Terminal:         </li>
+<li>进入当前用户的home目录:<br> 输入: cd ~    </li>
+<li>创建.bash_profile<br> 输入: touch .bash_profile     </li>
+<li>编辑.bash_profile文件<br> 输入: open -e .bash_profile<br> 写入下内容：<br> export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home<br> export M2_HOME=/Users/wda/Documents/workspace/apache-maven-3.2.1<br> export PATH=$PATH:$JAVA_HOME/bin:$M2_HOME/bin              </li>
+<li>保存文件，关闭  .bash_profile 文件      </li>
+<li>更新刚配置的环境变量：<br> 输入: source .bash_profile</li>
+<li>验证配置是否成功：<br> 输入: mvn -v  后可以看相关系统和java版本以及maven版本信息即安装成功了。     </li>
+</ol>
+<p>##三，Maven安装目录的结构分析</p>
+<ul>
+<li>bin </li>
+<li>boot </li>
+<li>conf </li>
+<li>lib </li>
+<li>LICENSE</li>
+<li>NOTICE </li>
+<li>README.txt</li>
+</ul>
+<p><strong>bin：</strong> 该目录包含了 mvn 运行的脚本，基于UNIX 平台的(mvn, mvnDebug),基于 Windows 平台的(mvn.bat, mvnDebug.bat)，m2.conf 文件，这是classworlds的配置文件。<br>mvnDebug相比mvn命令而言只是多了一条 MAVEN_DEBUG_OPTS 配置，作用就是在运行Maven时开启 debug模式，以便调试 Maven 本身。     </p>
+<p><strong>boot：</strong> 该目录只包含一个文件，以 maven 3.2.1 为例，该文件为 plexus-classworlds-2.5.1.jar 这是一个类加载器框架，相对于默认的 java 类加载器，它提供了更丰富的语法以方便配置，Maven 使用该框架加载自己的类库。    </p>
+<p><strong>conf：</strong> 该目录包含了一个非常重要的文件 settings.xml。直接修改该文件，就能在机器上全局地定制 Maven 的行为。一般情况下，我们更偏向于复制该文件至~/.m2/目录下，然后修改该文件，在用户范围定制 Maven 的行为。     </p>
+<p><strong>lib：</strong> 该目录包含了所有 Maven 运行时需要的 Java 类库，Maven 本身是分模块开发的，因此用户能看到 诸如 mavn-core-3.0.jar、maven-model-3.0.jar 之类的文件，此外这里还包含一些 Maven 用到的第三方依赖 如 common-cli-1.2.jar、google-collection-1.0.jar 等等。</p>
+<p>##四，Maven本地仓库的设置</p>
+<p>默认情况下，~/.m2 目录下除了 repository 仓库之外就没有其他目录和文件了，不过大多数 Maven 用户需要复制 M2_HOME/conf/settings.xml 文件到~/.m2/settings.xml, 这是一条最佳实践.  </p>
+<p>默认情况下仓库位置(${user.home}/.m2/repository) ,但是可以自行设置：<br>编辑 ~/.m2/settings.xml 文件（如果没有该文件，则复制$M2_HOME/conf/settings.xml）。添加如下配置：    </p>
+<pre><code>&lt;localRepository&gt;${user.home}/Documents/workspace/mavenRepository&lt;/localRepository&gt;
+</code></pre><p>##五，Maven 设置 HTTP 代理<br>有时候你所在的公司可能基于安全的考虑，要求你使用通过安全认证的代理访问Internet网络。这种时候就需要为maven配置HTTP代理，它才能正常访问外部的仓库下载所需资源。<br>编辑~/.m2/settings.xml 文件（如果没有该文件，则复制$M2_HOME/conf/settings.xml）。添加代理配置如下：      </p>
+<pre><code>&lt;proxies&gt;
+    &lt;proxy&gt;
+      &lt;id&gt;my-proxy&lt;/id&gt;
+      &lt;active&gt;true&lt;/active&gt;
+      &lt;protocol&gt;http&lt;/protocol&gt;
+      &lt;username&gt;wda&lt;/username&gt;
+      &lt;password&gt;wda123456&lt;/password&gt;
+      &lt;host&gt;218.14.227.197&lt;/host&gt;
+      &lt;port&gt;80&lt;/port&gt;
+      &lt;nonProxyHosts&gt;local.net|some.host.com&lt;/nonProxyHosts&gt;
+    &lt;/proxy&gt;
+&lt;/proxies&gt;
+</code></pre><p>注意：proxies 下可以有多个 proxy 元素，如果你声明了多个 proxy 元素，则默认情况下第一个被激活的 proxy 会生效。这里声明了一个 id 为 my-proxy 的代理，active 的值为 true 表示激活该代理。    </p>
+<p>nonProxyHost 元素用来指定哪些主机名不需要代理，可以使用 | 符号来分隔多个主机名。此外，该配置也支持通配符，如:*.google.com 表示所有以 google.com 结尾的域名访问都不要通过代理。   </p>
+<p>##五，Maven 设置  MAVEN_OPTS 环境变量</p>
+<p>通常需要设置MAVEN_OPTS的值为：-Xms128m -Xmx512m, 因为java默认的最大可用内存往往不能够满足maven的运行需要。</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://lbvs86823.github.com" target="_blank">lbvs86823</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2010/05/18/maven/maven02/" class="pre-post btn btn-default" title="maven的入门">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">maven的入门</span>
+        </a>
+    
+    
+        <a href="/2010/05/14/log/log4j-config/" class="next-post btn btn-default" title="log4j.properties配置详解">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">log4j.properties配置详解</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh_CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <p>暂无目录</p>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

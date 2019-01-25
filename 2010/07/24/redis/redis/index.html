@@ -1,0 +1,409 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="lbvs86823">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+
+<title>redis入门之介绍和安装篇(一) | lbvs86823</title>
+
+
+    <link rel="alternate" href="atom/.xml" title="lbvs86823" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="bibi">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 不懂的就记下来...... </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">lbvs86823</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>归档</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="redis入门之介绍和安装篇(一)">
+            
+	            redis入门之介绍和安装篇(一)
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/redis">
+            redis
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/redis" title="redis">
+                        redis
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2010/07/24</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>3107</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>##一，redis介绍</p>
+<p>Redis 是完全开源免费的，遵守BSD协议，先进的key-value持久化产品。它通常被称为数据结构服务器,因为键可以包含string(字符串)、list(链表)、 set(集合)、zset(有序集合)。</p>
+<p>Redis数据库提供多种灵活的数据结构和数据操作。它支持存储的value类型很多,包括string(字符串)、list(链表)、 set(集合)、zset(有序集合)。  </p>
+<p>这些数据类型都支持 push/pop、add/remove及取交集和并集及更丰富的操作,Redis支持各种不同方式的排序。为了保证效率, 数据都是缓存在内存中,它也可以周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件中。</p>
+<p>Redis提供的API接口程序语言包括:C、C++、C#、Clojure  Common  Lisp、Erlang、Haskell、Java、Javascript、 Lua、Objective-C、Perl、PHP、Python、Ruby   Scala、Go、Tcl。</p>
+<p>##二，Redis适用的场景</p>
+<ul>
+<li>1.取最新N个数据的操作   </li>
+<li>2.排行榜应用,取 TOPN 操作   </li>
+<li>3.需要精确设定过期时间的应用   </li>
+<li>4.计数器应用   </li>
+<li>5.Uniq操作,获取某段时间所有数据排重值   </li>
+<li>6.实时系统,反垃圾系统</li>
+<li>7.Pub/Sub(发布/订阅)构建实时消息系统   </li>
+<li>8.构建队列系统  </li>
+<li>9.缓存</li>
+</ul>
+<p>##三，redis的编译运行</p>
+<pre><code>$ wget http://download.redis.io/releases/redis-2.8.7.tar.gz
+$ tar xzf redis-2.8.7.tar.gz
+$ cd redis-2.8.7
+$ make
+</code></pre><p>编译后的可执行文件在src目录中，可以使用下面的命令运行Redis:</p>
+<pre><code>$ src/redis-server
+</code></pre><p>你可以使用内置的客户端连接Redis:</p>
+<pre><code>$ src/redis-cli
+redis&gt; set foo bar
+OK
+redis&gt; get foo
+&quot;bar&quot;
+</code></pre><p>##四，redis手动优化安装    </p>
+<p>通过上面的步骤你可以进行redis的学习是没有问题的，但是如果要运行在生产环境还有很多需要优化的地方。<br>比如：按照上面的方法启动redis-server会占用当前会话(而不是以后台服务运行的)，而且还会出现一些警告信息(没有指定配置文件)，你不得不新开一个终端进行客户端的连接，为了解决上述的一些问题，你可以进行如下的一些优化操作：</p>
+<p>一般我们都是安装部署redis在linux服务器上面的，而按照Linux系统安装软件的习惯一般都放在 /usr/local/下面；所以便于我们以后的软件管理，我们也在这个目录下新建一个redis的安装文件夹，如下：</p>
+<pre><code>$ mkdir  -p  /usr/local/redis/bin  
+$ mkdir  -p  /usr/local/redis/etc  
+</code></pre><p>bin：目录用来存放redis的命令文件 比如：redis-server，redis-cli<br>etc：目录用来存放redis的配置文件 比如：redis.conf</p>
+<p>下面我们就把相关的命令文件和配置文件拷贝到指定的目录(可能需要root权限操作)</p>
+<pre><code>$ cd redis-2.8.7 
+$ cp  ./redis.conf  /usr/local/redis/etc
+$ cd src
+$ cp redis-benchmark redis-check-aof redis-check-dump redis-cli redis-sentinel redis-server  /usr/local/redis/bin/
+</code></pre><p>启动Redis服务(已经没有警告信息咯):    </p>
+<pre><code>$ /usr/local/redis/bin/redis-server  /usr/local/redis/etc/redis.conf
+</code></pre><p>Redis启动的时候指定了配置文件以后，你可以看到之前的警告信息已经没有了，并且可以看到服务器的进程号和默认连接的端口号:6379      </p>
+<p>默认情况下,Redis不是在后台运行的,我们需要把开启Redis的后台运行,即将daemonize的值由 “no” 改为 “yes” 就ok了。   </p>
+<pre><code>$ vi  /usr/local/redis/redis.conf  
+$ /usr/local/redis/bin/redis-server /usr/local/redis/etc/redis.conf  
+$ ps -ef | grep redis
+</code></pre><p>修改配置文件后，重新启动，就可以看到已经不在占用当前会话了,并且可以查看到redis已经在后台运行了。<br>我们也可以使用如下命令，把后台redis给关闭掉：</p>
+<pre><code>$ pkill redis-server 
+</code></pre><p>我们也可以在本会话窗口中继续通过内置客户端连接redis了；如下：</p>
+<pre><code>$ /usr/local/redis/bin/redis-cli
+</code></pre><p>##五，redis自动优化安装<br> 上面的都是我们手动制作的，后来我看到了redis的源码仓库里面的说明，其实要达到上面的效果很简单，可以按照如下的操作来执行就可以了！</p>
+<p> 首先还是要进行编译操作：</p>
+<pre><code>$ wget http://download.redis.io/releases/redis-2.8.7.tar.gz
+$ tar xzf redis-2.8.7.tar.gz
+$ cd redis-2.8.7
+$ make
+</code></pre><p>经过上面的编译后，会有一个src目录生成。比如：我打算新建一个 ~/software/redis 的文件夹用来专门放置redis的可执行程序软件, 新建文件夹 ~/software/redis/conf 用来放置启动redis的配置文件，那么进行如下操作：</p>
+<pre><code>$ mkdir ~/software/redis
+$ mkdir ~/software/redis/conf
+$ cd src
+$ make PREFIX = ~/software/redis install
+$ cp ../redis.conf ~/software/redis/conf
+</code></pre><p>通过上面的操作你可以看到，redis的相关命令(redis-benchmark, redis-cli, redis-check-aof, redis-server, redis-check-dump)都被安装到了 ~/software/redis/bin 目录下面，而且redis的配置文件redis.conf 也被copy到了 ~/software/redis/conf 目录下面(顺便修改下reids.conf 文件的 daemonize=yes)，这样我们一个完整的独立的redis软件包就制作好了；可以进行启动了：</p>
+<pre><code>$ cd  ~/software/redis
+$ ./bin/redis-server ./conf/redis.conf
+$ ./bin/reids-cli 
+127.0.0.1:6379&gt; keys *
+(empty list or set)
+</code></pre><p>##六，关于redis配置文件中的一些属性说明</p>
+<ul>
+<li>daemonize 如果需要在后台运行,把该项改为 yes </li>
+<li>pidfile 配置多个pid的地址 默认在/var/run/redis.pid </li>
+<li>bind 绑定ip,设置后只接受来自该ip的请求</li>
+<li>port 监听端口,默认为6379</li>
+<li>timeout 设置客户端连接时的超时时间,单位为秒 </li>
+<li>loglevel 分为4级,debug、verbose、notice、warning</li>
+<li>logfile 配置log文件地址</li>
+<li>databases 设置数据库的个数,默认使用的数据库为0 </li>
+<li>save 设置redis进行数据库镜像的频率</li>
+<li>rdbcompression 在进行镜像备份时,是否进行压缩 </li>
+<li>Dbfilename 镜像备份文件的文件名</li>
+<li>Dir 数据库镜像备份的文件放置路径</li>
+<li>Slaveof 设置数据库为其他数据库的从数据库 </li>
+<li>Masterauth 主数据库连接需要的密码验证 </li>
+<li>Requirepass 设置登录时需要使用的密码 </li>
+<li>Maxclients 限制同时连接的客户数量</li>
+<li>Maxmemory 设置redis能够使用的最大内存 </li>
+<li>Appendonly 开启append only模式</li>
+<li>Appendfsync 设置对appendonly.aof文件同步的频率</li>
+<li>vm-enabled 是否开启虚拟内存支持</li>
+<li>vm-swap-file 设置虚拟内存的交换文件路径 </li>
+<li>vm-max-memory 设置redis使用的最大物理内存大小 </li>
+<li>vm-page-size 设置虚拟内存的页大小</li>
+<li>vm-pages 设置交换文件的总的page数量 </li>
+<li>vm-max-threads 设置VM IO同时使用的线程数量</li>
+<li>Glueoutputbuf 把小的输出缓存存放在一起 </li>
+<li>hash-max-zipmap-entries 设置hash的临界值 </li>
+<li>Activerehashing 重新hash</li>
+</ul>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://lbvs86823.github.com" target="_blank">lbvs86823</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2010/07/24/redis/redis_string/" class="pre-post btn btn-default" title="redis入门之Strings数据类型(二)">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">redis入门之Strings数据类型(二)</span>
+        </a>
+    
+    
+        <a href="/2010/05/18/maven/maven02/" class="next-post btn btn-default" title="maven的入门">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">maven的入门</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh_CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <p>暂无目录</p>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

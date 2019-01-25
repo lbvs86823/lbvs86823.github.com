@@ -1,0 +1,409 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="lbvs86823">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+
+<title>Shiro 第二章 身份认证 | lbvs86823</title>
+
+
+    <link rel="alternate" href="atom/.xml" title="lbvs86823" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="bibi">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 不懂的就记下来...... </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">lbvs86823</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>归档</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Shiro 第二章 身份认证">
+            
+	            Shiro 第二章 身份认证
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/shiro">
+            shiro
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/shiro" title="shiro">
+                        shiro
+                    </a>
+                
+                    <a href="/tags/Realms" title="Realms">
+                        Realms
+                    </a>
+                
+                    <a href="/tags/SecurityManager" title="SecurityManager">
+                        SecurityManager
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2010/12/16</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>2962</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h4 id="1-Shiro-身份认证要素："><a href="#1-Shiro-身份认证要素：" class="headerlink" title="1.Shiro 身份认证要素："></a>1.Shiro 身份认证要素：</h4><p>Authentication 是指身份验证的过程——即证明一个用户实际上是不是他们所说的他们是谁。对于一个用户证明自己 的身份来说,他们需要提供一些身份识别信息,以及某些你的系统能够理解和信任的身份证明。  </p>
+<p>这是通过提交用户的身份和凭证给 Shiro,以判断它们是否和应用程序预期的相匹配</p>
+<ul>
+<li>Principals(身份)是 Subject 的‘identifying attributes(标识属性)’。Principals(身份)可以是任何能够证明 Subject 的东西,因此,最好的用来进行身份验证的 Principals(身份)是对应用程序来说应 该是独一无二的——通常是用户名或电子邮件地址.</li>
+<li>Credentials(凭证)通常是只被 Subject 知道的秘密值,它用来作为一种起支持作用的证据,此证据事实上 包含着所谓的身份证明。一些常见 credentials(凭证)的例子有密码,生物特征数据如指纹和视网膜扫描, 以及 X.509 证书。</li>
+</ul>
+<p>principal/credential 配对最常见的例子是用户名和密码。用户名是所声称的身份,密码是匹配所声称的身份的证明。</p>
+<h4 id="2-Shiro-身份认证过程："><a href="#2-Shiro-身份认证过程：" class="headerlink" title="2.Shiro 身份认证过程："></a>2.Shiro 身份认证过程：</h4><p>Authenticating Subjects(验证 Subjects)，验证 Subjects 的过程中,可以有效地分解成三个不同的步骤:</p>
+<ol>
+<li>收集 Subjects 提交的 Principals(身份)和 Credentials(凭证);</li>
+<li>提交 Principals(身份)和 Credentials(凭证)进行身份验证;</li>
+<li>如果提交成功,则允许访问,否则重新进行身份验证或者阻止访问。</li>
+</ol>
+<h6 id="Step-1-gt-收集-Subject-的-Principals-身份-和-Credentials-凭证"><a href="#Step-1-gt-收集-Subject-的-Principals-身份-和-Credentials-凭证" class="headerlink" title="Step 1 ===&gt; 收集 Subject 的 Principals(身份)和 Credentials(凭证)"></a>Step 1 ===&gt; 收集 Subject 的 Principals(身份)和 Credentials(凭证)</h6><pre><code>UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+token.setRememberMe(true);
+</code></pre><p>我们使用 UsernamePasswordToken 来支持最常见的用户名/密码的身份验证方法。这是 Shiro 的 org.apache.shiro.authc.AuthenticationToken 的接口,是 Shiro 代表提交的 Principals(身份)和 Credentials(凭证)的身份验证系统所使用的基本接口的一个实现。        </p>
+<h6 id="Step-2-gt-提交-Subject-的-Principals-身份-和-Credentials-凭证"><a href="#Step-2-gt-提交-Subject-的-Principals-身份-和-Credentials-凭证" class="headerlink" title="Step 2 ===&gt; 提交 Subject 的 Principals(身份)和 Credentials(凭证)"></a>Step 2 ===&gt; 提交 Subject 的 Principals(身份)和 Credentials(凭证)</h6><pre><code>Subject currentUser = SecurityUtils.getSubject(); 
+currentUser.login(token);
+</code></pre><p>在 Principals(身份)和 Credentials(凭证)被收集以及被实例化为 AuthenticationToken 实例后,我们需要提交这个 token 给 Shiro 来执行真正的身份验证尝试。<br>在捕获到当前执行的 Subject 后,我们获得一个单一的 login 方法调用,并将之前获得的 AuthenticationToken 实例传递给它。<br>通过调用 login 方法,有效地体现了身份验证尝试。</p>
+<h6 id="Step-3-gt-处理成功或失败"><a href="#Step-3-gt-处理成功或失败" class="headerlink" title="Step 3 ===&gt; 处理成功或失败"></a>Step 3 ===&gt; 处理成功或失败</h6><p>如果 login 方法返回平静地,就是它——我们所做的一切!该 Subject 已通过验证。  </p>
+<p>应用程序线程可以不受干扰地继续下去,而且所有进一步对 SecurityUtils.getSubject()的调用将返回认证后的 Subject 实例,同时任何对 subject.isAuthenticated()的调用将返回 true。</p>
+<p>但是如果登录尝试失败会发生什么呢?例如,如果终端用户提供了不正确的密码,或这访问系统的次数太多, 亦或是他们的帐户被锁定?   </p>
+<p>Shiro 拥有丰富的运行时 AuthenticationException 层次结构,可以指出尝试失败的确切原因。你可以用一个 try/catch 块将 login 方法包围起来,然后捕捉任何你期望的异常并进行相应的反应。例如:</p>
+<pre><code>try { 
+    currentUser.login(token);
+} catch ( UnknownAccountException uae ) { 
+    ...
+} catch ( IncorrectCredentialsException ice ) { 
+    ...
+} catch (LockedAccountException lae ) { 
+    ...
+} catch (ExcessiveAttemptsException eae ) { 
+    ...
+}     ... catch your own ...
+} catch ( AuthenticationException ae ) {
+
+}
+//unexpected error?
+</code></pre><p>如果现有的异常类不符合您的要求,可以自定义 AuthenticationExceptions 来代表具体的异常情况。</p>
+<h4 id="3-Remembered-vs-Authenticated-记住我对比认证"><a href="#3-Remembered-vs-Authenticated-记住我对比认证" class="headerlink" title="3.Remembered vs. Authenticated(记住我对比认证)"></a>3.Remembered vs. Authenticated(记住我对比认证)</h4><p>Shiro 支持除了普通的登录过程的所有“记住我”的概念。此时值得指出的是,Shiro 对记 住我的 Subject 和通过验证的 Subject 作了精确的区分:</p>
+<ul>
+<li>Remembered(记住我):一个记住我的 Subject 不是匿名的,而且有一个已知的身份 ID(也就是 subject.getPrincipals()是非空的)。但是这个被记住的身份 ID 是在之前的 session 中被认证的。如果 subject.isRemembered()返回 true,则 Subject 被认为是被记住的。</li>
+<li>Authenticated(已认证):一个已认证的 Subject 是指在当前 Session 中被成功地验证过了(也就是说,login 方法被调用并且没有抛出异常)。如果 subject.isAuthenticated()返回 true 则认为 Subject 已通过验证。</li>
+</ul>
+<p><em>Remembered 和 Authenticated 是互斥的——若其中一个为真则另一个为假,反之亦然。</em></p>
+<p>为何有这样的区别?<br>“身份验证”这个词有很强的证明的意思在里面。也就是说,有一个预期保证 Subject 已经证明他们是他们所说的谁。<br>当用户只记得之前与应用的交互时,认证将不复存在:被记住的身份 ID 使系统明白这个用户可能是谁,但在 现实中没有办法绝对保证被记住的 Subject 代表期望的用户。一旦 Subject 通过验证,它们将不再仅仅被认为是被记住的,由于它们的身份已经在当前 session 中被证实。 </p>
+<p>尽管应用程序的许多部分仍然能够执行基于被记住身份 ID 的用户特定逻辑,像自定义视图,但它绝不应该执 行高度敏感的操作,除非用户通过执行一个成功的认证尝试来合法地验证自己的身份。</p>
+<p>例如,一个检查来判断一个 Subject 可以访问财务信息应该几乎总是取决于 isAuthenticated(),而不是 isRemembered(),以保证一个预期和核实的身份。</p>
+<h4 id="4-注销"><a href="#4-注销" class="headerlink" title="4.注销"></a>4.注销</h4><p>进行身份验证的反面是释放所有已知的的识别状态。当 Subject 完成了与应用程序的交互后,你可以调用 subject.logout() 来释放所有的识别信息:</p>
+<pre><code>currentUser.logout(); 
+</code></pre><h4 id="5-验证顺序详解"><a href="#5-验证顺序详解" class="headerlink" title="5.验证顺序详解"></a>5.验证顺序详解</h4><p><img src="/images/shiro04.png" alt="组件关系图"> </p>
+<h6 id="Step-1"><a href="#Step-1" class="headerlink" title="Step 1:"></a>Step 1:</h6><p>应用程序代码调用 Subject.login 方法,传递创建好的包含终端用户的 Principals(身份)和 Credentials(凭 证)的 AuthenticationToken 实例。</p>
+<h6 id="Step-2"><a href="#Step-2" class="headerlink" title="Step 2:"></a>Step 2:</h6><p>Subject 实例,通常是 DelegatingSubject(或子类)委托应用程序的 SecurityManager 通过调用securityManager.login(token)开始真正的验证工作。</p>
+<h6 id="Step3"><a href="#Step3" class="headerlink" title="Step3:"></a>Step3:</h6><p>SubjectManager 作为一个基本的“保护伞”的组成部分,接收 token 以及简单地委托给内部的 Authenticator 实例通过调用 authenticator.authenticate(token)。这通常是一个 ModularRealmAuthenticator 实例, 支持在身份验证中协调一个或多个 Realm 实例。ModularRealmAuthenticator 本质上为 Apache Shiro 提供了 PAM-style 范式(其中在 PAM 术语中每个 Realm 都是一个’module’)。</p>
+<h6 id="Step-4"><a href="#Step-4" class="headerlink" title="Step 4:"></a>Step 4:</h6><p>如果应用程序中配置了一个以上的 Realm,ModularRealmAuthenticator 实例将利用配置好的 AuthenticationStrategy 来启动 Multi-Realm 认证尝试。在 Realms 被身份验证调用之前,期间和以后, AuthenticationStrategy 被调用使其能够对每个 Realm 的结果作出反应。我们马上就会涉及到 AuthenticationStrategies。</p>
+<pre><code>Single-Realm Application
+如果只有一个单一的 Realm 被配置,它将被直接调用——没有必要为一个单一 Realm 的应用使用     AuthenticationStrategy。
+</code></pre><h6 id="Step-5"><a href="#Step-5" class="headerlink" title="Step 5:"></a>Step 5:</h6><p>每个配置的 Realm 用来帮助看它是否支持提交的 AuthenticationToken。如果支持,那么支持 Realm 的 getAuthenticationInfo 方法将会伴随着提交的 token 被调用。getAuthenticationInfo 方法有效地代表一个特定 Realm 的单一的身份验证尝试。我们将在不久涉及到 Realm 验证行为。<br>Authenticator(认证器)<br>如前所述,Shiro SecurityManager 的实现默认使用一个 ModularRealmAuthenticator 实例。 ModularRealmAuthenticator 同样支持单一的 Realm 以及那些多个 Realm 的应用。<br>在一个单一的 Realm 应用中,ModularRealmAuthenticator 将直接调用这个单一的 Realm。如果有两个或两个 以上的 Realm 配置,它将使用 AuthenticationStrategy 实例来调整这些尝试如何出现。下面我们将介绍 AuthenticationStrategies。    </p>
+<p>AuthenticationStrategy<br>当一个应用程序配置了两个或两个以上的 Realm 时,ModularRealmAuthenticator 依靠内部的 AuthenticationStrategy 组件来确定这些认证尝试的成功或失败条件。<br>例如,如果只有一个 Realm 验证一个 AuthenticationToken 成功,但所有其他的都失败,这被认为是成功的身 份验证尝试吗?或者必须所有的 Realm 验证成功才被认为样子成功吗?或者,如果一个 Realm 验证成功,是 否有必要进一步征询其他 Realm?AuthenticationStrategy 基于程序需要作出合适的决定。 AuthenticationStrategy 是一个无状态的组件,它在身份验证尝试中被询问 4 次(这 4 次交互所需的任何必要的 状态将被作为方法参数):</p>
+<ol>
+<li>在任何 Realm 被调用之前被询问;</li>
+<li>在一个单独的 Realm 的 getAuthenticationInfo 方法被调用之前立即被询问;</li>
+<li>在一个单独的 Realm 的 getAuthenticationInfo 方法被调用之后立即被询问;</li>
+<li>在所有的 Realm 被调用后询问。   </li>
+</ol>
+<p>另外,AuthenticationStrategy 负责从每一个成功的 Realm 汇总结果并将它们“捆绑”到一个单一的 AuthenticationInfo 再现。这最后汇总的 AuthenticationInfo 实例就是从 Authenticator 实例返回的值以及 Shiro 所用来代表 Subject 的最终身份 ID 的值(即 Principals(身份))。</p>
+<p>如果在你的应用程序中使用多个 Realm 从多个数据源获取账户资料,AuthenticationStrategy 是最终为最后的“合 并”能够被应用程序理解的 Subject 的身份的视图的负责人。</p>
+<p>Shiro 有 3 个具体的 AuthenticationStrategy 实现:</p>
+<table>
+<thead>
+<tr>
+<th>实现类</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AtLeastOneSuccessfulStrategy</td>
+<td>如果一个(或更多)Realm 验证成功,则整体的尝试被认为是成功的。如果没有一个验证成功,则整体尝试失败。</td>
+</tr>
+<tr>
+<td>FirstSuccessfulStrategy</td>
+<td>只有第一个成功地验证的 Realm 返回的信息将被使用。所有进一步的 Realm 将被忽略。如果没有一个验证成功,则整体尝试失败。</td>
+</tr>
+<tr>
+<td>AllSucessfulStrategy</td>
+<td>为了整体的尝试成功,所有配置的 Realm 必须验证成功。如果没有一个验证成功,则整体尝试失败。</td>
+</tr>
+</tbody>
+</table>
+<p>ModularRealmAuthenticator 默认的是 AtLeastOneSuccessfulStrategy 实现,因为这是最常所需的方案。然而,如果你愿意的话,你可以配置一个不同的方案</p>
+<p><em>自定义认证策略</em><br>如果你想创建你自己的 AuthenticationStrategy 来实现你自己,你可以使用org.apache.shiro.authc.pam.AbstractAuthenticationStrategy 作为出发点。AbstractAuthenticationStrategy 类自动实现“捆绑”/“聚集”行为,从每一个 Realm 合并结果到一个单一的 AuthenticationInfo 实例。</p>
+<p>Realm 的验证顺序<br>需要指出非常重要的一点是,ModularRealmAuthenticator 将与 Realm 实例以迭代的顺序进行交互。<br>在 SecurityManager 中已经配置好了 ModularRealmAuthenticator 对 Realm 实例的访问。当执行一个认证尝试时, 它将会遍历该集合,并对每一个支持提交 AuthenticationToken 的 Realm 调用 Realm 的 getAuthenticationInfo 方 法。</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://lbvs86823.github.com" target="_blank">lbvs86823</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2010/12/17/shiro/shiro_03/" class="pre-post btn btn-default" title="Shiro 第三章 身份授权">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Shiro 第三章 身份授权</span>
+        </a>
+    
+    
+        <a href="/2010/12/15/shiro/shiro_01/" class="next-post btn btn-default" title="Shiro 第一章 简介">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Shiro 第一章 简介</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh_CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Shiro-身份认证要素："><span class="toc-text">1.Shiro 身份认证要素：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Shiro-身份认证过程："><span class="toc-text">2.Shiro 身份认证过程：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Step-1-gt-收集-Subject-的-Principals-身份-和-Credentials-凭证"><span class="toc-text">Step 1 ===&gt; 收集 Subject 的 Principals(身份)和 Credentials(凭证)</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Step-2-gt-提交-Subject-的-Principals-身份-和-Credentials-凭证"><span class="toc-text">Step 2 ===&gt; 提交 Subject 的 Principals(身份)和 Credentials(凭证)</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Step-3-gt-处理成功或失败"><span class="toc-text">Step 3 ===&gt; 处理成功或失败</span></a></li></ol></li></ol><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Remembered-vs-Authenticated-记住我对比认证"><span class="toc-text">3.Remembered vs. Authenticated(记住我对比认证)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-注销"><span class="toc-text">4.注销</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-验证顺序详解"><span class="toc-text">5.验证顺序详解</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Step-1"><span class="toc-text">Step 1:</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Step-2"><span class="toc-text">Step 2:</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Step3"><span class="toc-text">Step3:</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Step-4"><span class="toc-text">Step 4:</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Step-5"><span class="toc-text">Step 5:</span></a></li></ol></li>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="lbvs86823">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+
+<title>Spring oauth2 相关概念解释 | lbvs86823</title>
+
+
+    <link rel="alternate" href="atom/.xml" title="lbvs86823" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="bibi">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 不懂的就记下来...... </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">lbvs86823</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>归档</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Spring oauth2 相关概念解释">
+            
+	            Spring oauth2 相关概念解释
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/spring">
+            spring
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/spring" title="spring">
+                        spring
+                    </a>
+                
+                    <a href="/tags/security" title="security">
+                        security
+                    </a>
+                
+                    <a href="/tags/auth2" title="auth2">
+                        auth2
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2011/06/15</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>2781</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h3 id="协议的参与者"><a href="#协议的参与者" class="headerlink" title="协议的参与者:"></a>协议的参与者:</h3><p>OAuth的参与实体至少有如下三个：</p>
+<ul>
+<li><p>RO (resource owner): 资源所有者，对资源具有授权能力的人。如用户Alice</p>
+</li>
+<li><p>RS (resource server): 资源服务器，它存储资源，并处理对资源的访问请求。如Google资源服务器，它所保管的资源就是用户Alice的照片。</p>
+</li>
+<li><p>Client: 第三方应用，它获得RO的授权后便可以去访问RO的资源。（照片打印商）</p>
+</li>
+</ul>
+<p>此外，为了支持开放授权功能以及更好地描述开放授权协议，OAuth引入了第四个参与实体：</p>
+<ul>
+<li>AS (authorization server): 授权服务器，它认证RO的身份，为RO提供授权审批流程，并最终颁发授权令牌(Access Token)。<br>注意，为了便于协议的描述，这里只是在逻辑上把AS与RS区分开来；在物理上，AS与RS的功能可以由同一个服务器来提供服务。</li>
+</ul>
+<h3 id="客户端的授权模式"><a href="#客户端的授权模式" class="headerlink" title="客户端的授权模式"></a>客户端的授权模式</h3><p>客户端必须得到用户的授权（authorization grant），才能获得令牌（access token）。OAuth 2.0定义了四种授权方式。</p>
+<ul>
+<li>授权码模式（authorization code）</li>
+<li>简化模式（implicit）</li>
+<li>密码模式（resource owner password credentials）</li>
+<li>客户端模式（client credentials）</li>
+</ul>
+<h4 id="授权码模式"><a href="#授权码模式" class="headerlink" title="授权码模式:"></a>授权码模式:</h4><p>客户端申请认证的URI，包含以下参数：</p>
+<ul>
+<li>response_type：表示授权类型，必选项，此处的值固定为”code”</li>
+<li>client_id：表示客户端的ID，必选项</li>
+<li>redirect_uri：表示重定向URI，可选项</li>
+<li>scope：表示申请的权限范围，可选项</li>
+<li>state：表示客户端的当前状态，可以指定任意值，认证服务器会原封不动地返回这个值 (用于抵制CSRF攻击)。</li>
+<li>请求中还可以包含access_type和approval_prompt参数。<pre><code>当approval_prompt=force时，AS将提供交互页面，要求RO必须显式地批准（或拒绝）Client的此次请求。
+如果没有approval_prompt参数，则默认为RO批准此次请求。
+</code></pre>当access_type=offline时，AS将在颁发access_token时，同时还会颁发一个refresh_token。<pre><code>因为access_token的有效期较短（如3600秒），为了优化协议执行流程，offline方式将允许Client直接持refresh_token来换取一个新的access_token。
+</code></pre></li>
+</ul>
+<p>客户端向认证服务器申请令牌的HTTP请求，包含以下参数：<br>grant_type：表示使用的授权模式，必选项，此处的值固定为”authorization_code”。<br>code：表示上一步获得的授权码，必选项。<br>redirect_uri：表示重定向URI，必选项，且必须与A步骤中的该参数值保持一致。<br>client_id：表示客户端ID，必选项。</p>
+<p>认证服务器发送的HTTP回复，包含以下参数：<br>access_token：表示访问令牌，必选项。<br>token_type：表示令牌类型，该值大小写不敏感，必选项，可以是bearer类型或mac类型。<br>expires_in：表示过期时间，单位为秒。如果省略该参数，必须其他方式设置过期时间。<br>refresh_token：表示更新令牌，用来获取下一次的访问令牌，可选项。<br>scope：表示权限范围，如果与客户端申请的范围一致，此项可省略。</p>
+<h4 id="简化模式"><a href="#简化模式" class="headerlink" title="简化模式:"></a>简化模式:</h4><p>客户端发出的HTTP请求，包含以下参数：<br>response_type：表示授权类型，此处的值固定为”token”，必选项。<br>client_id：表示客户端的ID，必选项。<br>redirect_uri：表示重定向的URI，可选项。<br>scope：表示权限范围，可选项。<br>state：表示客户端的当前状态，可以指定任意值，认证服务器会原封不动地返回这个值。</p>
+<p>认证服务器回应客户端的URI，包含以下参数：<br>access_token：表示访问令牌，必选项。<br>token_type：表示令牌类型，该值大小写不敏感，必选项。<br>expires_in：表示过期时间，单位为秒。如果省略该参数，必须其他方式设置过期时间。<br>scope：表示权限范围，如果与客户端申请的范围一致，此项可省略。<br>state：如果客户端的请求中包含这个参数，认证服务器的回应也必须一模一样包含这个参数。</p>
+<h4 id="密码模式"><a href="#密码模式" class="headerlink" title="密码模式:"></a>密码模式:</h4><p>客户端发出的HTTP请求，包含以下参数：</p>
+<ul>
+<li>grant_type：表示授权类型，此处的值固定为”password”，必选项。</li>
+<li>username：表示用户名，必选项。</li>
+<li>password：表示用户的密码，必选项。</li>
+<li>scope：表示权限范围，可选项。</li>
+</ul>
+<p>认证服务器向客户端发送访问令牌,包含以下参数：</p>
+<ul>
+<li>access_token：表示访问令牌，必选项。</li>
+<li>token_type：表示令牌类型，该值大小写不敏感，必选项。</li>
+<li>expires_in：表示过期时间，单位为秒。如果省略该参数，必须其他方式设置过期时间。</li>
+<li>refresh_token : 表示更新令牌，用来获取下一次的访问令牌，可选项。</li>
+</ul>
+<h4 id="客户端模式"><a href="#客户端模式" class="headerlink" title="客户端模式:"></a>客户端模式:</h4><p>客户端发出的HTTP请求，包含以下参数：</p>
+<ul>
+<li>granttype：表示授权类型，此处的值固定为”clientcredentials”，必选项。</li>
+<li>scope：表示权限范围，可选项。</li>
+</ul>
+<p>认证服务器向客户端发送访问令牌,包含以下参数：</p>
+<ul>
+<li>“access_token”:”2YotnFZFEjr1zCsicMWpAA”,</li>
+<li>“token_type”:”example”,</li>
+<li>“expires_in”:3600,</li>
+<li>“example_parameter”:”example_value”</li>
+</ul>
+<p>更新令牌:<br>如果用户访问的时候，客户端的”访问令牌”已经过期，则需要使用”更新令牌”申请一个新的访问令牌。<br>客户端发出更新令牌的HTTP请求，包含以下参数：<br>granttype：表示使用的授权模式，此处的值固定为”refreshtoken”，必选项。<br>refresh_token：表示早前收到的更新令牌，必选项。<br>scope：表示申请的授权范围，不可以超出上一次申请的范围，如果省略该参数，则表示与上一次一致。</p>
+<p>=====================================================================</p>
+<pre><code>1XX - informational
+2XX - success
+3XX - redirection
+4XX - client error
+5XX - server error
+</code></pre><p>=====================================================================<br>spring-security-oauth2的项目地址为 <a href="https://github.com/spring-projects/spring-security-oauth/tree/master/spring-security-oauth2" target="_blank" rel="noopener">https://github.com/spring-projects/spring-security-oauth/tree/master/spring-security-oauth2</a><br>spring-security-oauth2的demo 地址为 <a href="https://github.com/spring-projects/spring-security-oauth/tree/master/samples/oauth2" target="_blank" rel="noopener">https://github.com/spring-projects/spring-security-oauth/tree/master/samples/oauth2</a><br>OAuth 2.0 协议   <a href="http://www.rfcreader.com/#rfc6749" target="_blank" rel="noopener">http://www.rfcreader.com/#rfc6749</a><br><a href="http://www.open-open.com/lib/view/open1412731740452.html" target="_blank" rel="noopener">http://www.open-open.com/lib/view/open1412731740452.html</a><br><a href="http://projects.spring.io/spring-security-oauth/docs/oauth2.html" target="_blank" rel="noopener">http://projects.spring.io/spring-security-oauth/docs/oauth2.html</a></p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://lbvs86823.github.com" target="_blank">lbvs86823</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2011/06/27/javacore/enum/" class="pre-post btn btn-default" title="Java enum 的用法详解">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Java enum 的用法详解</span>
+        </a>
+    
+    
+        <a href="/2011/06/12/spring/spring security/" class="next-post btn btn-default" title="Spring Security 中涉及到的核心类介绍">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Spring Security 中涉及到的核心类介绍</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh_CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#协议的参与者"><span class="toc-text">协议的参与者:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端的授权模式"><span class="toc-text">客户端的授权模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#授权码模式"><span class="toc-text">授权码模式:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#简化模式"><span class="toc-text">简化模式:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#密码模式"><span class="toc-text">密码模式:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#客户端模式"><span class="toc-text">客户端模式:</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

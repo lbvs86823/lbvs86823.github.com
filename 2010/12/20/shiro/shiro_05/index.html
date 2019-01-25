@@ -1,0 +1,352 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="lbvs86823">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+
+<title>Shiro 第五章 Session Management | lbvs86823</title>
+
+
+    <link rel="alternate" href="atom/.xml" title="lbvs86823" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="bibi">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 不懂的就记下来...... </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">lbvs86823</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>归档</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Shiro 第五章 Session Management">
+            
+	            Shiro 第五章 Session Management
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/shiro">
+            shiro
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/shiro" title="shiro">
+                        shiro
+                    </a>
+                
+                    <a href="/tags/SecurityManager" title="SecurityManager">
+                        SecurityManager
+                    </a>
+                
+                    <a href="/tags/Session" title="Session">
+                        Session
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2010/12/20</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>2957</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h4 id="1-Session-Management-概述："><a href="#1-Session-Management-概述：" class="headerlink" title="1.Session Management 概述："></a>1.Session Management 概述：</h4><p>Apache Shiro 提供安全框架界独一无二的东西:一个完整的企业级 Session 解决方案,从最简单的命令行及智能手机 应用到最大的集群企业 Web 应用程序。</p>
+<p>这对许多应用有着很大的影响——直到 Shiro 出现,如果你需要 session 支持,你需要部署你的应用程序到 Web 容 器或使用 EJB 有状态会话 Bean。Shiro 的 Session 支持比这两种机制的使用和管理更为简单,而且它在适用于任何程 序,不论容器。</p>
+<p>下面是一个 Shiro 的 Session 支持的最可取的功能列表:<br>Features</p>
+<ul>
+<li>POJO/J2SE based(IoC friendly) - Shiro 的一切(包括所有 Session 和 Session Management 方面)都是基于接口和<br>POJO 实现。这可以让你轻松地配置所有拥有任何 JavaBeans 兼容配置格式(如 JSON,YAML,Spring XML 或类 似的机制)的会话组件。你也可以轻松地扩展 Shiro 的组件或编写你自己所需的来完全自定义 session management。</li>
+<li>Easy Custom Session Storage - 因为 Shiro 的 Session 对象是基于 POJO 的,会话数据可以很容易地存储在任意 数量的数据源。这允许你自定义你的应用程序会话数据的确切位置——例如,文件系统,联网的分布式缓存, 关系数据库,或专有的数据存储。</li>
+<li>Container-Independent Clustering! - Shiro 的会话可以很容易地聚集通过使用任何随手可用的网络缓存产品,像 Ehcache + Terracotta,Coherence,GigaSpaces,等等。这意味着你可以为 Shiro 配置会话群集一次且仅一次, 无论你部署到什么容器中,你的会话将以相同的方式聚集。不需要容器的具体配置!</li>
+<li>Heterogeneous Client Access - 与 EJB 或 web 会话不同,Shiro 会话可以被各种客户端技术“共享”。例如,一 个桌面应用程序可以“看到”和“共享”同一个被使用的物理会话通过在 Web 应用程序中的同一用户。我们 不知道除了 Shiro 以外的其他框架能够支持这一点。</li>
+<li>Event Listeners - 事件监听器允许你在会话生命周期监听生命周期事件。你可以侦听这些事件和对自定义应用 程序的行为作出反应——例如,更新用户记录当他们的会话过期时。</li>
+<li>Host Address Retention - Shiro Sessions 从会话发起地方保留 IP 地址或主机名。这允许你确定用户所在,并作 出相应的反应(通常是在 IP 分配确定的企业内部网络环境)。</li>
+<li>Inactivity/Expiration Support - 由于不活动导致会话过期如预期的那样,但它们可以延续很久通过 touch()方法 来保持它们“活着”,如果你希望的话。这在 RIA(富互联网应用)环境非常有用,用户可能会使用桌面应用程 序,但可能不会经常与服务器进行通信,但该服务器的会话不应过期。</li>
+<li>Transparent Web Use - Shiro 的网络支持,充分地实现和支持关于 Sessions(HttpSession 接口和它的所有相关 的 API)的 Servlet2.5 规范.这意味着你可以使用在现有 Web 应用程序中使用 Shiro 会话,并且你不需要改变任 何现有的 Web 代码。</li>
+<li>Can be used for SSO - 由于 Shiro 会话是基于 POJO 的,它们可以很容易地存储在任何数据源,而且它们可以跨 程序“共享”如果需要的话。我们称之为”poor man’s SSO”,并它可以用来提供简单的登录体验,由于共享的 会话能够保留身份验证状态。    </li>
+</ul>
+<h4 id="2-Using-Sessions"><a href="#2-Using-Sessions" class="headerlink" title="2.Using Sessions"></a>2.Using Sessions</h4><p>几乎与所有其他在 Shiro 中的东西一样,你通过与当前执行的 Subject 交互来获取 Session: </p>
+<pre><code>Subject currentUser = SecurityUtils.getSubject();
+Session session = currentUser.getSession();
+session.setAttribute(&quot;someKey&quot;, someValue);
+</code></pre><p>subject.getSession()方法是调用 currentUser.getSubject(true)的快捷方式。<br>对于那些熟悉 HttpServletRequest API 的,Subject.getSession(boolean create)方法与 HttpServletRequest.getSession(boolean create)方法有着异曲同工之效。</p>
+<ul>
+<li>如果该 Subject 已经拥有一个 Session,则 boolean 参数被忽略且 Session 被立即返回。</li>
+<li>如果该 Subject 还没有一个 Session 且 create 参数为 true,则创建一个新的会话并返回该会话。</li>
+<li>如果该 Subject 还没有一个 Session 且 create 参数为 false,则不会创建新的会话且返回 null。</li>
+</ul>
+<p>当你获取了一个 Subject 的 Session 后,你可以用它来做许多事情,像设置或取得 attribute,设置其超时时间等。</p>
+<h4 id="3-Session-Timeout"><a href="#3-Session-Timeout" class="headerlink" title="3.Session Timeout"></a>3.Session Timeout</h4><p>默认地,Shiro 的 SessionManager 实现默认是 30 分钟会话超时。也就是说,如果任何 Session 创建后闲置(未被使 用,它的上次访问时间未被更新)的时间超过了 30 分钟,那么该 Session 就被认为是过期的,且不允许再被使用。<br>你可以设置 SessionManager 默认实现的 globalSessionTimeout 属性来为所有的会话定义默认的超时时间。</p>
+<h4 id="4-Session-Listeners"><a href="#4-Session-Listeners" class="headerlink" title="4.Session Listeners"></a>4.Session Listeners</h4><p>Shiro 支持 SessionListener 概念来允许你对发生的重要会话作出反应。你可以实现 SessionListener 接口(或扩展易用 的 SessionListenerAdapter)并与相应的会话操作作出反应。<br>由于默认的 SessionManager sessionListeners 属性是一个集合,你可以对 SessionManager 配置一个或多个 listener 实现。</p>
+<h4 id="5-Session-Storage"><a href="#5-Session-Storage" class="headerlink" title="5.Session Storage"></a>5.Session Storage</h4><p>每当一个会话被创建或更新时,它的数据需要持久化到一个存储位置以便它能够被稍后的应用程序访问。同样地, 当一个会话失效且不再被使用时,它需要从存储中删除以便会话数据存储空间不会被耗尽。SessionManager 实现委 托这些 Create/Read/Update/Delete(CRUD)操作为内部组件,同时,SessionDAO,反映了数据访问对象(DAO)设计模式。</p>
+<p>SessionDAO 的权力是你能够实现该接口来与你想要的任何数据存储进行通信。这意味着你的会话数据可以驻留在内 存中,文件系统,关系数据库或 NoSQL 的数据存储,或其他任何你需要的位置。你得控制持久性行为。</p>
+<h4 id="6-EHCache-SessionDAO"><a href="#6-EHCache-SessionDAO" class="headerlink" title="6.EHCache SessionDAO"></a>6.EHCache SessionDAO</h4><p>EHCache 默认是没有启用的,但如果你不打算实现你自己的 SessionDAO,那么强烈地建议你为 Shiro 的 SessionManagerment 启用 EHCache 支持。EHCache SessionDAO 将会在内存中保存会话,并支持溢出到磁盘,若内存 成为制约。这对生产程序确保你在运行时不会随机地“丢失”会话是非常好的。</p>
+<h4 id="7-Custom-Session-IDs"><a href="#7-Custom-Session-IDs" class="headerlink" title="7.Custom Session IDs"></a>7.Custom Session IDs</h4><p>Shiro 的 SessionDAO 实现使用一个内置的 SessionIdGenerator 组件来产生一个新的 Session ID 当每次创建一个新的会 话的时候。该 ID 生成后,被指派给新近创建的 Session 实例,然后该 Session 通过 SessionDAO 被保存下来。<br>默认的 SessionIdGenerator 是一个 JavaUuidSessionIdGenerator,它能产生基于 Java UUIDs 的 String IDs。该实现能够 支持所有的生产环境。<br>如果它不符合你的需要,你可以实现 SessionIdGenerator 接口并在 Shiro 的 SessionDAO 实例上配置该实现。 </p>
+<h4 id="9-Session-Validation-amp-Scheduling"><a href="#9-Session-Validation-amp-Scheduling" class="headerlink" title="9.Session Validation &amp; Scheduling"></a>9.Session Validation &amp; Scheduling</h4><p>Sessions 必须被验证,这样任何无效(过期或停止)的会话能够从会话数据存储中删除。这保证了数据存储不会由于不 能再次使用的会话而导致写入超时。<br>由于性能上的原因,仅仅在 Sessions 被访问(也就是 subject.getSession())时验证它们是否停止或过期。这意味着, 如果没有额外的定期验证,Session orphans(孤儿)将会开始填充会话数据存储。</p>
+<h4 id="11-Default-SessionValidationScheduler"><a href="#11-Default-SessionValidationScheduler" class="headerlink" title="11.Default SessionValidationScheduler"></a>11.Default SessionValidationScheduler</h4><p>默认可用的 SessionValidationScheduler 在所有环境中都是 ExecutorServiceSessionValidationScheduler,它使用 JDK ScheduledExecutorService 来控制验证频率。<br>默认地,该实现每小时执行一次验证。你可以通过指定一个新的 ExecutorServiceSessionValidationScheduler 实例并指 定不同的间隔(以毫秒为单位)改变速率来更改验证频率</p>
+<h4 id="12-Disabling-Session-Validation"><a href="#12-Disabling-Session-Validation" class="headerlink" title="12.Disabling Session Validation"></a>12.Disabling Session Validation</h4><p>在某些情况下,你可能希望禁用会话验证项,由于你建立了一个超出了 Shiro 控制的进程来为你执行验证。例如, 也许你正在使用一个企业的 Cache 并依赖于缓存的 Time To Live 设置来自动地去除旧的会话。或者也许你已经制定 了一个计划任务来自动清理一个自定义的数据存储。在这些情况下你可以关掉 session validation scheduling:</p>
+<pre><code>securityManager.sessionManager.sessionValidationSchedulerEnabled = false
+</code></pre><p>当会话从会话数据存储取回数据时它仍然会被验证,但这会禁用掉 Shiro 的定期验证。</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://lbvs86823.github.com" target="_blank">lbvs86823</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2011/01/09/spring/quartz/" class="pre-post btn btn-default" title="quartz整合spring用法详解">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">quartz整合spring用法详解</span>
+        </a>
+    
+    
+        <a href="/2010/12/18/shiro/shiro_04/" class="next-post btn btn-default" title="Shiro 第四章 Realms">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Shiro 第四章 Realms</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh_CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Session-Management-概述："><span class="toc-text">1.Session Management 概述：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Using-Sessions"><span class="toc-text">2.Using Sessions</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Session-Timeout"><span class="toc-text">3.Session Timeout</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-Session-Listeners"><span class="toc-text">4.Session Listeners</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Session-Storage"><span class="toc-text">5.Session Storage</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-EHCache-SessionDAO"><span class="toc-text">6.EHCache SessionDAO</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-Custom-Session-IDs"><span class="toc-text">7.Custom Session IDs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-Session-Validation-amp-Scheduling"><span class="toc-text">9.Session Validation &amp; Scheduling</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-Default-SessionValidationScheduler"><span class="toc-text">11.Default SessionValidationScheduler</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-Disabling-Session-Validation"><span class="toc-text">12.Disabling Session Validation</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

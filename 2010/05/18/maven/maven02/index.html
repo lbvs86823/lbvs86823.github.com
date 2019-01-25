@@ -1,0 +1,430 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="lbvs86823">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+
+<title>maven的入门 | lbvs86823</title>
+
+
+    <link rel="alternate" href="atom/.xml" title="lbvs86823" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="bibi">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 不懂的就记下来...... </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">lbvs86823</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>归档</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="maven的入门">
+            
+	            maven的入门
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/maven">
+            maven
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/maven" title="maven">
+                        maven
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2010/05/18</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>3173</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>##一，认识pom.xml</p>
+<p>POM (Project Object Model)项目对象模型。</p>
+<pre><code>&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+  xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+  &lt;groupId&gt;com.lbvs.mvnbook&lt;/groupId&gt;
+  &lt;artifactId&gt;hello-world&lt;/artifactId&gt;
+  &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+  &lt;packaging&gt;jar&lt;/packaging&gt;
+
+  &lt;name&gt;hello-world&lt;/name&gt;
+  &lt;url&gt;http://maven.apache.org&lt;/url&gt;
+
+  &lt;properties&gt;
+    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+  &lt;/properties&gt;
+
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;junit&lt;/groupId&gt;
+      &lt;artifactId&gt;junit&lt;/artifactId&gt;
+      &lt;version&gt;3.8.1&lt;/version&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+&lt;/project&gt;
+</code></pre><p>modelVersion ：指定当前项目对象模型的版本。   </p>
+<p>一个项目的基本坐标：<br>groupId :  定义项目属于哪个组<br>artifactId :  定义项目在项目组下的ID<br>version :  当前项目的版本<br>在maven世界里，任何的jar，pom，war都是基于这些坐标进行区分的。</p>
+<p>##二，使用 archetype 手动生成项目骨架</p>
+<p>在命令行输入：<br>$ mvn archetype:generate<br>你将看到许多的项目骨架列表如下：</p>
+<pre><code>[INFO] --- maven-archetype-plugin:2.2:generate (default-cli) @ standalone-pom ---
+[INFO] Generating project in Interactive mode
+[INFO] No archetype defined. Using maven-archetype-quickstart (org.apache.maven.archetypes:maven-archetype-quickstart:1.0)
+Choose archetype:
+.............
+341: remote -&gt; org.apache.cocoon:cocoon-22-archetype-webapp (-)
+342: remote -&gt; org.apache.cocoon.archetype-block:cocoon-archetype-block (-)
+343: remote -&gt; org.apache.cocoon.archetype-parent:cocoon-archetype-parent (-)
+344: remote -&gt; org.apache.cocoon.archetype-sample:cocoon-archetype-sample (-)
+345: remote -&gt; org.apache.cocoon.archetype-webapp:cocoon-archetype-webapp (-)
+.............
+</code></pre><p>同时命令行会提示一个默认的编号，其对应的archetype为maven-archetype-quickstart，直接回车可以选择该archetype，紧接着maven会提示你输入项目的groupId，artifactId，version，以及包名package。  </p>
+<pre><code>Choose a number or apply filter (format: [groupId:]artifactId, case sensitive contains): 380: Choose org.apache.maven.archetypes:maven-archetype-quickstart version: 
+1: 1.0-alpha-1
+2: 1.0-alpha-2
+3: 1.0-alpha-3
+4: 1.0-alpha-4
+5: 1.0
+6: 1.1
+Define value for property &apos;groupId&apos;: : com.lbvs.mvnbook
+Define value for property &apos;artifactId&apos;: : hello-world
+Define value for property &apos;version&apos;:  1.0-SNAPSHOT: : 
+Define value for property &apos;package&apos;:  com.lbvs.mvnbook: : com.lbvs.mvnbook.hellworld
+Confirm properties configuration:
+groupId: com.lbvs.mvnbook
+artifactId: hello-world
+version: 1.0-SNAPSHOT
+package: com.lbvs.mvnbook.hellworld
+ Y: : y
+[INFO] ----------------------------------------------------------------------------
+[INFO] Using following parameters for creating project from Old (1.x) Archetype: maven-archetype-quickstart:1.1
+[INFO] ----------------------------------------------------------------------------
+[INFO] Parameter: groupId, Value: com.lbvs.mvnbook
+[INFO] Parameter: packageName, Value: com.lbvs.mvnbook.hellworld
+[INFO] Parameter: package, Value: com.lbvs.mvnbook.hellworld
+[INFO] Parameter: artifactId, Value: hello-world
+[INFO] Parameter: basedir, Value: /Users/libing/Documents/IdeaProjects
+[INFO] Parameter: version, Value: 1.0-SNAPSHOT
+[INFO] project created from Old (1.x) Archetype in dir: /Users/libing/Documents/IdeaProjects/hello-world
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 07:30 min
+[INFO] Finished at: 2014-04-26T17:43:48+08:00
+[INFO] Final Memory: 9M/81M
+[INFO] ------------------------------------------------------------------------ 
+</code></pre><p>##三，Maven的坐标</p>
+<p>maven的坐标元素包括以下几个部分组成：</p>
+<ul>
+<li>groupId : 定义当前项目隶属的实际项目。推荐的做法是：组织(公司)域名反写.项目名称</li>
+<li>artfactId : 定义实际项目中的一个Maven项目(模块)。推荐的做法是：项目名称-模块名称</li>
+<li>version : 定义Maven项目当前所处的版本。推荐的做法是：参考Maven定义了一套完整的版本规范。</li>
+<li>packaging : 定义Maven项目的打包方式。当没有定义该元素时候，Maven默认使用jar方式打包。其次打包方式会影响到构建的生命周期。</li>
+<li>classifier : 定义构建输出的一些附属构建。注意，不能直接定义项目的classifier，因为附属构建不是项目默认直接生成的，而是由附加的插件帮助生成的。</li>
+</ul>
+<p>特别注意：上述5个元素中，groupId，artifactId，version 是必须定义的。packaging 是可选的(默认是jar)。 classifier 是不能直接定义的。</p>
+<p>常见的仓库中的构件定义如下：</p>
+<pre><code>依赖于其他构件
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-context-support&lt;/artifactId&gt;
+    &lt;version&gt;3.2.8.RELEASE&lt;/version&gt;
+&lt;/dependency&gt;
+
+自定义一个构件： 
+&lt;groupId&gt;com.lbvs.mvnbook.account&lt;/groupId&gt;
+&lt;artifactId&gt;account-email&lt;/artifactId&gt;
+&lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;
+&lt;packaging&gt;jar&lt;/packaging&gt;
+</code></pre><p>只要我们能提供正确的坐标元素，maven就能从仓库中找到对应的构件。在我们开发自己的项目的时候，也需要定义适当的坐标，这是maven强制要求的。在此基础之上，其他的maven项目可能引用该项目生成的构件。 </p>
+<p>##五，Maven的依赖</p>
+<p>####5.1 依赖的配置<br>每个依赖可以包含的元素有：</p>
+<ul>
+<li>groupId, artifactId, version : 依赖的基本坐标系。</li>
+<li>type ： 依赖的类型，对应于项目坐标系的packaging，大部分情况下，该元素不必声明，默认是jar。</li>
+<li>scope ： 范围的依赖。    </li>
+<li>optional : 标记依赖是否可选。</li>
+<li>exclusions ：用来排除传递性依赖。</li>
+</ul>
+<p>####5.2 依赖的范围<br>Maven在编译项目主代码的时候需要使用一套classpath。依赖范围就是用来控制依赖与三种classpath(编译classpath，测试classpath，运行classpath)的关系。Maven有以下几种范围依赖：  </p>
+<ul>
+<li>complie ： 编译依赖范围。如果没有指定，默认就使用此范围依赖。该范围依赖，对于编译，测试，运行三种classpath都有效。比如：spring-core</li>
+<li>test ： 测试依赖范围。只对测试classpath有效。 比如：JUnit</li>
+<li>provided ：已提供依赖范围。只对编译，测试classpath有效，对应运行classpath无效。比如：servlet-api </li>
+<li>runtime ：运行时依赖范围。只对测试和运行classpath有效，对编译classpath无效。比如：jdbc驱动实现</li>
+<li>system ：系统依赖范围。对classpath的影响和provided相同。但是使用system依赖范围时，必须显示的使用systemPath 指定依赖文件的路径(其值可以引用环境变量)。此类依赖不是由Maven仓库解析的，而且往往与本机系统绑定，可能造成构件不可移植。比如：本地仓库之外的类文件。</li>
+<li>import ：导入依赖范围。该依赖范围不会对编译，测试，运行classpath造成影响。</li>
+</ul>
+<p>####5.3 依赖的传递性</p>
+<p>依赖的范围不仅可以对编译，测试，运行的classpath产生影响，而且还会影响到依赖的传递性。</p>
+<p>##五，Maven的仓库</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://lbvs86823.github.com" target="_blank">lbvs86823</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2010/07/24/redis/redis/" class="pre-post btn btn-default" title="redis入门之介绍和安装篇(一)">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">redis入门之介绍和安装篇(一)</span>
+        </a>
+    
+    
+        <a href="/2010/05/18/maven/maven01/" class="next-post btn btn-default" title="maven的安装与配置">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">maven的安装与配置</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh_CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <p>暂无目录</p>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

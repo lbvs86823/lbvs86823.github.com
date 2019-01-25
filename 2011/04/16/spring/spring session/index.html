@@ -1,0 +1,380 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="lbvs86823">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+
+<title>spring session 相关代码详解 | lbvs86823</title>
+
+
+    <link rel="alternate" href="atom/.xml" title="lbvs86823" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="bibi">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 不懂的就记下来...... </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">lbvs86823</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>归档</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="spring session 相关代码详解">
+            
+	            spring session 相关代码详解
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/spring">
+            spring
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/redis" title="redis">
+                        redis
+                    </a>
+                
+                    <a href="/tags/spring" title="spring">
+                        spring
+                    </a>
+                
+                    <a href="/tags/session" title="session">
+                        session
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2011/04/16</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>2840</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>Could JWT(json web token) </p>
+<p>csrf又称跨域请求伪造，攻击方通过伪造用户请求访问受信任站点。</p>
+<p>跨域资源共享CORS（跨域资源共享，Cross-Origin Resource Sharing）</p>
+<p>HttpSessionCsrfTokenRepository ———————————————————————————————-</p>
+<pre><code>DEFAULT_CSRF_PARAMETER_NAME = &quot;_csrf&quot;;
+DEFAULT_CSRF_HEADER_NAME = &quot;X-CSRF-TOKEN&quot;;
+DEFAULT_CSRF_TOKEN_ATTR_NAME = &quot;org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository.CSRF_TOKEN&quot;;
+parameterName = &quot;_csrf&quot;;
+headerName = &quot;X-CSRF-TOKEN&quot;;
+</code></pre><p>JdbcTokenStore  ————————————————————————————————————–</p>
+<pre><code>private static final String DEFAULT_ACCESS_TOKEN_INSERT_STATEMENT = &quot;insert into oauth_access_token (token_id, token, authentication_id, user_name, client_id, authentication, refresh_token) values (?, ?, ?, ?, ?, ?, ?)&quot;;
+private static final String DEFAULT_ACCESS_TOKEN_SELECT_STATEMENT = &quot;select token_id, token from oauth_access_token where token_id = ?&quot;;
+private static final String DEFAULT_ACCESS_TOKEN_AUTHENTICATION_SELECT_STATEMENT = &quot;select token_id, authentication from oauth_access_token where token_id = ?&quot;;
+private static final String DEFAULT_ACCESS_TOKEN_FROM_AUTHENTICATION_SELECT_STATEMENT = &quot;select token_id, token from oauth_access_token where authentication_id = ?&quot;;
+private static final String DEFAULT_ACCESS_TOKENS_FROM_USERNAME_AND_CLIENT_SELECT_STATEMENT = &quot;select token_id, token from oauth_access_token where user_name = ? and client_id = ?&quot;;
+private static final String DEFAULT_ACCESS_TOKENS_FROM_USERNAME_SELECT_STATEMENT = &quot;select token_id, token from oauth_access_token where user_name = ?&quot;;
+private static final String DEFAULT_ACCESS_TOKENS_FROM_CLIENTID_SELECT_STATEMENT = &quot;select token_id, token from oauth_access_token where client_id = ?&quot;;
+private static final String DEFAULT_ACCESS_TOKEN_DELETE_STATEMENT = &quot;delete from oauth_access_token where token_id = ?&quot;;
+private static final String DEFAULT_ACCESS_TOKEN_DELETE_FROM_REFRESH_TOKEN_STATEMENT = &quot;delete from oauth_access_token where refresh_token = ?&quot;;
+private static final String DEFAULT_REFRESH_TOKEN_INSERT_STATEMENT = &quot;insert into oauth_refresh_token (token_id, token, authentication) values (?, ?, ?)&quot;;
+private static final String DEFAULT_REFRESH_TOKEN_SELECT_STATEMENT = &quot;select token_id, token from oauth_refresh_token where token_id = ?&quot;;
+private static final String DEFAULT_REFRESH_TOKEN_AUTHENTICATION_SELECT_STATEMENT = &quot;select token_id, authentication from oauth_refresh_token where token_id = ?&quot;;
+private static final String DEFAULT_REFRESH_TOKEN_DELETE_STATEMENT = &quot;delete from oauth_refresh_token where token_id = ?&quot;;
+private String insertAccessTokenSql = &quot;insert into oauth_access_token (token_id, token, authentication_id, user_name, client_id, authentication, refresh_token) values (?, ?, ?, ?, ?, ?, ?)&quot;;
+private String selectAccessTokenSql = &quot;select token_id, token from oauth_access_token where token_id = ?&quot;;
+private String selectAccessTokenAuthenticationSql = &quot;select token_id, authentication from oauth_access_token where token_id = ?&quot;;
+private String selectAccessTokenFromAuthenticationSql = &quot;select token_id, token from oauth_access_token where authentication_id = ?&quot;;
+private String selectAccessTokensFromUserNameAndClientIdSql = &quot;select token_id, token from oauth_access_token where user_name = ? and client_id = ?&quot;;
+private String selectAccessTokensFromUserNameSql = &quot;select token_id, token from oauth_access_token where user_name = ?&quot;;
+private String selectAccessTokensFromClientIdSql = &quot;select token_id, token from oauth_access_token where client_id = ?&quot;;
+private String deleteAccessTokenSql = &quot;delete from oauth_access_token where token_id = ?&quot;;
+private String insertRefreshTokenSql = &quot;insert into oauth_refresh_token (token_id, token, authentication) values (?, ?, ?)&quot;;
+private String selectRefreshTokenSql = &quot;select token_id, token from oauth_refresh_token where token_id = ?&quot;;
+private String selectRefreshTokenAuthenticationSql = &quot;select token_id, authentication from oauth_refresh_token where token_id = ?&quot;;
+private String deleteRefreshTokenSql = &quot;delete from oauth_refresh_token where token_id = ?&quot;;
+private String deleteAccessTokenFromRefreshTokenSql = &quot;delete from oauth_access_token where refresh_token = ?&quot;;
+</code></pre><p>JdbcTokenRepositoryImpl —————————————————————————————————–</p>
+<pre><code>public static final String CREATE_TABLE_SQL = &quot;create table persistent_logins (username varchar(64) not null, series varchar(64) primary key, token varchar(64) not null, last_used timestamp not null)&quot;;
+public static final String DEF_TOKEN_BY_SERIES_SQL = &quot;select username,series,token,last_used from persistent_logins where series = ?&quot;;
+public static final String DEF_INSERT_TOKEN_SQL = &quot;insert into persistent_logins (username, series, token, last_used) values(?,?,?,?)&quot;;
+public static final String DEF_UPDATE_TOKEN_SQL = &quot;update persistent_logins set token = ?, last_used = ? where series = ?&quot;;
+public static final String DEF_REMOVE_USER_TOKENS_SQL = &quot;delete from persistent_logins where username = ?&quot;;
+private String tokensBySeriesSql = &quot;select username,series,token,last_used from persistent_logins where series = ?&quot;;
+private String insertTokenSql = &quot;insert into persistent_logins (username, series, token, last_used) values(?,?,?,?)&quot;;
+private String updateTokenSql = &quot;update persistent_logins set token = ?, last_used = ? where series = ?&quot;;
+private String removeUserTokensSql = &quot;delete from persistent_logins where username = ?&quot;;
+</code></pre><p>FotorRememberMeServices——————————————————————————————————–</p>
+<pre><code>refreshTokenValiditySeconds = 2592000; //spring默认一个月
+public static final int TWO_WEEKS_S = 1209600;
+private int tokenValiditySeconds = TWO_WEEKS_S;
+DEFAULT_TOKEN_LENGTH = 16;
+cookieName =&quot;remember-me&quot;;
+parameter= &quot;rememberMe&quot;;
+tokensBySeriesSql = &quot;select username,series,token,last_used from persistent_logins where series = ?&quot;;
+updateTokenSql = &quot;update persistent_logins set token = ?, last_used = ? where series = ?&quot;;
+selectAccessTokenAuthenticationSql = &quot;select token_id, authentication from oauth_access_token where token_id = ?&quot;;
+
+redis-cli keys &apos;spring:session:sessions:*&apos;
+</code></pre><p>Spring Session定义了如下核心接口：Session、ExpiringSession以及SessionRepository，针对不同的数据存储，它们需要分别实现。</p>
+<p>org.springframework.session.Session接口定义了session的基本功能，如设置和移除属性。这个接口并不关心底层技术，因此能够比servlet HttpSession适用于更为广泛的场景中。<br>org.springframework.session.ExpiringSession扩展了Session接口，它提供了判断session是否过期的属性。RedisSession是这个接口的一个样例实现。<br>org.springframework.session.SessionRepository定义了创建、保存、删除以及检索session的方法。将Session实例真正保存到数据存储的逻辑是在这个接口的实现中编码完成的。例如，RedisOperationsSessionRepository就是这个接口的一个实现，它会在Redis中创建、存储和删除session。 </p>
+<p>1) “spring:session:sessions:expires:c1c1dc64-138d-41b6-ba95-bcfe3a7e96df” 【这个是个字符串】<br>2) “spring:session:expirations:1502267400000”  【这个是一个set集合】<br>3) “spring:session:sessions:c1c1dc64-138d-41b6-ba95-bcfe3a7e96df” 【这个是一个hash键值对映射 存储了：maxInactiveInterval creationTime lastAccessedTime】</p>
+<p> hgetall spring:session:sessions:c1c1dc64-138d-41b6-ba95-bcfe3a7e96df<br>存储了：maxInactiveInterval creationTime lastAccessedTime</p>
+<p>smembers spring:session:expirations:1502267400000<br>1) “\xac\xed\x00\x05t\x00,expires:c1c1dc64-138d-41b6-ba95-bcfe3a7e96df”</p>
+<p>get spring:session:sessions:expires:c1c1dc64-138d-41b6-ba95-bcfe3a7e96df</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://lbvs86823.github.com" target="_blank">lbvs86823</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2011/06/12/spring/spring security/" class="pre-post btn btn-default" title="Spring Security 中涉及到的核心类介绍">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Spring Security 中涉及到的核心类介绍</span>
+        </a>
+    
+    
+        <a href="/2011/01/14/spring/dtd/" class="next-post btn btn-default" title="DTD文档类型定义简介">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">DTD文档类型定义简介</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh_CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <p>暂无目录</p>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="lbvs86823">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+
+<title>JQuery开发插件的机种方式讨论 | lbvs86823</title>
+
+
+    <link rel="alternate" href="atom/.xml" title="lbvs86823" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="bibi">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 不懂的就记下来...... </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">lbvs86823</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>归档</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="JQuery开发插件的机种方式讨论">
+            
+	            JQuery开发插件的机种方式讨论
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/jquery">
+            jquery
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/jquery" title="jquery">
+                        jquery
+                    </a>
+                
+                    <a href="/tags/javascript" title="javascript">
+                        javascript
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2010/09/27</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>3041</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="插件开发的三种方式："><a href="#插件开发的三种方式：" class="headerlink" title="插件开发的三种方式："></a>插件开发的三种方式：</h2><ul>
+<li><p>通过$.extend(object)来扩展JQuery(类级别的插件开发)：<br>这种方式的扩展是给jQuery添加新的全局函数，相当于给jQuery类本身添加方法，jQuery的全局函数是属于jQuery命名空间的数(比如：$.AJAX())。  </p>
+</li>
+<li><p>通过$.fn向JQuery添加新的方法(对象级别的插件开发)：<br>这种方式的扩展是给jQuery的原型增加方法，以后jQuery的对象对象都可以使用，至于为什么你可以参考jQuery源代码中可以发现这样的代码：jQuery.fn = jQuery.prototype = { //代码段 }; </p>
+</li>
+<li><p>通过$.widget()应用JQuery UI的部件工厂方式创建</p>
+</li>
+</ul>
+<h3 id="1-extend-object-方式"><a href="#1-extend-object-方式" class="headerlink" title="1.$.extend(object)方式"></a>1.$.extend(object)方式</h3><p>这种方式是最简单的，仅仅是在JQuery命名空间上添加了一个函数。<br>比如：定义一个log()方法用于打印日志:</p>
+<pre><code>$.extend({
+    log: function(msg){
+        if(console &amp;&amp; msg){
+            console.log(msg);
+        }
+    }
+}); 
+</code></pre><p>当然，你也可以直接使用给jQuery类添加一个新的全局函数的方式：</p>
+<pre><code>jQuery.log = function(msg){
+    if(console &amp;&amp; msg){
+        console.log(msg);
+    }
+};    
+</code></pre><p>直接使用如下方式进行调用： </p>
+<pre><code>$.log(&quot;用于打印日志信息!&quot;);
+</code></pre><p>采用这种方式有一个致命的缺陷就是它是绑定在Jquery对象上的方法，无法利用Jquery选择器来把已经选择的Dom元素应用上你自己写的插件。所以一般都采用下面的这种方式开发插件。  </p>
+<h3 id="2-fn方式"><a href="#2-fn方式" class="headerlink" title="2.$.fn方式"></a>2.$.fn方式</h3><p>首页看下这种方式的基本语法：  </p>
+<pre><code>$.fn.pluginName = function(){
+    // 你的插件代码 ...
+}
+</code></pre><p>可以看出，其实就是向jQuery的fn对象上面添加一个方法。<br>这里就顺便说说，为什么第一种方式我叫做添加一个函数，而这里我又说是添加一个方法呢？我理解上看，函数一般就是比较孤立(独立)的一些功能点，而方法一般就是必须要先存在一个对象的前提下，即只有在这个对象的身上才能调用这个方法。</p>
+<p>比如我需要将所有选中的Dom元素的高度设置为 350px，那么我可以写一个这样的插件：  </p>
+<pre><code>$.fn.setHeight = function(){
+    //在这里面,this指的是用jQuery选中的元素
+    this.css(&apos;height&apos;, &apos;350px&apos;);
+}
+</code></pre><p>注意这里使用的是<strong>this</strong>,而不是<strong>$(this)</strong> 因为编写插件函数内部的<strong>this</strong>就直接代表了jQuery选择器过滤出来的jQuery对象了。  </p>
+<p>如果我要使div标签的ID=“test”的高度设置成350px，那么直接使用如下方式进行调用： </p>
+<pre><code>$(&quot;#test&quot;).setHeight();
+</code></pre><p>但是我们都知道jQuery的方法有一个很重要的特点就是支持<strong>链式调用</strong>，选择好Dom元素后可以不断的调用其他方法。如果要让我们的插件支持这种<strong>链式调用</strong>，只需要return一下即可。</p>
+<pre><code>$.fn.setHeight = function(){
+    this.css(&apos;height&apos;, &apos;350px&apos;);
+    this.each(function(){
+        //而在这里面,this指的是被遍历的每个dom元素.
+        $(this).append(&apos;&lt;span&gt;这个div被操作了&lt;/span&gt;&apos;);
+    });
+    return this;
+}
+</code></pre><p>接着我们就可以进行如下的链式的调用了：</p>
+<pre><code>$(&quot;#test&quot;).setHeight().addClass(&quot;green&quot;);
+</code></pre><p>你也许会问上面的高度不可以让我随意改吗？很显然是可以的，下面就让我们来看下插件一般都是怎么样接受参数的。<br>在处理插件参数的方式上，通常都使用Jquery的extend方法，就是上面我们提到过的一种写插件的方式，只不过上面是给extend方法传递单个对象的情况下，这个对象会合并到Jquery身上去，所以我们就可以在jQuery身上调用新合并对象里面包含的方法了。      </p>
+<p>而这里有一点不同的是，当给extend方法传递两个及其以上的参数时，它会将所有的参数对象合并到第一个里面去，同时，如果对象中有同名属性时，合并的时候后面的会覆盖前面的。</p>
+<p>利用这种特性，我们可以在定义插件里面写一个对象用来保存一组参数的默认值，同时将接收来的参数对象合并到默认的对象上面去，这样我们就很好的实现了插件的定制功能(用户指定了参数的使用指定的参数，没有指定的使用默认参数值)。</p>
+<p>现在我们对上面的插件进行改进，另外让它在增加一个可以设置背景色的一个功能：</p>
+<pre><code>$.fn.setHeight = function(options){
+    var default = {
+        &quot;height&quot;: &quot;50px&quot;,
+        &quot;bgcolor&quot; : &quot;red&quot;
+    }
+    var setting = $.extend(default, options);
+    return this.css(setting);
+}
+</code></pre><p>如果我要使div标签的ID=“test”的高度设置成350px，背景为黑色，那么直接使用如下方式进行调用： </p>
+<pre><code>$(&quot;#test&quot;).setHeight({&quot;height&quot;:&quot;350px&quot;, &quot;bgcolor&quot;:&quot;black&quot;});
+</code></pre><p>我们应该还可以考虑到，某些默认值是插件内部使用的(私有变量)，我不希望用户设置它，这该怎么弄？有人可能会说在插件内部用的，还不好办，直接单独定义一个对象来保存这些(私有变量)在内部使用就可以了，没错这样是没问题的，但是如果插件很复杂的时候，你到处定义你的配置就会造成很混乱，不方便维护，也不够清晰。<br>一个好的做法是将一个新的空对象做为$.extend的第一个参数，defaults和用户传递的参数对象紧随其后，这样做的好处是所有值被合并到这个空对象上，保护了插件里面的默认值。  </p>
+<pre><code>$.fn.setHeight = function(options){
+    var default = {
+        &quot;height&quot;: &quot;50px&quot;,
+        &quot;bgcolor&quot; : &quot;red&quot;
+    }
+    //将一个空对象作为第一个参数，让原始的默认值不受用户传入参数的影响，
+    //在插件内部还可以使用这些默认值。
+    var setting = $.extend({}, default, options);
+    return this.css(setting);
+}
+</code></pre><p>#######优化插件的作用域范围：</p>
+<p>不仅仅是jQuery插件的开发，我们在写任何JS代码时都应该注意的一点是不要污染全局命名空间。因为随着你代码的增多，如果有意无意在全局范围内定义一些变量的话，最后很难维护，也容易跟别人写的代码有冲突。</p>
+<p>比如你在代码中向全局window对象添加了一个变量status用于存放状态，同时页面中引用了另一个别人写的库，也向全局添加了这样一个同名变量，最后的结果肯定不是你想要的。所以不到万不得已，一般我们不会将变量定义成全局的。</p>
+<p>一个好的做法是始终用<strong>自调用匿名函数(闭包)</strong>包裹你的代码，这样就可以完全放心，安全地将它用于任何地方了，绝对没有冲突。另外还有一个好处就是，自调用匿名函数里面的代码会在第一时间执行，页面准备好过后，上面的代码就将插件准备好了，以方便在后面的代码中使用插件。</p>
+<p>我们知道JavaScript中无法用花括号方便地创建作用域，但函数却可以形成一个作用域，域内的代码是无法被外界访问的。如果我们将自己的代码放入一个函数中，那么就不会污染全局命名空间，同时不会和别的代码冲突。</p>
+<p>所以我们对上面的代码进行如下的优化：</p>
+<pre><code>(function(){
+    $.fn.setHeight = function(options){
+        var default = {
+            &quot;height&quot;: &quot;50px&quot;,
+            &quot;bgcolor&quot; : &quot;red&quot;
+        }
+        //将一个空对象作为第一个参数，让原始的默认值不受用户传入参数的影响，
+        //在插件内部还可以使用这些默认值。
+        var setting = $.extend({}, default, options);
+        return this.css(setting);
+    }
+})();
+</code></pre><p>#######优化插件中用到的全局变量：    </p>
+<p>如果再考虑到其他一些因素，比如我们将这段代码放到页面后，前面别人写的代码没有用分号结尾，或者前面的代码将window, undefined等这些系统变量或者关键字修改掉了，正好我们又在自己的代码里面进行了使用，那结果也是不可预测的，这不是 我们想要的。</p>
+<p>这里就提出另一个插件编写过程中的好习惯，将系统变量以参数的形式传递到我们的代码中，这样就可以安全地使用而不用担心得到的是一个被修改后的值。同时这也是使用自调用匿名函数的带来的另一个好处。</p>
+<p>最后我们得到一个非常安全结构良好的代码：</p>
+<pre><code>;(function($, window, document){
+    $.fn.setHeight = function(options){
+        var default = {
+            &quot;height&quot;: &quot;50px&quot;,
+            &quot;bgcolor&quot; : &quot;red&quot;
+        }
+        //将一个空对象作为第一个参数，让原始的默认值不受用户传入参数的影响，
+        //在插件内部还可以使用这些默认值。
+        var setting = $.extend({}, default, options);
+        return this.css(setting);
+    }
+})(jQuery, window, document, undefined);
+</code></pre><p>我们在参数里传递了真实的undefined，但接收的时候参数列表里没接收，既然没接收，那我们在代码里使用的undefined就是实际的undefined，因为该参数空缺，一个空缺的参数的值默认是undefined的。</p>
+<p>因此上面的代码优化后可以得到如下的结果：</p>
+<pre><code>;(function($, window, document){
+   $.fn.setHeight = function(options){
+        var default = {
+            &quot;height&quot;: &quot;50px&quot;,
+            &quot;bgcolor&quot; : &quot;red&quot;
+        }
+        //将一个空对象作为第一个参数，让原始的默认值不受用户传入参数的影响，
+        //在插件内部还可以使用这些默认值。
+        var setting = $.extend({}, default, options);
+        return this.css(setting);
+    }
+})(jQuery, window, document, undefined);
+</code></pre><p>#######下面在介绍些常用的编写插件的规则：<br>jQuery 团队建立了许多希望插件作者都能遵守的通用规则，为插件用户创建一个通用而可信的环境。因此，列出这些规则，并且在插件的每一步都尽量遵守这些规则：</p>
+<ul>
+<li><p>文件命名为 “jquery.&lt;pluginName&gt;.js”<br>这是有道理的，因为您希望用户查看文件时立即知道这是一个 jQuery 插件以及这是哪个插件。</p>
+</li>
+<li><p>所有新方法都附加到 jQuery.fn 对象，所有新功能都附加到 jQuery 对象</p>
+</li>
+<li><p>“this” 用于引用 jQuery 对象这有利于插件作者的编写，它让所有插件作者在引用 “this” 时都知道将从jQuery 收到哪个对象。</p>
+</li>
+<li><p>插件中定义的所有方法/函数的末尾都必须带有一个 “;”（分号），否则将不利于代码的最小化。因为这是最小化 JavaScript 文件的最佳实践，大于最小值会很糟糕，您的插件有可能很快就被抛弃。</p>
+</li>
+<li><p>除有特别注明外，所有方法都必须返回 jQuery 对象 jQuery 方法的顺序链 (daisy-chaining) 非常著名，如果您编写打破链条的插件，它就一定会 “打破链条”。</p>
+</li>
+<li><p>您应该总是使用 this.each() 迭代匹配的元素，这是一种可靠而有效地迭代对象的方式。出于性能和稳定性考虑，他们推荐所有的方法都使用它迭代匹配的元素。</p>
+</li>
+<li><p>总是在插件代码中使用 “jQuery” 而不是 “$” 这很重要，它使与 “$” 有冲突的用户（那些使用另一个JavaScript 库的用户）能够使用 “var JQ = jQuery.noConflict();” 函数更改他们的 jQuery 别名（pseudonym）。但是，在我查看许多插件时，我发现该规则常常得不到遵守，这太不幸了。如果开发人员需要更改 jQuery 别名，那么很可能意味着该插件要被弃用了。</p>
+</li>
+</ul>
+<p>########相关参考：<br>jQuery官网插件学习中心：<a href="http://learn.jquery.com/plugins" target="_blank" rel="noopener">http://learn.jquery.com/plugins</a><br>jQuery官网插件中心：<a href="http://plugins.jquery.com" target="_blank" rel="noopener">http://plugins.jquery.com</a><br>jQuery官网插件发布指南：<a href="http://plugins.jquery.com/docs/publish" target="_blank" rel="noopener">http://plugins.jquery.com/docs/publish</a><br>Google Web Developer Tool : <a href="https://developers.google.com/closure" target="_blank" rel="noopener">https://developers.google.com/closure</a>  </p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://lbvs86823.github.com" target="_blank">lbvs86823</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2010/10/07/linux/linux_vi/" class="pre-post btn btn-default" title="Linux VI 命令详解">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Linux VI 命令详解</span>
+        </a>
+    
+    
+        <a href="/2010/07/28/redis/redis_hash/" class="next-post btn btn-default" title="redis入门之hashes数据类型(三)">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">redis入门之hashes数据类型(三)</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh_CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#插件开发的三种方式："><span class="toc-text">插件开发的三种方式：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-extend-object-方式"><span class="toc-text">1.$.extend(object)方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-fn方式"><span class="toc-text">2.$.fn方式</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

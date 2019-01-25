@@ -1,0 +1,393 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="lbvs86823">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+
+<title>Shiro 第一章 简介 | lbvs86823</title>
+
+
+    <link rel="alternate" href="atom/.xml" title="lbvs86823" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="bibi">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 不懂的就记下来...... </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">lbvs86823</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>归档</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Shiro 第一章 简介">
+            
+	            Shiro 第一章 简介
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/shiro">
+            shiro
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/shiro" title="shiro">
+                        shiro
+                    </a>
+                
+                    <a href="/tags/Realms" title="Realms">
+                        Realms
+                    </a>
+                
+                    <a href="/tags/SecurityManager" title="SecurityManager">
+                        SecurityManager
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2010/12/15</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>2963</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h4 id="1-简介："><a href="#1-简介：" class="headerlink" title="1.简介："></a>1.简介：</h4><p>Apache Shiro 是一个强大而灵活的开源安全框架,它干净利落地处理身份认证,授权,企业会话管理和加密。<br>以下是你可以用 Apache Shiro 所做的事情:  </p>
+<ul>
+<li>验证用户来核实他们的身份</li>
+<li>对用户执行访问控制,如:<ul>
+<li>判断用户是否被分配了一个确定的安全角色</li>
+<li>判断用户是否被允许做某事</li>
+</ul>
+</li>
+<li>在任何环境下使用 Session API,即使没有 Web 或 EJB 容器。</li>
+<li>在身份验证,访问控制期间或在会话的生命周期,对事件作出反应。</li>
+<li>聚集一个或多个用户安全数据的数据源,并作为一个单一的复合用户“视图”。</li>
+<li>启用单点登录(SSO)功能。</li>
+<li>为没有关联到登录的用户启用”Remember Me”服务。</li>
+</ul>
+<p>Shiro 视图在所有应用程序环境下实现这些目标——从最简单的命令行应用程序到最大的企业应用,不强制依赖其 他第三方框架,容器,或应用服务器。当然,该项目的目标是尽可能地融入到这些环境,但它能够在任何环境下立 即可用。</p>
+<h4 id="2-特征："><a href="#2-特征：" class="headerlink" title="2.特征："></a>2.特征：</h4><p>Apache Shiro 是一个拥有许多功能的综合性的程序安全框架。  </p>
+<p><img src="/images/shiro01.png" alt="总体架构图"> </p>
+<p>Shiro 把 Shiro 开发团队称为“应用程序的四大基石”——身份验证,授权,会话管理和加密作为其目标。 </p>
+<ul>
+<li>Authentication:有时也简称为“登录”,这是一个证明用户是他们所说的他们是谁的行为。</li>
+<li>Authorization:访问控制的过程,也就是绝对“谁”去访问“什么”。</li>
+<li>Session Management:管理用户特定的会话,即使在非 Web 或 EJB 应用程序。</li>
+<li>Cryptography:通过使用加密算法保持数据安全同时易于使用。</li>
+</ul>
+<p>也提供了额外的功能来支持和加强在不同环境下所关注的方面,尤其是以下这些:</p>
+<ul>
+<li>Web Support:Shiro 的 web 支持的 API 能够轻松地帮助保护 Web 应用程序。</li>
+<li>Caching:缓存是 Apache Shiro 中的第一层公民,来确保安全操作快速而又高效。</li>
+<li>Concurrency:Apache Shiro 利用它的并发特性来支持多线程应用程序。</li>
+<li>Testing:测试支持的存在来帮助你编写单元测试和集成测试,并确保你的能够如预期的一样安全。</li>
+<li>“Run As”:一个允许用户假设为另一个用户身份(如果允许)的功能,有时候在管理脚本很有用。</li>
+<li>“Remember Me”:在会话中记住用户的身份,所以他们只需要在强制时候登录。</li>
+</ul>
+<h4 id="3-架构："><a href="#3-架构：" class="headerlink" title="3.架构："></a>3.架构：</h4><p>在最高的概念层次,Shiro 的架构有 3 个主要的概念:Subject,SecurityManager 和 Realms。</p>
+<p><img src="/images/shiro02.png" alt="组件关系图"> </p>
+<ul>
+<li>Subject 实质上是一个当前执行用户的特定的安全“视图”。鉴于”User” 一词通常意味着一个人,而一个 Subject 可以是一个人,但它还可以代表第三方服务——基本上是当前正与软件进行交互的任何东西。</li>
+<li>SecurityManager 是 Shiro 架构的心脏,并作为一种“保护伞”对象来协调内部的安全组件 共同构成一个对象图。然而,一旦 SecurityManager 和 它的内置对象图已经配置给一个应用程序,那么它单独留下来,且应用程序开发人员几乎使用他们所有的时间来处理 Subject API。</li>
+<li>Realms:Realms 担当 Shiro 和你的应用程序的安全数据之间的“桥梁”或“连接器”。当它实际上与安全相 关的数据如用来执行身份验证(登录)及授权(访问控制)的用户帐户交互时,Shiro 从一个或多个为应用程 序配置的 Realm 中寻找许多这样的东西。</li>
+</ul>
+<h4 id="4-Shiro-涉及的核心架构类："><a href="#4-Shiro-涉及的核心架构类：" class="headerlink" title="4.Shiro 涉及的核心架构类："></a>4.Shiro 涉及的核心架构类：</h4><p><img src="/images/shiro03.png" alt="组件关系图"> </p>
+<ul>
+<li><p>Subject(org.apache.shiro.subject.Subject) 当前与软件进行交互的实体(用户,第三方服务,cron job,等等)的安全特定“视图”。</p>
+</li>
+<li><p>SecurityManager(org.apache.shiro.mgt.SecurityManager)<br>如上所述,SecurityManager 是 Shiro 架构的心脏。它基本上是一个“保护伞”对象,协调其管理的组件以确保 它们能够一起顺利的工作。它还管理每个应用程序用户的 Shiro 的视图,因此它知道如何执行每个用户的安全操作。</p>
+</li>
+<li><p>Authenticator(org.apache.shiro.authc.Authenticator)Authenticator 是一个对执行及对用户的身份验证(登录)尝试负责的组件。当一个用户尝试登录时,该逻辑 被 Authenticator 执行。Authenticator 知道如何与一个或多个 Realm 协调来存储相关的用户/帐户信息。从这些 Realm 中获得的数据被用来验证用户的身份来保证用户确实是他们所说的他们是谁。</p>
+<ul>
+<li>Authentication Strategy(org.apache.shiro.authc.pam.AuthenticationStrategy)<br>如果不止一个 Realm 被配置,则 AuthenticationStrategy 将会协调这些 Realm 来决定身份认证尝试成功或 失败下的条件(例如,如果一个 Realm 成功,而其他的均失败,是否该尝试成功? 是否所有的 Realm 必须成功?或只有第一个成功即可?)。</li>
+</ul>
+</li>
+<li><p>Authorizer(org.apache.shiro.authz.Authorizer)<br>Authorizer 是负责在应用程序中决定用户的访问控制的组件。它是一种最终判定用户是否被允许做某事的机制。 与 Authenticator 相似,Authorizer 也知道如何协调多个后台数据源来访问角色恶化权限信息。Authorizer 使用 该信息来准确地决定用户是否被允许执行给定的动作。</p>
+</li>
+<li><p>SessionManager(org.apache.shiro.session.SessionManager)<br>SessionManager 知道如何去创建及管理用户 Session 生命周期来为所有环境下的用户提供一个强健的 Session 体验。这在安全框架界是一个独有的特色——Shiro 拥有能够在任何环境下本地化管理用户 Session 的能力, 即使没有可用的 Web/Servlet 或 EJB 容器,它将会使用它内置的企业级会话管理来提供同样的编程体验。 SessionDAO 的存在允许任何数据源能够在持久会话中使用。</p>
+<ul>
+<li>SessionDAO(org.apache.shiro.session.mgt.eis.SessionDAO) SesssionDAO 代表 SessionManager 执行 Session 持久化(CRUD)操作。这允许任何数据存储被插入到会 话管理的基础之中。  </li>
+</ul>
+</li>
+<li><p>CacheManager(org.apahce.shiro.cache.CacheManager)<br>CacheManager 创建并管理其他 Shiro 组件使用的 Cache 实例生命周期。因为 Shiro 能够访问许多后台数据源, 由于身份验证,授权和会话管理,缓存在框架中一直是一流的架构功能,用来在同时使用这些数据源时提高 性能。任何现代开源和/或企业的缓存产品能够被插入到 Shiro 来提供一个快速及高效的用户体验。</p>
+</li>
+<li><p>Cryptography(org.apache.shiro.crypto.*)<br>Cryptography 是对企业安全框架的一个很自然的补充。Shiro 的 crypto 包包含量易于使用和理解的 cryptographic Ciphers,Hasher(又名 digests)以及不同的编码器实现的代表。所有在这个包中的类都被精心地设计以易于 使用和易于理解。任何使用 Java 的本地密码支持的人都知道它可以是一个难以驯服的具有挑战性的动物。Shiro 的 cryptoAPI 简化了复杂的 Java 机制,并使加密对于普通人也易于使用。</p>
+</li>
+<li><p>Realms(org.apache.shiro.realm.Realm)<br>如上所述,Realms 在 Shiro 和你的应用程序的安全数据之间担当“桥梁”或“连接器”。当它实际上与安全 相关的数据如用来执行身份验证(登录)及授权(访问控制)的用户帐户交互时,Shiro 从一个或多个为应用 程序配置的 Realm 中寻找许多这样的东西。你可以按你的需要配置多个 Realm(通常一个数据源一个 Realm), 且 Shiro 将为身份验证和授权对它们进行必要的协调。</p>
+</li>
+</ul>
+<p>应用程序的 SecurityManager 执行安全操作并管理所有应用程序用户的状态。在 Shiro 的默认 SecurityManager 实现中,这包括: </p>
+<ul>
+<li>Authentication</li>
+<li>Authorization</li>
+<li>Session Management</li>
+<li>Cache Management</li>
+<li>Realm coordination</li>
+<li>Event propagation</li>
+<li>“Remember Me” Services</li>
+<li>Subject creation</li>
+<li>Logout<br>以及更多。但这是许多功能来尝试管理一个单一的组件。而且,使这些东西灵活而又可定制将会是非常困难的,如果一切都集中到一个单一的实现类。</li>
+</ul>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://lbvs86823.github.com" target="_blank">lbvs86823</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2010/12/16/shiro/shiro_02/" class="pre-post btn btn-default" title="Shiro 第二章 身份认证">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Shiro 第二章 身份认证</span>
+        </a>
+    
+    
+        <a href="/2010/12/10/server/jetty/" class="next-post btn btn-default" title="Jetty 嵌入式开发">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Jetty 嵌入式开发</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh_CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-简介："><span class="toc-text">1.简介：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-特征："><span class="toc-text">2.特征：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-架构："><span class="toc-text">3.架构：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-Shiro-涉及的核心架构类："><span class="toc-text">4.Shiro 涉及的核心架构类：</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

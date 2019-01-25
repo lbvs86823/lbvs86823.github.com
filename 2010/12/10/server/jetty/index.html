@@ -1,0 +1,595 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="lbvs86823">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+
+<title>Jetty 嵌入式开发 | lbvs86823</title>
+
+
+    <link rel="alternate" href="atom/.xml" title="lbvs86823" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="bibi">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 不懂的就记下来...... </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">lbvs86823</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>归档</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Jetty 嵌入式开发">
+            
+	            Jetty 嵌入式开发
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/server">
+            server
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/jetty" title="jetty">
+                        jetty
+                    </a>
+                
+                    <a href="/tags/servlet" title="servlet">
+                        servlet
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2010/12/10</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>2968</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h4 id="Jetty-嵌入式开发"><a href="#Jetty-嵌入式开发" class="headerlink" title="Jetty 嵌入式开发"></a>Jetty 嵌入式开发</h4><h5 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h5><p>Jetty 有一个标语 “不要部署你的应用在Jetty上，部署Jetty在你的应用中”；以嵌入式模式运行Jetty，这意味着把HTTP模块放入到你的应用中，而不是把你的应用放入到HTTP服务中。<a href="http://wiki.eclipse.org/Jetty/Tutorial/Embedding_Jetty" target="_blank" rel="noopener">参考文档</a></p>
+<p>为了嵌入Jetty服务，通常需要执行以下步骤：</p>
+<ul>
+<li>创建一个服务</li>
+<li>添加和配置连接器</li>
+<li>添加和配置处理器</li>
+<li>添加和配置Servlet， Webapp 到处理器</li>
+<li>启动服务</li>
+<li>等待(join 服务防止主线程退出)</li>
+</ul>
+<h5 id="创建一个服务"><a href="#创建一个服务" class="headerlink" title="创建一个服务"></a>创建一个服务</h5><p>实例化和运行一个最简单的Jetty服务：</p>
+<pre><code>public class SimpleServer {
+    public static void main(String[] args) {
+        try {
+            Server server = new Server(8080);
+
+            server.start();
+            server.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre><p>在端口8080上运行一个HTTP服务，这个服务没什么实际用处，因为它没有任何处理器，对于每一个请求只是返回一个404错误。</p>
+<h5 id="编写处理器"><a href="#编写处理器" class="headerlink" title="编写处理器"></a>编写处理器</h5><p>为了生成请求响应，Jetty要求在服务上设置一个Handler，一个处理器可能：</p>
+<ul>
+<li>检查和修改HTTP请求</li>
+<li>生成完整的HTTP详情</li>
+<li>调用其他的处理器(比如：HandlerWrapper)</li>
+<li>选择一个或者多个处理器调用(不如：HandlerCollection)</li>
+</ul>
+<p>比如编写显示一个简单的Hello World 的处理器：</p>
+<pre><code>public class HelloHandler extends AbstractHandler {
+    @Override
+    public void handle(String target, Request jtyRequest, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        response.setContentType(&quot;text/html;charset=utf-8&quot;);
+        response.setStatus(HttpServletResponse.SC_OK);
+        jtyRequest.setHandled(true);
+        response.getWriter().println(&quot;&lt;h1&gt;hello, world!&lt;/h1&gt;&quot;);
+    }
+}
+</code></pre><p>传递给 handle 方法的参数包括：</p>
+<ul>
+<li>target 请求的目标， 它可以是一个URI或者命名分发器的名称</li>
+<li>jtyRequest Jetty可变请求对象，它总是解包的</li>
+<li>request 不可变的请求对象，它可能已经被封装</li>
+<li>response 响应，它可能已经被封装</li>
+</ul>
+<p>处理器设置了请求的状态，内容类型，在使用writer生成请求体之前标注请求已经处理（后续就不在处理了）</p>
+<pre><code>public class OneHandlerServer {
+    public static void main(String[] args) {
+        try {
+            Server server = new Server(8080);
+
+            server.setHandler(new HelloHandler());
+
+            server.start();
+            server.join();
+           } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre><p>复杂的请求处理通常使用多个处理器构建，你能查看Jetty 的org.eclipse.jetty.server.handler包种有哪些可用的处理器。</p>
+<h5 id="配置连接器"><a href="#配置连接器" class="headerlink" title="配置连接器"></a>配置连接器</h5><p>你可以为服务设置一个或者多个连接器，你能够对每一个连接器进行详细配置比如端口, buffer大小, timeout超时时间等。</p>
+<pre><code>public class ManyConnectorsServer {
+    public static void main(String[] args) {
+        try {
+            Server server = new Server(8080);
+
+            SelectChannelConnector connector = new SelectChannelConnector();
+            connector.setPort(8080);
+            connector.setLowResourcesMaxIdleTime(30000);
+            connector.setRequestHeaderSize(8192);
+
+            SelectChannelConnector adminConnector = new SelectChannelConnector();
+            adminConnector.setHost(&quot;127.0.0.1&quot;);
+            adminConnector.setPort(8888);
+            adminConnector.setThreadPool(new QueuedThreadPool(20));
+            adminConnector.setName(&quot;admin&quot;);
+
+            SslSelectChannelConnector ssl_connector = new SslSelectChannelConnector();
+            String jetty_home = System.getProperty(&quot;jetty.home&quot;, &quot;/Users/libing/Downloads/jetty-distribution-7.6.16.v20140903&quot;);
+            System.setProperty(&quot;jetty.home&quot;, jetty_home);
+            ssl_connector.setPort(8443);
+
+            SslContextFactory scf = ssl_connector.getSslContextFactory();
+            scf.setKeyStore(jetty_home + &quot;/etc/keystore&quot;);
+            scf.setKeyStorePassword(&quot;OBF:1vny1zlo1x8e1vnw1vn61x8g1zlu1vn4&quot;);
+            scf.setKeyManagerPassword(&quot;OBF:1u2u1wml1z7s1z7a1wnl1u2g&quot;);
+
+            server.setConnectors(new Connector[]{connector, adminConnector, ssl_connector});
+
+            server.setHandler(new HelloHandler());
+
+            server.start();
+            server.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+} 
+</code></pre><p>现在你可以通过下面的三种方式进行访问了：</p>
+<ul>
+<li><a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a></li>
+<li><a href="http://localhost:8888/" target="_blank" rel="noopener">http://localhost:8888/</a></li>
+<li><a href="https://localhost:8443/" target="_blank" rel="noopener">https://localhost:8443/</a></li>
+</ul>
+<h5 id="理解-Handler-Collections-Wrappers-and-Scopes"><a href="#理解-Handler-Collections-Wrappers-and-Scopes" class="headerlink" title="理解 Handler Collections, Wrappers and Scopes"></a>理解 Handler Collections, Wrappers and Scopes</h5><p>复杂的请求处理一般都要构建于多个处理器，它们可以通过许多中方法进行组合:</p>
+<ul>
+<li>Handler Collection :依次顺序调用每一个处理器的一个处理器集合，用于处理响应的统计和日志非常的有用</li>
+<li>Handler List : 依次顺序调用每一个处理器(除非有一个处理器有异常抛出, 或者 response被提交，或者 request.isHandled() 返回true)的一个处理器集合，用于有条件的处理一个请求非常合适。</li>
+<li>Handler Wrapper : 链式处理器的基础类，用于切面编程，比如一个标准的web application 实现了一个链式的context, session, security, servlet handlers.</li>
+<li>Context Handler Collection : 使用最长的一个请求URI(contextPath),选择一个特殊的 ContextHandler来处理请求</li>
+</ul>
+<h5 id="配置一个文件服务"><a href="#配置一个文件服务" class="headerlink" title="配置一个文件服务"></a>配置一个文件服务</h5><pre><code>public class FileServer {
+    public static void main(String[] args) {
+        try {
+            Server server = new Server(8080);
+
+            ResourceHandler resource_handler = new ResourceHandler();
+            resource_handler.setDirectoriesListed(true);
+            resource_handler.setWelcomeFiles(new String[]{&quot;index.html&quot;});
+
+            resource_handler.setResourceBase(&quot;.&quot;);
+
+            HandlerList handlers = new HandlerList();
+            handlers.setHandlers(new Handler[]{resource_handler, new DefaultHandler()});
+            server.setHandler(handlers);
+
+            server.start();
+            server.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre><h5 id="用XML文件配置一个文件服务"><a href="#用XML文件配置一个文件服务" class="headerlink" title="用XML文件配置一个文件服务"></a>用XML文件配置一个文件服务</h5><p>&lt;?xml version=”1.0”?&gt;<br>&lt;!DOCTYPE Configure PUBLIC “-//Jetty//Configure//EN” “<a href="http://www.eclipse.org/jetty/configure.dtd&quot;&gt;" target="_blank" rel="noopener">http://www.eclipse.org/jetty/configure.dtd&quot;&gt;</a></p>
+<pre><code>&lt;Configure id=&quot;FileServer&quot; class=&quot;org.eclipse.jetty.server.Server&quot;&gt;
+
+&lt;Call name=&quot;addConnector&quot;&gt;
+  &lt;Arg&gt;
+      &lt;New class=&quot;org.eclipse.jetty.server.nio.SelectChannelConnector&quot;&gt;
+        &lt;Set name=&quot;port&quot;&gt;8080&lt;/Set&gt;
+      &lt;/New&gt;
+  &lt;/Arg&gt;
+&lt;/Call&gt;
+
+&lt;Set name=&quot;handler&quot;&gt;
+  &lt;New class=&quot;org.eclipse.jetty.server.handler.HandlerList&quot;&gt;
+    &lt;Set name=&quot;handlers&quot;&gt;
+  &lt;Array type=&quot;org.eclipse.jetty.server.Handler&quot;&gt;
+    &lt;Item&gt;
+      &lt;New class=&quot;org.eclipse.jetty.server.handler.ResourceHandler&quot;&gt;
+        &lt;Set name=&quot;directoriesListed&quot;&gt;true&lt;/Set&gt;
+    &lt;Set name=&quot;welcomeFiles&quot;&gt;
+      &lt;Array type=&quot;String&quot;&gt;&lt;Item&gt;index.html&lt;/Item&gt;&lt;/Array&gt;
+    &lt;/Set&gt;
+        &lt;Set name=&quot;resourceBase&quot;&gt;.&lt;/Set&gt;
+      &lt;/New&gt;
+    &lt;/Item&gt;
+    &lt;Item&gt;
+      &lt;New class=&quot;org.eclipse.jetty.server.handler.DefaultHandler&quot;&gt;
+      &lt;/New&gt;
+    &lt;/Item&gt;
+  &lt;/Array&gt;
+    &lt;/Set&gt;
+  &lt;/New&gt;
+&lt;/Set&gt;
+&lt;/Configure&gt;
+</code></pre><p>运行一个文件服务从xml文件加载配置：    </p>
+<pre><code>public class FileWithXmlServer {
+    public static void main(String[] args) throws Exception {
+        Resource fileserver_xml = Resource.newSystemResource(&quot;fileserver.xml&quot;);
+        XmlConfiguration configuration = new XmlConfiguration(fileserver_xml.getInputStream());
+        Server server = (Server) configuration.configure();
+        server.start();
+        server.join();
+    }
+}
+</code></pre><h5 id="设置-Contexts"><a href="#设置-Contexts" class="headerlink" title="设置 Contexts"></a>设置 Contexts</h5><p>ContextHandler 是一个HandlerWapper 只对与配置的contextPath相匹配的一个URI前缀的请求作出相应。<br>可以对Context设置一些适合的特性如下：</p>
+<ul>
+<li>A Thread Context classloader.</li>
+<li>A set of attributes</li>
+<li>A set of init parameters</li>
+<li>A resource base (aka document root)</li>
+<li>A set of virtual host names</li>
+</ul>
+<p>请求不匹配的他将不会处理，以下代码是为HelloHandler 设置context path, classloader</p>
+<pre><code>public class OneContextServer {
+    public static void main(String[] args) throws Exception {
+        Server server = new Server(8080);
+
+        ContextHandler context = new ContextHandler();
+        context.setContextPath(&quot;/hello&quot;);
+        context.setResourceBase(&quot;.&quot;);
+        context.setClassLoader(Thread.currentThread().getContextClassLoader());
+        server.setHandler(context);
+
+        context.setHandler(new HelloHandler());
+
+        server.start();
+        server.join();
+    }
+}
+</code></pre><h5 id="创建一个Servlets"><a href="#创建一个Servlets" class="headerlink" title="创建一个Servlets"></a>创建一个Servlets</h5><p>Servlets 是一个提供处理HTTP请求应用逻辑的标准方法。</p>
+<pre><code>public class HelloServlet extends HttpServlet {
+
+    private String greeting = &quot;Hello World&quot;;
+
+    public HelloServlet() {
+    }
+
+    public HelloServlet(String greeting) {
+        this.greeting = greeting;
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType(&quot;text/html&quot;);
+        response.setStatus(HttpServletResponse.SC_OK);
+        response.getWriter().println(&quot;&lt;h1&gt;&quot; + greeting + &quot;&lt;/h1&gt;&quot;);
+        response.getWriter().println(&quot;session=&quot; + request.getSession(true).getId());
+    }
+}
+</code></pre><h5 id="设置一个ServletContext"><a href="#设置一个ServletContext" class="headerlink" title="设置一个ServletContext"></a>设置一个ServletContext</h5><p>ServletContextHandler 是一个专门用于支持标准Servlet的ContextHandler。下面显示了用ServletContextHandler注册的3个实例化helloworld Servlet。</p>
+<pre><code>public class OneServletContextServer {
+    public static void main(String[] args) throws Exception {
+        Server server = new Server(8080);
+
+        ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
+        context.setContextPath(&quot;/&quot;);
+        server.setHandler(context);
+
+        context.addServlet(new ServletHolder(new HelloServlet()), &quot;/*&quot;);
+        context.addServlet(new ServletHolder(new HelloServlet(&quot;Buongiorno Mondo&quot;)), &quot;/it/*&quot;);
+        context.addServlet(new ServletHolder(new HelloServlet(&quot;Bonjour le Monde&quot;)), &quot;/fr/*&quot;);
+
+        server.start();
+        server.join();
+    }
+}
+</code></pre><h5 id="设置一个Web-Application-Context"><a href="#设置一个Web-Application-Context" class="headerlink" title="设置一个Web Application Context"></a>设置一个Web Application Context</h5><p>一个 Web Application Context 是个使用标准布局和web.xml配置servlet，filter,和其他一些特征的 许许多多 ServletContextHandler，</p>
+<pre><code>public class OneWebApp {
+    public static void main(String[] args) throws Exception {
+        String jetty_home = System.getProperty(&quot;jetty.home&quot;, &quot;..&quot;);
+
+        Server server = new Server(8080);
+
+        WebAppContext webapp = new WebAppContext();
+        webapp.setContextPath(&quot;/&quot;);
+        webapp.setWar(jetty_home + &quot;/webapps/test.war&quot;);
+        server.setHandler(webapp);
+
+        server.start();
+        server.join();
+    }
+}    
+</code></pre><p>在开发的时候，你应该还没有把你的应用打包成一个WAR的文件，这时候你可以用源代码的方式运行如下：</p>
+<pre><code>public class OneWebAppUnassembled {
+    public static void main(String[] args) throws Exception
+{
+    Server server = new Server(8080);
+
+    WebAppContext context = new WebAppContext();
+    //context.setDescriptor(webapp+&quot;/WEB-INF/web.xml&quot;);
+    context.setResourceBase(&quot;../test-jetty-webapp/src/main/webapp&quot;);
+    context.setContextPath(&quot;/&quot;);
+    context.setParentLoaderPriority(true);
+
+    server.setHandler(context);
+
+    server.start();
+    server.join();
+}
+}        
+</code></pre>
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://lbvs86823.github.com" target="_blank">lbvs86823</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2010/12/15/shiro/shiro_01/" class="pre-post btn btn-default" title="Shiro 第一章 简介">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Shiro 第一章 简介</span>
+        </a>
+    
+    
+        <a href="/2010/10/07/linux/linux_vi/" class="next-post btn btn-default" title="Linux VI 命令详解">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Linux VI 命令详解</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh_CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Jetty-嵌入式开发"><span class="toc-text">Jetty 嵌入式开发</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#创建一个服务"><span class="toc-text">创建一个服务</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#编写处理器"><span class="toc-text">编写处理器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#配置连接器"><span class="toc-text">配置连接器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#理解-Handler-Collections-Wrappers-and-Scopes"><span class="toc-text">理解 Handler Collections, Wrappers and Scopes</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#配置一个文件服务"><span class="toc-text">配置一个文件服务</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#用XML文件配置一个文件服务"><span class="toc-text">用XML文件配置一个文件服务</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#设置-Contexts"><span class="toc-text">设置 Contexts</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#创建一个Servlets"><span class="toc-text">创建一个Servlets</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#设置一个ServletContext"><span class="toc-text">设置一个ServletContext</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#设置一个Web-Application-Context"><span class="toc-text">设置一个Web Application Context</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

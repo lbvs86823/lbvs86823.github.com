@@ -1,0 +1,373 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="lbvs86823">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+
+<title>quartz整合spring用法详解 | lbvs86823</title>
+
+
+    <link rel="alternate" href="atom/.xml" title="lbvs86823" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="bibi">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 不懂的就记下来...... </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">lbvs86823</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>归档</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="quartz整合spring用法详解">
+            
+	            quartz整合spring用法详解
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/spring">
+            spring
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/spring" title="spring">
+                        spring
+                    </a>
+                
+                    <a href="/tags/quartz" title="quartz">
+                        quartz
+                    </a>
+                
+                    <a href="/tags/cron" title="cron">
+                        cron
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2011/01/09</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>2937</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>##一，cron表达式格式介绍<br><strong>Cron 表达式包括以下 7 个字段：</strong>   </p>
+<p>秒<br>分<br>小时<br>月内日期<br>月<br>周内日期<br>年【可选字段】 </p>
+<p><strong>Cron 触发器利用一系列特殊字符(组合形成定时任务)：</strong>         </p>
+<ul>
+<li><p>/<br>表示增量，比如：5/10  如果放在秒字段，表示从 第 5 秒开始，每 15 秒一次。  </p>
+</li>
+<li><p>?<br>表示这个字段不包含具体值,并且只有在月内日期和周内日期字段中可用。 比如： ?放在周内日期字段中，表示内日期值无关紧要。</p>
+</li>
+<li><p>L<br>它是单词(last)的缩写。放在月内日期字段中，表示安排在当月最后一天执行。在周内日期字段中，如果“L”单独存在，就等于“7”，否则代表当月内周内日期的最后一个实例。所以“0L”表示安排在当月的最后一个星期日执行。 </p>
+</li>
+<li><p>W<br>表示把执行任务安排在最靠近指定值的工作日，比如：1W 放在月内日期字段中，表示把执行安排在当月的第一个工作日内。</p>
+</li>
+<li><p>#<br>给定月份指定具体的工作日实例，比如：MON#2 放在周内日期字段中，表示把任务安排在当月的第二个星期一。</p>
+</li>
+<li><p>*<br>通配字符，表示该字段可以接受任何可能的值。</p>
+</li>
+</ul>
+<p><strong>每个字段都只能允许指定的特殊字符</strong>  </p>
+<p>秒 0-59 , - <em> /<br>分 0-59 , - </em> /<br>小时 0-23 , - <em> /<br>日期 1-31 , - </em> ? / L W C<br>月份 1-12 或者 JAN-DEC , - <em> /<br>星期 1-7 或者 SUN-SAT , - </em> ? / L C #<br>年（可选） 留空, 1970-2099 , - * /    </p>
+<p><strong>常见的一些表达式的案例：</strong> </p>
+<p>“0 0 12 <em> </em> ?” 每天中午12点触发<br>“0 15 10 ? <em> </em>“ 每天上午10:15触发<br>“0 15 10 <em> </em> ?” 每天上午10:15触发<br>“0 15 10 <em> </em> ? <em>“ 每天上午10:15触发<br>“0 15 10 </em> <em> ? 2005” 2005年的每天上午10:15触发<br>“0 </em> 14 <em> </em> ?” 在每天下午2点到下午2:59期间的每1分钟触发<br>“0 0/5 14 <em> </em> ?” 在每天下午2点到下午2:55期间的每5分钟触发<br>“0 0/5 14,18 <em> </em> ?” 在每天下午2点到2:55期间和下午6点到6:55期间的每5分钟触发<br>“0 0-5 14 <em> </em> ?” 在每天下午2点到下午2:05期间的每1分钟触发<br>“0 10,44 14 ? 3 WED” 每年三月的星期三的下午2:10和2:44触发<br>“0 15 10 ? <em> MON-FRI” 周一至周五的上午10:15触发<br>“0 15 10 15 </em> ?” 每月15日上午10:15触发<br>“0 15 10 L <em> ?” 每月最后一日的上午10:15触发<br>“0 15 10 ? </em> 6L” 每月的最后一个星期五上午10:15触发<br>“0 15 10 ? <em> 6L 2002-2005” 2002年至2005年的每月的最后一个星期五上午10:15触发<br>“0 15 10 ? </em> 6#3” 每月的第三个星期五上午10:15触发              </p>
+<p>##二，quartz整合Spring案例    </p>
+<p>首先编写一个任务Bean如下：</p>
+<pre><code>public class QuartzJob {
+    public static final Logger log = LoggerFactory.getLogger(QuartzJob.class);
+    public void work() {
+        log.info(&quot;我的定时任务开始工作了................&quot;);
+    }
+}                        
+</code></pre><p>下面就可以直接配置定时任务了</p>
+<p>首先配置任务Bean：</p>
+<pre><code>&lt;bean id=&quot;iJob&quot; class=&quot;com.lbvs.springdemo.QuartzJob&quot;/&gt;     
+</code></pre><p>让后配置定时任务的调度方法：</p>
+<pre><code>&lt;bean id=&quot;jobTask&quot; class=&quot;org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean&quot;
+          p:targetObject-ref=&quot;iJob&quot; p:targetMethod=&quot;work&quot;/&gt;   
+</code></pre><p>接下来配置任务的调度方式：         </p>
+<p>spring3.2.4 以下 + quartz1.8 以下 的配置方式：  </p>
+<pre><code>&lt;bean id=&quot;iJobTrigger1.x&quot;
+      class=&quot;org.springframework.scheduling.quartz.CronTriggerBean&quot;&gt;
+    &lt;property name=&quot;jobDetail&quot;&gt;
+        &lt;ref bean=&quot;jobTask&quot;/&gt;
+    &lt;/property&gt;
+    &lt;property name=&quot;cronExpression&quot;&gt;0/5 * * * * ?&lt;/property&gt;
+&lt;/bean&gt;      
+</code></pre><p>spring3.2.4 以上 + quartz2.x 的配置方式：    </p>
+<pre><code>&lt;bean id=&quot;iJobTrigger2.x&quot;
+      class=&quot;org.springframework.scheduling.quartz.CronTriggerFactoryBean&quot;
+      p:jobDetail-ref=&quot;jobTask&quot; p:cronExpression=&quot;0/5 * * * * ?&quot;/&gt;     
+</code></pre><p>配置定时任务队列：  </p>
+<pre><code>&lt;bean id=&quot;startQuertz&quot; lazy-init=&quot;false&quot; autowire=&quot;no&quot;
+          class=&quot;org.springframework.scheduling.quartz.SchedulerFactoryBean&quot;&gt;
+        &lt;property name=&quot;triggers&quot;&gt;
+            &lt;list&gt;
+                &lt;ref bean=&quot;iJobTrigger2.x&quot;/&gt;
+            &lt;/list&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;             
+</code></pre>
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://lbvs86823.github.com" target="_blank">lbvs86823</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2011/01/10/spring/cron_trigger/" class="pre-post btn btn-default" title="cron 表达式">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">cron 表达式</span>
+        </a>
+    
+    
+        <a href="/2010/12/20/shiro/shiro_05/" class="next-post btn btn-default" title="Shiro 第五章 Session Management">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Shiro 第五章 Session Management</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh_CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <p>暂无目录</p>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

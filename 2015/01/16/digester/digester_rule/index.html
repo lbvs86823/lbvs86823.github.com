@@ -1,0 +1,565 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="lbvs86823">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+
+<title>Digester 规则介绍 | lbvs86823</title>
+
+
+    <link rel="alternate" href="atom/.xml" title="lbvs86823" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="bibi">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 不懂的就记下来...... </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">lbvs86823</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>归档</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Digester 规则介绍">
+            
+	            Digester 规则介绍
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/Digester">
+            Digester
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/Digester" title="Digester">
+                        Digester
+                    </a>
+                
+                    <a href="/tags/Rule" title="Rule">
+                        Rule
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2015/01/16</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>1470</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h4 id="Digester-规则介绍"><a href="#Digester-规则介绍" class="headerlink" title="Digester 规则介绍"></a>Digester 规则介绍</h4><h5 id="0-参数实体声明：rule-elements"><a href="#0-参数实体声明：rule-elements" class="headerlink" title="(0)参数实体声明：rule-elements"></a>(0)参数实体声明：rule-elements</h5><p>参数声明：</p>
+<pre><code>&lt;!ENTITY % rule-elements &quot;bean-property-setter-rule | call-method-rule |
+        call-param-rule | object-param-rule | node-create-rule |
+        factory-create-rule | object-create-rule |
+        set-properties-rule | set-nested-properties-rule |
+        set-property-rule | set-top-rule |
+        set-next-rule | set-root-rule&quot; &gt;
+</code></pre><h5 id="1-模式匹配规则：pattern"><a href="#1-模式匹配规则：pattern" class="headerlink" title="(1) 模式匹配规则：pattern"></a>(1) 模式匹配规则：pattern</h5><p>语法格式：</p>
+<pre><code>&lt;!ELEMENT pattern (pattern | include | %rule-elements; )*&gt;
+&lt;!ATTLIST pattern
+value CDATA #REQUIRED&gt;
+</code></pre><ul>
+<li>value : 匹配的标签模式    </li>
+</ul>
+<h4 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h4><hr>
+<h5 id="2-创建对象规则：object-create-rule-ObjectCreateRule"><a href="#2-创建对象规则：object-create-rule-ObjectCreateRule" class="headerlink" title="(2) 创建对象规则：object-create-rule [ObjectCreateRule]"></a>(2) 创建对象规则：object-create-rule [ObjectCreateRule]</h5><p>语法格式：</p>
+<pre><code>&lt;!ELEMENT object-create-rule EMPTY&gt;
+&lt;!ATTLIST object-create-rule
+    pattern    CDATA #IMPLIED
+    classname  CDATA #REQUIRED
+    attrname   CDATA #IMPLIED
+    paramtypes CDATA #IMPLIED
+    params CDATA #IMPLIED&gt;
+</code></pre><ul>
+<li>pattern : 匹配的模式标签</li>
+<li>classname : 创建对象的类名(全路径)</li>
+<li>attrname : 标签属性名称(指定特殊的实例类替代classname)</li>
+<li>paramtypes : 参数的类型</li>
+<li>params : 参数       </li>
+</ul>
+<p>利用指定类的默认构造函数，创建该类的一个对象，并把对象压入栈。当元素处理结束时，对象被弹出。被实例化的类可通过class对象或类的全称给出。     </p>
+<p><strong>例子：</strong><br>数据文件如下：</p>
+<pre><code>&lt;product&gt;
+&lt;/product&gt;
+</code></pre><p>对应的规则文件如下：</p>
+<pre><code>&lt;digester-rules&gt;
+    &lt;object-create-rule pattern=&quot;product&quot; classname=&quot;demo.lesson04.Product&quot;/&gt;
+&lt;/digester-rules&gt;    
+</code></pre><h5 id="3-用工厂创建对象规则：factory-create-rule-FactoryCreateRule"><a href="#3-用工厂创建对象规则：factory-create-rule-FactoryCreateRule" class="headerlink" title="(3) 用工厂创建对象规则：factory-create-rule [FactoryCreateRule]"></a>(3) 用工厂创建对象规则：factory-create-rule [FactoryCreateRule]</h5><p>语法格式：</p>
+<pre><code>&lt;!ELEMENT factory-create-rule EMPTY&gt;
+&lt;!ATTLIST factory-create-rule
+    pattern   CDATA #IMPLIED
+    classname CDATA #REQUIRED
+    attrname  CDATA #IMPLIED
+    ignore-exceptions  CDATA #IMPLIED&gt;
+</code></pre><ul>
+<li>pattern : 匹配的模式标签</li>
+<li>classname : 创建对象的类名(全路径)</li>
+<li>attrname : 标签属性名称(指定特殊的实例类替代classname)</li>
+<li>ignore-exceptions ：表明是否忽略在创建类的过程中忽略抛出的exception。  </li>
+</ul>
+<p>利用指定的工厂类创建一个对象，把对象压入栈。对于没有提供默认构造函数的类，这一规则很有用。用于该规则的工厂类必须实现org.apache.commons.digester.ObjectCreationFactory接口。   </p>
+<h4 id="设置对象属性"><a href="#设置对象属性" class="headerlink" title="设置对象属性"></a>设置对象属性</h4><hr>
+<h5 id="4-set-property-rule-SetPropertyRule"><a href="#4-set-property-rule-SetPropertyRule" class="headerlink" title="(4) set-property-rule [SetPropertyRule]"></a>(4) set-property-rule [SetPropertyRule]</h5><p>语法格式：</p>
+<pre><code>&lt;!-- SetPropertyRule --&gt;
+&lt;!ELEMENT set-property-rule EMPTY&gt;
+&lt;!ATTLIST set-property-rule
+pattern   CDATA #IMPLIED
+name      CDATA #IMPLIED
+value     CDATA #IMPLIED&gt;
+</code></pre><ul>
+<li>pattern : 匹配模式标签  </li>
+<li>name :  指定bean的属性名称</li>
+<li>value : 指定bean的属性名称的取值所对应名称 </li>
+</ul>
+<p>设置顶层Bean的一个属性。无论是Bean属性的名称，还是赋予该属性的值，都在当前XML元素中以属性的形式指定.<br>当begin()方法被调用时，digester调用栈顶对象的一个特定的属性设置方法(property setter)并传给它特定的值(property和值分别由两个attribute命名)。这对XML需要遵循一个指定的DTD时比较有用，你可以设置 一个特别的属性(property)，虽然在指定DTD没有attribute与其相对应。<br>利用指定名称和指定名称对应值名称的XML元素属性值，设置顶层Bean的一个或者多个指定名称的属性。</p>
+<p><strong>例子：</strong><br>数据文件如下：</p>
+<pre><code>&lt;product pid=&quot;id&quot; pidValue=&quot;001&quot; pWeight=&quot;weight&quot; pWeightValue=&quot;2kg&quot;&gt;
+
+&lt;/product&gt;
+</code></pre><p>对应的规则文件如下：</p>
+<pre><code>&lt;digester-rules&gt;
+    &lt;pattern value=&quot;product&quot;&gt;
+        &lt;object-create-rule classname=&quot;demo.lesson04.Product&quot;/&gt;
+        &lt;set-property-rule name=&quot;pId&quot; value=&quot;pIdValue&quot;/&gt;
+    &lt;/pattern&gt;
+    &lt;set-property-rule pattern=&quot;product&quot; name=&quot;pWeight&quot; value=&quot;pWeightValue&quot;/&gt;
+&lt;/digester-rules&gt;
+</code></pre><h5 id="5-标签属性设置Bean属性规则-set-properties-rule-SetPropertiesRule"><a href="#5-标签属性设置Bean属性规则-set-properties-rule-SetPropertiesRule" class="headerlink" title="(5) 标签属性设置Bean属性规则: set-properties-rule [SetPropertiesRule]"></a>(5) 标签属性设置Bean属性规则: set-properties-rule [SetPropertiesRule]</h5><p>语法格式：</p>
+<pre><code>&lt;!-- SetPropertiesRule --&gt;
+&lt;!ELEMENT set-properties-rule (alias)*&gt;
+&lt;!ATTLIST set-properties-rule
+pattern   CDATA #IMPLIED&gt;
+</code></pre><ul>
+<li>pattern : 匹配模式标签  </li>
+</ul>
+<p>当begin()方法被调用时，digester使用标准的Java Relection API来识别JavaBean的属性设置方法(setter method)，这些方法名称中包含属性（property）的名字，这些属性与XML元素的属性(attribute)匹配，于是这些方法被调用并将相 应的属性值(attribute value)传给它们。<br>利用指定名称的XML元素属性值，设置顶层Bean的一个或者多个指定名称的属性。            </p>
+<p><strong>例子：</strong><br>数据文件如下：</p>
+<pre><code>&lt;product name=&quot;康师傅方便面&quot; date=&quot;2015/01/15&quot;&gt;
+&lt;/product&gt;
+</code></pre><p>对应的规则文件如下：</p>
+<pre><code>&lt;digester-rules&gt;
+    &lt;pattern value=&quot;product&quot;&gt;
+        &lt;object-create-rule classname=&quot;demo.lesson04.Product&quot;/&gt;
+        &lt;set-properties-rule/&gt;
+    &lt;/pattern&gt;
+&lt;/digester-rules&gt;    
+</code></pre><h5 id="6-Bean属性设置规则-bean-property-setter-rule-BeanPropertySetterRule"><a href="#6-Bean属性设置规则-bean-property-setter-rule-BeanPropertySetterRule" class="headerlink" title="(6) Bean属性设置规则: bean-property-setter-rule [BeanPropertySetterRule]"></a>(6) Bean属性设置规则: bean-property-setter-rule [BeanPropertySetterRule]</h5><p>语法格式：</p>
+<pre><code>&lt;!-- Bean Property Setter Rule --&gt;
+&lt;!ELEMENT bean-property-setter-rule EMPTY&gt;
+&lt;!ATTLIST bean-property-setter-rule
+pattern                   CDATA #IMPLIED
+propertyname              CDATA #IMPLIED
+propertynameFromAttribute CDATA #IMPLIED&gt;
+</code></pre><ul>
+<li>pattern : 匹配模式标签 </li>
+<li>propertyname :  指定属性名字</li>
+<li>propertynameFromAttribute : 指定标签属性的名字</li>
+</ul>
+<p>把顶层Bean的指定名称的属性设置成当前XML元素包含的字符数据。</p>
+<p><strong>例子：</strong><br>数据文件如下：</p>
+<pre><code>&lt;product&gt;
+    &lt;name&gt;九阳豆浆机&lt;/name&gt;
+    &lt;date&gt;2014/10/20&lt;/date&gt;
+&lt;/product&gt;
+</code></pre><p>对应的规则文件如下：</p>
+<pre><code>&lt;digester-rules&gt;
+    &lt;pattern value=&quot;product&quot;&gt;
+        &lt;object-create-rule classname=&quot;demo.lesson04.Product&quot;/&gt;
+        &lt;bean-property-setter-rule pattern=&quot;name&quot; /&gt;
+        &lt;bean-property-setter-rule pattern=&quot;date&quot; /&gt;
+    &lt;/pattern&gt;
+&lt;/digester-rules&gt;    
+</code></pre><h5 id="7-Bean属性设置规则-set-nested-properties-rule-BeanPropertySetterRule"><a href="#7-Bean属性设置规则-set-nested-properties-rule-BeanPropertySetterRule" class="headerlink" title="(7) Bean属性设置规则: set-nested-properties-rule [BeanPropertySetterRule]"></a>(7) Bean属性设置规则: set-nested-properties-rule [BeanPropertySetterRule]</h5><p>语法格式：</p>
+<pre><code>&lt;!-- SetNestedPropertiesRule --&gt;
+&lt;!ELEMENT set-nested-properties-rule (alias)*&gt;
+&lt;!ATTLIST set-nested-properties-rule
+pattern                       CDATA #IMPLIED
+allow-unknown-child-elements  CDATA #IMPLIED&gt;
+</code></pre><ul>
+<li>pattern : 匹配模式标签 </li>
+<li>allow-unknown-child-elements :  指定属性名字</li>
+</ul>
+<p>把标签嵌套的子标签设置成Bean的属性。</p>
+<p><strong>例子：</strong><br>数据文件如下：</p>
+<pre><code>&lt;product&gt;
+    &lt;name&gt;九阳豆浆机&lt;/name&gt;
+    &lt;date&gt;2014/10/20&lt;/date&gt;
+&lt;/product&gt;
+</code></pre><p>对应的规则文件如下：</p>
+<pre><code>&lt;digester-rules&gt;
+    &lt;pattern value=&quot;product&quot;&gt;
+        &lt;object-create-rule classname=&quot;demo.lesson04.Product&quot;/&gt;
+         &lt;set-nested-properties-rule /&gt;
+    &lt;/pattern&gt;
+&lt;/digester-rules&gt;    
+</code></pre><h4 id="管理父-子关系"><a href="#管理父-子关系" class="headerlink" title="管理父/子关系"></a>管理父/子关系</h4><hr>
+<p>#####（8）set-next-rule [SetNextRule]<br>语法格式：</p>
+<pre><code>&lt;!-- SetNextRule --&gt;
+&lt;!ELEMENT set-next-rule EMPTY&gt;
+&lt;!ATTLIST set-next-rule
+pattern     CDATA #IMPLIED
+methodname  CDATA #REQUIRED
+paramtype   CDATA #IMPLIED
+exactMatch  CDATA #IMPLIED
+fireOnBegin CDATA #IMPLIED&gt;
+</code></pre><ul>
+<li>pattern : 匹配模式标签 </li>
+<li>methodname :  指定属性名字</li>
+<li>paramtype : </li>
+<li>exactMatch :  </li>
+<li>fireOnBegin : </li>
+</ul>
+<p>当end()方法被调用时，digester分析第二栈顶元素，寻找一个特定属性(property)的设置方法(setter method)，并接着调用这个方法，以栈顶的元素作参数。这个规则通常用来在两个对象间建立1对多的关系，所用的方法也常被叫做addChild什么的。  </p>
+<p>#####（9）set-top-rule [SetTopRule]<br>语法格式：</p>
+<pre><code>&lt;!-- SetTopRule --&gt;
+&lt;!ELEMENT set-top-rule EMPTY&gt;
+&lt;!ATTLIST set-top-rule
+pattern     CDATA #IMPLIED
+methodname  CDATA #REQUIRED
+paramtype   CDATA #IMPLIED
+exactMatch  CDATA #IMPLIED
+fireOnBegin CDATA #IMPLIED&gt;
+</code></pre><ul>
+<li>pattern : 匹配模式标签 </li>
+<li>methodname :  指定属性名字</li>
+<li>paramtype : </li>
+<li>exactMatch :  </li>
+<li>fireOnBegin : </li>
+</ul>
+<p>当end()方法被调用时，digester分析栈 顶元素，寻找一个特定属性(property)的设置方法(setter method)，并接着调用这个方法，以第二栈顶的元素作参数。这个规则通常用来在两个对象间建立1对多的关系，所用的方法也常被叫做setParent 什么的。   </p>
+<p>#####（10）set-root-rule [SetRootRule]<br>语法格式：</p>
+<pre><code>&lt;!-- SetRootRule --&gt;
+&lt;!ELEMENT set-root-rule EMPTY&gt;
+&lt;!ATTLIST set-root-rule
+pattern     CDATA #IMPLIED
+methodname  CDATA #REQUIRED
+paramtype   CDATA #IMPLIED
+exactMatch  CDATA #IMPLIED
+fireOnBegin CDATA #IMPLIED&gt;
+</code></pre><ul>
+<li>pattern : 匹配模式标签 </li>
+<li>methodname :  指定属性名字</li>
+<li>paramtype : </li>
+<li>exactMatch :  </li>
+<li>fireOnBegin : </li>
+</ul>
+<p>调用栈底对象的一个方法，并把栈顶的对象作为参数传入。   </p>
+<h4 id="调用任意方法"><a href="#调用任意方法" class="headerlink" title="调用任意方法"></a>调用任意方法</h4><hr>
+<p>#####（11）call-method-rule [CallMethodRule]<br>语法格式：</p>
+<pre><code>&lt;!-- CallMethodRule
+      - Note that paramtypes is ignored unless paramcount is defined.
+ --&gt;
+&lt;!ELEMENT call-method-rule EMPTY&gt;
+&lt;!ATTLIST call-method-rule
+pattern                    CDATA #IMPLIED
+targetoffset               CDATA #IMPLIED
+methodname                 CDATA #REQUIRED
+paramcount                 CDATA #IMPLIED
+paramtypes                 CDATA #IMPLIED
+usingElementBodyAsArgument CDATA #IMPLIED
+useExactMatch              CDATA #IMPLIED&gt;
+</code></pre><ul>
+<li>pattern : 匹配模式标签 </li>
+<li>targetoffset : </li>
+<li>methodname :  指定属性名字</li>
+<li>paramcount :  </li>
+<li>paramtypes : </li>
+<li>usingElementBodyAsArgument :  </li>
+<li>useExactMatch : </li>
+</ul>
+<p>调用顶层Bean的指定名称的方法。被调用的方法可以有任意多个参数，参数的值通过后继的CallParamRule给出。</p>
+<p>#####（12）call-param-rule [CallParamRule]<br>语法格式：</p>
+<pre><code>&lt;!--
+CallParamRule
+attrname
+    - set param from attribute value (cannot be combined with from-stack or
+      stack-index)
+from-stack
+    - select an object from the current digester stack to pass as the
+      parameter value.
+stack-index
+    - select an object from the current digester stack to pass as a
+      parameter value. If this is defined then from-stack is implicitly
+      true. If from-stack is defined but this is not defined then this
+      has an implicit value of zero, ie the top object on the stack is
+      passed as the parameter.
+--&gt;
+&lt;!ELEMENT call-param-rule EMPTY&gt;
+&lt;!ATTLIST call-param-rule
+    pattern  CDATA #IMPLIED
+    paramnumber CDATA #REQUIRED
+    attrname CDATA #IMPLIED
+    from-stack CDATA #IMPLIED
+    stack-index CDATA #IMPLIED&gt;
+</code></pre><ul>
+<li>pattern : 匹配模式标签 </li>
+<li>paramnumber : </li>
+<li>attrname :  </li>
+<li>from-stack :  </li>
+<li>stack-index : </li>
+</ul>
+<p>表示方法调用的参数。参数的值或者取自指定名称的XML元素的属性，或者是当前元素包含的原始字符数据。这个规则要求用一个整数指定它在参数列表中的位置。</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://lbvs86823.github.com" target="_blank">lbvs86823</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2015/01/27/architecture/eai/" class="pre-post btn btn-default" title="EAI简介">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">EAI简介</span>
+        </a>
+    
+    
+        <a href="/2015/01/15/digester/digester/" class="next-post btn btn-default" title="Digester框架简介">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Digester框架简介</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh_CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Digester-规则介绍"><span class="toc-text">Digester 规则介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#0-参数实体声明：rule-elements"><span class="toc-text">(0)参数实体声明：rule-elements</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-模式匹配规则：pattern"><span class="toc-text">(1) 模式匹配规则：pattern</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建对象"><span class="toc-text">创建对象</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-创建对象规则：object-create-rule-ObjectCreateRule"><span class="toc-text">(2) 创建对象规则：object-create-rule [ObjectCreateRule]</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-用工厂创建对象规则：factory-create-rule-FactoryCreateRule"><span class="toc-text">(3) 用工厂创建对象规则：factory-create-rule [FactoryCreateRule]</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设置对象属性"><span class="toc-text">设置对象属性</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-set-property-rule-SetPropertyRule"><span class="toc-text">(4) set-property-rule [SetPropertyRule]</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-标签属性设置Bean属性规则-set-properties-rule-SetPropertiesRule"><span class="toc-text">(5) 标签属性设置Bean属性规则: set-properties-rule [SetPropertiesRule]</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-Bean属性设置规则-bean-property-setter-rule-BeanPropertySetterRule"><span class="toc-text">(6) Bean属性设置规则: bean-property-setter-rule [BeanPropertySetterRule]</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-Bean属性设置规则-set-nested-properties-rule-BeanPropertySetterRule"><span class="toc-text">(7) Bean属性设置规则: set-nested-properties-rule [BeanPropertySetterRule]</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#管理父-子关系"><span class="toc-text">管理父/子关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#调用任意方法"><span class="toc-text">调用任意方法</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

@@ -1,0 +1,681 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="lbvs86823">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+
+<title>log4j.properties配置详解 | lbvs86823</title>
+
+
+    <link rel="alternate" href="atom/.xml" title="lbvs86823" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="bibi">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 不懂的就记下来...... </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">lbvs86823</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>归档</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="log4j.properties配置详解">
+            
+	            log4j.properties配置详解
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/log">
+            log
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/log4j" title="log4j">
+                        log4j
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2010/05/14</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>3177</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="一，log4j介绍："><a href="#一，log4j介绍：" class="headerlink" title="一，log4j介绍："></a>一，log4j介绍：</h2><p>Log4j是Apache的一个开放源代码项目，通过使用Log4j，我们可以控制日志信息输送的目的地是控制台、文件、GUI组件、甚至是套接口服务器、NT的事件记录器、UNIX Syslog守护进程等;<br>我们也可以控制每一条日志的输出格式;通过定义每一条日志信息的级别，我们能够更加细致地控制日志的生成过程。<br>最令人感兴趣的就是，这些可以通过一个配置文件来灵活地进行配置，而不需要修改应用的代码。</p>
+<p>作为记录日志的工具，它至少应该包含如下几个组成部分(组件)：   </p>
+<ul>
+<li>Logger<br>记录器组件负责产生日志，并能够对日志信息进行分类筛选，控制什么样的日志应该被输出，什么样的日志应该被忽略。它还有一个重要的属性－日志级别。    </li>
+<li>Level<br>日志级别组件,不管何种日志记录工具，大概包含了如下几种日志级别：DEBUG, INFO, WARN, ERROR 和 FATAL。  </li>
+<li>Appender<br>日志记录工具基本上通过 Appender 组件来输出到目的地的，一个 Appender 实例就表示了一个输出的目的地。    </li>
+<li>Layout<br>Layout 组件负责格式化输出的日志信息，一个 Appender 只能有一个 Layout。 </li>
+</ul>
+<p>##二，针对log4j的主要组件介绍</p>
+<ul>
+<li><p>Logger<br>每个Logger拥有自己的名字，Logger之间通过名字来表明隶属关系。<br>有一个Logger称为Root，它永远 存在，且不能通过名字检索或引用，可以通过Logger.getRootLogger()方法获得。<br>其它Logger通过 Logger.getLogger(String name)方法。</p>
+</li>
+<li><p>Appender<br>Appender则是用来指明将所有的log信息存放到什么地方，Log4j中支持多种appender，如 console、files、GUI components、NT Event Loggers等.<br>一个Logger可以拥有多个Appender，也就是你既可以将Log信息输出到屏幕，同时存储到一个文件中。</p>
+</li>
+<li><p>Layout<br>Layout的作用是控制Log信息的输出方式，也就是格式化输出的信息。<br>Log4j中将要输出的Log信息定义了5种级别，依次为DEBUG、INFO、WARN、ERROR和FATAL.<br>当输出时，只有级别高过配置中规定的 级别的信息才能真正的输出，这样就很方便的来配置不同情况下要输出的内容，而不需要更改代码</p>
+</li>
+</ul>
+<p>下面我们来看看Log4j是怎么使用这3个组件完成当我们调用logger.debug()方法能在控制台上打印出日志信息的：  </p>
+<ul>
+<li><p>第一步，继承数体系上的门槛检查：首先当调用info()方法后，Log4J会立刻使用该Logger所在的体系结构中设置的门槛去检查当前日志的级别。如果级别不够，立刻作废当前日志请求。</p>
+</li>
+<li><p>第二步，Level级别检查：使用当前Logger上设置的或者继承的Level级别来检查当前的日志级别。如果当前日志级别不够，立刻作废当前日志请求。</p>
+</li>
+<li><p>第三步，创建LoggingEvent对象：当日志审核通过，Log4J就会创建一个LoggingEvent对象（即日志事件对象）。在该对象中，会保存和本次日志相关的所有参数信息，包括日志内容，日志时间等。  </p>
+</li>
+<li><p>第四步，执行Appender：当创建完成LoggingEvent对象时候，会该对象交给当前logger上起作用的所有的Appender对象，并调用这些对象的doAppend方法来处理日志消息。 </p>
+</li>
+<li><p>第五步，格式化日志消息：接下来，会使用每一个Appender绑定的Layout对象（如果有）来格式化日志消息。Layout对象会把LoggingEvent格式化成最终准备输出的String。</p>
+</li>
+<li><p>第六步，输出日志消息：当得到最终要输出的String对象之后，appender会把字符输出到最终的目标上，比如控制台或者文件。</p>
+</li>
+</ul>
+<p>##三，Logger的配置方法：</p>
+<p>####(1)语法格式<br>首先，是设置root，格式为：</p>
+<pre><code>log4j.rootLogger=[level],appenderName, ...，
+</code></pre><p>其中level就是设置需要输出信息的级别：<br>level可能的值:OFF ,FATAL ,ERROR ,WARN ,INFO ,DEBUG ,ALL<br>后面的appenderName是输出的目的地。appenderName就是指定日志信息输出到哪个地方。您可以同时指定多个输出目的地。</p>
+<p>####(2)og4j.additivity(属性)<br>简单一句话就是logger子类是否继承父类的Appender输出源。默认情况下,子类会默认继承，即子类Logger会同时输出到父类的Appender和子类自己的Appender中去。<br>若是additivity设为false，则，子类Logger只会在自己的Appender里输出，而不会在父类Logger的appender里输出。 </p>
+<p>比如：</p>
+<pre><code>log4j.rootLogger=DEBUG,Main,Console
+log4j.logger.com.lvy.market.service.ConfigService= debug, Main
+log4j.additivity.com.lvy.market.service.ConfigService= false
+</code></pre><p>Logger(Root)父类是要将日志输出到 Main 和 Console的。<br>但是子类Logger(com.lvy.market.service.ConfigService)的additivity设置成了false<br>所以，子类(com.lvy.market.service.ConfigService)的日志只会输出到 Main 中，不会输出到 Console</p>
+<p>下面是配置Logger的完整样例：</p>
+<pre><code>log4j.rootLogger=DEBUG,Main,Console
+
+//其他Logger的设置：(比如打印sql语句的日志)
+log4j.logger.java.sql=DEBUG,Console
+log4j.logger.com.ibatis=DEBUG,Console
+log4j.org.springframework.orm.ibatis=DEBUG,Console
+</code></pre><p>##四，Appender的配置方法：<br>配置日志信息输出目的地Appender，其语法为：</p>
+<pre><code>log4j.appender.appenderName = appender实现类的完全限定名
+log4j.appender.appenderName.option1 = value1
+...
+log4j.appender.appenderName.optionN = valueN 
+</code></pre><p>根据Appender的类型可以分为两种：   </p>
+<ol>
+<li>基于文件系统的(需要配置一个Layout对象)  </li>
+<li>基于网络(Socket)的（不需要配置Layout对象）  </li>
+</ol>
+<p>####(1)基于文件系统的有存在不同的类型：</p>
+<p>#####org.apache.log4j.WriterAppender  </p>
+<p>WriterAppender是一个非常基础的Appender，他可以将LoggingEvent合成的结果直接交给一个Writer对象去处理。<br>通过这个描述，其实我们也能很简单的想到，WriterAppender是不能通过配置脚本来完成配置的，只能允许通过代码的方式指定要输出的Writer。<br>那为什么我们还要学习WriterAppender呢？其实很简单，因为他是后面要讲到的ConsoleAppender，FileAppender的父类。  </p>
+<p><strong>相关属性：</strong><br>encoding：用来规定了输出String的编码格式，如果没有设置编码格式，那么按照系统的默认编码格式输出<br>Threshold：设置日志输出的级别<br>immediateFlush：用来确定是否需要立刻记录。<br>默认情况下，这个选项为true，代表每一次日志请求之后，立刻把这次日志的内容输出到Writer上，<br>如果设置这个选项为false，则在一次日志请求之后，不会立刻的把内容输出到writer上，而会先把日志请求缓存一下，过段时间再发送到Writer上输出。<br>这样做可以提高20%左右的程序性能，但随之而来的问题是，有可能有一小部分的日志请求会丢失。   </p>
+<p><strong>配置样例</strong></p>
+<pre><code>Logger.getRootLogger().setLevel(Level.INFO);
+WriterAppender wa=new WriterAppender(new SimpleLayout(),System.out);
+wa.setImmediateFlush(false);
+Logger.getRootLogger().addAppender(wa);
+
+Logger logger = Logger.getLogger(&quot;cd.lbvs&quot;);
+Logger barLogger = Logger.getLogger(&quot;cd.lbvs.log&quot;);
+
+logger.warn(&quot;logger warn&quot;);
+logger.debug(&quot;logger debug&quot;);
+barLogger.info(&quot;bar logger info&quot;);
+barLogger.debug(&quot;bar logger debug&quot;); 
+</code></pre><p>#####org.apache.log4j.ConsoleAppender<br>ConsoleAppender就是直接把日志内容输出到控制台上面<br>首先ConsoleAppender是继承WriterAppender的，所以不用多说，ConsoleAppender也有encoding和immediateFlush两个配置项<br>使用ConsoleAppender，由于没有需要特殊指定的类似Writer的对象，所以整个ConsoleAppender可以直接在配置脚本中完成  </p>
+<p><strong>相关属性</strong><br>target：设置采用哪种方式将日志输出到控制台。<br>对于Java来说，将内容输出到控制台有两种方式，System.out和System.err   </p>
+<p><strong>配置样例</strong></p>
+<pre><code>log4j.rootLogger=INFO,stdout
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.target=System.err
+log4j.appender.stdout.layout=org.apache.log4j.SimpleLayout
+</code></pre><p>#####org.apache.log4j.FileAppender<br>FileAppender其实也是继承WriterAppender的，只是提供了一个指定的FileWriter而已。<br>自然FileAppender也继承了encoding和immediateFlush两个配置项   </p>
+<p><strong>相关属性</strong><br>append：一个布尔值，默认为true。这个值很好理解。<br>如果append=true，则每次记录的日志是采用追加的方式添加到文件当中，<br>如果append=false，则每次记录日志都是使用覆写的方式，大部分情况下，我们都保持默认值就行了。<br>file：指定要保存日志的文件名称；<br>bufferedIO：一个布尔值，默认为false。这个值也很好理解，<br>当bufferedIO=false的时候，相当于直接打开了一个FileWriter，每次日志都是直接写入到文件里面。<br>如果bufferedIO=true，则FileAppender会为我们在FileWriter之上再包装一个BufferedWriter，在日志量很大的情况下，这会适当提高系统整体性能。<br>bufferSize：如果设置了bufferedIO为true，则可以通过设置BufferSize参数来调整BufferedWriter的缓存大小。  </p>
+<p><strong>配置样例</strong></p>
+<pre><code>log4j.rootLogger=DEBUG,file
+log4j.appender.file=org.apache.log4j.FileAppender
+log4j.appender.file.file=../logs/main.log
+log4j.appender.file.bufferedIO=true
+log4j.appender.file.bufferSize=1024
+log4j.appender.file.layout=org.apache.log4j.SimpleLayout
+</code></pre><p>#####org.apache.log4j.RollingFileAppender<br>RollingFileAppender也能够将日志记录到文件中，并且可以当一个文件到达了指定大小后，把这个日志文件备份并重开一个日志文件。<br>RollingFileAppender是继承自FileAppender，所以FileAppender那些配置项仍然能够使用   </p>
+<p>首先创建file名字的文件：log.log；<br>当log.log到达maxFileSize后，就把log.log备份为log.log.1，并且新开log.log文件；<br>当log.log再次达到maxFileSize后，就依次把log.log.N重命名为log.log.N+1，即log.log.1就变成了log.log.2，log.log就变成了log.log.1；<br>如果log.log.N+1超过了maxBackupIndex大小，就删除备份文件。</p>
+<p><strong>相关属性</strong><br>MaximumFileSize：设置日志文件能达到的最大的容量，超过这个大小，日志文件就会备份并新开。<br>注意，这个maximumFileSize的参数值是文件的大小值，是long型的。<br>MaxFileSize：这个参数项也是用来设置日志文件能达到的最大的容量。<br>但这个参数值传入的参数类型是String；在这个String中，可以允许通过使用KB，MB，或者GB来方便的指定文件的大小，这个参数比maximumFileSize方便的多。<br>MaxBackupIndex：设置备份文件能够存在的最大索引号。他用来设置最大备份文件的序号，如果备份文件的序号超过了这个数，那么更早的日志文件就被删除了。    </p>
+<p><strong>配置样例</strong>   </p>
+<pre><code>log4j.rootLogger=DEBUG,file
+log4j.appender.file=org.apache.log4j.RollingFileAppender
+log4j.appender.file.file=log.log
+log4j.appender.file.maxFileSize=10KB
+log4j.appender.file.maxBackupIndex=100
+log4j.appender.file.layout=org.apache.log4j.PatternLayout
+log4j.appender.file.layout.conversionPattern=%r [%t] %p %c %x - %m%n
+</code></pre><p>#####org.apache.log4j.DailyRollingFileAppender<br>DailyRollingFileAppender提供了按照特定时间生成一份日志文件的方式，这个类的设计比较有灵活。<br>首先，这个类是继承FileAppender的，所以他具有FileAppender相关的所有属性配置   </p>
+<p><strong>相关属性</strong><br>datePattern：设置日期格式。这个日期格式是一个String，其实就是在SimpleDateFormat中允许的日期格式。<br>这个参数有两个作用，1，他设置了分隔日志文件的间隔；2，设置了日志文件的后缀名。<br>我们不能在datePattern中使用’/’；’;’等文件名不允许出现的字符     </p>
+<p>当然也可以指定按月、周、天、时和分。即对应的格式如下：<br>‘.’yyyy-MM: 每月<br>‘.’yyyy-ww: 每周<br>‘.’yyyy-MM-dd: 每天<br>‘.’yyyy-MM-dd-a: 每天两次<br>‘.’yyyy-MM-dd-HH: 每小时<br>‘.’yyyy-MM-dd-HH-mm: 每分钟    </p>
+<p><strong>配置样例</strong></p>
+<pre><code>log4j.rootLogger=DEBUG,file
+log4j.appender.file=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.file.file=log
+log4j.appender.file.datePattern=&apos;.&apos;yyyy-MM-dd-HH-mm‘.log’
+log4j.appender.file.layout=org.apache.log4j.PatternLayout
+log4j.appender.file.layout.conversionPattern=%r [%t] %p %c %x - %m%n
+</code></pre><p>下面这是一个完整的Appender的配置样例：    </p>
+<pre><code>log4j.logger.com.lvy.market.service.UserService= debug, Main
+log4j.additivity.com.lvy.market.service.UserService= false
+log4j.appender.Main=org.apache.log4j.RollingFileAppender
+log4j.appender.Main.File=../logs/main.log
+log4j.appender.Main.MaxFileSize=5000KB 
+log4j.appender.Main.MaxBackupIndex=20
+log4j.appender.Main.layout=org.apache.log4j.PatternLayout
+log4j.appender.Main.layout.ConversionPattern=%p %d{yyyy-MM-dd  HH:mm:ss} %t %c.%M - %m%n     
+</code></pre><p>####(2)基于网络系统的有存在不同的类型： </p>
+<p>#####org.apache.log4j.net.SocketAppender<br>SocketAppender是基于Socket的Appender，他不会对日志消息做任何的处理，而仅仅是通过Socket将日志请求发送到特定的服务器上。<br>既然是把日志请求发送到特定的服务器上，首先要考虑的就是日志消息使用什么样的方式发送，<br>在SocketAppender中，只是简单的把LoggingEvent对象直接通过序列化的方式发送到Socket的输出流上。<br>所以，要能正常使用SocketAppender，就不单单是使用日志的应用了，还需要一个能统一和接受日志消息的独立的日志服务器应用了。<br>我们下面就简单的把使用日志功能的应用称为Logging Client，把接收和处理日志消息的服务器应用称为Logging Server。    </p>
+<p><strong>相关属性</strong><br>RemoteHost：指定远端的Logging Server的地址。<br>Port：指定远端的Logging Server的端口。默认情况下，SocketAppender就是请求的4560端口。<br>Application：可以设置应用的名称。因为使用SocketAppender，就可以使用同一个专门的Logging Server来统一完成日志记录。那么就有可能会有不同的应用提交日志到Server上<br>reconnectionDelay：如果客户端连接不上服务器端，那么会在reconnectionDelay指定的时间之后重新连接。<br>这里需要注意的一个问题就是，客户端发送日志请求和服务器之间的通信问题。<br>在网络通信正常的情况下，每一条客户端的日志请求都会正常的发送给服务器端处理，这是没有问题的。    </p>
+<p>但是考虑网络的不稳定性，就会出现以下的情况：<br>    1，当网络发送包的频率大于日志频率，会正常的按照日志频率发送信息；<br>    2，当网络发送包的频率低于日志频率，则只会按照网络发送包的频率来发送客户端的日志信息。这里就有可能出现日志消息丢失的问题；<br>    3，当服务器连接断开，SocketAppender会尝试重新连接服务器端，但是在这个断开的过程当中，所有的日志信息将会丢失。        </p>
+<p><strong>配置样例</strong></p>
+<p>本地客户端配置样例：</p>
+<pre><code>log4j.rootLogger=DEBUG,socket
+log4j.appender.socket=org.apache.log4j.net.SocketAppender
+log4j.appender.socket.RemoteHost=localhost
+log4j.appender.socket.port=4560
+log4j.appender.socket.application=localclient 
+</code></pre><p>服务端接收处理样例：org.apache.log4j.net.SimpleSocketServer</p>
+<p>我们也没有必要自己来写这个Server端的应用，因为Log4J为我们实现了一个Server端：SimpleSocketServer。<br>这个SimpleSocketServer的使用非常简单，他相当于把接受到的LoggingEvent作为本地的日志记录事件，再使用在服务器端配置的Log4J环境来记录日志。</p>
+<pre><code>Usage: java org.apache.log4j.net.SimpleSocketServer port configFile
+   where port is a part number where the server listens and
+   configFile is a configuration file fed to the PropertyConfigurator or to DOMConfigurator if an XML file.
+</code></pre><p>#####org.apache.log4j.net.SocketHubAppender </p>
+<p>#####org.apache.log4j.net.SMTPAppender</p>
+<p>#####org.apache.log4j.net.TelnetAppender</p>
+<p>#####org.apache.log4j.net.SyslogAppender</p>
+<p>#####org.apache.log4j.net.SocketHubAppender</p>
+<p>#####org.apache.log4j.net.JMSAppender</p>
+<p>##五，Layout的配置方法：<br>配置日志信息的格式（布局），其语法为：</p>
+<pre><code>log4j.appender.appenderName.layout = 布局实现类的完全限定名
+log4j.appender.appenderName.layout.option1 = value1
+....
+log4j.appender.appenderName.layout.optionN = valueN 
+</code></pre><p>####Layout种类及配置：</p>
+<p>#####org.apache.log4j.SimpleLayout<br>SimpleLayout可以说是几乎没有任何复杂度，我们只需要设置对应Appender的layout属性为SimpleLayout即可，这个Layout本身没有任何的配置项。<br>SimpleLayout在测试中可以说是最简单的Layout了，他仅仅输出了Logger级别和日志内容：</p>
+<p><strong>配置样例</strong></p>
+<pre><code>log4j.rootLogger=DEBUG,stdout
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.layout=org.apache.log4j.SimpleLayout  
+</code></pre><p>#####org.apache.log4j.PatternLayout<br>PatternLayout允许我们定义非常多我们需要的输出格式，而我们需要配置的仅仅是告诉PatternLayout我们需要的输出格式而已：</p>
+<p><strong>相关属性</strong><br>conversionPattern:<br>%p: 输出日志信息优先级，即DEBUG，INFO，WARN，ERROR，FATAL。<br>%d: 输出日志时间点的日期或时间，默认格式为ISO8601，也可以在其后指定格式，比如：%d{yyy MMM dd HH:mm:ss,SSS}，输出类似：2002年10月18日 22：10：28，921。<br>%r: 输出自应用启动到输出该log信息耗费的毫秒数。<br>%c: 输出日志信息所属的类目，通常就是所在类的全名。<br>%t: 输出产生该日志事件的线程名。<br>%l: 输出日志事件的发生位置，相当于%C.%M(%F:%L)的组合,包括类目名、发生的线程，以及在代码中的行数。举例：Testlog4.main(TestLog4.java:10)。<br>%x: 输出和当前线程相关联的NDC(嵌套诊断环境),尤其用到像java servlets这样的多客户多线程的应用中。<br>%%: 输出一个”%”字符。<br>%F: 输出日志消息产生时所在的文件名称。<br>%L: 输出代码中的行号。<br>%m: 输出代码中指定的消息,产生的日志具体信息。<br>%n: 输出一个回车换行符，Windows平台为”\r\n”，Unix平台为”\n”输出日志信息换行。可以在%与模式字符之间加上修饰符来控制其最小宽度、最大宽度、和文本的对齐方式。<br>%20c：指定输出类名的名称，最小的宽度是20，如果类名的名称小于20的话，默认的情况下右对齐。<br>%-20c:指定输出类名的名称，最小的宽度是20，如果类名的名称小于20的话，”-“号指定左对齐。<br>%.30c:指定输出类名的名称，最大的宽度是30，如果类名的名称大于30的话，就会将左边多出的字符截掉，但小于30的话也不会有空格。<br>%20.30c:如果类名的名称小于20就补空格，并且右对齐，如果其名称长于30字符，就从左边较远处的字符截掉。  </p>
+<p><strong>配置样例</strong>  </p>
+<pre><code>log4j.rootLogger=DEBUG,stdout
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.conversionPattern=%-4r %-5p %d{yyyy-MM-dd HH:mm:ssS} %c %m%n
+</code></pre><p>#####org.apache.log4j.HTMLLayout  </p>
+<p>##六，使用logger的前提条件：<br>首先 需要将commons-logging.jar和logging-log4j-1.2.9.jar导入到构建路径中。<br>然后 再将log4j.properties放到src根目录下。这样就可以在程序中使用log4j了。  </p>
+<p>在类中使用log4j， 首先声明一个静态变量 private static Logger logger=Logger.getLog(“className”)；<br>现在就可以使用了，用法如下：logger.debug(“debug message”)或者logger.info(“info message”)   </p>
+<p>log4j加载配置文件的流程：<br>如果没有设置log4j.configuration变量，则先尝试使用ClassPath下的log4j.xml文件，<br>如果没有log4j.xml文件，则使用ClassPath下的log4j.properties文件。  </p>
+<p>第一，大部分情况下，把log4j.xml或者log4j.properties文件直接放到对应web应用的webapps/classes/文件夹下面即可。这种情况下，各个web应用会分别使用各自的配置文件来完成log4j的初始化。</p>
+<p>第二，如果需要不用的应用使用统一的log4j配置，只需要单独的把log4j.properties文件或者log4j.xml文件放到一个指定的位置，并且使用环境变量log4j.configuration来完成配置文件的指定。<br>注意，在log4j.configuration的值中，可以使用文件名称或者url的方式。但是如果直接使用文件名，使用的还是各个应用目录下的classes/文件夹中的配置文件。<br>比如log4j.configuration=log4jconfig.properties，那么还是寻找的各个web app目录下的classes/中的log4jconfig.properties文件配置。   </p>
+<p>要想让所有的web app应用实例使用相同的配置文件，需要这样写：<br>log4j.configuration=file:/c:/log4jconfig.xml<br>那么所有的web app都会使用c:/log4jconfig.xml来完成log4j的配置了。    </p>
+<p>第三，注意，如果所有的web app实例都使用同一个log4j配置文件，那么，尽量不要使用FileAppender。<br>因为这个日志文件会被所有的web app线程使用，容易造成极大的性能问题。   </p>
+<pre><code>public class Logger {
+// 输出日志方法:
+    public void debug(Object message);
+    public void info(Object message);
+    public void warn(Object message);
+    public void error(Object message);
+    public void fatal(Object message);
+// 输出带有错误的日志方法：
+    public void debug(Object message, Throwable t);
+    public void info(Object message, Throwable t);
+    public void warn(Object message, Throwable t);
+    public void error(Object message, Throwable t);
+    public void fatal(Object message, Throwable t);
+// 更通用的输出日志方法:
+    public void log(Level p, Object message);
+}
+</code></pre><p>##七，logger的性能问题：</p>
+<p>例如下面的logger cat程序段中：</p>
+<pre><code>logger.debug(&quot;Entry number: &quot; + i + &quot; is &quot; + String.valueOf(entry[i]));
+</code></pre><p>不管message被日志记录与否，构造message参数的开销还是有的，比如说， 把整数i 和数组entry[i]转化为String，连接中间字串。<br>参数构造的这种开销可能很高，它依赖于所介入的参数数量有多少。  </p>
+<p>为了避免这种参数构造开销，把以上的代码段改写为：</p>
+<pre><code>if(logger.isDebugEnabled() {
+  logger.debug(&quot;Entry number: &quot; + i + &quot; is &quot; + String.valueOf(entry[i]));
+}
+</code></pre><p>如果排错功能不被使用，就不会有参数构造上的开销。<br>但是，另一方面，如果logger的排错功能被起用，就会有俩倍的开销用于评估logger是否被起用：<br>一次是判断debugEnabled，一次是判断debug是否被启用。<br>但这不是极重的负担，因为评估logger的时间只有整个log语句执行时间的1%   </p>
+<p>##八，logger配置的完整样例： </p>
+<pre><code># level:OFF ,FATAL ,ERROR ,WARN ,INFO ,DEBUG ,ALL
+log4j.rootLogger=DEBUG,Main,Console
+
+#close c3p0 log
+log4j.logger.com.mchange.v2=off
+
+#整个应用的日志文件输出到控制台
+log4j.logger.java.sql=DEBUG,Console
+log4j.logger.com.ibatis=DEBUG,Console
+log4j.org.springframework.orm.ibatis=DEBUG,Console
+log4j.appender.Console=org.apache.log4j.ConsoleAppender
+log4j.appender.Console.target=System.out
+log4j.appender.Console.layout=org.apache.log4j.PatternLayout
+log4j.appender.Console.layout.ConversionPattern=%p %d{yyyy-MM-dd  HH:mm:ss} %t %c.%M - %m%n
+
+#整个应用的日志文件
+log4j.logger.com.huawei.market.service.ConfigService= debug, Main
+log4j.additivity.com.huawei.market.service.ConfigService= false
+log4j.logger.com.huawei.market.service.MarketService= debug, Main
+log4j.additivity.com.huawei.market.service.MarketService= false
+log4j.logger.com.huawei.market.service.UserService= debug, Main
+log4j.additivity.com.huawei.market.service.UserService= false
+log4j.appender.Main=org.apache.log4j.RollingFileAppender
+log4j.appender.Main.file=../logs/main.log
+log4j.appender.Main.maxFileSize=5000KB
+log4j.appender.Main.maxBackupIndex=20
+log4j.appender.Main.layout=org.apache.log4j.PatternLayout
+log4j.appender.Main.layout.ConversionPattern=%p %d{yyyy-MM-dd  HH:mm:ss} %t %c.%M - %m%n
+
+#Sql语句日志文件
+log4j.logger.com.huawei.market.service.dao=debug, Sql
+log4j.additivity.com.huawei.market.service.dao=false
+log4j.appender.Sql=org.apache.log4j.RollingFileAppender
+log4j.appender.Sql.file=../logs/sql.log
+log4j.appender.Sql.maxFileSize=5000KB
+log4j.appender.Sql.maxBackupIndex=20
+log4j.appender.Sql.layout=org.apache.log4j.PatternLayout
+log4j.appender.Sql.layout.ConversionPattern=%p %d{yyyy-MM-dd  HH:mm:ss} %t %c.%M - %m%n
+
+#短信日志文件
+log4j.logger.com.huawei.market.sms=debug, Sms
+log4j.additivity.com.huawei.market.sms= false
+log4j.appender.Sms=org.apache.log4j.RollingFileAppender
+log4j.appender.Sms.file=../logs/sms.log
+log4j.appender.Sms.maxFileSize=10000KB
+log4j.appender.Sms.maxBackupIndex=200
+log4j.appender.Sms.layout=org.apache.log4j.PatternLayout
+log4j.appender.Sms.layout.ConversionPattern=%p %d{yyyy-MM-dd HH:mm:ss} %t %c.%M - %m%n
+
+#ftp文件导入日志文件
+log4j.logger.FtpAndImportLog=debug,ftpAndImport
+log4j.additivity.FtpAndImportLog=false
+log4j.logger.com.huawei.market.util.FTPUtil=debug, ftpAndImport
+log4j.additivity.com.huawei.market.util.FTPUtil=false
+log4j.appender.ftpAndImport=org.apache.log4j.RollingFileAppender
+log4j.appender.ftpAndImport.file=../logs/ftpAndImport.log
+log4j.appender.ftpAndImport.maxFileSize=5000KB
+log4j.appender.ftpAndImport.maxBackupIndex=20
+log4j.appender.ftpAndImport.layout=org.apache.log4j.PatternLayout
+log4j.appender.ftpAndImport.layout.ConversionPattern=%p %d{yyyy-MM-dd  HH:mm:ss} %t %c.%M - %m%n
+
+#鉴权Token日志文件
+log4j.logger.AuthLog= debug, AuthToken
+log4j.additivity.AuthLog= false
+log4j.appender.AuthToken=org.apache.log4j.RollingFileAppender
+log4j.appender.AuthToken.file=../logs/auth.log
+log4j.appender.AuthToken.maxFileSize=5000KB
+log4j.appender.AuthToken.maxBackupIndex=20
+log4j.appender.AuthToken.layout=org.apache.log4j.PatternLayout
+log4j.appender.AuthToken.layout.ConversionPattern=%p %d{yyyy-MM-dd  HH:mm:ss} %t %c.%M - %m%n
+
+#应用的单元测试日志文件
+log4j.logger.MarketJunit= info, MarketJunit
+log4j.additivity.MarketJunit= false
+log4j.appender.MarketJunit=org.apache.log4j.RollingFileAppender
+log4j.appender.MarketJunit.file=../logs/junit.log
+log4j.appender.MarketJunit.maxFileSize=5000KB
+log4j.appender.MarketJunit.maxBackupIndex=20
+log4j.appender.MarketJunit.layout=org.apache.log4j.PatternLayout
+log4j.appender.MarketJunit.layout.ConversionPattern=%p %d{yyyy-MM-dd  HH:mm:ss} %t %c.%M - %m%n
+
+#A1调查问卷日志文件
+log4j.appender.A1=org.apache.log4j.RollingFileAppender
+log4j.appender.A1.file=../logs/questionnaire.log
+log4j.appender.A1.maxFileSize=5000KB
+log4j.appender.A1.maxBackupIndex=20
+log4j.appender.A1.layout=org.apache.log4j.PatternLayout
+log4j.appender.A1.layout.ConversionPattern=%p %d{yyyy-MM-dd HH:mm:ss} %t %c.%M - %m%n
+
+#A2日志文件
+log4j.logger.market=DEBUG,A2
+log4j.additivity.market = false
+log4j.appender.A2=org.apache.log4j.RollingFileAppender
+log4j.appender.A2.file=../logs/web/market.log
+log4j.appender.A2.maxFileSize=5000KB
+log4j.appender.A2.maxBackupIndex=20
+log4j.appender.A2.layout=org.apache.log4j.PatternLayout
+log4j.appender.A2.layout.ConversionPattern=%-5p  %d{yyyy-MM-dd  HH:mm:ss}  %l%n%m%n
+
+#A3统计登录日志文件
+log4j.logger.marketlogin=DEBUG,A3
+log4j.additivity.marketlogin = false
+log4j.appender.A3=org.apache.log4j.RollingFileAppender
+log4j.appender.A3.file=../logs/web/marketlogin.log
+log4j.appender.A3.maxFileSize=5000KB
+log4j.appender.A3.maxBackupIndex=20
+log4j.appender.A3.layout=org.apache.log4j.PatternLayout
+log4j.appender.A3.layout.ConversionPattern=%-5p  %d{yyyy-MM-dd  HH:mm:ss}  %l%n%m%n
+
+#A4统计PV日志文件
+log4j.logger.PVSTATISTIC=DEBUG,A4
+log4j.additivity.PVSTATISTIC=false
+log4j.appender.A4=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.A4.file=../logs/web/accesslog_tomcat_market
+log4j.appender.A4.DatePattern=&apos;_&apos;yyyy-MM-dd&apos;.log&apos;
+log4j.appender.A4.layout=org.apache.log4j.PatternLayout
+log4j.appender.A4.layout.ConversionPattern=%m%n
+
+#A5统计url请求次数的日志文件
+log4j.logger.URLSTATISTIC=DEBUG,A5
+log4j.additivity.URLSTATISTIC=false
+log4j.appender.A5=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.A5.file=../logs/web/requesturllog_tomcat_market
+log4j.appender.A5.DatePattern=&apos;_&apos;yyyy-MM-dd&apos;.log&apos;
+log4j.appender.A5.layout=org.apache.log4j.PatternLayout
+log4j.appender.A5.layout.ConversionPattern=%p %d{yyyy-MM-dd HH:mm:ss} %t %c.%M - %m%n
+
+#DailyQuest log
+log4j.logger.com.huawei.market.service.DailyQuestService= info, DailyQuest
+log4j.additivity.com.huawei.market.service.DailyQuestService= false
+log4j.appender.DailyQuest=org.apache.log4j.RollingFileAppender
+log4j.appender.DailyQuest.file=../logs/DailyQuest.log
+log4j.appender.DailyQuest.maxFileSize=5000KB
+log4j.appender.DailyQuest.maxBackupIndex=20
+log4j.appender.DailyQuest.layout=org.apache.log4j.PatternLayout
+log4j.appender.DailyQuest.layout.ConversionPattern=%p %d{yyyy-MM-dd  HH:mm:ss} %t %c.%M - %m%n
+
+#caiyunApplyFail
+log4j.appender.caiyunApplyFail=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.caiyunApplyFail.file=../logs/caiyunApplyFail.log
+log4j.appender.caiyunApplyFail.Append=true
+log4j.appender.caiyunApplyFail.Threshold=INFO
+log4j.appender.caiyunApplyFail.DatePattern=&apos;.&apos;yyyy-MM-dd
+log4j.appender.caiyunApplyFail.layout=org.apache.log4j.PatternLayout
+log4j.appender.caiyunApplyFail.layout.ConversionPattern=%m%n
+
+#TRACE
+log4j.logger.TRACE = INFO,TRACE
+log4j.additivity.TRACE = false
+log4j.appender.TRACE=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.TRACE.file=../logs/mrp-trace.log
+log4j.appender.TRACE.Append=true
+log4j.appender.TRACE.Threshold=INFO
+log4j.appender.TRACE.DatePattern=&apos;.&apos;yyyy-MM-dd
+log4j.appender.TRACE.layout=org.apache.log4j.PatternLayout
+log4j.appender.TRACE.layout.ConversionPattern=[%d{yyyy-MM-dd HH:mm:ss}]%m%n
+
+#DIGEST
+log4j.logger.DIGEST = INFO,DIGEST
+log4j.additivity.DIGEST = false
+log4j.appender.DIGEST=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.DIGEST.file=../logs/mrp-digest.log
+log4j.appender.DIGEST.Append=true
+log4j.appender.DIGEST.Threshold=INFO
+log4j.appender.DIGEST.DatePattern=&apos;.&apos;yyyy-MM-dd
+log4j.appender.DIGEST.layout=org.apache.log4j.PatternLayout
+log4j.appender.DIGEST.layout.ConversionPattern=[%d{yyyy-MM-dd HH:mm:ss}]%m%n
+
+#task
+log4j.logger.task=INFO,task
+log4j.additivity.task = false
+log4j.appender.task=org.apache.log4j.RollingFileAppender
+log4j.appender.task.file=../logs/task.log
+log4j.appender.task.maxFileSize=5000KB
+log4j.appender.task.maxBackupIndex=20
+log4j.appender.task.layout=org.apache.log4j.PatternLayout
+log4j.appender.task.layout.ConversionPattern=%p %d{yyyy-MM-dd  HH:mm:ss} %t %c.%M - %m%n
+</code></pre>
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://lbvs86823.github.com" target="_blank">lbvs86823</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2010/05/18/maven/maven01/" class="pre-post btn btn-default" title="maven的安装与配置">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">maven的安装与配置</span>
+        </a>
+    
+    
+        <a href="/2010/05/13/log/common-logging/" class="next-post btn btn-default" title="commons-logging 和 log4j 之间的关系">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">commons-logging 和 log4j 之间的关系</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh_CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一，log4j介绍："><span class="toc-text">一，log4j介绍：</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
