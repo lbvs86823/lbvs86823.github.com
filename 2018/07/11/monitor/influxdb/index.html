@@ -1,188 +1,762 @@
-<!DOCTYPE HTML>
-<html lang="zh_CN">
+<!DOCTYPE html>
+<html>
 <head><meta name="generator" content="Hexo 3.8.0">
-    <!--Setting-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta http-equiv="Cache-Control" content="no-siteapp">
-    <meta http-equiv="Cache-Control" content="no-transform">
-    <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta name="apple-mobile-web-app-capable" content="lbvs86823">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="telephone=no,email=no,adress=no">
-    <meta name="browsermode" content="application">
-    <meta name="screen-orientation" content="portrait">
-    <link rel="dns-prefetch" href="http://yoursite.com">
-    <!--SEO-->
+  <meta charset="utf-8">
+  <title>influxDB 入门指南 | lbvs86823</title>
+  <meta name="keywords" content=" monitor , influxdb ">
+  <meta name="description" content="influxDB 入门指南 | lbvs86823">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="influxDB 入门指南">
+<meta name="keywords" content="monitor,influxdb">
+<meta property="og:type" content="article">
+<meta property="og:title" content="influxDB 入门指南">
+<meta property="og:url" content="http://yoursite.com/2018/07/11/monitor/influxdb/index.html">
+<meta property="og:site_name" content="lbvs86823">
+<meta property="og:description" content="influxDB 入门指南">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2020-02-02T16:20:39.626Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="influxDB 入门指南">
+<meta name="twitter:description" content="influxDB 入门指南">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js?v=1.0.1"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
 
 
 
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 
-
-<meta name="robots" content="all">
-<meta name="google" content="all">
-<meta name="googlebot" content="all">
-<meta name="verify" content="all">
-    <!--Title-->
-
-
-<title>influxDB 入门指南 | lbvs86823</title>
-
-
-    <link rel="alternate" href="atom/.xml" title="lbvs86823" type="application/atom+xml">
-
-
-    <link rel="icon" href="/favicon.ico">
-
-    
-
-
-
-<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
-<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
-<link rel="stylesheet" href="/css/style.css?rev=@@hash">
-
-
-
-
-    
-	<div class="hide">
-		<script type="text/javascript">
-			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
-		</script>
-	</div>
-
-
-
-
-
-
-    
+<script src="/js/iconfont.js?v=1.0.1"></script>
 
 </head>
-
-</html>
-<!--[if lte IE 8]>
-<style>
-    html{ font-size: 1em }
-</style>
-<![endif]-->
-<!--[if lte IE 9]>
-<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
-<![endif]-->
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+  <input class="theme_blog_path" value="">
+</div>
 
 <body>
-    <header class="main-header" style="background-image:url(/./img/banner.jpg)">
-    <div class="main-header-box">
-        <a class="header-avatar" href="/" title="bibi">
-            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
-        </a>
-        <div class="branding">
-        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
-            
-                <h2> 不懂的就记下来...... </h2>
-            
-    	</div>
-    </div>
-</header>
-    <nav class="main-navigation">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
-                    <span class="sr-only"></span>
-                        <i class="fa fa-bars"></i>
-                    </span>
-                    <a class="navbar-brand" href="http://yoursite.com">lbvs86823</a>
-                </div>
-                <div class="collapse navbar-collapse" id="main-menu">
-                    <ul class="menu">
-                        
-                            <li role="presentation" class="text-center">
-                                <a href="/"><i class="fa "></i>首页</a>
-                            </li>
-                        
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
-                            </li>
-                        
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
-                            </li>
-                        
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
-                            </li>
-                        
-                            <li role="presentation" class="text-center">
-                                <a href="/archives/"><i class="fa "></i>归档</a>
-                            </li>
-                        
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</nav>
-    <section class="content-wrap">
-        <div class="container">
-            <div class="row">
-                <main class="col-md-8 main-content m-post">
-                    <p id="process"></p>
-<article class="post">
-    <div class="post-head">
-        <h1 id="influxDB 入门指南">
-            
-	            influxDB 入门指南
-            
-        </h1>
-        <div class="post-meta">
-    
-    
-    <span class="categories-meta fa-wrap">
-        <i class="fa fa-folder-open-o"></i>
-        <a href="/categories/spring">
-            spring
-        </a>
-    </span>
-    
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg">
+</a>
+<div class="author">
+    <span>lbvs86823</span>
+</div>
 
-    
-    <span class="fa-wrap">
-        <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-                
-                    <a href="/tags/monitor" title="monitor">
-                        monitor
-                    </a>
-                
-                    <a href="/tags/influxdb" title="influxdb">
-                        influxdb
-                    </a>
-                
-            
-        </span>
-    </span>
-    
-
+<div class="icon">
     
         
-        <span class="fa-wrap">
-            <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2018/07/11</span>
-        </span>
+        <a title="rss" href="/atom.xml" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-rss"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="github" href="https://github.com/lbvs86823" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="email" href="mailto:lbvs86823@163.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"/>
+                </svg>
+            
+        </a>
         
     
 </div>
 
+
+
+
+<ul>
+    <li><div class="all active">全部文章<small>(36)</small></div></li>
+    
+        
             
+            <li><div data-rel="EAI">EAI<small>(1)</small></div>
+                
+            </li>
             
+        
+    
+        
+            
+            <li><div data-rel="blog">blog<small>(3)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="docker">docker<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="git">git<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="Digester">Digester<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="javacore">javacore<small>(3)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="maven">maven<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="redis">redis<small>(3)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="shiro">shiro<small>(5)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="spring">spring<small>(7)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="log">log<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="linux">linux<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="server">server<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="DTD">DTD<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="jquery">jquery<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="kafka">kafka<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="database">database<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="36">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode === 13){return false;}">
+        <input id="local-search-input" class="search" type="text" placeholder="Search...">
+        <i class="cross"></i>
+        <span>
+            <label for="tagswitch">Tags:</label>
+            <input id="tagswitch" type="checkbox" style="display: none">
+            <i id="tagsWitchIcon"></i>
+        </span>
+    </form>
+    <div class="tags-list">
+    
+    <li class="article-tag-list-item">
+        <a class="color4">EAI</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">ERP</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">OA</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">CRM</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">Jekyll</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">gitHub</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">Jekyll-Bootstrap</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">Markdown</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">blog</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">docker</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">git</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">github</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">gitLab</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">Digester</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">Rule</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">Java</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">enum</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">maven</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">redis</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">shiro</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">Realms</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">SecurityManager</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">spring</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">quartz</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">cronTrigger</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">schedule</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">security</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">auth2</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">cron</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">boot</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">session</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">common-logging</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">log4j</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">java</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">Map</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">HashMap</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">linux</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">vi</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">monitor</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">influxdb</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">jetty</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">servlet</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">Subject</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">Authentication</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">Session</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">Authorization</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">DTD</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">xml</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">jquery</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">javascript</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">thread</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">kafka</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">zookeeper</a>
+    </li>
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a class="EAI " href="/2015/01/27/architecture/eai/" data-tag="EAI,ERP,OA,CRM" data-author="">
+            <span class="post-title" title="EAI简介">EAI简介</span>
+            <span class="post-date" title="2015-01-27 20:53:21">2015/01/27</span>
+        </a>
+        
+        <a class="blog " href="/2010/04/17/blog/blog01/" data-tag="Jekyll,gitHub" data-author="">
+            <span class="post-title" title="怎么写自己的博客">怎么写自己的博客</span>
+            <span class="post-date" title="2010-04-17 12:13:29">2010/04/17</span>
+        </a>
+        
+        <a class="blog " href="/2010/04/18/blog/blog02/" data-tag="Jekyll,Jekyll-Bootstrap" data-author="">
+            <span class="post-title" title="采用Jekyll “增强版” 写博客">采用Jekyll “增强版” 写博客</span>
+            <span class="post-date" title="2010-04-18 10:23:39">2010/04/18</span>
+        </a>
+        
+        <a class="blog " href="/2010/04/25/blog/markdown/" data-tag="Markdown,blog" data-author="">
+            <span class="post-title" title="Markdown 语法说明">Markdown 语法说明</span>
+            <span class="post-date" title="2010-04-25 12:08:20">2010/04/25</span>
+        </a>
+        
+        <a class="docker " href="/2016/09/08/docker/docker/" data-tag="docker" data-author="">
+            <span class="post-title" title="docker 常用命令">docker 常用命令</span>
+            <span class="post-date" title="2016-09-08 19:10:44">2016/09/08</span>
+        </a>
+        
+        <a class="git " href="/2012/03/08/git/git_command/" data-tag="git,github,gitLab" data-author="">
+            <span class="post-title" title="git 命令手册">git 命令手册</span>
+            <span class="post-date" title="2012-03-08 14:25:31">2012/03/08</span>
+        </a>
+        
+        <a class="kafka " href="/2017/07/17/kafka/kafka/" data-tag="kafka,zookeeper" data-author="">
+            <span class="post-title" title="kafka 入门指南">kafka 入门指南</span>
+            <span class="post-date" title="2017-07-17 12:53:09">2017/07/17</span>
+        </a>
+        
+        <a class="Digester " href="/2015/01/16/digester/digester_rule/" data-tag="Digester,Rule" data-author="">
+            <span class="post-title" title="Digester 规则介绍">Digester 规则介绍</span>
+            <span class="post-date" title="2015-01-16 12:13:34">2015/01/16</span>
+        </a>
+        
+        <a class="javacore " href="/2011/06/27/javacore/enum/" data-tag="Java,enum" data-author="">
+            <span class="post-title" title="Java enum 的用法详解">Java enum 的用法详解</span>
+            <span class="post-date" title="2011-06-27 22:03:19">2011/06/27</span>
+        </a>
+        
+        <a class="javacore " href="/2011/05/16/javacore/thread/" data-tag="Java,thread" data-author="">
+            <span class="post-title" title="Java thread类的用法详解">Java thread类的用法详解</span>
+            <span class="post-date" title="2011-05-16 21:43:29">2011/05/16</span>
+        </a>
+        
+        <a class="maven " href="/2010/05/18/maven/maven01/" data-tag="maven" data-author="">
+            <span class="post-title" title="maven的安装与配置">maven的安装与配置</span>
+            <span class="post-date" title="2010-05-18 10:25:01">2010/05/18</span>
+        </a>
+        
+        <a class="maven " href="/2010/05/18/maven/maven02/" data-tag="maven" data-author="">
+            <span class="post-title" title="maven的入门">maven的入门</span>
+            <span class="post-date" title="2010-05-18 22:25:01">2010/05/18</span>
+        </a>
+        
+        <a class="redis " href="/2010/07/24/redis/redis/" data-tag="redis" data-author="">
+            <span class="post-title" title="redis入门之介绍和安装篇(一)">redis入门之介绍和安装篇(一)</span>
+            <span class="post-date" title="2010-07-24 10:15:45">2010/07/24</span>
+        </a>
+        
+        <a class="shiro " href="/2010/12/18/shiro/shiro_04/" data-tag="shiro,Realms,SecurityManager" data-author="">
+            <span class="post-title" title="Shiro 第四章 Realms">Shiro 第四章 Realms</span>
+            <span class="post-date" title="2010-12-18 09:41:09">2010/12/18</span>
+        </a>
+        
+        <a class="spring " href="/2011/01/10/spring/cron_trigger/" data-tag="spring,quartz,cronTrigger,schedule" data-author="">
+            <span class="post-title" title="cron 表达式">cron 表达式</span>
+            <span class="post-date" title="2011-01-10 21:49:39">2011/01/10</span>
+        </a>
+        
+        <a class="spring " href="/2011/06/15/spring/oauth2.0/" data-tag="spring,security,auth2" data-author="">
+            <span class="post-title" title="Spring oauth2 相关概念解释">Spring oauth2 相关概念解释</span>
+            <span class="post-date" title="2011-06-15 10:21:20">2011/06/15</span>
+        </a>
+        
+        <a class="spring " href="/2011/01/09/spring/quartz/" data-tag="spring,quartz,cron" data-author="">
+            <span class="post-title" title="quartz整合spring用法详解">quartz整合spring用法详解</span>
+            <span class="post-date" title="2011-01-09 19:49:39">2011/01/09</span>
+        </a>
+        
+        <a class="spring " href="/2018/01/11/spring/sping boot reference guide/" data-tag="spring,boot" data-author="">
+            <span class="post-title" title="Spring Boot 参考指南">Spring Boot 参考指南</span>
+            <span class="post-date" title="2018-01-11 20:29:20">2018/01/11</span>
+        </a>
+        
+        <a class="spring " href="/2018/04/11/spring/sping security reference/" data-tag="spring,security" data-author="">
+            <span class="post-title" title="Spring Security 参考指南">Spring Security 参考指南</span>
+            <span class="post-date" title="2018-04-11 22:09:21">2018/04/11</span>
+        </a>
+        
+        <a class="spring " href="/2011/04/16/spring/spring session/" data-tag="redis,spring,session" data-author="">
+            <span class="post-title" title="spring session 相关代码详解">spring session 相关代码详解</span>
+            <span class="post-date" title="2011-04-16 20:41:20">2011/04/16</span>
+        </a>
+        
+        <a class="log " href="/2010/05/13/log/common-logging/" data-tag="common-logging,log4j" data-author="">
+            <span class="post-title" title="commons-logging 和 log4j 之间的关系">commons-logging 和 log4j 之间的关系</span>
+            <span class="post-date" title="2010-05-13 18:31:54">2010/05/13</span>
+        </a>
+        
+        <a class="javacore " href="/2011/06/29/javacore/hashMap/" data-tag="java,Map,HashMap" data-author="">
+            <span class="post-title" title="HashMap实现原理解析">HashMap实现原理解析</span>
+            <span class="post-date" title="2011-06-29 12:53:49">2011/06/29</span>
+        </a>
+        
+        <a class="linux " href="/2010/10/07/linux/linux_vi/" data-tag="linux,vi" data-author="">
+            <span class="post-title" title="Linux VI 命令详解">Linux VI 命令详解</span>
+            <span class="post-date" title="2010-10-07 16:41:24">2010/10/07</span>
+        </a>
+        
+        <a class="Digester " href="/2015/01/15/digester/digester/" data-tag="Digester,Rule" data-author="">
+            <span class="post-title" title="Digester框架简介">Digester框架简介</span>
+            <span class="post-date" title="2015-01-15 22:53:21">2015/01/15</span>
+        </a>
+        
+        <a class="database " href="/2018/07/11/monitor/influxdb/" data-tag="monitor,influxdb" data-author="">
+            <span class="post-title" title="influxDB 入门指南">influxDB 入门指南</span>
+            <span class="post-date" title="2018-07-11 10:03:27">2018/07/11</span>
+        </a>
+        
+        <a class="redis " href="/2010/07/28/redis/redis_hash/" data-tag="redis" data-author="">
+            <span class="post-title" title="redis入门之hashes数据类型(三)">redis入门之hashes数据类型(三)</span>
+            <span class="post-date" title="2010-07-28 21:11:47">2010/07/28</span>
+        </a>
+        
+        <a class="redis " href="/2010/07/24/redis/redis_string/" data-tag="redis" data-author="">
+            <span class="post-title" title="redis入门之Strings数据类型(二)">redis入门之Strings数据类型(二)</span>
+            <span class="post-date" title="2010-07-24 23:45:41">2010/07/24</span>
+        </a>
+        
+        <a class="server " href="/2010/12/10/server/jetty/" data-tag="jetty,servlet" data-author="">
+            <span class="post-title" title="Jetty 嵌入式开发">Jetty 嵌入式开发</span>
+            <span class="post-date" title="2010-12-10 11:25:11">2010/12/10</span>
+        </a>
+        
+        <a class="shiro " href="/2010/12/15/shiro/shiro_01/" data-tag="shiro,Realms,SecurityManager,Subject" data-author="">
+            <span class="post-title" title="Shiro 第一章 简介">Shiro 第一章 简介</span>
+            <span class="post-date" title="2010-12-15 12:25:17">2010/12/15</span>
+        </a>
+        
+        <a class="shiro " href="/2010/12/16/shiro/shiro_02/" data-tag="shiro,Realms,SecurityManager,Subject,Authentication" data-author="">
+            <span class="post-title" title="Shiro 第二章 身份认证">Shiro 第二章 身份认证</span>
+            <span class="post-date" title="2010-12-16 16:05:29">2010/12/16</span>
+        </a>
+        
+        <a class="shiro " href="/2010/12/20/shiro/shiro_05/" data-tag="shiro,SecurityManager,Session" data-author="">
+            <span class="post-title" title="Shiro 第五章 Session Management">Shiro 第五章 Session Management</span>
+            <span class="post-date" title="2010-12-20 19:31:58">2010/12/20</span>
+        </a>
+        
+        <a class="spring " href="/2011/06/12/spring/spring security/" data-tag="spring,security,auth2" data-author="">
+            <span class="post-title" title="Spring Security 中涉及到的核心类介绍">Spring Security 中涉及到的核心类介绍</span>
+            <span class="post-date" title="2011-06-12 12:59:20">2011/06/12</span>
+        </a>
+        
+        <a class="shiro " href="/2010/12/17/shiro/shiro_03/" data-tag="shiro,Realms,SecurityManager,Authentication,Authorization" data-author="">
+            <span class="post-title" title="Shiro 第三章 身份授权">Shiro 第三章 身份授权</span>
+            <span class="post-date" title="2010-12-17 19:02:22">2010/12/17</span>
+        </a>
+        
+        <a class="DTD " href="/2011/01/14/spring/dtd/" data-tag="spring,DTD,xml" data-author="">
+            <span class="post-title" title="DTD文档类型定义简介">DTD文档类型定义简介</span>
+            <span class="post-date" title="2011-01-14 17:11:16">2011/01/14</span>
+        </a>
+        
+        <a class="jquery " href="/2010/09/27/js/jquery/jueryPlugin/" data-tag="jquery,javascript" data-author="">
+            <span class="post-title" title="JQuery开发插件的机种方式讨论">JQuery开发插件的机种方式讨论</span>
+            <span class="post-date" title="2010-09-27 20:43:44">2010/09/27</span>
+        </a>
+        
+        <a class="log " href="/2010/05/14/log/log4j-config/" data-tag="log4j" data-author="">
+            <span class="post-title" title="log4j.properties配置详解">log4j.properties配置详解</span>
+            <span class="post-date" title="2010-05-14 20:55:08">2010/05/14</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-monitor/influxdb" class="article article-type-post" itemscope="" itemprop="blogPost">
+    
+        <h1 class="article-title">influxDB 入门指南</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+                <a data-rel="database">database</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a class="color3">monitor</a>
+            
+            <a class="color4">influxdb</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title="更新时间: 2020-02-03 00:20:39">2018-07-11 10:03</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
     </div>
     
-    <div class="post-body post-content">
-        <h3 id="I-前言"><a href="#I-前言" class="headerlink" title="I 前言"></a>I 前言</h3><h4 id="1-入门"><a href="#1-入门" class="headerlink" title="1. 入门"></a>1. 入门</h4><h5 id="1-1-安装运行"><a href="#1-1-安装运行" class="headerlink" title="1.1 安装运行"></a>1.1 安装运行</h5><pre><code>采用docker方式安装：
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#I-前言"><span class="toc-text">I 前言</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-入门"><span class="toc-text">1. 入门</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-1-安装运行"><span class="toc-text">1.1 安装运行</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#1-2-相关配置"><span class="toc-text">1.2 相关配置</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-配置文件解析"><span class="toc-text">2. 配置文件解析</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="I-前言"><a href="#I-前言" class="headerlink" title="I 前言"></a>I 前言</h4><h5 id="1-入门"><a href="#1-入门" class="headerlink" title="1. 入门"></a>1. 入门</h5><h6 id="1-1-安装运行"><a href="#1-1-安装运行" class="headerlink" title="1.1 安装运行"></a>1.1 安装运行</h6><pre><code>采用docker方式安装：
 docker search influxdb  //搜索influxdb的相关镜像
 docker pull influxdb    //选择官方的最新版本
 docker images //查看已经存在的镜像
@@ -190,7 +764,7 @@ docker images //查看已经存在的镜像
 挂在本地目录运行:
 influxdb的镜像默认 数据目录在 /var/lib/influxdb
 docker run -p 8086:8086 -v /workspace/influxdb_data:/var/lib/influxdb influxdb
-</code></pre><h5 id="1-2-相关配置"><a href="#1-2-相关配置" class="headerlink" title="1.2 相关配置"></a>1.2 相关配置</h5><pre><code>influxdb 暴露了三个端口：
+</code></pre><h6 id="1-2-相关配置"><a href="#1-2-相关配置" class="headerlink" title="1.2 相关配置"></a>1.2 相关配置</h6><pre><code>influxdb 暴露了三个端口：
 8086 ： 针对http api 请求接口暴露的端口    
 8083 ： 管理员接口，缺省不可用的，在1.3以后的版本已经移除
 2003 :  针对Graphite的支持接口，缺省不可用
@@ -200,7 +774,7 @@ influxdb 既可以通过配置文件配置也可以使用环境变量来配置�
 docker run --rm influxdb influxd config &gt; /workspace/influxdb_data/config/influxdb.conf //形成一个缺省的配置文件
 修改默认配置挂载一个外部配置文件：
 docker run -p 8086:8086 -v /workspace/influxdb_data/config/influxdb.conf:/etc/influxdb/influxdb.conf:ro influxdb -config /etc/influxdb/influxdb.conf
-</code></pre><h4 id="2-配置文件解析"><a href="#2-配置文件解析" class="headerlink" title="2. 配置文件解析"></a>2. 配置文件解析</h4><pre><code>配置文件详解:
+</code></pre><h5 id="2-配置文件解析"><a href="#2-配置文件解析" class="headerlink" title="2. 配置文件解析"></a>2. 配置文件解析</h5><pre><code>配置文件详解:
 
 reporting-disabled = false # 该选项用于上报influxdb的使用信息给InfluxData公司，默认值为false
 bind-address = &quot;127.0.0.1:8088&quot; # 备份恢复时使用，默认值为8088
@@ -215,7 +789,7 @@ bind-address = &quot;127.0.0.1:8088&quot; # 备份恢复时使用，默认值为
   index-version = &quot;inmem&quot;   # 对于influxdb新产生的分片索引的类型将在这里被设置。初始默认的索引类型是一种 in-memory 索引，如果你修改成 tsi1 将会对于高基数数据支持的更好。（high-cardinality 是描述tag rentention-policy measurement组合成series规模的度量值）
 
   wal-dir = &quot;/Users/libing/Documents/workspace/influxdb_data/wal&quot;  # 预写日志存储目录
-  wal-fsync-delay = &quot;0s&quot;   
+  wal-fsync-delay = &quot;0s&quot;
   validate-keys = false
   query-log-enabled = true   # 是否开启tsm引擎查询日志，默认值： true
   cache-max-memory-size = 1073741824   # 用于限定shard最大值，大于该值时会拒绝写入，默认值：1000MB，单位：byte
@@ -354,126 +928,303 @@ bind-address = &quot;127.0.0.1:8088&quot; # 备份恢复时使用，默认值为
   min-version = &quot;&quot;
   max-version = &quot;&quot;
 </code></pre>
-    </div>
-    
-    <div class="post-footer">
-        <div>
-            
-                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://lbvs86823.github.com" target="_blank">lbvs86823</a>
-            
-        </div>
-        <div>
-            
-        </div>
+      
+       <hr><span style="font-style: italic;color: gray;"> 欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 lbvs86823@163.com </span>
     </div>
 </article>
 
-<div class="article-nav prev-next-wrap clearfix">
+
+<p>
+    <a class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>influxDB 入门指南</p>
     
-        <a href="/2019/01/22/javacore/java Thread/" class="pre-post btn btn-default" title="">
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs"></span>
-        </a>
-    
-    
-        <a href="/2018/04/11/spring/sping security reference/" class="next-post btn btn-default" title="Spring Security 参考指南">
-            <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">Spring Security 参考指南</span><i class="fa fa-angle-right fa-fw"></i>
-        </a>
-    
+    <p><span class="copy-title">本文作者:</span><a title="lbvs86823">lbvs86823</a></p>
+    <p><span class="copy-title">发布时间:</span>2018-07-11, 10:03:27</p>
+    <p><span class="copy-title">最后更新:</span>2020-02-03, 00:20:39</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2018/07/11/monitor/influxdb/" title="influxDB 入门指南">http://yoursite.com/2018/07/11/monitor/influxdb/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
 </div>
 
 
-    <div id="comments">
-        
+
+
+
     
-    <div id="vcomments" class="valine"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="/assets/valine.min.js"></script>
 
-    <script>
-        new Valine({
-            av: AV,
-            el: '#vcomments',
-            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
-            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
-            placeholder: '说点什么吧',
-            notify: false,
-            verify: false,
-            avatar: 'mm',
-            meta: 'nick,mail'.split(','),
-            pageSize: '10',
-            path: window.location.pathname,
-            lang: 'zh_CN'.toLowerCase()
-        })
-    </script>
+
 
 
     </div>
-
-
-
-
-
-                </main>
-                
-                    <aside id="article-toc" role="navigation" class="col-md-4">
-    <div class="widget">
-        <h3 class="title">Table of Contents</h3>
-        
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#I-前言"><span class="toc-text">I 前言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-入门"><span class="toc-text">1. 入门</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-安装运行"><span class="toc-text">1.1 安装运行</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-相关配置"><span class="toc-text">1.2 相关配置</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-配置文件解析"><span class="toc-text">2. 配置文件解析</span></a></li></ol></li></ol>
-        
-    </div>
-</aside>
-
-                
-            </div>
-        </div>
-    </section>
-    <footer class="main-footer">
-    <div class="container">
-        <div class="row">
-        </div>
-    </div>
-</footer>
-
-<a id="back-to-top" class="icon-btn hide">
-	<i class="fa fa-chevron-up"></i>
-</a>
-
-
-
-
     <div class="copyright">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="busuanzi">
-    
-</div>
+        <p class="footer-entry">Copyright 2009 - 2020 lbvs86823 All Rights Reserved</p>
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
 
-            </div>
-            <div class="col-sm-12">
-                <span>Copyright &copy; 2019
-                </span> |
-                <span>
-                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
-                </span> |
-                <span>
-                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
-                </span>
-            </div>
+    </div>
+</div>
+<a class="" id="rocket"></a>
+
+    </div>
+</div>
+<div class="acParent"></div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close" onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞, 土豪就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
         </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
     </div>
 </div>
 
-
-
-
-
-
-
-<script src="/js/app.js?rev=@@hash"></script>
 
 </body>
+<script src="/js/jquery.pjax.js?v=1.0.1"></script>
+
+<script src="/js/script.js?v=1.0.1"></script>
+<script>
+    var img_resize = 'default';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['#EAI','#ERP','#OA','#CRM','#Jekyll','#gitHub','#Jekyll-Bootstrap','#Markdown','#blog','#docker','#git','#github','#gitLab','#Digester','#Rule','#Java','#enum','#maven','#redis','#shiro','#Realms','#SecurityManager','#spring','#quartz','#cronTrigger','#schedule','#security','#auth2','#cron','#boot','#session','#common-logging','#log4j','#java','#Map','#HashMap','#linux','#vi','#monitor','#influxdb','#jetty','#servlet','#Subject','#Authentication','#Session','#Authorization','#DTD','#xml','#jquery','#javascript','#thread','#kafka','#zookeeper',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length - 1, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: #fafafa;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 492px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 1px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+
 </html>
