@@ -1,0 +1,19 @@
+@startuml
+title 代理模式
+
+interface TargetInterface {
+    + operation(): void
+}
+
+class Target implements TargetInterface {
+    + operation(): void
+}
+
+class ProxyTarget implements TargetInterface {
+    - target : Target
+    + operation(): void
+}
+
+ProxyTarget .right.> Target
+
+@enduml

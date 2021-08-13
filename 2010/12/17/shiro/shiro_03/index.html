@@ -1,0 +1,1858 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Shiro 第三章 身份授权 | lbvs86823</title>
+  <meta name="keywords" content=" shiro , SecurityManager , Realms , Authentication , Authorization ">
+  <meta name="description" content="Shiro 第三章 身份授权 | lbvs86823">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="axios">
+<meta property="og:type" content="article">
+<meta property="og:title" content="axios 中文文档">
+<meta property="og:url" content="https://lbvs86823.github.io/2018/10/12/js/js_axios/index.html">
+<meta property="og:site_name" content="lbvs86823">
+<meta property="og:description" content="axios">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lbvs86823.github.io/images/browser_support.png">
+<meta property="article:published_time" content="2018-10-12T02:12:21.000Z">
+<meta property="article:modified_time" content="2020-03-20T06:27:43.632Z">
+<meta property="article:author" content="lbvs86823">
+<meta property="article:tag" content="javaScript">
+<meta property="article:tag" content="axios">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lbvs86823.github.io/images/browser_support.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js?v=1.0.1" ></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.0.1" ></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+  <input class="theme_blog_path" value="">
+</div>
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg" />
+</a>
+<div class="author">
+    <span>lbvs86823</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="rss" href="/atom.xml" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-rss"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="github" href="https://github.com/lbvs86823" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="email" href="mailto:lbvs86823@163.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active">全部文章<small>(80)</small></div></li>
+    
+        
+            
+            <li><div data-rel="Digester">Digester<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="docker">docker<small>(5)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="javaScript">javaScript<small>(10)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="javacore">javacore<small>(5)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="linux">linux<small>(4)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="log">log<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="patterns">patterns<small>(12)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="database">database<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="kafka">kafka<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="others">others<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="server">server<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="shiro">shiro<small>(5)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="redis">redis<small>(3)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="spring">spring<small>(9)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="tools">tools<small>(9)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="vue">vue<small>(9)</small></div>
+                
+            </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="80">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode === 13){return false;}">
+        <input id="local-search-input" class="search" type="text" placeholder="Search..." />
+        <i class="cross"></i>
+        <span>
+            <label for="tagswitch">Tags:</label>
+            <input id="tagswitch" type="checkbox" style="display: none" />
+            <i id="tagsWitchIcon"></i>
+        </span>
+    </form>
+    <div class="tags-list">
+    
+    <li class="article-tag-list-item">
+        <a class="color4">Digester</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">Rule</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">docker</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">centos</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">mysql</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">redis</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">javaScript</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">es5</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">es6</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">promise</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">Java</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">enum</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">thread</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">linux</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">centOS</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">man</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">vi</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">common-logging</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">log4j</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">factory</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">monitor</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">influxdb</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">singleton</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">kafka</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">zookeeper</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">uml</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">MyBatis</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">EAI</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">ERP</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">OA</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">CRM</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">jetty</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">servlet</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">shiro</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">Subject</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">SecurityManager</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">Realms</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">Authentication</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">Session</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">spring</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">security</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">auth2</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">quartz</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">cronTrigger</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">schedule</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">cron</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">session</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">Jekyll</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">blog</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">Jekyll-Bootstrap</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">git</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">github</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">gitLab</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">homebrew</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">tool</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">mac os</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">boot</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">maven</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">npm</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">nodeJs</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">yarn</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">Markdown</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">jquery</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">vue</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">axios</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">java</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">Map</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">HashMap</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">dtd</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">xml</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">Authorization</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">builder</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">proxy</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">adapter</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">decrator</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">facade</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">bridge</a>
+    </li>
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class="Digester "
+           href="/2015/01/16/digester/digester_rule/"
+           data-tag="Digester,Rule"
+           data-author="" >
+            <span class="post-title" title="Digester 规则介绍">Digester 规则介绍</span>
+            <span class="post-date" title="2015-01-16 12:13:34">2015/01/16</span>
+        </a>
+        
+        <a  class="docker "
+           href="/2016/09/08/docker/dockerInstallCentos/"
+           data-tag="docker,centos"
+           data-author="" >
+            <span class="post-title" title="CentOS Docker 安装">CentOS Docker 安装</span>
+            <span class="post-date" title="2016-09-08 18:30:14">2016/09/08</span>
+        </a>
+        
+        <a  class="docker "
+           href="/2016/09/13/docker/dockerInstallMysql/"
+           data-tag="docker,mysql"
+           data-author="" >
+            <span class="post-title" title="Docker 安装 MySql">Docker 安装 MySql</span>
+            <span class="post-date" title="2016-09-13 19:39:24">2016/09/13</span>
+        </a>
+        
+        <a  class="docker "
+           href="/2016/09/15/docker/dockerInstallNginx/"
+           data-tag="docker,redis"
+           data-author="" >
+            <span class="post-title" title="Docker 安装 Nginx">Docker 安装 Nginx</span>
+            <span class="post-date" title="2016-09-15 15:22:41">2016/09/15</span>
+        </a>
+        
+        <a  class="docker "
+           href="/2016/09/14/docker/dockerInstallRedis/"
+           data-tag="docker,redis"
+           data-author="" >
+            <span class="post-title" title="Docker 安装 Redis">Docker 安装 Redis</span>
+            <span class="post-date" title="2016-09-14 10:30:15">2016/09/14</span>
+        </a>
+        
+        <a  class="docker "
+           href="/2016/09/11/docker/dockerCommand/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="Docker 常用命令">Docker 常用命令</span>
+            <span class="post-date" title="2016-09-11 19:10:44">2016/09/11</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2016/06/18/js/es5_new/"
+           data-tag="javaScript,es5"
+           data-author="" >
+            <span class="post-title" title="es5 新语法">es5 新语法</span>
+            <span class="post-date" title="2016-06-18 15:41:37">2016/06/18</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2017/02/27/js/es6_new/"
+           data-tag="javaScript,es6"
+           data-author="" >
+            <span class="post-title" title="es6 新语法">es6 新语法</span>
+            <span class="post-date" title="2017-02-27 11:27:27">2017/02/27</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2018/01/16/js/js_arrow_functions/"
+           data-tag="javaScript,es6"
+           data-author="" >
+            <span class="post-title" title="js 之 箭头函数">js 之 箭头函数</span>
+            <span class="post-date" title="2018-01-16 13:05:35">2018/01/16</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2018/01/16/js/js_export/"
+           data-tag="javaScript,es6"
+           data-author="" >
+            <span class="post-title" title="js 之 exprot 语法">js 之 exprot 语法</span>
+            <span class="post-date" title="2018-01-16 13:05:35">2018/01/16</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2018/06/22/js/js_promise/"
+           data-tag="javaScript,promise"
+           data-author="" >
+            <span class="post-title" title="js 标准内置对象之 Promise (控制抽象对象)">js 标准内置对象之 Promise (控制抽象对象)</span>
+            <span class="post-date" title="2018-06-22 11:42:51">2018/06/22</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2018/01/16/js/js_import/"
+           data-tag="javaScript,es6"
+           data-author="" >
+            <span class="post-title" title="js 之 import 语法">js 之 import 语法</span>
+            <span class="post-date" title="2018-01-16 12:27:27">2018/01/16</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2018/01/16/js/js_rest_parameters/"
+           data-tag="javaScript,es6"
+           data-author="" >
+            <span class="post-title" title="js 之 ... 剩余参数">js 之 ... 剩余参数</span>
+            <span class="post-date" title="2018-01-16 14:15:35">2018/01/16</span>
+        </a>
+        
+        <a  class="javacore "
+           href="/2011/06/27/javacore/enum/"
+           data-tag="Java,enum"
+           data-author="" >
+            <span class="post-title" title="Java enum 的用法详解">Java enum 的用法详解</span>
+            <span class="post-date" title="2011-06-27 22:03:19">2011/06/27</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2018/01/16/js/js_destructuring_assignment/"
+           data-tag="javaScript,es6"
+           data-author="" >
+            <span class="post-title" title="js 之 解构赋值">js 之 解构赋值</span>
+            <span class="post-date" title="2018-01-16 14:15:35">2018/01/16</span>
+        </a>
+        
+        <a  class="javacore "
+           href="/2011/05/16/javacore/thread/"
+           data-tag="Java,thread"
+           data-author="" >
+            <span class="post-title" title="Java thread类的用法详解">Java thread类的用法详解</span>
+            <span class="post-date" title="2011-05-16 21:43:29">2011/05/16</span>
+        </a>
+        
+        <a  class="linux "
+           href="/2019/05/09/linux/install_man_CN/"
+           data-tag="linux,centOS,man"
+           data-author="" >
+            <span class="post-title" title="centOS7 安装man中文手册">centOS7 安装man中文手册</span>
+            <span class="post-date" title="2019-05-09 18:21:05">2019/05/09</span>
+        </a>
+        
+        <a  class="linux "
+           href="/2010/03/09/linux/linux_firewall/"
+           data-tag="linux"
+           data-author="" >
+            <span class="post-title" title="linux 防火墙管理">linux 防火墙管理</span>
+            <span class="post-date" title="2010-03-09 10:12:45">2010/03/09</span>
+        </a>
+        
+        <a  class="javacore "
+           href="/2015/10/17/javacore/javabean/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Java bean 的一些专用名词解释">Java bean 的一些专用名词解释</span>
+            <span class="post-date" title="2015-10-17 21:13:11">2015/10/17</span>
+        </a>
+        
+        <a  class="linux "
+           href="/2010/10/07/linux/linux_vi/"
+           data-tag="linux,vi"
+           data-author="" >
+            <span class="post-title" title="Linux VI 命令详解">Linux VI 命令详解</span>
+            <span class="post-date" title="2010-10-07 16:41:24">2010/10/07</span>
+        </a>
+        
+        <a  class="log "
+           href="/2010/05/13/log/common-logging/"
+           data-tag="common-logging,log4j"
+           data-author="" >
+            <span class="post-title" title="commons-logging 和 log4j 之间的关系">commons-logging 和 log4j 之间的关系</span>
+            <span class="post-date" title="2010-05-13 18:31:54">2010/05/13</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/02/27/patterns/factoryMethod/"
+           data-tag="factory"
+           data-author="" >
+            <span class="post-title" title="工厂方法模式">工厂方法模式</span>
+            <span class="post-date" title="2015-02-27 21:43:11">2015/02/27</span>
+        </a>
+        
+        <a  class="database "
+           href="/2018/07/11/monitor/influxdb/"
+           data-tag="monitor,influxdb"
+           data-author="" >
+            <span class="post-title" title="influxDB 入门指南">influxDB 入门指南</span>
+            <span class="post-date" title="2018-07-11 10:03:27">2018/07/11</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/02/27/patterns/prototype/"
+           data-tag="factory"
+           data-author="" >
+            <span class="post-title" title="原型模式">原型模式</span>
+            <span class="post-date" title="2015-02-27 21:43:11">2015/02/27</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/02/28/patterns/builder/"
+           data-tag="builder"
+           data-author="" >
+            <span class="post-title" title="建造者模式">建造者模式</span>
+            <span class="post-date" title="2015-02-28 11:13:12">2015/02/28</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/02/27/patterns/simpleFactory/"
+           data-tag="factory"
+           data-author="" >
+            <span class="post-title" title="简单工厂模式">简单工厂模式</span>
+            <span class="post-date" title="2015-02-27 18:22:54">2015/02/27</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/02/27/patterns/singleton/"
+           data-tag="singleton"
+           data-author="" >
+            <span class="post-title" title="单例模式">单例模式</span>
+            <span class="post-date" title="2015-02-27 21:43:11">2015/02/27</span>
+        </a>
+        
+        <a  class="kafka "
+           href="/2017/07/17/kafka/kafka/"
+           data-tag="kafka,zookeeper"
+           data-author="" >
+            <span class="post-title" title="kafka 入门指南">kafka 入门指南</span>
+            <span class="post-date" title="2017-07-17 12:53:09">2017/07/17</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/02/27/patterns/uml/"
+           data-tag="uml"
+           data-author="" >
+            <span class="post-title" title="UML类图">UML类图</span>
+            <span class="post-date" title="2015-02-27 20:53:21">2015/02/27</span>
+        </a>
+        
+        <a  class="javacore "
+           href="/2015/05/18/mybatis/mybatis_special_char/"
+           data-tag="MyBatis"
+           data-author="" >
+            <span class="post-title" title="MyBatis 转义字符处理">MyBatis 转义字符处理</span>
+            <span class="post-date" title="2015-05-18 11:13:19">2015/05/18</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/02/28/patterns/abstractFactory/"
+           data-tag="factory"
+           data-author="" >
+            <span class="post-title" title="抽象工厂模式">抽象工厂模式</span>
+            <span class="post-date" title="2015-02-28 20:04:59">2015/02/28</span>
+        </a>
+        
+        <a  class="others "
+           href="/2015/01/27/others/eai/"
+           data-tag="EAI,ERP,OA,CRM"
+           data-author="" >
+            <span class="post-title" title="EAI简介">EAI简介</span>
+            <span class="post-date" title="2015-01-27 20:53:21">2015/01/27</span>
+        </a>
+        
+        <a  class="linux "
+           href="/2010/05/09/linux/linux_version/"
+           data-tag="linux"
+           data-author="" >
+            <span class="post-title" title="linux 查看版本">linux 查看版本</span>
+            <span class="post-date" title="2010-05-09 13:11:45">2010/05/09</span>
+        </a>
+        
+        <a  class="server "
+           href="/2010/12/10/server/jetty/"
+           data-tag="jetty,servlet"
+           data-author="" >
+            <span class="post-title" title="Jetty 嵌入式开发">Jetty 嵌入式开发</span>
+            <span class="post-date" title="2010-12-10 11:25:11">2010/12/10</span>
+        </a>
+        
+        <a  class="shiro "
+           href="/2010/12/15/shiro/shiro_01/"
+           data-tag="shiro,Subject,SecurityManager,Realms"
+           data-author="" >
+            <span class="post-title" title="Shiro 第一章 简介">Shiro 第一章 简介</span>
+            <span class="post-date" title="2010-12-15 12:25:17">2010/12/15</span>
+        </a>
+        
+        <a  class="redis "
+           href="/2010/07/24/redis/redis_string/"
+           data-tag="redis"
+           data-author="" >
+            <span class="post-title" title="redis入门之Strings数据类型(二)">redis入门之Strings数据类型(二)</span>
+            <span class="post-date" title="2010-07-24 23:45:41">2010/07/24</span>
+        </a>
+        
+        <a  class="redis "
+           href="/2010/07/24/redis/redis/"
+           data-tag="redis"
+           data-author="" >
+            <span class="post-title" title="redis入门之介绍和安装篇(一)">redis入门之介绍和安装篇(一)</span>
+            <span class="post-date" title="2010-07-24 10:15:45">2010/07/24</span>
+        </a>
+        
+        <a  class="shiro "
+           href="/2010/12/16/shiro/shiro_02/"
+           data-tag="shiro,Subject,SecurityManager,Realms,Authentication"
+           data-author="" >
+            <span class="post-title" title="Shiro 第二章 身份认证">Shiro 第二章 身份认证</span>
+            <span class="post-date" title="2010-12-16 16:05:29">2010/12/16</span>
+        </a>
+        
+        <a  class="redis "
+           href="/2010/07/28/redis/redis_hash/"
+           data-tag="redis"
+           data-author="" >
+            <span class="post-title" title="redis入门之hashes数据类型(三)">redis入门之hashes数据类型(三)</span>
+            <span class="post-date" title="2010-07-28 21:11:47">2010/07/28</span>
+        </a>
+        
+        <a  class="shiro "
+           href="/2010/12/18/shiro/shiro_04/"
+           data-tag="shiro,SecurityManager,Realms"
+           data-author="" >
+            <span class="post-title" title="Shiro 第四章 Realms">Shiro 第四章 Realms</span>
+            <span class="post-date" title="2010-12-18 09:41:09">2010/12/18</span>
+        </a>
+        
+        <a  class="shiro "
+           href="/2010/12/20/shiro/shiro_05/"
+           data-tag="shiro,SecurityManager,Session"
+           data-author="" >
+            <span class="post-title" title="Shiro 第五章 Session Management">Shiro 第五章 Session Management</span>
+            <span class="post-date" title="2010-12-20 19:31:58">2010/12/20</span>
+        </a>
+        
+        <a  class="spring "
+           href="/2011/06/15/spring/oauth2.0/"
+           data-tag="spring,security,auth2"
+           data-author="" >
+            <span class="post-title" title="Spring oauth2 相关概念解释">Spring oauth2 相关概念解释</span>
+            <span class="post-date" title="2011-06-15 10:21:20">2011/06/15</span>
+        </a>
+        
+        <a  class="spring "
+           href="/2011/01/10/spring/cron_trigger/"
+           data-tag="spring,quartz,cronTrigger,schedule"
+           data-author="" >
+            <span class="post-title" title="cron 表达式">cron 表达式</span>
+            <span class="post-date" title="2011-01-10 21:49:39">2011/01/10</span>
+        </a>
+        
+        <a  class="spring "
+           href="/2011/01/09/spring/quartz/"
+           data-tag="spring,quartz,cron"
+           data-author="" >
+            <span class="post-title" title="quartz整合spring用法详解">quartz整合spring用法详解</span>
+            <span class="post-date" title="2011-01-09 19:49:39">2011/01/09</span>
+        </a>
+        
+        <a  class="spring "
+           href="/2018/04/11/spring/sping%20security%20reference/"
+           data-tag="spring,security"
+           data-author="" >
+            <span class="post-title" title="Spring Security 参考指南">Spring Security 参考指南</span>
+            <span class="post-date" title="2018-04-11 22:09:21">2018/04/11</span>
+        </a>
+        
+        <a  class="spring "
+           href="/2011/06/12/spring/spring%20security/"
+           data-tag="spring,security,auth2"
+           data-author="" >
+            <span class="post-title" title="Spring Security 中涉及到的核心类介绍">Spring Security 中涉及到的核心类介绍</span>
+            <span class="post-date" title="2011-06-12 12:59:20">2011/06/12</span>
+        </a>
+        
+        <a  class="spring "
+           href="/2011/04/16/spring/spring%20session/"
+           data-tag="redis,spring,session"
+           data-author="" >
+            <span class="post-title" title="spring session 相关代码详解">spring session 相关代码详解</span>
+            <span class="post-date" title="2011-04-16 20:41:20">2011/04/16</span>
+        </a>
+        
+        <a  class="tools "
+           href="/2010/04/17/tools/blog01/"
+           data-tag="Jekyll,blog"
+           data-author="" >
+            <span class="post-title" title="怎么写自己的博客">怎么写自己的博客</span>
+            <span class="post-date" title="2010-04-17 12:13:29">2010/04/17</span>
+        </a>
+        
+        <a  class="tools "
+           href="/2010/04/18/tools/blog02/"
+           data-tag="Jekyll,blog,Jekyll-Bootstrap"
+           data-author="" >
+            <span class="post-title" title="采用Jekyll “增强版” 写博客">采用Jekyll “增强版” 写博客</span>
+            <span class="post-date" title="2010-04-18 10:23:39">2010/04/18</span>
+        </a>
+        
+        <a  class="tools "
+           href="/2012/03/08/tools/git_command/"
+           data-tag="git,github,gitLab"
+           data-author="" >
+            <span class="post-title" title="git 命令手册">git 命令手册</span>
+            <span class="post-date" title="2012-03-08 14:25:31">2012/03/08</span>
+        </a>
+        
+        <a  class="tools "
+           href="/2015/06/07/tools/homebrew/"
+           data-tag="homebrew,tool,mac os"
+           data-author="" >
+            <span class="post-title" title="Homebrew Mac OS 系统软件包管理利器">Homebrew Mac OS 系统软件包管理利器</span>
+            <span class="post-date" title="2015-06-07 22:13:29">2015/06/07</span>
+        </a>
+        
+        <a  class="spring "
+           href="/2018/01/11/spring/sping%20boot%20reference%20guide/"
+           data-tag="spring,boot"
+           data-author="" >
+            <span class="post-title" title="Spring Boot 参考指南">Spring Boot 参考指南</span>
+            <span class="post-date" title="2018-01-11 20:29:20">2018/01/11</span>
+        </a>
+        
+        <a  class="tools "
+           href="/2010/05/18/tools/maven01/"
+           data-tag="maven"
+           data-author="" >
+            <span class="post-title" title="maven的安装与配置">maven的安装与配置</span>
+            <span class="post-date" title="2010-05-18 10:25:01">2010/05/18</span>
+        </a>
+        
+        <a  class="tools "
+           href="/2017/02/12/tools/npm/"
+           data-tag="tool,npm,nodeJs"
+           data-author="" >
+            <span class="post-title" title="npm 包管理工具">npm 包管理工具</span>
+            <span class="post-date" title="2017-02-12 20:13:39">2017/02/12</span>
+        </a>
+        
+        <a  class="tools "
+           href="/2010/05/18/tools/maven02/"
+           data-tag="maven"
+           data-author="" >
+            <span class="post-title" title="maven的入门">maven的入门</span>
+            <span class="post-date" title="2010-05-18 22:25:01">2010/05/18</span>
+        </a>
+        
+        <a  class="tools "
+           href="/2017/11/27/tools/yarn/"
+           data-tag="tool,nodeJs,yarn"
+           data-author="" >
+            <span class="post-title" title="Yarn 依赖管理工具">Yarn 依赖管理工具</span>
+            <span class="post-date" title="2017-11-27 12:43:59">2017/11/27</span>
+        </a>
+        
+        <a  class="tools "
+           href="/2010/04/25/tools/markdown/"
+           data-tag="blog,Markdown"
+           data-author="" >
+            <span class="post-title" title="Markdown 语法说明">Markdown 语法说明</span>
+            <span class="post-date" title="2010-04-25 12:08:20">2010/04/25</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2010/09/27/js/jquery/jueryPlugin/"
+           data-tag="javaScript,jquery"
+           data-author="" >
+            <span class="post-title" title="JQuery开发插件的机种方式讨论">JQuery开发插件的机种方式讨论</span>
+            <span class="post-date" title="2010-09-27 20:43:44">2010/09/27</span>
+        </a>
+        
+        <a  class="vue "
+           href="/2017/12/17/js/vue/vueLifeCycle/"
+           data-tag="npm,nodeJs,yarn,vue"
+           data-author="" >
+            <span class="post-title" title="vue 实例的生命周期">vue 实例的生命周期</span>
+            <span class="post-date" title="2017-12-17 11:04:11">2017/12/17</span>
+        </a>
+        
+        <a  class="vue "
+           href="/2017/12/17/js/vue/vueMethods/"
+           data-tag="npm,nodeJs,yarn,vue"
+           data-author="" >
+            <span class="post-title" title="vue 实例属性之 methods">vue 实例属性之 methods</span>
+            <span class="post-date" title="2017-12-17 15:13:21">2017/12/17</span>
+        </a>
+        
+        <a  class="vue "
+           href="/2017/12/17/js/vue/vueHook/"
+           data-tag="npm,nodeJs,yarn,vue"
+           data-author="" >
+            <span class="post-title" title="vue 实例生命周期钩子">vue 实例生命周期钩子</span>
+            <span class="post-date" title="2017-12-17 12:41:21">2017/12/17</span>
+        </a>
+        
+        <a  class="vue "
+           href="/2017/12/17/js/vue/vueProps/"
+           data-tag="npm,nodeJs,yarn,vue"
+           data-author="" >
+            <span class="post-title" title="vue 实例属性之 props">vue 实例属性之 props</span>
+            <span class="post-date" title="2017-12-17 14:53:31">2017/12/17</span>
+        </a>
+        
+        <a  class="vue "
+           href="/2017/12/17/js/vue/vuePropsData/"
+           data-tag="npm,nodeJs,yarn,vue"
+           data-author="" >
+            <span class="post-title" title="vue 实例属性之 propsData">vue 实例属性之 propsData</span>
+            <span class="post-date" title="2017-12-17 15:13:21">2017/12/17</span>
+        </a>
+        
+        <a  class="vue "
+           href="/2017/12/17/js/vue/vueStart/"
+           data-tag="npm,nodeJs,yarn,vue"
+           data-author="" >
+            <span class="post-title" title="vue 入门">vue 入门</span>
+            <span class="post-date" title="2017-12-17 10:03:41">2017/12/17</span>
+        </a>
+        
+        <a  class="vue "
+           href="/2017/12/17/js/vue/vueWatch/"
+           data-tag="npm,nodeJs,yarn,vue"
+           data-author="" >
+            <span class="post-title" title="vue 实例属性之 watch">vue 实例属性之 watch</span>
+            <span class="post-date" title="2017-12-17 15:13:21">2017/12/17</span>
+        </a>
+        
+        <a  class="vue "
+           href="/2017/12/17/js/vue/vueComputed/"
+           data-tag="npm,nodeJs,yarn,vue"
+           data-author="" >
+            <span class="post-title" title="vue 实例属性之 computed">vue 实例属性之 computed</span>
+            <span class="post-date" title="2017-12-17 15:13:21">2017/12/17</span>
+        </a>
+        
+        <a  class="vue "
+           href="/2017/12/17/js/vue/vueData/"
+           data-tag="npm,nodeJs,yarn,vue"
+           data-author="" >
+            <span class="post-title" title="vue 实例属性之 data">vue 实例属性之 data</span>
+            <span class="post-date" title="2017-12-17 14:57:15">2017/12/17</span>
+        </a>
+        
+        <a  class="Digester "
+           href="/2015/01/15/digester/digester/"
+           data-tag="Digester,Rule"
+           data-author="" >
+            <span class="post-title" title="Digester框架简介">Digester框架简介</span>
+            <span class="post-date" title="2015-01-15 22:53:21">2015/01/15</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2018/10/12/js/js_axios/"
+           data-tag="javaScript,axios"
+           data-author="" >
+            <span class="post-title" title="axios 中文文档">axios 中文文档</span>
+            <span class="post-date" title="2018-10-12 10:12:21">2018/10/12</span>
+        </a>
+        
+        <a  class="javacore "
+           href="/2011/06/29/javacore/hashMap/"
+           data-tag="java,Map,HashMap"
+           data-author="" >
+            <span class="post-title" title="HashMap实现原理解析">HashMap实现原理解析</span>
+            <span class="post-date" title="2011-06-29 12:53:49">2011/06/29</span>
+        </a>
+        
+        <a  class="log "
+           href="/2010/05/14/log/log4j-config/"
+           data-tag="log4j"
+           data-author="" >
+            <span class="post-title" title="log4j.properties配置详解">log4j.properties配置详解</span>
+            <span class="post-date" title="2010-05-14 20:55:08">2010/05/14</span>
+        </a>
+        
+        <a  class="others "
+           href="/2011/01/14/others/dtd/"
+           data-tag="dtd,xml"
+           data-author="" >
+            <span class="post-title" title="DTD文档类型定义简介">DTD文档类型定义简介</span>
+            <span class="post-date" title="2011-01-14 17:11:16">2011/01/14</span>
+        </a>
+        
+        <a  class="shiro "
+           href="/2010/12/17/shiro/shiro_03/"
+           data-tag="shiro,SecurityManager,Realms,Authentication,Authorization"
+           data-author="" >
+            <span class="post-title" title="Shiro 第三章 身份授权">Shiro 第三章 身份授权</span>
+            <span class="post-date" title="2010-12-17 19:02:22">2010/12/17</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/03/01/patterns/proxy/"
+           data-tag="proxy"
+           data-author="" >
+            <span class="post-title" title="代理模式">代理模式</span>
+            <span class="post-date" title="2015-03-01 08:13:34">2015/03/01</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/03/02/patterns/adapter/"
+           data-tag="adapter"
+           data-author="" >
+            <span class="post-title" title="适配器模式">适配器模式</span>
+            <span class="post-date" title="2015-03-02 09:43:14">2015/03/02</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/03/02/patterns/decrator/"
+           data-tag="decrator"
+           data-author="" >
+            <span class="post-title" title="装饰器模式">装饰器模式</span>
+            <span class="post-date" title="2015-03-02 10:23:02">2015/03/02</span>
+        </a>
+        
+        <a  class="spring "
+           href="/2018/05/18/spring/spring_session_api/"
+           data-tag="spring,session"
+           data-author="" >
+            <span class="post-title" title="《Spring Session 中文手册》 之 第九章 API 文档">《Spring Session 中文手册》 之 第九章 API 文档</span>
+            <span class="post-date" title="2018-05-18 12:15:12">2018/05/18</span>
+        </a>
+        
+        <a  class="spring "
+           href="/2018/05/18/spring/spring_session_redis/"
+           data-tag="spring,session"
+           data-author="" >
+            <span class="post-title" title="Spring Session 之 Redis 实现">Spring Session 之 Redis 实现</span>
+            <span class="post-date" title="2018-05-18 12:15:12">2018/05/18</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/03/02/patterns/facade/"
+           data-tag="facade"
+           data-author="" >
+            <span class="post-title" title="外观(门面)模式">外观(门面)模式</span>
+            <span class="post-date" title="2015-03-02 11:33:56">2015/03/02</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/03/02/patterns/bridge/"
+           data-tag="bridge"
+           data-author="" >
+            <span class="post-title" title="桥接模式">桥接模式</span>
+            <span class="post-date" title="2015-03-02 14:13:02">2015/03/02</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-shiro/shiro_03" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Shiro 第三章 身份授权</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+                <a  data-rel="shiro">shiro</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a class="color1">shiro</a>
+            
+            <a class="color1">SecurityManager</a>
+            
+            <a class="color2">Realms</a>
+            
+            <a class="color5">Authentication</a>
+            
+            <a class="color4">Authorization</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2020-03-20 14:27:43'>2010-12-17 19:02</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%8E%88%E6%9D%83%EF%BC%9A"><span class="toc-text">1.授权：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%8E%88%E6%9D%83%E7%9A%84%E8%A6%81%E7%B4%A0%EF%BC%9A"><span class="toc-text">2.授权的要素：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%9D%83%E9%99%90%E7%B2%92%E5%BA%A6"><span class="toc-text">3.权限粒度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E8%A7%92%E8%89%B2"><span class="toc-text">4.角色</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Users-%E7%94%A8%E6%88%B7"><span class="toc-text">5.Users(用户)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-Authorizing-Subjects-%E6%8E%88%E6%9D%83%E7%9A%84-Subjects"><span class="toc-text">6.Authorizing Subjects(授权的 Subjects)</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Programmatic-Authorization-%E7%BC%96%E7%A8%8B%E6%8E%88%E6%9D%83"><span class="toc-text">Programmatic Authorization(编程授权)</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Role-Based-Authorization-%E5%9F%BA%E4%BA%8E%E8%A7%92%E8%89%B2%E7%9A%84%E6%8E%88%E6%9D%83"><span class="toc-text">Role-Based Authorization(基于角色的授权)</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#1-Role-checks-%E8%A7%92%E8%89%B2%E6%A3%80%E6%9F%A5"><span class="toc-text">(1)Role checks(角色检查)</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-Role-Assertions-%E8%A7%92%E8%89%B2%E6%96%AD%E8%A8%80"><span class="toc-text">(2)Role Assertions(角色断言)</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Permission-Based-Authorization-%E5%9F%BA%E4%BA%8E%E6%9D%83%E9%99%90%E7%9A%84%E6%8E%88%E6%9D%83"><span class="toc-text">Permission-Based Authorization(基于权限的授权)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-Annotation-based-Authorization-%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84%E6%8E%88%E6%9D%83"><span class="toc-text">7.Annotation-based Authorization(基于注解的授权)</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-The-RequiresAuthentication-annotation-RequiresAuthentication-%E6%B3%A8%E8%A7%A3"><span class="toc-text">(1)The RequiresAuthentication annotation(RequiresAuthentication 注解)</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-The-RequiresGuest-annotation-RequiresGuest-%E6%B3%A8%E8%A7%A3"><span class="toc-text">(2)The RequiresGuest annotation(RequiresGuest 注解)</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-The-RequiresPermissions-annotation-RequiresPermissions-%E6%B3%A8%E8%A7%A3"><span class="toc-text">(3)The RequiresPermissions annotation(RequiresPermissions 注解)</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-JSP-TagLib-Authorization-JSP-TagLib-%E6%8E%88%E6%9D%83"><span class="toc-text">8.JSP TagLib Authorization(JSP TagLib 授权)</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-Authorization-Sequence-%E6%8E%88%E6%9D%83%E9%A1%BA%E5%BA%8F"><span class="toc-text">9.Authorization Sequence(授权顺序)</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#ModularRealmAuthorizer"><span class="toc-text">ModularRealmAuthorizer</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Realm-Authorization-Order-Realm-%E7%9A%84%E6%8E%88%E6%9D%83%E9%A1%BA%E5%BA%8F"><span class="toc-text">Realm Authorization Order(Realm 的授权顺序)</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Configuring-a-global-PermissionResolver-%E9%85%8D%E7%BD%AE%E5%85%A8%E5%B1%80%E7%9A%84-PermissionResolver"><span class="toc-text">Configuring a global PermissionResolver(配置全局的 PermissionResolver)</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#PermissionResolverAware"><span class="toc-text">PermissionResolverAware</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Configuring-a-global-RolePermissionResolver-%E9%85%8D%E7%BD%AE%E5%85%A8%E5%B1%80%E7%9A%84-RolePermissionResolver"><span class="toc-text">Configuring a global RolePermissionResolver(配置全局的 RolePermissionResolver)</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#RolePermissionResolverAware"><span class="toc-text">RolePermissionResolverAware</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Custom-Authorizer-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%88%E6%9D%83%E8%80%85"><span class="toc-text">Custom Authorizer(自定义授权者)</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-授权："><a href="#1-授权：" class="headerlink" title="1.授权："></a>1.授权：</h4><p>授权,又称作为访问控制,是对资源的访问管理的过程。换句话说,控制谁有权限在应用程序中做什么。<br>授权检查的例子是:该用户是否被允许访问这个网页,编辑此数据,查看此按钮,或打印到这台打印机?这些都是 决定哪些是用户能够访问的。</p>
+<h4 id="2-授权的要素："><a href="#2-授权的要素：" class="headerlink" title="2.授权的要素："></a>2.授权的要素：</h4><p>Apache Shiro 中的权限代表着安全政策中最基础的元素。它们从根本上作出了对行为的声明,并明确表示可以在应 用程序中做什么。一个格式良好的权限声明基本上描述了资源以及当 Subject 与这些资源进行交互时可能出现的行 为。<br>权限语句的一些例子:</p>
+<ul>
+<li>打开一个文件;</li>
+<li>查看’/user/list’网页;</li>
+<li>打印文档;</li>
+<li>删除用户’jsmith’。</li>
+</ul>
+<p>大多数资源将支持典型的 CRUD(创建,读取,更新,删除)操作,但任何对特定资源有意义的行为都是可以的。<br>基本的概念是,最小的许可声明是基于资源和行为的。<br>在查看权限时,最重要的可能是认识到许可声明没有谁可以执行代表行为的表现形式。<br>它们仅仅只是在一个应用程 序中能做什么的声明语句。</p>
+<h4 id="3-权限粒度"><a href="#3-权限粒度" class="headerlink" title="3.权限粒度"></a>3.权限粒度</h4><p>以上所有权限例子详细说明了在某一资源类型(入口,文件,客户等等)的行为(打开,阅读,删除等等)。<br>在某些情况下,它们甚至可以指定非常细粒度的实例级的行为——例如,“删除”(行为)用户名为”jsm”的“用户” (资源类型)。                 在 Shiro,你有能力来定义这些声明能够达到的精确粒度。</p>
+<h4 id="4-角色"><a href="#4-角色" class="headerlink" title="4.角色"></a>4.角色</h4><p>角色是一个命名的实体,通常代表一组行为或职责。这些行为演化为你在一个软件应用中能或者不能做的事情。角色通常是分配给用户帐户的,因此,通过分配,用户能够“做”的事情可以归属于各种角色。 </p>
+<p>有两种有效类型的角色,并且 Shiro 支持这两个概念:  </p>
+<ul>
+<li><p>隐式角色:大多数人使用的角色作为一个隐式的构造:你的应用程序仅仅基于一个角色名就蕴含了一组行为 (也就是权限)。有了隐式角色,在软件级别上没有说“角色 X 被允许执行行为 A,B 和 C”。行为已被一个单独的名字所蕴含。</p>
+</li>
+<li><p>显式角色:一个显式角色本质上是一个实际许可声明的命名集合。在这种形式下,应用程序(以及 Shiro)确 切地知道有没有一个特定的角色意味着什么。因为它是已知能不能够被执行的确切行为,没有猜测或暗示一 个特定的角色能或不能做什么。</p>
+</li>
+</ul>
+<p>Shiro 团队提倡使用权限和显式角色,而不是陈旧的隐式方法。你将会拥有更多的控制应用程序的安全经验。</p>
+<pre><code>Resource-Based Access Control(基于资源的访问控制) 新的RBAC:基于资源的访问控制, 其中包括深入使用权限和显式角色(以及它们在源代码上产生的积极影响)而不是陈旧的隐式方法的好处。
+</code></pre>
+<h4 id="5-Users-用户"><a href="#5-Users-用户" class="headerlink" title="5.Users(用户)"></a>5.Users(用户)</h4><p>用户实质上是指与应用程序有关的人。然而正如我们已经讨论的,Subject 才是 Shiro 的“用户”概念。<br>允许用户(Subjects)在你的应用程序中执行某些操作,是通过与他们的角色相关联或授予直接的权限。你的应用 程序的数据模型定义了 Subject 是如何被允许做某事或不的。</p>
+<p>例如,在你的数据模型中,也许你有一个实际的 User 类,而且你直接分配权限给 User 实例。或者,你也许只分配 权限给角色,然后分配角色给用户,通过关联,用户延伸“有”的权限分配给自己的角色。或者你用”Group”的概 念来代替这些东西。这些都随便你——使用什么使得你的程序有意义。 你的数据模型定义授权究竟是如和工作的。Shiro 依靠 Realm 来实现转换你的数据模型使其细节关联到一种 Shiro 能 够理解的格式。</p>
+<h4 id="6-Authorizing-Subjects-授权的-Subjects"><a href="#6-Authorizing-Subjects-授权的-Subjects" class="headerlink" title="6.Authorizing Subjects(授权的 Subjects)"></a>6.Authorizing Subjects(授权的 Subjects)</h4><p>在 Shiro 中执行授权可以有 3 种方式:</p>
+<ul>
+<li>编写代码——你可以在你的 Java 代码中用像 if 和 else 块的结构执行授权检查。</li>
+<li>JDK 的注解——你可以添加授权注解给你的 Java 方法。</li>
+<li>JSP/GSP 标签库——你可以控制基于角色和权限的 JSP 或者 GSP 页面输出。</li>
+</ul>
+<h6 id="Programmatic-Authorization-编程授权"><a href="#Programmatic-Authorization-编程授权" class="headerlink" title="Programmatic Authorization(编程授权)"></a>Programmatic Authorization(编程授权)</h6><p>也许最简单和最常见的方式来执行授权是直接以编程方式与当前 Subject 实例交互。 </p>
+<h6 id="Role-Based-Authorization-基于角色的授权"><a href="#Role-Based-Authorization-基于角色的授权" class="headerlink" title="Role-Based Authorization(基于角色的授权)"></a>Role-Based Authorization(基于角色的授权)</h6><p>如果你想进行基于简单/传统的隐式角色名来控制访问,你可以执行角色检查:</p>
+<h6 id="1-Role-checks-角色检查"><a href="#1-Role-checks-角色检查" class="headerlink" title="(1)Role checks(角色检查)"></a>(1)Role checks(角色检查)</h6><p>如果你只是简单的想检查当前的 Subject 是否拥有一个角色,你可以在 Subject 实例上调用变体的 hasRole*方法。 例如,判断一个 Subject 是否拥有一个特别的(单一的)角色,你可以通过调用 subject.hasRole 方法,并作出相应的反应:</p>
+<table>
+<thead>
+<tr>
+<th>Subject 方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>hasRole(String roleName)</td>
+<td>返回 true 如果 Subject 被分配了指定的角色,否则返回 false。</td>
+</tr>
+<tr>
+<td>hasRole(List&lt;String&gt; roleNames)</td>
+<td>返回 true 如果 Subject 被分配了所有指定的角色,否则返回 false。</td>
+</tr>
+<tr>
+<td>hasAllRoles(Collection&lt;String&gt; roleNames)</td>
+<td>返回一个与方法参数中目录一致的 hasRole 结果的数组。有性能的提高如果许多角 色需要执行检查(例如,当自定义一个复杂的视图)。</td>
+</tr>
+</tbody></table>
+<h6 id="2-Role-Assertions-角色断言"><a href="#2-Role-Assertions-角色断言" class="headerlink" title="(2)Role Assertions(角色断言)"></a>(2)Role Assertions(角色断言)</h6><p>另一种方法通过检查布尔值来判断 Subject 是否拥有一个角色,你可以简单地断言它们有一个预期的角色在逻辑被 执行之前。如果 Subject 没有预期的角色,AuthorizationException 将会被抛出。如果它们有预期的角色,断言将悄悄 地执行,并且逻辑将如预期般继续。</p>
+<table>
+<thead>
+<tr>
+<th>Subject 方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>checkRole(String roleName)</td>
+<td>安静地返回,如果 Subject 被分配了指定的角色,不然的话就抛出AuthorizationException。</td>
+</tr>
+<tr>
+<td>checkRoles(Collection&lt;String&gt; roleNames)</td>
+<td>安静地返回,如果 Subject 被分配了所有的指定的角色,不然的话就抛出 AuthorizationException。</td>
+</tr>
+<tr>
+<td>checkRoles(String… roleNames)</td>
+<td>与上面的 checkRoles 方法的效果相同,但允许 Java5 的 var-args 类型的参数。</td>
+</tr>
+</tbody></table>
+<h5 id="Permission-Based-Authorization-基于权限的授权"><a href="#Permission-Based-Authorization-基于权限的授权" class="headerlink" title="Permission-Based Authorization(基于权限的授权)"></a>Permission-Based Authorization(基于权限的授权)</h5><p>基于权限的授权,由于 它与你的应用程序的原始功能(以及应用程序核心资源上的行为)紧密的关联在一起的,基于权限的授权源代码会 在你的功能改变时改变,而不是在安全政策改变时改变。</p>
+<p><em>Permission Checks(权限检查)</em><br>如果你想进行检查,看一个 Subject 是否被允许做某事,你可以调用各种 isPermitted*方法的变种。检查权限主要有 两个方式——基于对象的权限实例或代表权限的字符串。</p>
+<p>####### (1)Object-based Permission Checks(基于对象的权限检查)<br>执行权限检查的一个可行方法是实例化 org.apache.shiro.authz.Permission 接口的一个实例,并把它传递给接收权限 实例的*isPermitted 方法。</p>
+<p>基于对象的权限是很有用的,如果:</p>
+<pre><code>* 你想编译时类型安全
+* 你想保证权限被描述和使用是正确的
+* 你想显式控制许可解析逻辑(被称作许可蕴含的逻辑,基于权限接口的 implies 方法)是如何执行的。
+* 你想保证权限反映到应用程序资源是准确的(例如,也许权限类可以在能够基于项目的域模型的项目编译时 自动生成)。
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Subject 方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>isPermitted(Permission p)</td>
+<td>返回 true 如果该 Subject 被允许执行某动作或访问被权限实例指定的资源集 合,否则返回 false。</td>
+</tr>
+<tr>
+<td>isPermitted(List&lt;Permission&gt; perms)</td>
+<td>返回一个与方法参数中目录一致的 isPermitted 结果的数组。有性能的提高如 果需要执行许多检查(例如,当自定义一个复杂的视图)。</td>
+</tr>
+<tr>
+<td>isPermittedAll(Collection&lt;Permission&gt; perms)</td>
+<td>返回 true 如果该 Subject 被允许所有指定的权限,否则返回 false。</td>
+</tr>
+</tbody></table>
+<p>####### (2)String-based permission checks(基于字符串的权限检查)<br>基于对象的权限可以是很有用的(编译时类型安全,保证行为,定制蕴含逻辑等),它们有时对应用程序来说会感 到有点“笨手笨脚”的。另一种方法是使用正常的字符串来表示权限实例。</p>
+<pre><code>Subject currentUser = SecurityUtils.getSubject();
+if (currentUser.isPermitted(&quot;printer:print:laserjet4400n&quot;)) &#123; 
+    //show the Print button
+&#125; else &#123;
+    //don&#39;t show the button? Grey it out?
+&#125;
+</code></pre>
+<p>一个特殊冒号分隔的格式,它由 Shiro 默认的 org.apache.shiro.authz.permission.WildcardPermission 实现来定义,其中大多数人会找到适合自己的格式。</p>
+<pre><code>Subject currentUser = SecurityUtils.getSubject();
+Permission p = new WildcardPermission(&quot;printer:print:laserjet4400n&quot;); 
+if(currentUser.isPermitted(&quot;printer:print:laserjet4400n&quot;)) &#123;
+    //show the Print button 
+&#125; else &#123;
+    //don&#39;t show the button? Grey it out?
+&#125;
+</code></pre>
+<p>WildcardPermission token 规定和构造操作的格式在 Shiro 的 Permission 文档中被深入的涉及到。 除了上面的字符串默认的 WildcardPermission 格式,你可以创建和使用自己的字符串格式如果你喜欢的话。  </p>
+<p>基于字符串的权限是很有帮助的,由于你不必被迫实现一个接口,而且简单的字符串易于阅读。其缺点是,你不具备类型安全,如果你需要更为复杂的行为将超出了字符串所能代表的范围,你就得实现你自己的基于权限接口的权限对象。在实际中,大部分的 Shiro 终端用户为了简洁选择基于字符串的方式,但最终你应用程序的需求会决定哪一个更好。</p>
+<table>
+<thead>
+<tr>
+<th>Subject 方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>isPermitted(String perm)</td>
+<td>返回 true 如果该 Subject 被允许执行某动作或访问被字符串权限指定的资源,否则返回 false。</td>
+</tr>
+<tr>
+<td>isPermitted(String… perms)</td>
+<td>返回一个与方法参数中目录一致的 isPermitted 结果的数组。有性能的提高如果许多字符串 权限检查需要被执行(例如,当自定义一个复杂的视图)。</td>
+</tr>
+<tr>
+<td>isPermittedAll(String… perms)</td>
+<td>返回 true 如果该 Subject 被允许所有指定的字符串权限,否则返回 false。</td>
+</tr>
+</tbody></table>
+<p>####### (3)Permission Assertions(权限断言)<br>作为检查一个布尔值来判断 Subject 是被允许做某事的一种替代,你可以在逻辑被执行之前简单地断言他们是否拥 有预期的权限。如果该 Subject 是不被允许,AuthorizationException 异常将会被抛出。如果他们如预期的被允许,断 言将安静地执行,逻辑也将如预期般继续。</p>
+<table>
+<thead>
+<tr>
+<th>Subject 方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>checkPermission(Permission p)</td>
+<td>安静地返回,如果 Subject 被允许执行某 动作或访问被特定的权限实例指定的资 源,不然的话就抛出 AuthorizationException 异常。</td>
+</tr>
+<tr>
+<td>checkPermission(String perm)</td>
+<td>安静地返回,如果 Subject 被允许执行某 动作或访问被特定的字符串权限指定的 资源,不然的话就抛出 AuthorizationException 异常。</td>
+</tr>
+<tr>
+<td>checkPermissions(Collection&lt;Permission&gt; perms)</td>
+<td>安静地返回,如果 Subject 被允许所有的 权限,不然的话就抛出 AuthorizationException 异常。</td>
+</tr>
+<tr>
+<td>checkPermissions(String… perms)</td>
+<td>和上面的 checkPermissions 方法效果相 同,但是使用的是基于字符串的权限。</td>
+</tr>
+</tbody></table>
+<h5 id="7-Annotation-based-Authorization-基于注解的授权"><a href="#7-Annotation-based-Authorization-基于注解的授权" class="headerlink" title="7.Annotation-based Authorization(基于注解的授权)"></a>7.Annotation-based Authorization(基于注解的授权)</h5><p>除了 Subject API 的调用,Shiro 提供 Java 5+注解的集合,如果你喜欢以注解为基础的授权控制。</p>
+<p>*configuration(配置)<br>在你可以使用 Java 注释之前,你需要在你的应用程序中启用 AOP 支持。虽然现在有许多不同的 AOP 框架,但不幸 的是,在应用程序中没有一个使用 AOP 的标准。<br>对于 AspectJ 而言,你你可以回顾我们的 AspectJ 的示例程序。<br>对于 Spring 应用而言,你可以看看我们的 Spirng 集成文档。</p>
+<h6 id="1-The-RequiresAuthentication-annotation-RequiresAuthentication-注解"><a href="#1-The-RequiresAuthentication-annotation-RequiresAuthentication-注解" class="headerlink" title="(1)The RequiresAuthentication annotation(RequiresAuthentication 注解)"></a>(1)The RequiresAuthentication annotation(RequiresAuthentication 注解)</h6><p>RequiresAuthentication 注解要求当前 Subject 已经在当前的 session 中被验证通过才能被注解的类/实例/方法访问或 调用。</p>
+<pre><code>@RequiresAuthentication
+public void updateAccount(Account userAccount) &#123;
+    //this method will only be invoked by a 
+    //Subject that is guaranteed authenticated 
+    ...
+&#125;
+</code></pre>
+<h6 id="2-The-RequiresGuest-annotation-RequiresGuest-注解"><a href="#2-The-RequiresGuest-annotation-RequiresGuest-注解" class="headerlink" title="(2)The RequiresGuest annotation(RequiresGuest 注解)"></a>(2)The RequiresGuest annotation(RequiresGuest 注解)</h6><p>RequiresGuest 注解要求当前的 Subject 是一个”guest”,也就是说,他们必须是在之前的 session 中没有被验证或记住 才能被注解的类/实例/方法访问或调用。</p>
+<pre><code>@RequiresGuest 
+public void signUp(User newUser) &#123; 
+    //this method will only be invoked by a 
+    //Subject that is unknown/anonymous
+    ...
+&#125;
+</code></pre>
+<h6 id="3-The-RequiresPermissions-annotation-RequiresPermissions-注解"><a href="#3-The-RequiresPermissions-annotation-RequiresPermissions-注解" class="headerlink" title="(3)The RequiresPermissions annotation(RequiresPermissions 注解)"></a>(3)The RequiresPermissions annotation(RequiresPermissions 注解)</h6><p>RequiresPermissions 注解要求当前的 Subject 被允许一个或多个权限,以便执行注解的方法。</p>
+<pre><code>@RequiresPermissions(&quot;account:create&quot;) 
+public void createAccount(Account account) &#123;
+    //this method will only be invoked by a Subject 
+    //that is permitted to create an account
+    ...
+&#125;
+</code></pre>
+<p>####### (4)The RequiresRoles annotation(RequiresRoles 注解)<br>RequiresRoles 注解要求当前的 Subject 拥有所有指定的角色。如果他们没有,则该方法将不会被执行,而且 AuthorizationException 异常将会被抛出。</p>
+<pre><code>@RequiresRoles(&quot;administrator&quot;) 
+public void deleteUser(User user) &#123;
+    //this method will only be invoked by an administrator
+    ... 
+&#125;
+</code></pre>
+<p>####### (5)The RequiresUser annotation(RequiresUser 注解)<br>RequiresUser 注解需要当前的 Subject 是一个应用程序用户才能被注解的类/实例/方法访问或调用。一个“应用程序用户”被定义为一个拥有已知身份,或在当前 session 中由于通过验证被确认,或者在之前 session 中的’RememberMe’ 服务被记住。</p>
+<pre><code>@RequiresUser
+public void updateAccount(Account account) &#123;
+    //this method will only be invoked by a &#39;user&#39; 
+    //i.e. a Subject with a known identity
+    ...
+&#125;
+</code></pre>
+<h5 id="8-JSP-TagLib-Authorization-JSP-TagLib-授权"><a href="#8-JSP-TagLib-Authorization-JSP-TagLib-授权" class="headerlink" title="8.JSP TagLib Authorization(JSP TagLib 授权)"></a>8.JSP TagLib Authorization(JSP TagLib 授权)</h5><p>Shiro 提供了一个用于控制 JSP/GSP 页面输出的基于 Subject 状态的标签库。这些包含在 Web 章节的 JSP/GSP 标签库部分。</p>
+<h4 id="9-Authorization-Sequence-授权顺序"><a href="#9-Authorization-Sequence-授权顺序" class="headerlink" title="9.Authorization Sequence(授权顺序)"></a>9.Authorization Sequence(授权顺序)</h4><p>现在我们已经知道了基于当前 Subject 上如何执行授权,让我们看看当授权调用时,Shiro 内部会发生什么。 我们采用了 Architecture 那一章的体系结构图,并只留下与 authorization 有关的组件突出显示。</p>
+<p><img src="/images/shiro05.png" alt="授权顺序图"> </p>
+<p><em>Step 1:</em> 应用程序或框架代码调用任何 Subject 的 hasRole*, checkRole*, isPermitted*, 或者 checkPermission*方法的变 体,传递任何所需的权限或角色代表。  </p>
+<p><em>Step 2:</em> Subject 的实例,通常是 DelegatingSubjec(t 或子类)代表应用程序的 SecurityManager 通过调用 securityManager 的几乎各自相同的 hasRole*, checkRole*, isPermitted*,或 checkPermission*方法的变体(SecurityManager 实现 org.apache.shiro.authz.Authorizer 接口,他定义了所有 Subject 具体的授权方法)。</p>
+<p><em>Step 3:</em> SecurityManager,作为一个基本的“保护伞”组件,接替/代表它内部的 org.apache.shiro.authz.Authorizer 实例通过调用 authorizer 各自的 hasRole*, checkRole*, isPermitted*, 或者 checkPermissions*方法。默认情况下, authorizer 实例是一个ModularRealmAuthorizer 实例,它支持协调任何授权操作过程中的一个或多个 Realm 实例。 </p>
+<p><em>Step 4:</em> 每个配置好的 Realm 被检查是否实现了相同的 Authorizer 接口。如果是,Realm 各自的 hasRole*, checkRole*, isPermitted*,或 checkPermission*方法将被调用。</p>
+<h6 id="ModularRealmAuthorizer"><a href="#ModularRealmAuthorizer" class="headerlink" title="ModularRealmAuthorizer"></a>ModularRealmAuthorizer</h6><p>如前所述,Shiro SecurityManager 的实现默认是使用一个 ModularRealmAuthorizer 实例。ModularRealmAuthorizer 同样支持单一的 Realm,以及那些与多个 Realm 的应用。<br>对于任何授权操作,ModularRealmAuthorizer 将遍历其内部的 Realm 集合,并按迭代顺序与每一个进行交互。每个 Realm 的交互功能如下:</p>
+<ol>
+<li><p>如果 Realm 自己实现了 Authorizer 接口,它的各个 Authorizer 方法(hasRole*, checkRole*, isPermitted*, 或 checkPermission*)将被调用</p>
+<p> (1). 如果 Realm 的方法导致异常,该异常将会以 AuthorizationException 的形式传递给调用者。这将短路授权 过程,同时任何剩余的 Realm 将不会被该授权操作所访问。<br> (2). 如果该 Realm 的方法是一个返回布尔值的 hasRole*或者 isPermitted*的变体,并且该返回值为 true,真 值将会立即被返回,同时任何剩余的 Realm 都将被短路。这种行为作为提高性能的一种存在,如果该行 为被一个 Realm 允许,这意味着该 Subject 也是被允许的。这有利于安全政策,每一处都是默认被禁止的 情况下,一切都明确允许的,这是安全政策最安全的类型。</p>
+</li>
+<li><p>如果 Realm 不实现 Authorizer 接口,它会被忽略。</p>
+</li>
+</ol>
+<h6 id="Realm-Authorization-Order-Realm-的授权顺序"><a href="#Realm-Authorization-Order-Realm-的授权顺序" class="headerlink" title="Realm Authorization Order(Realm 的授权顺序)"></a>Realm Authorization Order(Realm 的授权顺序)</h6><p>需要重要指出的是,尤其是身份验证,ModularRealmAuthorizer 将以迭代顺序与 Realm 实例进行交互。 ModularRealmAuthorizer 根据SecurityManager的配置获得对Realm实例的访问。当执行授权操作时,它会遍历该集 合,同时对于每一个自己实现 Authorizer 接口的 Realm,调用 Realm 各自的 Authorizer 方法(如 hasRole*, checkRole*, isPermitted*,或 checkPermission*)。</p>
+<h6 id="Configuring-a-global-PermissionResolver-配置全局的-PermissionResolver"><a href="#Configuring-a-global-PermissionResolver-配置全局的-PermissionResolver" class="headerlink" title="Configuring a global PermissionResolver(配置全局的 PermissionResolver)"></a>Configuring a global PermissionResolver(配置全局的 PermissionResolver)</h6><p>当执行基于字符串的权限检查是,大多数 Shiro 的默认 Realm 实现首先将该字符串转换成一个实际的 Permission 实 例,在执行权限 implication 逻辑之前。     </p>
+<p>这是因为 Permission 是基于 implication 逻辑评估的,而不是直接的 equality 检查(见 Permission 文档有关更多 implication 和 equality 的对比)。Implication 逻辑对比通过字符串比较能够更好的在代码中体现。因此,大多数 Realm 需要转换,或者将提交的权限字符串解析成相应的代表权限的实例。</p>
+<p>为了帮助这种转换,Shiro 支持 PermissionResolver 的概念。大多数 Shiro Realm 的实现使用一个 PermissionResolver 以支持他们的基于字符串权限的 Authorizer 接口方法的实现:当其中一种方法在 Realm 上被调用是,它将使用 PermissionResolver 把该字符串转换成一个权限实例,并用这种方式来执行检查。  </p>
+<p>所有 Shiro Realm 的实现默认是内部的 WildcardPermissionResolver,它采用 Shiro 的 WildcardPermission 字符串格式。 如过你想创建自己的 PermissionResolver 的实现,也许是为了支持自己的权限字符串语法,而且你想要所有配置的 Realm 实例支持该语法,你可以将你的 PermissionResolver 设置为全局的,这样所有的 Realm 能够用一个配置。</p>
+<pre><code>globalPermissionResolver = com.foo.bar.authz.MyPermissionResolver
+securityManager.authorizer.permissionResolver = $globalPermissionResolver
+</code></pre>
+<h6 id="PermissionResolverAware"><a href="#PermissionResolverAware" class="headerlink" title="PermissionResolverAware"></a>PermissionResolverAware</h6><p>如果你想配置一个全局的 PermissionResolver,每个用来接收配置的 PermissionResolver 的 Realm 必须实现 PermissionResolverAware 接口。这样保证了配置的实例能够被每个支持该配置的 Realm 转发。</p>
+<h6 id="Configuring-a-global-RolePermissionResolver-配置全局的-RolePermissionResolver"><a href="#Configuring-a-global-RolePermissionResolver-配置全局的-RolePermissionResolver" class="headerlink" title="Configuring a global RolePermissionResolver(配置全局的 RolePermissionResolver)"></a>Configuring a global RolePermissionResolver(配置全局的 RolePermissionResolver)</h6><p>与 PermissionResolver 在概念上相似,RolePermissionResolver 有能力代表需要的权限实例,通过一个 Realm 执行权 限检查。     </p>
+<p>然而,与一个 RolePermissionResolver 的关键区别是输入的字符串是一个角色名,而不是一个权限字符串。 RolePermissionResolver 能够在 Realm 内部使用,当需要将一个角色名转换成一组具体的权限实例时。 </p>
+<p>这是一个特别有用的特征用来支持旧的或不灵活的,可能没有权限概念的数据源。<br>由于这种转换角色名到权限的概念非常特定于应用程序,Shiro 默认 Realm 的实现并不使用它们。 然而,如果你想创建你自己的 RolePermissionResolver,并有多个你想配置的 Realm 的实现,你可以将你的 RolePermissionResolver 设置为全局的,这样所有的 Realm 都能够用一个配置。</p>
+<pre><code>globalRolePermissionResolver = com.foo.bar.authz.MyPermissionResolver
+securityManager.authorizer.RolePermissionResolver = $globalRolePermissionResolver
+</code></pre>
+<h6 id="RolePermissionResolverAware"><a href="#RolePermissionResolverAware" class="headerlink" title="RolePermissionResolverAware"></a>RolePermissionResolverAware</h6><p>如果你想配置一个全局的 RolePermissionResolver,每个用来接收配置的 RolePermissionResolver 的 Realm 必须实现 RolePermissionResolverAware 接口。这样保证了配置的全局的 RolePermissionRosolver 实例能够被每个支持该配置的 Realm 转发。</p>
+<h6 id="Custom-Authorizer-自定义授权者"><a href="#Custom-Authorizer-自定义授权者" class="headerlink" title="Custom Authorizer(自定义授权者)"></a>Custom Authorizer(自定义授权者)</h6><p>如果你的应用程序使用多个 realm 来执行授权,并且 ModularRealmAuthorizer 默认基于简单的迭代,短路授权行为 不符合你的要求,你很有可能想创建一个自定义的授权者,并配置相应的 SecurityManager。</p>
+<pre><code>authorizer = com.foo.bar.authz.CustomAuthorizer 
+securityManager.authorizer = $authorizer
+</code></pre>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 lbvs86823@163.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>Shiro 第三章 身份授权</p>
+    
+    <p><span class="copy-title">本文作者:</span><a  title="lbvs86823">lbvs86823</a></p>
+    <p><span class="copy-title">发布时间:</span>2010-12-17, 19:02:22</p>
+    <p><span class="copy-title">最后更新:</span>2020-03-20, 14:27:43</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2010/12/17/shiro/shiro_03/" title="Shiro 第三章 身份授权">https://lbvs86823.github.io/2010/12/17/shiro/shiro_03/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">Copyright 2009 - 2020 lbvs86823 All Rights Reserved</p>
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+<div class="acParent"></div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞, 土豪就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.0.1" ></script>
+
+<script src="/js/script.js?v=1.0.1" ></script>
+<script>
+    var img_resize = 'default';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['#Digester','#Rule','#docker','#centos','#mysql','#redis','#javaScript','#es5','#es6','#promise','#Java','#enum','#thread','#linux','#centOS','#man','#vi','#common-logging','#log4j','#factory','#monitor','#influxdb','#singleton','#kafka','#zookeeper','#uml','#MyBatis','#EAI','#ERP','#OA','#CRM','#jetty','#servlet','#shiro','#Subject','#SecurityManager','#Realms','#Authentication','#Session','#spring','#security','#auth2','#quartz','#cronTrigger','#schedule','#cron','#session','#Jekyll','#blog','#Jekyll-Bootstrap','#git','#github','#gitLab','#homebrew','#tool','#mac os','#boot','#maven','#npm','#nodeJs','#yarn','#Markdown','#jquery','#vue','#axios','#java','#Map','#HashMap','#dtd','#xml','#Authorization','#builder','#proxy','#adapter','#decrator','#facade','#bridge',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length - 1, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: #fafafa;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 492px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 1px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

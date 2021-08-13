@@ -1,0 +1,2067 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>axios 中文文档 | lbvs86823</title>
+  <meta name="keywords" content=" javaScript , axios ">
+  <meta name="description" content="axios 中文文档 | lbvs86823">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="axios">
+<meta property="og:type" content="article">
+<meta property="og:title" content="axios 中文文档">
+<meta property="og:url" content="https://lbvs86823.github.io/2018/10/12/js/js_axios/index.html">
+<meta property="og:site_name" content="lbvs86823">
+<meta property="og:description" content="axios">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lbvs86823.github.io/images/browser_support.png">
+<meta property="article:published_time" content="2018-10-12T02:12:21.000Z">
+<meta property="article:modified_time" content="2020-03-20T06:27:43.632Z">
+<meta property="article:author" content="lbvs86823">
+<meta property="article:tag" content="javaScript">
+<meta property="article:tag" content="axios">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lbvs86823.github.io/images/browser_support.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js?v=1.0.1" ></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.0.1" ></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+  <input class="theme_blog_path" value="">
+</div>
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg" />
+</a>
+<div class="author">
+    <span>lbvs86823</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="rss" href="/atom.xml" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-rss"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="github" href="https://github.com/lbvs86823" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="email" href="mailto:lbvs86823@163.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active">全部文章<small>(80)</small></div></li>
+    
+        
+            
+            <li><div data-rel="Digester">Digester<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="docker">docker<small>(5)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="javaScript">javaScript<small>(10)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="javacore">javacore<small>(5)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="linux">linux<small>(4)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="log">log<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="patterns">patterns<small>(12)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="database">database<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="kafka">kafka<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="others">others<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="server">server<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="shiro">shiro<small>(5)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="redis">redis<small>(3)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="spring">spring<small>(9)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="tools">tools<small>(9)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="vue">vue<small>(9)</small></div>
+                
+            </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="80">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode === 13){return false;}">
+        <input id="local-search-input" class="search" type="text" placeholder="Search..." />
+        <i class="cross"></i>
+        <span>
+            <label for="tagswitch">Tags:</label>
+            <input id="tagswitch" type="checkbox" style="display: none" />
+            <i id="tagsWitchIcon"></i>
+        </span>
+    </form>
+    <div class="tags-list">
+    
+    <li class="article-tag-list-item">
+        <a class="color4">Digester</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">Rule</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">docker</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">centos</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">mysql</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">redis</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">javaScript</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">es5</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">es6</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">promise</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">Java</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">enum</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">thread</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">linux</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">centOS</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">man</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">vi</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">common-logging</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">log4j</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">factory</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">monitor</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">influxdb</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">singleton</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">kafka</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">zookeeper</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">uml</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">MyBatis</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">EAI</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">ERP</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">OA</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">CRM</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">jetty</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">servlet</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">shiro</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">Subject</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">SecurityManager</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">Realms</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">Authentication</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">Session</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">spring</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">security</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">auth2</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">quartz</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">cronTrigger</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">schedule</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">cron</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">session</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">Jekyll</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">blog</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">Jekyll-Bootstrap</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">git</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">github</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">gitLab</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">homebrew</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">tool</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">mac os</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">boot</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">maven</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">npm</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">nodeJs</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">yarn</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">Markdown</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">jquery</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">vue</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">axios</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">java</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">Map</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">HashMap</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">dtd</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">xml</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">Authorization</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">builder</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">proxy</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">adapter</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">decrator</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">facade</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">bridge</a>
+    </li>
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class="Digester "
+           href="/2015/01/16/digester/digester_rule/"
+           data-tag="Digester,Rule"
+           data-author="" >
+            <span class="post-title" title="Digester 规则介绍">Digester 规则介绍</span>
+            <span class="post-date" title="2015-01-16 12:13:34">2015/01/16</span>
+        </a>
+        
+        <a  class="docker "
+           href="/2016/09/08/docker/dockerInstallCentos/"
+           data-tag="docker,centos"
+           data-author="" >
+            <span class="post-title" title="CentOS Docker 安装">CentOS Docker 安装</span>
+            <span class="post-date" title="2016-09-08 18:30:14">2016/09/08</span>
+        </a>
+        
+        <a  class="docker "
+           href="/2016/09/13/docker/dockerInstallMysql/"
+           data-tag="docker,mysql"
+           data-author="" >
+            <span class="post-title" title="Docker 安装 MySql">Docker 安装 MySql</span>
+            <span class="post-date" title="2016-09-13 19:39:24">2016/09/13</span>
+        </a>
+        
+        <a  class="docker "
+           href="/2016/09/15/docker/dockerInstallNginx/"
+           data-tag="docker,redis"
+           data-author="" >
+            <span class="post-title" title="Docker 安装 Nginx">Docker 安装 Nginx</span>
+            <span class="post-date" title="2016-09-15 15:22:41">2016/09/15</span>
+        </a>
+        
+        <a  class="docker "
+           href="/2016/09/14/docker/dockerInstallRedis/"
+           data-tag="docker,redis"
+           data-author="" >
+            <span class="post-title" title="Docker 安装 Redis">Docker 安装 Redis</span>
+            <span class="post-date" title="2016-09-14 10:30:15">2016/09/14</span>
+        </a>
+        
+        <a  class="docker "
+           href="/2016/09/11/docker/dockerCommand/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="Docker 常用命令">Docker 常用命令</span>
+            <span class="post-date" title="2016-09-11 19:10:44">2016/09/11</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2016/06/18/js/es5_new/"
+           data-tag="javaScript,es5"
+           data-author="" >
+            <span class="post-title" title="es5 新语法">es5 新语法</span>
+            <span class="post-date" title="2016-06-18 15:41:37">2016/06/18</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2017/02/27/js/es6_new/"
+           data-tag="javaScript,es6"
+           data-author="" >
+            <span class="post-title" title="es6 新语法">es6 新语法</span>
+            <span class="post-date" title="2017-02-27 11:27:27">2017/02/27</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2018/01/16/js/js_arrow_functions/"
+           data-tag="javaScript,es6"
+           data-author="" >
+            <span class="post-title" title="js 之 箭头函数">js 之 箭头函数</span>
+            <span class="post-date" title="2018-01-16 13:05:35">2018/01/16</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2018/01/16/js/js_export/"
+           data-tag="javaScript,es6"
+           data-author="" >
+            <span class="post-title" title="js 之 exprot 语法">js 之 exprot 语法</span>
+            <span class="post-date" title="2018-01-16 13:05:35">2018/01/16</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2018/06/22/js/js_promise/"
+           data-tag="javaScript,promise"
+           data-author="" >
+            <span class="post-title" title="js 标准内置对象之 Promise (控制抽象对象)">js 标准内置对象之 Promise (控制抽象对象)</span>
+            <span class="post-date" title="2018-06-22 11:42:51">2018/06/22</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2018/01/16/js/js_import/"
+           data-tag="javaScript,es6"
+           data-author="" >
+            <span class="post-title" title="js 之 import 语法">js 之 import 语法</span>
+            <span class="post-date" title="2018-01-16 12:27:27">2018/01/16</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2018/01/16/js/js_rest_parameters/"
+           data-tag="javaScript,es6"
+           data-author="" >
+            <span class="post-title" title="js 之 ... 剩余参数">js 之 ... 剩余参数</span>
+            <span class="post-date" title="2018-01-16 14:15:35">2018/01/16</span>
+        </a>
+        
+        <a  class="javacore "
+           href="/2011/06/27/javacore/enum/"
+           data-tag="Java,enum"
+           data-author="" >
+            <span class="post-title" title="Java enum 的用法详解">Java enum 的用法详解</span>
+            <span class="post-date" title="2011-06-27 22:03:19">2011/06/27</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2018/01/16/js/js_destructuring_assignment/"
+           data-tag="javaScript,es6"
+           data-author="" >
+            <span class="post-title" title="js 之 解构赋值">js 之 解构赋值</span>
+            <span class="post-date" title="2018-01-16 14:15:35">2018/01/16</span>
+        </a>
+        
+        <a  class="javacore "
+           href="/2011/05/16/javacore/thread/"
+           data-tag="Java,thread"
+           data-author="" >
+            <span class="post-title" title="Java thread类的用法详解">Java thread类的用法详解</span>
+            <span class="post-date" title="2011-05-16 21:43:29">2011/05/16</span>
+        </a>
+        
+        <a  class="linux "
+           href="/2019/05/09/linux/install_man_CN/"
+           data-tag="linux,centOS,man"
+           data-author="" >
+            <span class="post-title" title="centOS7 安装man中文手册">centOS7 安装man中文手册</span>
+            <span class="post-date" title="2019-05-09 18:21:05">2019/05/09</span>
+        </a>
+        
+        <a  class="linux "
+           href="/2010/03/09/linux/linux_firewall/"
+           data-tag="linux"
+           data-author="" >
+            <span class="post-title" title="linux 防火墙管理">linux 防火墙管理</span>
+            <span class="post-date" title="2010-03-09 10:12:45">2010/03/09</span>
+        </a>
+        
+        <a  class="javacore "
+           href="/2015/10/17/javacore/javabean/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Java bean 的一些专用名词解释">Java bean 的一些专用名词解释</span>
+            <span class="post-date" title="2015-10-17 21:13:11">2015/10/17</span>
+        </a>
+        
+        <a  class="linux "
+           href="/2010/10/07/linux/linux_vi/"
+           data-tag="linux,vi"
+           data-author="" >
+            <span class="post-title" title="Linux VI 命令详解">Linux VI 命令详解</span>
+            <span class="post-date" title="2010-10-07 16:41:24">2010/10/07</span>
+        </a>
+        
+        <a  class="log "
+           href="/2010/05/13/log/common-logging/"
+           data-tag="common-logging,log4j"
+           data-author="" >
+            <span class="post-title" title="commons-logging 和 log4j 之间的关系">commons-logging 和 log4j 之间的关系</span>
+            <span class="post-date" title="2010-05-13 18:31:54">2010/05/13</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/02/27/patterns/factoryMethod/"
+           data-tag="factory"
+           data-author="" >
+            <span class="post-title" title="工厂方法模式">工厂方法模式</span>
+            <span class="post-date" title="2015-02-27 21:43:11">2015/02/27</span>
+        </a>
+        
+        <a  class="database "
+           href="/2018/07/11/monitor/influxdb/"
+           data-tag="monitor,influxdb"
+           data-author="" >
+            <span class="post-title" title="influxDB 入门指南">influxDB 入门指南</span>
+            <span class="post-date" title="2018-07-11 10:03:27">2018/07/11</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/02/27/patterns/prototype/"
+           data-tag="factory"
+           data-author="" >
+            <span class="post-title" title="原型模式">原型模式</span>
+            <span class="post-date" title="2015-02-27 21:43:11">2015/02/27</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/02/28/patterns/builder/"
+           data-tag="builder"
+           data-author="" >
+            <span class="post-title" title="建造者模式">建造者模式</span>
+            <span class="post-date" title="2015-02-28 11:13:12">2015/02/28</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/02/27/patterns/simpleFactory/"
+           data-tag="factory"
+           data-author="" >
+            <span class="post-title" title="简单工厂模式">简单工厂模式</span>
+            <span class="post-date" title="2015-02-27 18:22:54">2015/02/27</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/02/27/patterns/singleton/"
+           data-tag="singleton"
+           data-author="" >
+            <span class="post-title" title="单例模式">单例模式</span>
+            <span class="post-date" title="2015-02-27 21:43:11">2015/02/27</span>
+        </a>
+        
+        <a  class="kafka "
+           href="/2017/07/17/kafka/kafka/"
+           data-tag="kafka,zookeeper"
+           data-author="" >
+            <span class="post-title" title="kafka 入门指南">kafka 入门指南</span>
+            <span class="post-date" title="2017-07-17 12:53:09">2017/07/17</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/02/27/patterns/uml/"
+           data-tag="uml"
+           data-author="" >
+            <span class="post-title" title="UML类图">UML类图</span>
+            <span class="post-date" title="2015-02-27 20:53:21">2015/02/27</span>
+        </a>
+        
+        <a  class="javacore "
+           href="/2015/05/18/mybatis/mybatis_special_char/"
+           data-tag="MyBatis"
+           data-author="" >
+            <span class="post-title" title="MyBatis 转义字符处理">MyBatis 转义字符处理</span>
+            <span class="post-date" title="2015-05-18 11:13:19">2015/05/18</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/02/28/patterns/abstractFactory/"
+           data-tag="factory"
+           data-author="" >
+            <span class="post-title" title="抽象工厂模式">抽象工厂模式</span>
+            <span class="post-date" title="2015-02-28 20:04:59">2015/02/28</span>
+        </a>
+        
+        <a  class="others "
+           href="/2015/01/27/others/eai/"
+           data-tag="EAI,ERP,OA,CRM"
+           data-author="" >
+            <span class="post-title" title="EAI简介">EAI简介</span>
+            <span class="post-date" title="2015-01-27 20:53:21">2015/01/27</span>
+        </a>
+        
+        <a  class="linux "
+           href="/2010/05/09/linux/linux_version/"
+           data-tag="linux"
+           data-author="" >
+            <span class="post-title" title="linux 查看版本">linux 查看版本</span>
+            <span class="post-date" title="2010-05-09 13:11:45">2010/05/09</span>
+        </a>
+        
+        <a  class="server "
+           href="/2010/12/10/server/jetty/"
+           data-tag="jetty,servlet"
+           data-author="" >
+            <span class="post-title" title="Jetty 嵌入式开发">Jetty 嵌入式开发</span>
+            <span class="post-date" title="2010-12-10 11:25:11">2010/12/10</span>
+        </a>
+        
+        <a  class="shiro "
+           href="/2010/12/15/shiro/shiro_01/"
+           data-tag="shiro,Subject,SecurityManager,Realms"
+           data-author="" >
+            <span class="post-title" title="Shiro 第一章 简介">Shiro 第一章 简介</span>
+            <span class="post-date" title="2010-12-15 12:25:17">2010/12/15</span>
+        </a>
+        
+        <a  class="redis "
+           href="/2010/07/24/redis/redis_string/"
+           data-tag="redis"
+           data-author="" >
+            <span class="post-title" title="redis入门之Strings数据类型(二)">redis入门之Strings数据类型(二)</span>
+            <span class="post-date" title="2010-07-24 23:45:41">2010/07/24</span>
+        </a>
+        
+        <a  class="redis "
+           href="/2010/07/24/redis/redis/"
+           data-tag="redis"
+           data-author="" >
+            <span class="post-title" title="redis入门之介绍和安装篇(一)">redis入门之介绍和安装篇(一)</span>
+            <span class="post-date" title="2010-07-24 10:15:45">2010/07/24</span>
+        </a>
+        
+        <a  class="shiro "
+           href="/2010/12/16/shiro/shiro_02/"
+           data-tag="shiro,Subject,SecurityManager,Realms,Authentication"
+           data-author="" >
+            <span class="post-title" title="Shiro 第二章 身份认证">Shiro 第二章 身份认证</span>
+            <span class="post-date" title="2010-12-16 16:05:29">2010/12/16</span>
+        </a>
+        
+        <a  class="redis "
+           href="/2010/07/28/redis/redis_hash/"
+           data-tag="redis"
+           data-author="" >
+            <span class="post-title" title="redis入门之hashes数据类型(三)">redis入门之hashes数据类型(三)</span>
+            <span class="post-date" title="2010-07-28 21:11:47">2010/07/28</span>
+        </a>
+        
+        <a  class="shiro "
+           href="/2010/12/18/shiro/shiro_04/"
+           data-tag="shiro,SecurityManager,Realms"
+           data-author="" >
+            <span class="post-title" title="Shiro 第四章 Realms">Shiro 第四章 Realms</span>
+            <span class="post-date" title="2010-12-18 09:41:09">2010/12/18</span>
+        </a>
+        
+        <a  class="shiro "
+           href="/2010/12/20/shiro/shiro_05/"
+           data-tag="shiro,SecurityManager,Session"
+           data-author="" >
+            <span class="post-title" title="Shiro 第五章 Session Management">Shiro 第五章 Session Management</span>
+            <span class="post-date" title="2010-12-20 19:31:58">2010/12/20</span>
+        </a>
+        
+        <a  class="spring "
+           href="/2011/06/15/spring/oauth2.0/"
+           data-tag="spring,security,auth2"
+           data-author="" >
+            <span class="post-title" title="Spring oauth2 相关概念解释">Spring oauth2 相关概念解释</span>
+            <span class="post-date" title="2011-06-15 10:21:20">2011/06/15</span>
+        </a>
+        
+        <a  class="spring "
+           href="/2011/01/10/spring/cron_trigger/"
+           data-tag="spring,quartz,cronTrigger,schedule"
+           data-author="" >
+            <span class="post-title" title="cron 表达式">cron 表达式</span>
+            <span class="post-date" title="2011-01-10 21:49:39">2011/01/10</span>
+        </a>
+        
+        <a  class="spring "
+           href="/2011/01/09/spring/quartz/"
+           data-tag="spring,quartz,cron"
+           data-author="" >
+            <span class="post-title" title="quartz整合spring用法详解">quartz整合spring用法详解</span>
+            <span class="post-date" title="2011-01-09 19:49:39">2011/01/09</span>
+        </a>
+        
+        <a  class="spring "
+           href="/2018/04/11/spring/sping%20security%20reference/"
+           data-tag="spring,security"
+           data-author="" >
+            <span class="post-title" title="Spring Security 参考指南">Spring Security 参考指南</span>
+            <span class="post-date" title="2018-04-11 22:09:21">2018/04/11</span>
+        </a>
+        
+        <a  class="spring "
+           href="/2011/06/12/spring/spring%20security/"
+           data-tag="spring,security,auth2"
+           data-author="" >
+            <span class="post-title" title="Spring Security 中涉及到的核心类介绍">Spring Security 中涉及到的核心类介绍</span>
+            <span class="post-date" title="2011-06-12 12:59:20">2011/06/12</span>
+        </a>
+        
+        <a  class="spring "
+           href="/2011/04/16/spring/spring%20session/"
+           data-tag="redis,spring,session"
+           data-author="" >
+            <span class="post-title" title="spring session 相关代码详解">spring session 相关代码详解</span>
+            <span class="post-date" title="2011-04-16 20:41:20">2011/04/16</span>
+        </a>
+        
+        <a  class="tools "
+           href="/2010/04/17/tools/blog01/"
+           data-tag="Jekyll,blog"
+           data-author="" >
+            <span class="post-title" title="怎么写自己的博客">怎么写自己的博客</span>
+            <span class="post-date" title="2010-04-17 12:13:29">2010/04/17</span>
+        </a>
+        
+        <a  class="tools "
+           href="/2010/04/18/tools/blog02/"
+           data-tag="Jekyll,blog,Jekyll-Bootstrap"
+           data-author="" >
+            <span class="post-title" title="采用Jekyll “增强版” 写博客">采用Jekyll “增强版” 写博客</span>
+            <span class="post-date" title="2010-04-18 10:23:39">2010/04/18</span>
+        </a>
+        
+        <a  class="tools "
+           href="/2012/03/08/tools/git_command/"
+           data-tag="git,github,gitLab"
+           data-author="" >
+            <span class="post-title" title="git 命令手册">git 命令手册</span>
+            <span class="post-date" title="2012-03-08 14:25:31">2012/03/08</span>
+        </a>
+        
+        <a  class="tools "
+           href="/2015/06/07/tools/homebrew/"
+           data-tag="homebrew,tool,mac os"
+           data-author="" >
+            <span class="post-title" title="Homebrew Mac OS 系统软件包管理利器">Homebrew Mac OS 系统软件包管理利器</span>
+            <span class="post-date" title="2015-06-07 22:13:29">2015/06/07</span>
+        </a>
+        
+        <a  class="spring "
+           href="/2018/01/11/spring/sping%20boot%20reference%20guide/"
+           data-tag="spring,boot"
+           data-author="" >
+            <span class="post-title" title="Spring Boot 参考指南">Spring Boot 参考指南</span>
+            <span class="post-date" title="2018-01-11 20:29:20">2018/01/11</span>
+        </a>
+        
+        <a  class="tools "
+           href="/2010/05/18/tools/maven01/"
+           data-tag="maven"
+           data-author="" >
+            <span class="post-title" title="maven的安装与配置">maven的安装与配置</span>
+            <span class="post-date" title="2010-05-18 10:25:01">2010/05/18</span>
+        </a>
+        
+        <a  class="tools "
+           href="/2017/02/12/tools/npm/"
+           data-tag="tool,npm,nodeJs"
+           data-author="" >
+            <span class="post-title" title="npm 包管理工具">npm 包管理工具</span>
+            <span class="post-date" title="2017-02-12 20:13:39">2017/02/12</span>
+        </a>
+        
+        <a  class="tools "
+           href="/2010/05/18/tools/maven02/"
+           data-tag="maven"
+           data-author="" >
+            <span class="post-title" title="maven的入门">maven的入门</span>
+            <span class="post-date" title="2010-05-18 22:25:01">2010/05/18</span>
+        </a>
+        
+        <a  class="tools "
+           href="/2017/11/27/tools/yarn/"
+           data-tag="tool,nodeJs,yarn"
+           data-author="" >
+            <span class="post-title" title="Yarn 依赖管理工具">Yarn 依赖管理工具</span>
+            <span class="post-date" title="2017-11-27 12:43:59">2017/11/27</span>
+        </a>
+        
+        <a  class="tools "
+           href="/2010/04/25/tools/markdown/"
+           data-tag="blog,Markdown"
+           data-author="" >
+            <span class="post-title" title="Markdown 语法说明">Markdown 语法说明</span>
+            <span class="post-date" title="2010-04-25 12:08:20">2010/04/25</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2010/09/27/js/jquery/jueryPlugin/"
+           data-tag="javaScript,jquery"
+           data-author="" >
+            <span class="post-title" title="JQuery开发插件的机种方式讨论">JQuery开发插件的机种方式讨论</span>
+            <span class="post-date" title="2010-09-27 20:43:44">2010/09/27</span>
+        </a>
+        
+        <a  class="vue "
+           href="/2017/12/17/js/vue/vueLifeCycle/"
+           data-tag="npm,nodeJs,yarn,vue"
+           data-author="" >
+            <span class="post-title" title="vue 实例的生命周期">vue 实例的生命周期</span>
+            <span class="post-date" title="2017-12-17 11:04:11">2017/12/17</span>
+        </a>
+        
+        <a  class="vue "
+           href="/2017/12/17/js/vue/vueMethods/"
+           data-tag="npm,nodeJs,yarn,vue"
+           data-author="" >
+            <span class="post-title" title="vue 实例属性之 methods">vue 实例属性之 methods</span>
+            <span class="post-date" title="2017-12-17 15:13:21">2017/12/17</span>
+        </a>
+        
+        <a  class="vue "
+           href="/2017/12/17/js/vue/vueHook/"
+           data-tag="npm,nodeJs,yarn,vue"
+           data-author="" >
+            <span class="post-title" title="vue 实例生命周期钩子">vue 实例生命周期钩子</span>
+            <span class="post-date" title="2017-12-17 12:41:21">2017/12/17</span>
+        </a>
+        
+        <a  class="vue "
+           href="/2017/12/17/js/vue/vueProps/"
+           data-tag="npm,nodeJs,yarn,vue"
+           data-author="" >
+            <span class="post-title" title="vue 实例属性之 props">vue 实例属性之 props</span>
+            <span class="post-date" title="2017-12-17 14:53:31">2017/12/17</span>
+        </a>
+        
+        <a  class="vue "
+           href="/2017/12/17/js/vue/vuePropsData/"
+           data-tag="npm,nodeJs,yarn,vue"
+           data-author="" >
+            <span class="post-title" title="vue 实例属性之 propsData">vue 实例属性之 propsData</span>
+            <span class="post-date" title="2017-12-17 15:13:21">2017/12/17</span>
+        </a>
+        
+        <a  class="vue "
+           href="/2017/12/17/js/vue/vueStart/"
+           data-tag="npm,nodeJs,yarn,vue"
+           data-author="" >
+            <span class="post-title" title="vue 入门">vue 入门</span>
+            <span class="post-date" title="2017-12-17 10:03:41">2017/12/17</span>
+        </a>
+        
+        <a  class="vue "
+           href="/2017/12/17/js/vue/vueWatch/"
+           data-tag="npm,nodeJs,yarn,vue"
+           data-author="" >
+            <span class="post-title" title="vue 实例属性之 watch">vue 实例属性之 watch</span>
+            <span class="post-date" title="2017-12-17 15:13:21">2017/12/17</span>
+        </a>
+        
+        <a  class="vue "
+           href="/2017/12/17/js/vue/vueComputed/"
+           data-tag="npm,nodeJs,yarn,vue"
+           data-author="" >
+            <span class="post-title" title="vue 实例属性之 computed">vue 实例属性之 computed</span>
+            <span class="post-date" title="2017-12-17 15:13:21">2017/12/17</span>
+        </a>
+        
+        <a  class="vue "
+           href="/2017/12/17/js/vue/vueData/"
+           data-tag="npm,nodeJs,yarn,vue"
+           data-author="" >
+            <span class="post-title" title="vue 实例属性之 data">vue 实例属性之 data</span>
+            <span class="post-date" title="2017-12-17 14:57:15">2017/12/17</span>
+        </a>
+        
+        <a  class="Digester "
+           href="/2015/01/15/digester/digester/"
+           data-tag="Digester,Rule"
+           data-author="" >
+            <span class="post-title" title="Digester框架简介">Digester框架简介</span>
+            <span class="post-date" title="2015-01-15 22:53:21">2015/01/15</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2018/10/12/js/js_axios/"
+           data-tag="javaScript,axios"
+           data-author="" >
+            <span class="post-title" title="axios 中文文档">axios 中文文档</span>
+            <span class="post-date" title="2018-10-12 10:12:21">2018/10/12</span>
+        </a>
+        
+        <a  class="javacore "
+           href="/2011/06/29/javacore/hashMap/"
+           data-tag="java,Map,HashMap"
+           data-author="" >
+            <span class="post-title" title="HashMap实现原理解析">HashMap实现原理解析</span>
+            <span class="post-date" title="2011-06-29 12:53:49">2011/06/29</span>
+        </a>
+        
+        <a  class="log "
+           href="/2010/05/14/log/log4j-config/"
+           data-tag="log4j"
+           data-author="" >
+            <span class="post-title" title="log4j.properties配置详解">log4j.properties配置详解</span>
+            <span class="post-date" title="2010-05-14 20:55:08">2010/05/14</span>
+        </a>
+        
+        <a  class="others "
+           href="/2011/01/14/others/dtd/"
+           data-tag="dtd,xml"
+           data-author="" >
+            <span class="post-title" title="DTD文档类型定义简介">DTD文档类型定义简介</span>
+            <span class="post-date" title="2011-01-14 17:11:16">2011/01/14</span>
+        </a>
+        
+        <a  class="shiro "
+           href="/2010/12/17/shiro/shiro_03/"
+           data-tag="shiro,SecurityManager,Realms,Authentication,Authorization"
+           data-author="" >
+            <span class="post-title" title="Shiro 第三章 身份授权">Shiro 第三章 身份授权</span>
+            <span class="post-date" title="2010-12-17 19:02:22">2010/12/17</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/03/01/patterns/proxy/"
+           data-tag="proxy"
+           data-author="" >
+            <span class="post-title" title="代理模式">代理模式</span>
+            <span class="post-date" title="2015-03-01 08:13:34">2015/03/01</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/03/02/patterns/adapter/"
+           data-tag="adapter"
+           data-author="" >
+            <span class="post-title" title="适配器模式">适配器模式</span>
+            <span class="post-date" title="2015-03-02 09:43:14">2015/03/02</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/03/02/patterns/decrator/"
+           data-tag="decrator"
+           data-author="" >
+            <span class="post-title" title="装饰器模式">装饰器模式</span>
+            <span class="post-date" title="2015-03-02 10:23:02">2015/03/02</span>
+        </a>
+        
+        <a  class="spring "
+           href="/2018/05/18/spring/spring_session_api/"
+           data-tag="spring,session"
+           data-author="" >
+            <span class="post-title" title="《Spring Session 中文手册》 之 第九章 API 文档">《Spring Session 中文手册》 之 第九章 API 文档</span>
+            <span class="post-date" title="2018-05-18 12:15:12">2018/05/18</span>
+        </a>
+        
+        <a  class="spring "
+           href="/2018/05/18/spring/spring_session_redis/"
+           data-tag="spring,session"
+           data-author="" >
+            <span class="post-title" title="Spring Session 之 Redis 实现">Spring Session 之 Redis 实现</span>
+            <span class="post-date" title="2018-05-18 12:15:12">2018/05/18</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/03/02/patterns/facade/"
+           data-tag="facade"
+           data-author="" >
+            <span class="post-title" title="外观(门面)模式">外观(门面)模式</span>
+            <span class="post-date" title="2015-03-02 11:33:56">2015/03/02</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/03/02/patterns/bridge/"
+           data-tag="bridge"
+           data-author="" >
+            <span class="post-title" title="桥接模式">桥接模式</span>
+            <span class="post-date" title="2015-03-02 14:13:02">2015/03/02</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-js/js_axios" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">axios 中文文档</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+                <a  data-rel="javaScript">javaScript</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a class="color1">javaScript</a>
+            
+            <a class="color1">axios</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2020-03-20 14:27:43'>2018-10-12 10:12</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%EF%BC%8C%E6%A6%82%E8%BF%B0"><span class="toc-text">一，概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%EF%BC%8C%E5%AE%89%E8%A3%85"><span class="toc-text">二，安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%EF%BC%8C%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B"><span class="toc-text">三，使用案例</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E6%89%A7%E8%A1%8CGET%E8%AF%B7%E6%B1%82"><span class="toc-text">1.执行GET请求</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E6%89%A7%E8%A1%8CPOST%E8%AF%B7%E6%B1%82"><span class="toc-text">2.执行POST请求</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E6%89%A7%E8%A1%8C%E5%A4%9A%E4%B8%AA%E5%B9%B6%E5%8F%91%E8%AF%B7%E6%B1%82"><span class="toc-text">3.执行多个并发请求</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%EF%BC%8Caxios-API-%E8%AF%A6%E8%A7%A3"><span class="toc-text">四，axios API 详解</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-axios-config"><span class="toc-text">1.axios(config)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-axios-url-config"><span class="toc-text">2.axios(url[, config])</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%94%EF%BC%8C%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95%E5%88%AB%E5%90%8D"><span class="toc-text">五，请求方法别名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%AD%EF%BC%8C%E5%A4%84%E7%90%86%E5%B9%B6%E5%8F%91%E8%AF%B7%E6%B1%82"><span class="toc-text">六，处理并发请求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%83%EF%BC%8C%E5%88%9B%E5%BB%BA%E5%AE%9E%E4%BE%8B"><span class="toc-text">七，创建实例</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-axios-create-config"><span class="toc-text">1. axios.create([config])</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95"><span class="toc-text">2.实例方法</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%AB%EF%BC%8C%E8%AF%B7%E6%B1%82%E9%85%8D%E7%BD%AE-config"><span class="toc-text">八，请求配置 config</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B9%9D%EF%BC%8C%E5%93%8D%E5%BA%94%E7%BB%93%E6%9E%84"><span class="toc-text">九，响应结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%81%EF%BC%8C%E9%85%8D%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-text">十，配置默认值</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%85%A8%E5%B1%80%E7%9A%84-axios-%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-text">1.全局的 axios 默认值</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AE%9E%E4%BE%8B%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-text">2.自定义实例默认值</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E9%85%8D%E7%BD%AE%E7%9A%84%E4%BC%98%E5%85%88%E9%A1%BA%E5%BA%8F"><span class="toc-text">3.配置的优先顺序</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%81%E4%B8%80%EF%BC%8C%E6%8B%A6%E6%88%AA%E5%99%A8"><span class="toc-text">十一，拦截器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C%EF%BC%8C%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="toc-text">十二，错误处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%81%E4%B8%89%EF%BC%8C%E5%8F%96%E6%B6%88%E8%AF%B7%E6%B1%82"><span class="toc-text">十三，取消请求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%81%E5%9B%9B%EF%BC%8C%E5%85%B6%E4%BB%96"><span class="toc-text">十四，其他</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%8F%82%E6%95%B0%E5%A4%84%E7%90%86"><span class="toc-text">1.参数处理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E6%B5%8F%E8%A7%88%E5%99%A8Promise%E6%94%AF%E6%8C%81"><span class="toc-text">2.浏览器Promise支持</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-TypeScript%E6%94%AF%E6%8C%81"><span class="toc-text">3.TypeScript支持</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一，概述"><a href="#一，概述" class="headerlink" title="一，概述"></a>一，概述</h4><p><code>Axios</code> 是一个基于 <code>Promise</code> 用于浏览器和 <code>nodejs</code> 的 <code>HTTP</code> 客户端(库)，可以用在浏览器和 <code>node.js</code> 中。<br>本质上也是对原生XHR的封装，只不过它是 <code>Promise</code> 的实现版本，符合最新的ES规范，有以下一些特性：</p>
+<ul>
+<li>从浏览器中创建 XMLHttpRequests</li>
+<li>从 node.js 创建 http 请求</li>
+<li>支持 Promise API</li>
+<li>拦截请求和响应</li>
+<li>转换请求数据和响应数据</li>
+<li>取消请求</li>
+<li>自动转换 JSON 数据</li>
+<li>客户端支持防御 XSRF</li>
+</ul>
+<p><img src="/images/browser_support.png" alt="支持浏览器"><br><code>Axios</code> 面向现代浏览器设计，所以古老的浏览器并不支持。<br>因为 <code>Axios</code> 设计简洁，API简单，支持浏览器和node，所以大受欢迎。它能很好的与各种前端框架整合。</p>
+<h4 id="二，安装"><a href="#二，安装" class="headerlink" title="二，安装"></a>二，安装</h4><pre><code>npm install axios    // 使用 npm 安装
+bower install axios // 使用 bower 安装
+yarn add axios // 使用 yarn 安装
+// 页面引入
+&lt;script src=&quot;https://unpkg.com/axios/dist/axios.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h4 id="三，使用案例"><a href="#三，使用案例" class="headerlink" title="三，使用案例"></a>三，使用案例</h4><h5 id="1-执行GET请求"><a href="#1-执行GET请求" class="headerlink" title="1.执行GET请求"></a>1.执行GET请求</h5><pre><code>const axios = require(&#39;axios&#39;);
+
+// 通过 ID 获取 user 创建请求
+axios.get(&#39;/user?ID=12345&#39;)
+  .then(function (response) &#123;
+    console.log(response);
+  &#125;)
+  .catch(function (error) &#123;
+    console.log(error);
+  &#125;);
+
+// 上面的请求也可以这样做
+axios.get(&#39;/user&#39;, &#123;
+    params: &#123;
+      ID: 12345
+    &#125;
+  &#125;)
+  .then(function (response) &#123;
+    console.log(response);
+  &#125;)
+  .catch(function (error) &#123;
+    console.log(error);
+  &#125;);
+</code></pre>
+<h5 id="2-执行POST请求"><a href="#2-执行POST请求" class="headerlink" title="2.执行POST请求"></a>2.执行POST请求</h5><pre><code>const axios = require(&#39;axios&#39;);
+
+axios.post(&#39;/user&#39;, &#123;
+    firstName: &#39;Fred&#39;,
+    lastName: &#39;Flintstone&#39;
+  &#125;)
+  .then(function (response) &#123;
+    console.log(response);
+  &#125;)
+  .catch(function (error) &#123;
+    console.log(error);
+  &#125;);
+</code></pre>
+<h5 id="3-执行多个并发请求"><a href="#3-执行多个并发请求" class="headerlink" title="3.执行多个并发请求"></a>3.执行多个并发请求</h5><pre><code>const axios = require(&#39;axios&#39;);
+
+function getUserAccount() &#123;
+  return axios.get(&#39;/user/12345&#39;);
+&#125;
+
+function getUserPermissions() &#123;
+  return axios.get(&#39;/user/12345/permissions&#39;);
+&#125;
+
+axios.all([getUserAccount(), getUserPermissions()])
+  .then(axios.spread(function (acct, perms) &#123;
+    // 这里两个请求现在都执行完成了
+  &#125;));
+</code></pre>
+<h4 id="四，axios-API-详解"><a href="#四，axios-API-详解" class="headerlink" title="四，axios API 详解"></a>四，axios API 详解</h4><h5 id="1-axios-config"><a href="#1-axios-config" class="headerlink" title="1.axios(config)"></a>1.<code>axios(config)</code></h5><p>可以通过将相关配置 <code>config</code> 对象传递给 <code>axios</code> 来发出请求</p>
+<pre><code>// 发送 POST 请求
+axios(&#123;
+  method: &#39;post&#39;,
+  url: &#39;/user/12345&#39;,
+  data: &#123;
+    firstName: &#39;Fred&#39;,
+    lastName: &#39;Flintstone&#39;
+  &#125;
+&#125;);
+
+// 获取远端图片
+axios(&#123;
+  method:&#39;get&#39;,
+  url:&#39;http://bit.ly/2mTM3nY&#39;,
+  responseType:&#39;stream&#39;
+&#125;)
+  .then(function(response) &#123;
+  response.data.pipe(fs.createWriteStream(&#39;ada_lovelace.jpg&#39;))
+&#125;);
+</code></pre>
+<h5 id="2-axios-url-config"><a href="#2-axios-url-config" class="headerlink" title="2.axios(url[, config])"></a>2.<code>axios(url[, config])</code></h5><pre><code>// 发送 GET 请求（默认的方法）
+axios(&#39;/user/12345&#39;);
+</code></pre>
+<h4 id="五，请求方法别名"><a href="#五，请求方法别名" class="headerlink" title="五，请求方法别名"></a>五，请求方法别名</h4><p>为方便起见，为所有已经支持的请求方法提供了别名</p>
+<ul>
+<li><code>axios.request(config)</code></li>
+<li><code>axios.get(url[, config])</code></li>
+<li><code>axios.delete(url[, config])</code></li>
+<li><code>axios.head(url[, config])</code></li>
+<li><code>axios.options(url[, config])</code></li>
+<li><code>axios.post(url[, data[, config]])</code></li>
+<li><code>axios.put(url[, data[, config]])</code></li>
+<li><code>axios.patch(url[, data[, config]])</code></li>
+</ul>
+<p>注意：在使用别名方法时， <code>url、method、data</code> 这些属性都不必在配置中指定。</p>
+<h4 id="六，处理并发请求"><a href="#六，处理并发请求" class="headerlink" title="六，处理并发请求"></a>六，处理并发请求</h4><ul>
+<li><code>axios.all(iterable)</code></li>
+<li><code>axios.spread(callback)</code></li>
+</ul>
+<h4 id="七，创建实例"><a href="#七，创建实例" class="headerlink" title="七，创建实例"></a>七，创建实例</h4><h5 id="1-axios-create-config"><a href="#1-axios-create-config" class="headerlink" title="1. axios.create([config])"></a>1. <code>axios.create([config])</code></h5><p>可以使用自定义配置新建一个 axios 实例</p>
+<pre><code>const instance = axios.create(&#123;
+  baseURL: &#39;https://some-domain.com/api/&#39;,
+  timeout: 1000,
+  headers: &#123;&#39;X-Custom-Header&#39;: &#39;foobar&#39;&#125;
+&#125;);
+</code></pre>
+<h5 id="2-实例方法"><a href="#2-实例方法" class="headerlink" title="2.实例方法"></a>2.实例方法</h5><p>以下是可用的实例方法。指定的配置将与实例的配置合并。</p>
+<ul>
+<li>axios#request(config)</li>
+<li>axios#get(url[, config])</li>
+<li>axios#delete(url[, config])</li>
+<li>axios#head(url[, config])</li>
+<li>axios#options(url[, config])</li>
+<li>axios#post(url[, data[, config]])</li>
+<li>axios#put(url[, data[, config]])</li>
+<li>axios#patch(url[, data[, config]])</li>
+<li>axios#getUri([config])</li>
+</ul>
+<h4 id="八，请求配置-config"><a href="#八，请求配置-config" class="headerlink" title="八，请求配置 config"></a>八，请求配置 <code>config</code></h4><p>这些是创建请求时可以用的配置选项。只有 <code>url</code> 是必需的。如果没有指定 <code>method</code>，请求将默认使用 <code>get</code> 方法。</p>
+<pre><code>&#123;
+  // `url` 是用于请求的服务器 URL
+  url: &#39;/user&#39;,
+
+  // `method` 是创建请求时使用的方法
+  method: &#39;get&#39;, // default
+
+  // `baseURL` 将自动加在 `url` 前面，除非 `url` 是一个绝对 URL。
+  // 它可以通过设置一个 `baseURL` 便于为 axios 实例的方法传递相对 URL
+  baseURL: &#39;https://some-domain.com/api/&#39;,
+
+  // `transformRequest` 允许在向服务器发送前，修改请求数据
+  // 只能用在 &#39;PUT&#39;, &#39;POST&#39; 和 &#39;PATCH&#39; 这几个请求方法上
+  // 后面数组中的函数必须返回一个字符串，或 ArrayBuffer，或 Stream
+  transformRequest: [function (data, headers) &#123;
+    // 对 data 进行任意转换处理
+    return data;
+  &#125;],
+
+  // `transformResponse` 在传递给 then/catch 前，允许修改响应数据
+  transformResponse: [function (data) &#123;
+    // 对 data 进行任意转换处理
+    return data;
+  &#125;],
+
+  // `headers` 是即将被发送的自定义请求头
+  headers: &#123;&#39;X-Requested-With&#39;: &#39;XMLHttpRequest&#39;&#125;,
+
+  // `params` 是即将与请求一起发送的 URL 参数
+  // 必须是一个无格式对象(plain object)或 URLSearchParams 对象
+  params: &#123;
+    ID: 12345
+  &#125;,
+
+  // `paramsSerializer` 是一个负责 `params` 序列化的函数
+  // (e.g. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
+  paramsSerializer: function(params) &#123;
+    return Qs.stringify(params, &#123;arrayFormat: &#39;brackets&#39;&#125;)
+  &#125;,
+
+  // `data` 是作为请求主体被发送的数据
+  // 只适用于这些请求方法 &#39;PUT&#39;, &#39;POST&#39;, 和 &#39;PATCH&#39; 上
+  // 在没有设置 `transformRequest` 时，必须是以下类型之一：
+  // - string, plain object, ArrayBuffer, ArrayBufferView, URLSearchParams
+  // - 浏览器专属：FormData, File, Blob
+  // - Node 专属： Stream
+  data: &#123;
+    firstName: &#39;Fred&#39;
+  &#125;,
+
+  // syntax alternative to send data into the body
+  // method post
+  // only the value is sent, not the key
+  data: &#39;Country=Brasil&amp;City=Belo Horizonte&#39;,
+
+  // `timeout` 指定请求超时的毫秒数(0 表示无超时时间)
+  // 如果请求话费了超过 `timeout` 的时间，请求将被中断
+  timeout: 1000, // default is `0` (no timeout)
+
+  // `withCredentials` 表示跨域请求时是否需要使用凭证
+  withCredentials: false, // default
+
+  // `adapter` 允许自定义处理请求，以使测试更轻松
+  // 返回一个 promise 并应用一个有效的响应 (查阅 [response docs](#response-api)).
+  adapter: function (config) &#123;
+    /* ... */
+  &#125;,
+
+  // `auth` 表示应该使用 HTTP 基础验证，并提供凭据
+  // 这将设置一个 `Authorization` 头，覆写掉现有的任意使用 `headers` 设置的自定义 `Authorization`头
+  auth: &#123;
+    username: &#39;janedoe&#39;,
+    password: &#39;s00pers3cret&#39;
+  &#125;,
+
+  // `responseType` 表示服务器响应的数据类型，可以是 &#39;arraybuffer&#39;, &#39;blob&#39;, &#39;document&#39;, &#39;json&#39;, &#39;text&#39;, &#39;stream&#39;
+  responseType: &#39;json&#39;, // default
+
+  // `responseEncoding` 指示用于解码响应的编码
+  // 注意: 如果请求类型为 &#39;stream&#39; 或者客户端请求，则此设置将忽略
+  responseEncoding: &#39;utf8&#39;, // default
+
+   // `xsrfCookieName` 是用作 xsrf token 的值的cookie的名称
+  xsrfCookieName: &#39;XSRF-TOKEN&#39;, // default
+
+  // `xsrfHeaderName` 设置带有 xsrf token 令牌值的http请求头名称
+  xsrfHeaderName: &#39;X-XSRF-TOKEN&#39;, // default
+
+  // `onUploadProgress` 允许为上传处理进度事件
+  onUploadProgress: function (progressEvent) &#123;
+    // Do whatever you want with the native progress event
+  &#125;,
+
+  // `onDownloadProgress` 允许为下载处理进度事件
+  onDownloadProgress: function (progressEvent) &#123;
+    // 对原生进度事件的处理
+  &#125;,
+
+   // `maxContentLength` 定义允许的响应内容的最大尺寸
+  maxContentLength: 2000,
+
+  // `validateStatus` 定义对于给定的HTTP 响应状态码是 resolve 或 reject  promise 。
+  // 如果 `validateStatus` 返回 `true` (或者设置为 `null` 或 `undefined`)，promise 将被 resolve; 否则，promise 将被 rejecte
+  validateStatus: function (status) &#123;
+    return status &gt;= 200 &amp;&amp; status &lt; 300; // default
+  &#125;,
+
+  // `maxRedirects` 定义在 node.js 中 follow 的最大重定向数目
+  // 如果设置为0，将不会 follow 任何重定向
+  maxRedirects: 5, // default
+
+  // `socketPath` defines a UNIX Socket to be used in node.js.
+  // e.g. &#39;/var/run/docker.sock&#39; to send requests to the docker daemon.
+  // Only either `socketPath` or `proxy` can be specified.
+  // If both are specified, `socketPath` is used.
+  socketPath: null, // default
+
+  // `httpAgent` 和 `httpsAgent` 分别在 node.js 中用于定义在执行 http 和 https 时使用的自定义代理。允许像这样配置选项：
+  // `keepAlive` 默认没有启用
+  httpAgent: new http.Agent(&#123; keepAlive: true &#125;),
+  httpsAgent: new https.Agent(&#123; keepAlive: true &#125;),
+
+  // &#39;proxy&#39; 定义代理服务器的主机名称和端口
+  // `auth` 表示 HTTP 基础验证应当用于连接代理，并提供凭据
+  // 这将会设置一个 `Proxy-Authorization` 头，覆写掉已有的通过使用 `header` 设置的自定义 `Proxy-Authorization` 头。
+  proxy: &#123;
+    host: &#39;127.0.0.1&#39;,
+    port: 9000,
+    auth: &#123;
+      username: &#39;mikeymike&#39;,
+      password: &#39;rapunz3l&#39;
+    &#125;
+  &#125;,
+
+  // `cancelToken` 指定用于取消请求的 cancel token
+  // （查看后面的 Cancellation 这节了解更多）
+  cancelToken: new CancelToken(function (cancel) &#123;
+
+  &#125;)
+&#125;
+</code></pre>
+<h4 id="九，响应结构"><a href="#九，响应结构" class="headerlink" title="九，响应结构"></a>九，响应结构</h4><p>某个请求的响应包含以下信息：</p>
+<pre><code>&#123;
+  // `data` 由服务器提供的响应
+  data: &#123;&#125;,
+
+  // `status` 来自服务器响应的 HTTP 状态码
+  status: 200,
+
+  // `statusText` 来自服务器响应的 HTTP 状态信息
+  statusText: &#39;OK&#39;,
+
+  // `headers` 服务器响应的头
+  headers: &#123;&#125;,
+
+  // `config` 时为请求提供的配置信息
+  config: &#123;&#125;,
+  // &#39;request&#39;
+  // `request` is the request that generated this response
+  // It is the last ClientRequest instance in node.js (in redirects)
+  // and an XMLHttpRequest instance the browser
+  request: &#123;&#125;
+&#125;
+</code></pre>
+<p>使用 then 时，你将接收下面这样的响应 :</p>
+<pre><code>axios.get(&#39;/user/12345&#39;)
+  .then(function(response) &#123;
+    console.log(response.data);
+    console.log(response.status);
+    console.log(response.statusText);
+    console.log(response.headers);
+    console.log(response.config);
+  &#125;);
+</code></pre>
+<p>在使用 catch 时，或传递 rejection callback 作为 then 的第二个参数时，响应可以通过 error 对象可被使用，正如在错误处理这一节所讲。</p>
+<h4 id="十，配置默认值"><a href="#十，配置默认值" class="headerlink" title="十，配置默认值"></a>十，配置默认值</h4><h5 id="1-全局的-axios-默认值"><a href="#1-全局的-axios-默认值" class="headerlink" title="1.全局的 axios 默认值"></a>1.全局的 <code>axios</code> 默认值</h5><pre><code>axios.defaults.baseURL = &#39;https://api.example.com&#39;;
+axios.defaults.headers.common[&#39;Authorization&#39;] = AUTH_TOKEN;
+axios.defaults.headers.post[&#39;Content-Type&#39;] = &#39;application/x-www-form-urlencoded&#39;;
+</code></pre>
+<h5 id="2-自定义实例默认值"><a href="#2-自定义实例默认值" class="headerlink" title="2.自定义实例默认值"></a>2.自定义实例默认值</h5><pre><code>// Set config defaults when creating the instance
+const instance = axios.create(&#123;
+  baseURL: &#39;https://api.example.com&#39;
+&#125;);
+
+// Alter defaults after instance has been created
+instance.defaults.headers.common[&#39;Authorization&#39;] = AUTH_TOKEN;
+</code></pre>
+<h5 id="3-配置的优先顺序"><a href="#3-配置的优先顺序" class="headerlink" title="3.配置的优先顺序"></a>3.配置的优先顺序</h5><p>配置会以一个优先顺序进行合并。这个顺序是：在 lib/defaults.js 找到的库的默认值，然后是实例的 defaults 属性，最后是请求的 config 参数。后者将优先于前者。</p>
+<pre><code>// 使用由库提供的配置的默认值来创建实例
+// 此时超时配置的默认值是 `0`
+var instance = axios.create();
+
+// 覆写库的超时默认值
+// 现在，在超时前，所有请求都会等待 2.5 秒
+instance.defaults.timeout = 2500;
+
+// 为已知需要花费很长时间的请求覆写超时设置
+instance.get(&#39;/longRequest&#39;, &#123;
+  timeout: 5000
+&#125;);
+</code></pre>
+<h4 id="十一，拦截器"><a href="#十一，拦截器" class="headerlink" title="十一，拦截器"></a>十一，拦截器</h4><p>在请求或响应被 then 或 catch 处理前拦截它们。</p>
+<pre><code>// 添加请求拦截器
+axios.interceptors.request.use(function (config) &#123;
+    // 在发送请求之前做些什么
+    return config;
+  &#125;, function (error) &#123;
+    // 对请求错误做些什么
+    return Promise.reject(error);
+  &#125;);
+
+// 添加响应拦截器
+axios.interceptors.response.use(function (response) &#123;
+    // 对响应数据做点什么
+    return response;
+  &#125;, function (error) &#123;
+    // 对响应错误做点什么
+    return Promise.reject(error);
+  &#125;);
+</code></pre>
+<p>如果你想在稍后移除拦截器，可以这样：</p>
+<pre><code>const myInterceptor = axios.interceptors.request.use(function () &#123;/*...*/&#125;);
+axios.interceptors.request.eject(myInterceptor);
+</code></pre>
+<p>可以为自定义 axios 实例添加拦截器：</p>
+<pre><code>const instance = axios.create();
+instance.interceptors.request.use(function () &#123;/*...*/&#125;);
+</code></pre>
+<h4 id="十二，错误处理"><a href="#十二，错误处理" class="headerlink" title="十二，错误处理"></a>十二，错误处理</h4><pre><code>axios.get(&#39;/user/12345&#39;)
+  .catch(function (error) &#123;
+    if (error.response) &#123;
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+    &#125; else if (error.request) &#123;
+      // The request was made but no response was received
+      // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+      // http.ClientRequest in node.js
+      console.log(error.request);
+    &#125; else &#123;
+      // Something happened in setting up the request that triggered an Error
+      console.log(&#39;Error&#39;, error.message);
+    &#125;
+    console.log(error.config);
+  &#125;);
+</code></pre>
+<p>你还可以使用 validateStatus 配置选项定义一个自定义 HTTP 状态码的错误范围。</p>
+<pre><code>axios.get(&#39;/user/12345&#39;, &#123;
+  validateStatus: function (status) &#123;
+    return status &lt; 500; // Reject only if the status code is greater than or equal to 500
+  &#125;
+&#125;)
+</code></pre>
+<h4 id="十三，取消请求"><a href="#十三，取消请求" class="headerlink" title="十三，取消请求"></a>十三，取消请求</h4><p>使用 <code>cancel token</code> 取消请求<br>Axios 的 cancel token API 基于<a target="_blank" rel="noopener" href="https://github.com/tc39/proposal-cancelable-promises">cancelable promises proposal</a>，它还处于第一阶段。<br>可以使用 CancelToken.source 工厂方法创建 cancel token，像这样：</p>
+<pre><code>const CancelToken = axios.CancelToken;
+const source = CancelToken.source();
+
+axios.get(&#39;/user/12345&#39;, &#123;
+  cancelToken: source.token
+&#125;).catch(function(thrown) &#123;
+  if (axios.isCancel(thrown)) &#123;
+    console.log(&#39;Request canceled&#39;, thrown.message);
+  &#125; else &#123;
+     // 处理错误
+  &#125;
+&#125;);
+
+axios.post(&#39;/user/12345&#39;, &#123;
+  name: &#39;new name&#39;
+&#125;, &#123;
+  cancelToken: source.token
+&#125;)
+
+// 取消请求（message 参数是可选的）
+source.cancel(&#39;Operation canceled by the user.&#39;);
+</code></pre>
+<p>还可以通过传递一个 executor 函数到 CancelToken 的构造函数来创建 cancel token：</p>
+<pre><code>const CancelToken = axios.CancelToken;
+let cancel;
+
+axios.get(&#39;/user/12345&#39;, &#123;
+  cancelToken: new CancelToken(function executor(c) &#123;
+    // executor 函数接收一个 cancel 函数作为参数
+    cancel = c;
+  &#125;)
+&#125;);
+
+// cancel the request
+cancel();
+</code></pre>
+<p>注意: 可以使用同一个 cancel token 取消多个请求</p>
+<h4 id="十四，其他"><a href="#十四，其他" class="headerlink" title="十四，其他"></a>十四，其他</h4><h5 id="1-参数处理"><a href="#1-参数处理" class="headerlink" title="1.参数处理"></a>1.参数处理</h5><p>默认情况下，axios将JavaScript对象序列化为JSON。 要以application / x-www-form-urlencoded格式发送数据，您可以使用以下选项之一。<br>在浏览器中，您可以使用 <code>URLSearchParams API</code>，如下所示：</p>
+<pre><code>const params = new URLSearchParams();
+params.append(&#39;param1&#39;, &#39;value1&#39;);
+params.append(&#39;param2&#39;, &#39;value2&#39;);
+axios.post(&#39;/foo&#39;, params);
+</code></pre>
+<p>请注意，所有浏览器都不支持URLSearchParams（请参阅 <a target="_blank" rel="noopener" href="https://www.caniuse.com/#feat=urlsearchparams">caniuse.com</a>），但可以使用 <a target="_blank" rel="noopener" href="https://github.com/WebReflection/url-search-params">polyfill</a>（确保填充全局环境）。</p>
+<p>或者，您可以使用 <a target="_blank" rel="noopener" href="https://github.com/ljharb/qs">qs</a> 库编码数据：</p>
+<pre><code>const qs = require(&#39;qs&#39;);
+axios.post(&#39;/foo&#39;, qs.stringify(&#123; &#39;bar&#39;: 123 &#125;));
+</code></pre>
+<p>或者以另一种方式（ES6）:</p>
+<pre><code>import qs from &#39;qs&#39;;
+const data = &#123; &#39;bar&#39;: 123 &#125;;
+const options = &#123;
+  method: &#39;POST&#39;,
+  headers: &#123; &#39;content-type&#39;: &#39;application/x-www-form-urlencoded&#39; &#125;,
+  data: qs.stringify(data),
+  url,
+&#125;;
+axios(options);
+</code></pre>
+<p>在node.js中，您可以使用 <code>querystring</code> 模块，如下所示：</p>
+<pre><code>const querystring = require(&#39;querystring&#39;);
+axios.post(&#39;http://something.com/&#39;, querystring.stringify(&#123; foo: &#39;bar&#39; &#125;));
+</code></pre>
+<p>您也可以使用 <a target="_blank" rel="noopener" href="https://github.com/ljharb/qs">qs</a>库。</p>
+<h5 id="2-浏览器Promise支持"><a href="#2-浏览器Promise支持" class="headerlink" title="2.浏览器Promise支持"></a>2.浏览器Promise支持</h5><p>axios 依赖原生的 <code>ES6 Promise</code> 实现而被 <a target="_blank" rel="noopener" href="https://caniuse.com/#feat=promises">支持</a>. 如果你的环境不支持 <code>ES6 Promise</code>，你可以使用     <a target="_blank" rel="noopener" href="https://github.com/stefanpenner/es6-promise">polyfill</a>.</p>
+<h5 id="3-TypeScript支持"><a href="#3-TypeScript支持" class="headerlink" title="3.TypeScript支持"></a>3.<code>TypeScript</code>支持</h5><p>axios包括TypeScript定义。</p>
+<pre><code>import axios from &#39;axios&#39;;
+axios.get(&#39;/user?ID=12345&#39;);
+</code></pre>
+<p>更新详情你可以参考 <a target="_blank" rel="noopener" href="https://github.com/axios/axios">官方文档</a></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 lbvs86823@163.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>axios 中文文档</p>
+    
+    <p><span class="copy-title">本文作者:</span><a  title="lbvs86823">lbvs86823</a></p>
+    <p><span class="copy-title">发布时间:</span>2018-10-12, 10:12:21</p>
+    <p><span class="copy-title">最后更新:</span>2020-03-20, 14:27:43</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2018/10/12/js/js_axios/" title="axios 中文文档">https://lbvs86823.github.io/2018/10/12/js/js_axios/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">Copyright 2009 - 2020 lbvs86823 All Rights Reserved</p>
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+<div class="acParent"></div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞, 土豪就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.0.1" ></script>
+
+<script src="/js/script.js?v=1.0.1" ></script>
+<script>
+    var img_resize = 'default';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['#Digester','#Rule','#docker','#centos','#mysql','#redis','#javaScript','#es5','#es6','#promise','#Java','#enum','#thread','#linux','#centOS','#man','#vi','#common-logging','#log4j','#factory','#monitor','#influxdb','#singleton','#kafka','#zookeeper','#uml','#MyBatis','#EAI','#ERP','#OA','#CRM','#jetty','#servlet','#shiro','#Subject','#SecurityManager','#Realms','#Authentication','#Session','#spring','#security','#auth2','#quartz','#cronTrigger','#schedule','#cron','#session','#Jekyll','#blog','#Jekyll-Bootstrap','#git','#github','#gitLab','#homebrew','#tool','#mac os','#boot','#maven','#npm','#nodeJs','#yarn','#Markdown','#jquery','#vue','#axios','#java','#Map','#HashMap','#dtd','#xml','#Authorization','#builder','#proxy','#adapter','#decrator','#facade','#bridge',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length - 1, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: #fafafa;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 492px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 1px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

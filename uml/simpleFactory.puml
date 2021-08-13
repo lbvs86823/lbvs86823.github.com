@@ -1,0 +1,22 @@
+@startuml
+title 简单工厂
+
+interface Fruit {
+    + eat(): void
+}
+
+class Apple implements Fruit {
+    + eat(): void
+}
+
+class Watermelon implements Fruit {
+    + eat(): void
+}
+
+class FruitFactory {
+    + createFruit(): Fruit
+}
+
+FruitFactory .right.> Fruit
+
+@enduml

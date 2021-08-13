@@ -1,0 +1,13 @@
+@startuml
+title 关联关系
+
+class Country {
+   - president : President
+}
+
+class President{
+
+}
+
+Country "1" -right-> "1" President
+@enduml

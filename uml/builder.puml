@@ -1,0 +1,52 @@
+@startuml
+title 建造模式
+
+class Phone {
+    - screen : String
+    - cpu: String
+    - memory: String
+    - camera: String
+    + setScreen: void
+    + setCpu: void
+    + setMemory: void
+    + setCamera: void
+}
+
+
+abstract Builder {
+    + {abstract} builderScreen():void
+    + {abstract} builderCpu():void
+    + {abstract} builderMemory():void
+    + {abstract} builderCamera():void
+    + {abstract} builder: Phone
+}
+
+class SonyBuilder extends Builder {
+    + builderScreen():void
+    + builderCpu():void
+    + builderMemory():void
+    + builderCamera():void
+    + builder(): Phone
+}
+
+class SamsungBuilder extends Builder {
+    + builderScreen():void
+    + builderCpu():void
+    + builderMemory():void
+    + builderCamera():void
+    + builder(): Phone
+}
+
+SonyBuilder ..> "依赖" Phone
+SamsungBuilder ..> "依赖" Phone
+
+class Director {
+    - builder： Builder
+    + Director(Builder builder)
+    + construct(): Phone
+}
+
+Director ..> "依赖" Phone
+Director -left-* Builder
+
+@enduml

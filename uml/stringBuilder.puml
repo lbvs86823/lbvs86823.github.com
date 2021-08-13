@@ -1,0 +1,38 @@
+@startuml
+title "StringBuilder 的建造模式类图"
+
+interface Appendable {
+    + append(CharSequence csq): Appendable
+    + append(CharSequence csq, int start, int end): Appendable
+    + append(char c): Appendable
+}
+note left of Appendable : 抽象建造者
+
+abstract AbstractStringBuilder implements Appendable {
+    + append(CharSequence csq): Appendable
+    + append(CharSequence csq, int start, int end): Appendable
+    + append(char c): Appendable
+}
+note right of AbstractStringBuilder: 具体建造者实现,只是不能实例化
+
+class StringBuilder extends AbstractStringBuilder {
+    + append(CharSequence csq): Appendable
+    + append(CharSequence csq, int start, int end): Appendable
+    + append(char c): Appendable
+}
+note bottom of StringBuilder
+即充当了指挥者的角色，同时也充当了具体的建造者角色,
+建造方法的实现是由AbstractStringBuilder来完成的
+end note
+
+class StringBuffer extends AbstractStringBuilder {
+    + append(CharSequence csq): Appendable
+    + append(CharSequence csq, int start, int end): Appendable
+    + append(char c): Appendable
+}
+note bottom of StringBuffer
+即充当了指挥者的角色，同时也充当了具体的建造者角色,
+建造方法的实现是由AbstractStringBuilder来完成的
+end note
+
+@enduml

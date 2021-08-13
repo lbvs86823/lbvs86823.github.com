@@ -1,0 +1,19 @@
+@startuml
+title 原型模式
+
+interface Prototype {
+    + clone(): Prototype
+}
+
+class ConcretePrototype implements Prototype {
+    + clone(): ConcretePrototype
+}
+
+class Client {
+    - operation(): void
+}
+
+Client .left.>  ConcretePrototype
+
+
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+title 关联关系
+class Teacher {
+    - students : List<Student>
+}
+
+class Student {
+    - teachers : List<Teacher>
+}
+
+Teacher "n" -down- "n" Student : 关联
+
+
+class Node {
+    - childrenNode : Node
+}
+
+Node --> Node
+
+@enduml

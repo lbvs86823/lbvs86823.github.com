@@ -1,0 +1,15 @@
+@startuml
+title 依赖关系
+
+class Driver {
+    - name : String
+    + driving(Car car): void
+}
+
+class Car {
+    + move(): void
+}
+
+Driver ..> Car  : 依赖
+
+@enduml

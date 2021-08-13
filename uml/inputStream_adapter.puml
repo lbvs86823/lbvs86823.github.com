@@ -1,0 +1,121 @@
+@startuml
+title 适配器模式应用(InputStream)
+
+abstract class InputStream {
+    IO的输入类，负责读取字节流数据
+    + abstract read():int
+    + read(byte b[]):int
+    + read(byte b[], int off, int len):int
+}
+
+class FileInputStream extends InputStream {
+    负责处理文件字节流
+}
+class ByteArrayInputStream extends InputStream {
+    负责处理字节数组
+}
+class StringBufferInputStream extends InputStream {
+    负责处理字符串缓冲区
+}
+class PipedInputStream extends InputStream {
+    负责处理线程间的输入字节流
+}
+class ObjectInputStream extends InputStream {
+    负责处理被序列化的对象
+}
+class SequenceInputStream extends InputStream {
+    负责依次顺序读取多个输入流数据
+}
+
+class FilterInputStream {
+    # in: InputStream
+    # FilterInputStream(InputStream in)
+}
+
+FilterInputStream --|> InputStream
+
+class BufferedInputStream  {
+    负责提供有缓存功能的输入流
+}
+BufferedInputStream --|> FilterInputStream
+
+class DataInputStream {
+    负责读取byte转成java基础数据类型的数据
+}
+DataInputStream --|> FilterInputStream
+
+class PushbackInputStream {
+    负责提供把数据读取出来再回写到Stream
+}
+PushbackInputStream --|> FilterInputStream
+
+abstract class Reader {
+    IO的输入类，负责读取字符流数据
+    + read():int
+    + read(char cbuf[]):int
+    + read(char cbuf[], int off, int len):int
+}
+
+class StreamDecoder {
+    - InputStream in
+    + read():int
+    + read(char cbuf[]):int
+    + read(char cbuf[], int off, int len):int
+}
+StreamDecoder --|> Reader
+InputStream -* StreamDecoder
+note top of StreamDecoder
+它不是Java SE API 中的内容，是Sun JDK 给出的自身实现
+他们通过对构造方法中字节流进行封装，并通过该类实现了字节流到字符流之间的解码转换
+适配器类： 继承了目标接口类(Reader), 并且聚合了适配者(InputStream)
+标准的对象适配器模式
+end note
+
+class InputStreamReader extends Reader {
+    - StreamDecoder sd
+    + InputStreamReader(InputStream in)
+    + InputStreamReader(InputStream in, String charsetName)
+    + InputStreamReader(InputStream in, Charset cs)
+    + InputStreamReader(InputStream in, CharsetDecoder dec)
+}
+
+InputStreamReader ..|> InputStream
+InputStreamReader *- StreamDecoder
+
+note bottom of InputStreamReader
+用于将一个字节流中的字节转换成字符
+它是对实现了Reader接口的StreamDecoder类的一个封装
+继承了目标接口 Reader, 用于将一个字节流中的字节转换成字符实际是交给StreamDecoder去完成的
+end note
+
+class FileReader extends InputStreamReader {
+    负责处理文件字符
+}
+
+class BufferedReader extends Reader {
+    负责提供有缓存功能的字符输入
+}
+class LineNumberReader extends BufferedReader {
+
+}
+class CharArrayReader extends Reader {
+    负责处理字符数组输入
+}
+class StringReader extends Reader {
+    负责处理字符串输入
+}
+class PipedReader extends Reader {
+    负责处理线程间的输入字符流
+}
+class PushbackReader extends FilterReader {
+    负责提供把数据读取出来再回写回去
+}
+
+class FilterReader extends Reader {
+    # Reader in
+    # FilterReader(Reader in)
+}
+
+
+
+@enduml

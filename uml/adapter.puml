@@ -1,0 +1,50 @@
+@startuml
+title 适配器模式
+
+interface SDCard {
+    + readSD() : String
+    + writeSD(String content): void
+}
+
+class SDCardImpl implements SDCard {
+    + readSD() : String
+    + writeSD(String content): void
+}
+
+interface TFCard {
+    + readTF() : String
+    + writeTF(String content): void
+}
+
+class TFCardImpl implements TFCard {
+    + readTF() : String
+    + writeTF(String content): void
+}
+
+class Computer {
+    + Computer(SDCard card)
+    + read() : String
+    + write(): void
+}
+
+Computer .left.> SDCard
+
+class TFAdapter01 extends TFCardImpl {
+    + readSD() : String
+    + writeSD(String content): void
+}
+
+class TFAdapter02 {
+    - tfCard: TFCard
+    + TFAdapter02(TFCard tfCard)
+    + readSD() : String
+    + writeSD(String content): void
+}
+TFAdapter02 .left.> TFCard
+
+TFAdapter01 .right.|> SDCard
+TFAdapter02 .right.|> SDCard
+
+note bottom of TFAdapter01: 类继承模式
+note right of TFAdapter02: 聚合对象模式
+@enduml

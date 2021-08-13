@@ -1,0 +1,1998 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>log4j.properties配置详解 | lbvs86823</title>
+  <meta name="keywords" content=" log4j ">
+  <meta name="description" content="log4j.properties配置详解 | lbvs86823">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="axios">
+<meta property="og:type" content="article">
+<meta property="og:title" content="axios 中文文档">
+<meta property="og:url" content="https://lbvs86823.github.io/2018/10/12/js/js_axios/index.html">
+<meta property="og:site_name" content="lbvs86823">
+<meta property="og:description" content="axios">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lbvs86823.github.io/images/browser_support.png">
+<meta property="article:published_time" content="2018-10-12T02:12:21.000Z">
+<meta property="article:modified_time" content="2020-03-20T06:27:43.632Z">
+<meta property="article:author" content="lbvs86823">
+<meta property="article:tag" content="javaScript">
+<meta property="article:tag" content="axios">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lbvs86823.github.io/images/browser_support.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js?v=1.0.1" ></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.0.1" ></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+  <input class="theme_blog_path" value="">
+</div>
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg" />
+</a>
+<div class="author">
+    <span>lbvs86823</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="rss" href="/atom.xml" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-rss"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="github" href="https://github.com/lbvs86823" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="email" href="mailto:lbvs86823@163.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active">全部文章<small>(80)</small></div></li>
+    
+        
+            
+            <li><div data-rel="Digester">Digester<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="docker">docker<small>(5)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="javaScript">javaScript<small>(10)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="javacore">javacore<small>(5)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="linux">linux<small>(4)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="log">log<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="patterns">patterns<small>(12)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="database">database<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="kafka">kafka<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="others">others<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="server">server<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="shiro">shiro<small>(5)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="redis">redis<small>(3)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="spring">spring<small>(9)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="tools">tools<small>(9)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="vue">vue<small>(9)</small></div>
+                
+            </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="80">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode === 13){return false;}">
+        <input id="local-search-input" class="search" type="text" placeholder="Search..." />
+        <i class="cross"></i>
+        <span>
+            <label for="tagswitch">Tags:</label>
+            <input id="tagswitch" type="checkbox" style="display: none" />
+            <i id="tagsWitchIcon"></i>
+        </span>
+    </form>
+    <div class="tags-list">
+    
+    <li class="article-tag-list-item">
+        <a class="color4">Digester</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">Rule</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">docker</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">centos</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">mysql</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">redis</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">javaScript</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">es5</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">es6</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">promise</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">Java</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">enum</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">thread</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">linux</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">centOS</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">man</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">vi</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">common-logging</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">log4j</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">factory</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">monitor</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">influxdb</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">singleton</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">kafka</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">zookeeper</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">uml</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">MyBatis</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">EAI</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">ERP</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">OA</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">CRM</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">jetty</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">servlet</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">shiro</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">Subject</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">SecurityManager</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">Realms</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">Authentication</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">Session</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">spring</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">security</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">auth2</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">quartz</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">cronTrigger</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">schedule</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">cron</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">session</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">Jekyll</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">blog</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">Jekyll-Bootstrap</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">git</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">github</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">gitLab</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">homebrew</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">tool</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">mac os</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">boot</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">maven</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">npm</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">nodeJs</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">yarn</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">Markdown</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">jquery</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">vue</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">axios</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">java</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">Map</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">HashMap</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">dtd</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">xml</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">Authorization</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">builder</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">proxy</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">adapter</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">decrator</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">facade</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">bridge</a>
+    </li>
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class="Digester "
+           href="/2015/01/16/digester/digester_rule/"
+           data-tag="Digester,Rule"
+           data-author="" >
+            <span class="post-title" title="Digester 规则介绍">Digester 规则介绍</span>
+            <span class="post-date" title="2015-01-16 12:13:34">2015/01/16</span>
+        </a>
+        
+        <a  class="docker "
+           href="/2016/09/08/docker/dockerInstallCentos/"
+           data-tag="docker,centos"
+           data-author="" >
+            <span class="post-title" title="CentOS Docker 安装">CentOS Docker 安装</span>
+            <span class="post-date" title="2016-09-08 18:30:14">2016/09/08</span>
+        </a>
+        
+        <a  class="docker "
+           href="/2016/09/13/docker/dockerInstallMysql/"
+           data-tag="docker,mysql"
+           data-author="" >
+            <span class="post-title" title="Docker 安装 MySql">Docker 安装 MySql</span>
+            <span class="post-date" title="2016-09-13 19:39:24">2016/09/13</span>
+        </a>
+        
+        <a  class="docker "
+           href="/2016/09/15/docker/dockerInstallNginx/"
+           data-tag="docker,redis"
+           data-author="" >
+            <span class="post-title" title="Docker 安装 Nginx">Docker 安装 Nginx</span>
+            <span class="post-date" title="2016-09-15 15:22:41">2016/09/15</span>
+        </a>
+        
+        <a  class="docker "
+           href="/2016/09/14/docker/dockerInstallRedis/"
+           data-tag="docker,redis"
+           data-author="" >
+            <span class="post-title" title="Docker 安装 Redis">Docker 安装 Redis</span>
+            <span class="post-date" title="2016-09-14 10:30:15">2016/09/14</span>
+        </a>
+        
+        <a  class="docker "
+           href="/2016/09/11/docker/dockerCommand/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="Docker 常用命令">Docker 常用命令</span>
+            <span class="post-date" title="2016-09-11 19:10:44">2016/09/11</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2016/06/18/js/es5_new/"
+           data-tag="javaScript,es5"
+           data-author="" >
+            <span class="post-title" title="es5 新语法">es5 新语法</span>
+            <span class="post-date" title="2016-06-18 15:41:37">2016/06/18</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2017/02/27/js/es6_new/"
+           data-tag="javaScript,es6"
+           data-author="" >
+            <span class="post-title" title="es6 新语法">es6 新语法</span>
+            <span class="post-date" title="2017-02-27 11:27:27">2017/02/27</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2018/01/16/js/js_arrow_functions/"
+           data-tag="javaScript,es6"
+           data-author="" >
+            <span class="post-title" title="js 之 箭头函数">js 之 箭头函数</span>
+            <span class="post-date" title="2018-01-16 13:05:35">2018/01/16</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2018/01/16/js/js_export/"
+           data-tag="javaScript,es6"
+           data-author="" >
+            <span class="post-title" title="js 之 exprot 语法">js 之 exprot 语法</span>
+            <span class="post-date" title="2018-01-16 13:05:35">2018/01/16</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2018/06/22/js/js_promise/"
+           data-tag="javaScript,promise"
+           data-author="" >
+            <span class="post-title" title="js 标准内置对象之 Promise (控制抽象对象)">js 标准内置对象之 Promise (控制抽象对象)</span>
+            <span class="post-date" title="2018-06-22 11:42:51">2018/06/22</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2018/01/16/js/js_import/"
+           data-tag="javaScript,es6"
+           data-author="" >
+            <span class="post-title" title="js 之 import 语法">js 之 import 语法</span>
+            <span class="post-date" title="2018-01-16 12:27:27">2018/01/16</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2018/01/16/js/js_rest_parameters/"
+           data-tag="javaScript,es6"
+           data-author="" >
+            <span class="post-title" title="js 之 ... 剩余参数">js 之 ... 剩余参数</span>
+            <span class="post-date" title="2018-01-16 14:15:35">2018/01/16</span>
+        </a>
+        
+        <a  class="javacore "
+           href="/2011/06/27/javacore/enum/"
+           data-tag="Java,enum"
+           data-author="" >
+            <span class="post-title" title="Java enum 的用法详解">Java enum 的用法详解</span>
+            <span class="post-date" title="2011-06-27 22:03:19">2011/06/27</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2018/01/16/js/js_destructuring_assignment/"
+           data-tag="javaScript,es6"
+           data-author="" >
+            <span class="post-title" title="js 之 解构赋值">js 之 解构赋值</span>
+            <span class="post-date" title="2018-01-16 14:15:35">2018/01/16</span>
+        </a>
+        
+        <a  class="javacore "
+           href="/2011/05/16/javacore/thread/"
+           data-tag="Java,thread"
+           data-author="" >
+            <span class="post-title" title="Java thread类的用法详解">Java thread类的用法详解</span>
+            <span class="post-date" title="2011-05-16 21:43:29">2011/05/16</span>
+        </a>
+        
+        <a  class="linux "
+           href="/2019/05/09/linux/install_man_CN/"
+           data-tag="linux,centOS,man"
+           data-author="" >
+            <span class="post-title" title="centOS7 安装man中文手册">centOS7 安装man中文手册</span>
+            <span class="post-date" title="2019-05-09 18:21:05">2019/05/09</span>
+        </a>
+        
+        <a  class="linux "
+           href="/2010/03/09/linux/linux_firewall/"
+           data-tag="linux"
+           data-author="" >
+            <span class="post-title" title="linux 防火墙管理">linux 防火墙管理</span>
+            <span class="post-date" title="2010-03-09 10:12:45">2010/03/09</span>
+        </a>
+        
+        <a  class="javacore "
+           href="/2015/10/17/javacore/javabean/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Java bean 的一些专用名词解释">Java bean 的一些专用名词解释</span>
+            <span class="post-date" title="2015-10-17 21:13:11">2015/10/17</span>
+        </a>
+        
+        <a  class="linux "
+           href="/2010/10/07/linux/linux_vi/"
+           data-tag="linux,vi"
+           data-author="" >
+            <span class="post-title" title="Linux VI 命令详解">Linux VI 命令详解</span>
+            <span class="post-date" title="2010-10-07 16:41:24">2010/10/07</span>
+        </a>
+        
+        <a  class="log "
+           href="/2010/05/13/log/common-logging/"
+           data-tag="common-logging,log4j"
+           data-author="" >
+            <span class="post-title" title="commons-logging 和 log4j 之间的关系">commons-logging 和 log4j 之间的关系</span>
+            <span class="post-date" title="2010-05-13 18:31:54">2010/05/13</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/02/27/patterns/factoryMethod/"
+           data-tag="factory"
+           data-author="" >
+            <span class="post-title" title="工厂方法模式">工厂方法模式</span>
+            <span class="post-date" title="2015-02-27 21:43:11">2015/02/27</span>
+        </a>
+        
+        <a  class="database "
+           href="/2018/07/11/monitor/influxdb/"
+           data-tag="monitor,influxdb"
+           data-author="" >
+            <span class="post-title" title="influxDB 入门指南">influxDB 入门指南</span>
+            <span class="post-date" title="2018-07-11 10:03:27">2018/07/11</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/02/27/patterns/prototype/"
+           data-tag="factory"
+           data-author="" >
+            <span class="post-title" title="原型模式">原型模式</span>
+            <span class="post-date" title="2015-02-27 21:43:11">2015/02/27</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/02/28/patterns/builder/"
+           data-tag="builder"
+           data-author="" >
+            <span class="post-title" title="建造者模式">建造者模式</span>
+            <span class="post-date" title="2015-02-28 11:13:12">2015/02/28</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/02/27/patterns/simpleFactory/"
+           data-tag="factory"
+           data-author="" >
+            <span class="post-title" title="简单工厂模式">简单工厂模式</span>
+            <span class="post-date" title="2015-02-27 18:22:54">2015/02/27</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/02/27/patterns/singleton/"
+           data-tag="singleton"
+           data-author="" >
+            <span class="post-title" title="单例模式">单例模式</span>
+            <span class="post-date" title="2015-02-27 21:43:11">2015/02/27</span>
+        </a>
+        
+        <a  class="kafka "
+           href="/2017/07/17/kafka/kafka/"
+           data-tag="kafka,zookeeper"
+           data-author="" >
+            <span class="post-title" title="kafka 入门指南">kafka 入门指南</span>
+            <span class="post-date" title="2017-07-17 12:53:09">2017/07/17</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/02/27/patterns/uml/"
+           data-tag="uml"
+           data-author="" >
+            <span class="post-title" title="UML类图">UML类图</span>
+            <span class="post-date" title="2015-02-27 20:53:21">2015/02/27</span>
+        </a>
+        
+        <a  class="javacore "
+           href="/2015/05/18/mybatis/mybatis_special_char/"
+           data-tag="MyBatis"
+           data-author="" >
+            <span class="post-title" title="MyBatis 转义字符处理">MyBatis 转义字符处理</span>
+            <span class="post-date" title="2015-05-18 11:13:19">2015/05/18</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/02/28/patterns/abstractFactory/"
+           data-tag="factory"
+           data-author="" >
+            <span class="post-title" title="抽象工厂模式">抽象工厂模式</span>
+            <span class="post-date" title="2015-02-28 20:04:59">2015/02/28</span>
+        </a>
+        
+        <a  class="others "
+           href="/2015/01/27/others/eai/"
+           data-tag="EAI,ERP,OA,CRM"
+           data-author="" >
+            <span class="post-title" title="EAI简介">EAI简介</span>
+            <span class="post-date" title="2015-01-27 20:53:21">2015/01/27</span>
+        </a>
+        
+        <a  class="linux "
+           href="/2010/05/09/linux/linux_version/"
+           data-tag="linux"
+           data-author="" >
+            <span class="post-title" title="linux 查看版本">linux 查看版本</span>
+            <span class="post-date" title="2010-05-09 13:11:45">2010/05/09</span>
+        </a>
+        
+        <a  class="server "
+           href="/2010/12/10/server/jetty/"
+           data-tag="jetty,servlet"
+           data-author="" >
+            <span class="post-title" title="Jetty 嵌入式开发">Jetty 嵌入式开发</span>
+            <span class="post-date" title="2010-12-10 11:25:11">2010/12/10</span>
+        </a>
+        
+        <a  class="shiro "
+           href="/2010/12/15/shiro/shiro_01/"
+           data-tag="shiro,Subject,SecurityManager,Realms"
+           data-author="" >
+            <span class="post-title" title="Shiro 第一章 简介">Shiro 第一章 简介</span>
+            <span class="post-date" title="2010-12-15 12:25:17">2010/12/15</span>
+        </a>
+        
+        <a  class="redis "
+           href="/2010/07/24/redis/redis_string/"
+           data-tag="redis"
+           data-author="" >
+            <span class="post-title" title="redis入门之Strings数据类型(二)">redis入门之Strings数据类型(二)</span>
+            <span class="post-date" title="2010-07-24 23:45:41">2010/07/24</span>
+        </a>
+        
+        <a  class="redis "
+           href="/2010/07/24/redis/redis/"
+           data-tag="redis"
+           data-author="" >
+            <span class="post-title" title="redis入门之介绍和安装篇(一)">redis入门之介绍和安装篇(一)</span>
+            <span class="post-date" title="2010-07-24 10:15:45">2010/07/24</span>
+        </a>
+        
+        <a  class="shiro "
+           href="/2010/12/16/shiro/shiro_02/"
+           data-tag="shiro,Subject,SecurityManager,Realms,Authentication"
+           data-author="" >
+            <span class="post-title" title="Shiro 第二章 身份认证">Shiro 第二章 身份认证</span>
+            <span class="post-date" title="2010-12-16 16:05:29">2010/12/16</span>
+        </a>
+        
+        <a  class="redis "
+           href="/2010/07/28/redis/redis_hash/"
+           data-tag="redis"
+           data-author="" >
+            <span class="post-title" title="redis入门之hashes数据类型(三)">redis入门之hashes数据类型(三)</span>
+            <span class="post-date" title="2010-07-28 21:11:47">2010/07/28</span>
+        </a>
+        
+        <a  class="shiro "
+           href="/2010/12/18/shiro/shiro_04/"
+           data-tag="shiro,SecurityManager,Realms"
+           data-author="" >
+            <span class="post-title" title="Shiro 第四章 Realms">Shiro 第四章 Realms</span>
+            <span class="post-date" title="2010-12-18 09:41:09">2010/12/18</span>
+        </a>
+        
+        <a  class="shiro "
+           href="/2010/12/20/shiro/shiro_05/"
+           data-tag="shiro,SecurityManager,Session"
+           data-author="" >
+            <span class="post-title" title="Shiro 第五章 Session Management">Shiro 第五章 Session Management</span>
+            <span class="post-date" title="2010-12-20 19:31:58">2010/12/20</span>
+        </a>
+        
+        <a  class="spring "
+           href="/2011/06/15/spring/oauth2.0/"
+           data-tag="spring,security,auth2"
+           data-author="" >
+            <span class="post-title" title="Spring oauth2 相关概念解释">Spring oauth2 相关概念解释</span>
+            <span class="post-date" title="2011-06-15 10:21:20">2011/06/15</span>
+        </a>
+        
+        <a  class="spring "
+           href="/2011/01/10/spring/cron_trigger/"
+           data-tag="spring,quartz,cronTrigger,schedule"
+           data-author="" >
+            <span class="post-title" title="cron 表达式">cron 表达式</span>
+            <span class="post-date" title="2011-01-10 21:49:39">2011/01/10</span>
+        </a>
+        
+        <a  class="spring "
+           href="/2011/01/09/spring/quartz/"
+           data-tag="spring,quartz,cron"
+           data-author="" >
+            <span class="post-title" title="quartz整合spring用法详解">quartz整合spring用法详解</span>
+            <span class="post-date" title="2011-01-09 19:49:39">2011/01/09</span>
+        </a>
+        
+        <a  class="spring "
+           href="/2018/04/11/spring/sping%20security%20reference/"
+           data-tag="spring,security"
+           data-author="" >
+            <span class="post-title" title="Spring Security 参考指南">Spring Security 参考指南</span>
+            <span class="post-date" title="2018-04-11 22:09:21">2018/04/11</span>
+        </a>
+        
+        <a  class="spring "
+           href="/2011/06/12/spring/spring%20security/"
+           data-tag="spring,security,auth2"
+           data-author="" >
+            <span class="post-title" title="Spring Security 中涉及到的核心类介绍">Spring Security 中涉及到的核心类介绍</span>
+            <span class="post-date" title="2011-06-12 12:59:20">2011/06/12</span>
+        </a>
+        
+        <a  class="spring "
+           href="/2011/04/16/spring/spring%20session/"
+           data-tag="redis,spring,session"
+           data-author="" >
+            <span class="post-title" title="spring session 相关代码详解">spring session 相关代码详解</span>
+            <span class="post-date" title="2011-04-16 20:41:20">2011/04/16</span>
+        </a>
+        
+        <a  class="tools "
+           href="/2010/04/17/tools/blog01/"
+           data-tag="Jekyll,blog"
+           data-author="" >
+            <span class="post-title" title="怎么写自己的博客">怎么写自己的博客</span>
+            <span class="post-date" title="2010-04-17 12:13:29">2010/04/17</span>
+        </a>
+        
+        <a  class="tools "
+           href="/2010/04/18/tools/blog02/"
+           data-tag="Jekyll,blog,Jekyll-Bootstrap"
+           data-author="" >
+            <span class="post-title" title="采用Jekyll “增强版” 写博客">采用Jekyll “增强版” 写博客</span>
+            <span class="post-date" title="2010-04-18 10:23:39">2010/04/18</span>
+        </a>
+        
+        <a  class="tools "
+           href="/2012/03/08/tools/git_command/"
+           data-tag="git,github,gitLab"
+           data-author="" >
+            <span class="post-title" title="git 命令手册">git 命令手册</span>
+            <span class="post-date" title="2012-03-08 14:25:31">2012/03/08</span>
+        </a>
+        
+        <a  class="tools "
+           href="/2015/06/07/tools/homebrew/"
+           data-tag="homebrew,tool,mac os"
+           data-author="" >
+            <span class="post-title" title="Homebrew Mac OS 系统软件包管理利器">Homebrew Mac OS 系统软件包管理利器</span>
+            <span class="post-date" title="2015-06-07 22:13:29">2015/06/07</span>
+        </a>
+        
+        <a  class="spring "
+           href="/2018/01/11/spring/sping%20boot%20reference%20guide/"
+           data-tag="spring,boot"
+           data-author="" >
+            <span class="post-title" title="Spring Boot 参考指南">Spring Boot 参考指南</span>
+            <span class="post-date" title="2018-01-11 20:29:20">2018/01/11</span>
+        </a>
+        
+        <a  class="tools "
+           href="/2010/05/18/tools/maven01/"
+           data-tag="maven"
+           data-author="" >
+            <span class="post-title" title="maven的安装与配置">maven的安装与配置</span>
+            <span class="post-date" title="2010-05-18 10:25:01">2010/05/18</span>
+        </a>
+        
+        <a  class="tools "
+           href="/2017/02/12/tools/npm/"
+           data-tag="tool,npm,nodeJs"
+           data-author="" >
+            <span class="post-title" title="npm 包管理工具">npm 包管理工具</span>
+            <span class="post-date" title="2017-02-12 20:13:39">2017/02/12</span>
+        </a>
+        
+        <a  class="tools "
+           href="/2010/05/18/tools/maven02/"
+           data-tag="maven"
+           data-author="" >
+            <span class="post-title" title="maven的入门">maven的入门</span>
+            <span class="post-date" title="2010-05-18 22:25:01">2010/05/18</span>
+        </a>
+        
+        <a  class="tools "
+           href="/2017/11/27/tools/yarn/"
+           data-tag="tool,nodeJs,yarn"
+           data-author="" >
+            <span class="post-title" title="Yarn 依赖管理工具">Yarn 依赖管理工具</span>
+            <span class="post-date" title="2017-11-27 12:43:59">2017/11/27</span>
+        </a>
+        
+        <a  class="tools "
+           href="/2010/04/25/tools/markdown/"
+           data-tag="blog,Markdown"
+           data-author="" >
+            <span class="post-title" title="Markdown 语法说明">Markdown 语法说明</span>
+            <span class="post-date" title="2010-04-25 12:08:20">2010/04/25</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2010/09/27/js/jquery/jueryPlugin/"
+           data-tag="javaScript,jquery"
+           data-author="" >
+            <span class="post-title" title="JQuery开发插件的机种方式讨论">JQuery开发插件的机种方式讨论</span>
+            <span class="post-date" title="2010-09-27 20:43:44">2010/09/27</span>
+        </a>
+        
+        <a  class="vue "
+           href="/2017/12/17/js/vue/vueLifeCycle/"
+           data-tag="npm,nodeJs,yarn,vue"
+           data-author="" >
+            <span class="post-title" title="vue 实例的生命周期">vue 实例的生命周期</span>
+            <span class="post-date" title="2017-12-17 11:04:11">2017/12/17</span>
+        </a>
+        
+        <a  class="vue "
+           href="/2017/12/17/js/vue/vueMethods/"
+           data-tag="npm,nodeJs,yarn,vue"
+           data-author="" >
+            <span class="post-title" title="vue 实例属性之 methods">vue 实例属性之 methods</span>
+            <span class="post-date" title="2017-12-17 15:13:21">2017/12/17</span>
+        </a>
+        
+        <a  class="vue "
+           href="/2017/12/17/js/vue/vueHook/"
+           data-tag="npm,nodeJs,yarn,vue"
+           data-author="" >
+            <span class="post-title" title="vue 实例生命周期钩子">vue 实例生命周期钩子</span>
+            <span class="post-date" title="2017-12-17 12:41:21">2017/12/17</span>
+        </a>
+        
+        <a  class="vue "
+           href="/2017/12/17/js/vue/vueProps/"
+           data-tag="npm,nodeJs,yarn,vue"
+           data-author="" >
+            <span class="post-title" title="vue 实例属性之 props">vue 实例属性之 props</span>
+            <span class="post-date" title="2017-12-17 14:53:31">2017/12/17</span>
+        </a>
+        
+        <a  class="vue "
+           href="/2017/12/17/js/vue/vuePropsData/"
+           data-tag="npm,nodeJs,yarn,vue"
+           data-author="" >
+            <span class="post-title" title="vue 实例属性之 propsData">vue 实例属性之 propsData</span>
+            <span class="post-date" title="2017-12-17 15:13:21">2017/12/17</span>
+        </a>
+        
+        <a  class="vue "
+           href="/2017/12/17/js/vue/vueStart/"
+           data-tag="npm,nodeJs,yarn,vue"
+           data-author="" >
+            <span class="post-title" title="vue 入门">vue 入门</span>
+            <span class="post-date" title="2017-12-17 10:03:41">2017/12/17</span>
+        </a>
+        
+        <a  class="vue "
+           href="/2017/12/17/js/vue/vueWatch/"
+           data-tag="npm,nodeJs,yarn,vue"
+           data-author="" >
+            <span class="post-title" title="vue 实例属性之 watch">vue 实例属性之 watch</span>
+            <span class="post-date" title="2017-12-17 15:13:21">2017/12/17</span>
+        </a>
+        
+        <a  class="vue "
+           href="/2017/12/17/js/vue/vueComputed/"
+           data-tag="npm,nodeJs,yarn,vue"
+           data-author="" >
+            <span class="post-title" title="vue 实例属性之 computed">vue 实例属性之 computed</span>
+            <span class="post-date" title="2017-12-17 15:13:21">2017/12/17</span>
+        </a>
+        
+        <a  class="vue "
+           href="/2017/12/17/js/vue/vueData/"
+           data-tag="npm,nodeJs,yarn,vue"
+           data-author="" >
+            <span class="post-title" title="vue 实例属性之 data">vue 实例属性之 data</span>
+            <span class="post-date" title="2017-12-17 14:57:15">2017/12/17</span>
+        </a>
+        
+        <a  class="Digester "
+           href="/2015/01/15/digester/digester/"
+           data-tag="Digester,Rule"
+           data-author="" >
+            <span class="post-title" title="Digester框架简介">Digester框架简介</span>
+            <span class="post-date" title="2015-01-15 22:53:21">2015/01/15</span>
+        </a>
+        
+        <a  class="javaScript "
+           href="/2018/10/12/js/js_axios/"
+           data-tag="javaScript,axios"
+           data-author="" >
+            <span class="post-title" title="axios 中文文档">axios 中文文档</span>
+            <span class="post-date" title="2018-10-12 10:12:21">2018/10/12</span>
+        </a>
+        
+        <a  class="javacore "
+           href="/2011/06/29/javacore/hashMap/"
+           data-tag="java,Map,HashMap"
+           data-author="" >
+            <span class="post-title" title="HashMap实现原理解析">HashMap实现原理解析</span>
+            <span class="post-date" title="2011-06-29 12:53:49">2011/06/29</span>
+        </a>
+        
+        <a  class="log "
+           href="/2010/05/14/log/log4j-config/"
+           data-tag="log4j"
+           data-author="" >
+            <span class="post-title" title="log4j.properties配置详解">log4j.properties配置详解</span>
+            <span class="post-date" title="2010-05-14 20:55:08">2010/05/14</span>
+        </a>
+        
+        <a  class="others "
+           href="/2011/01/14/others/dtd/"
+           data-tag="dtd,xml"
+           data-author="" >
+            <span class="post-title" title="DTD文档类型定义简介">DTD文档类型定义简介</span>
+            <span class="post-date" title="2011-01-14 17:11:16">2011/01/14</span>
+        </a>
+        
+        <a  class="shiro "
+           href="/2010/12/17/shiro/shiro_03/"
+           data-tag="shiro,SecurityManager,Realms,Authentication,Authorization"
+           data-author="" >
+            <span class="post-title" title="Shiro 第三章 身份授权">Shiro 第三章 身份授权</span>
+            <span class="post-date" title="2010-12-17 19:02:22">2010/12/17</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/03/01/patterns/proxy/"
+           data-tag="proxy"
+           data-author="" >
+            <span class="post-title" title="代理模式">代理模式</span>
+            <span class="post-date" title="2015-03-01 08:13:34">2015/03/01</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/03/02/patterns/adapter/"
+           data-tag="adapter"
+           data-author="" >
+            <span class="post-title" title="适配器模式">适配器模式</span>
+            <span class="post-date" title="2015-03-02 09:43:14">2015/03/02</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/03/02/patterns/decrator/"
+           data-tag="decrator"
+           data-author="" >
+            <span class="post-title" title="装饰器模式">装饰器模式</span>
+            <span class="post-date" title="2015-03-02 10:23:02">2015/03/02</span>
+        </a>
+        
+        <a  class="spring "
+           href="/2018/05/18/spring/spring_session_api/"
+           data-tag="spring,session"
+           data-author="" >
+            <span class="post-title" title="《Spring Session 中文手册》 之 第九章 API 文档">《Spring Session 中文手册》 之 第九章 API 文档</span>
+            <span class="post-date" title="2018-05-18 12:15:12">2018/05/18</span>
+        </a>
+        
+        <a  class="spring "
+           href="/2018/05/18/spring/spring_session_redis/"
+           data-tag="spring,session"
+           data-author="" >
+            <span class="post-title" title="Spring Session 之 Redis 实现">Spring Session 之 Redis 实现</span>
+            <span class="post-date" title="2018-05-18 12:15:12">2018/05/18</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/03/02/patterns/facade/"
+           data-tag="facade"
+           data-author="" >
+            <span class="post-title" title="外观(门面)模式">外观(门面)模式</span>
+            <span class="post-date" title="2015-03-02 11:33:56">2015/03/02</span>
+        </a>
+        
+        <a  class="patterns "
+           href="/2015/03/02/patterns/bridge/"
+           data-tag="bridge"
+           data-author="" >
+            <span class="post-title" title="桥接模式">桥接模式</span>
+            <span class="post-date" title="2015-03-02 14:13:02">2015/03/02</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-log/log4j-config" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">log4j.properties配置详解</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+                <a  data-rel="log">log</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a class="color1">log4j</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2020-03-20 14:27:43'>2010-05-14 20:55</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%EF%BC%8Clog4j%E4%BB%8B%E7%BB%8D%EF%BC%9A"><span class="toc-text">一，log4j介绍：</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一，log4j介绍："><a href="#一，log4j介绍：" class="headerlink" title="一，log4j介绍："></a>一，log4j介绍：</h2><p>Log4j是Apache的一个开放源代码项目，通过使用Log4j，我们可以控制日志信息输送的目的地是控制台、文件、GUI组件、甚至是套接口服务器、NT的事件记录器、UNIX Syslog守护进程等;<br>我们也可以控制每一条日志的输出格式;通过定义每一条日志信息的级别，我们能够更加细致地控制日志的生成过程。<br>最令人感兴趣的就是，这些可以通过一个配置文件来灵活地进行配置，而不需要修改应用的代码。</p>
+<p>作为记录日志的工具，它至少应该包含如下几个组成部分(组件)：   </p>
+<ul>
+<li>Logger<br>记录器组件负责产生日志，并能够对日志信息进行分类筛选，控制什么样的日志应该被输出，什么样的日志应该被忽略。它还有一个重要的属性－日志级别。    </li>
+<li>Level<br>日志级别组件,不管何种日志记录工具，大概包含了如下几种日志级别：DEBUG, INFO, WARN, ERROR 和 FATAL。  </li>
+<li>Appender<br>日志记录工具基本上通过 Appender 组件来输出到目的地的，一个 Appender 实例就表示了一个输出的目的地。    </li>
+<li>Layout<br>Layout 组件负责格式化输出的日志信息，一个 Appender 只能有一个 Layout。 </li>
+</ul>
+<p>##二，针对log4j的主要组件介绍</p>
+<ul>
+<li><p>Logger<br>每个Logger拥有自己的名字，Logger之间通过名字来表明隶属关系。<br>有一个Logger称为Root，它永远 存在，且不能通过名字检索或引用，可以通过Logger.getRootLogger()方法获得。<br>其它Logger通过 Logger.getLogger(String name)方法。</p>
+</li>
+<li><p>Appender<br>Appender则是用来指明将所有的log信息存放到什么地方，Log4j中支持多种appender，如 console、files、GUI components、NT Event Loggers等.<br>一个Logger可以拥有多个Appender，也就是你既可以将Log信息输出到屏幕，同时存储到一个文件中。</p>
+</li>
+<li><p>Layout<br>Layout的作用是控制Log信息的输出方式，也就是格式化输出的信息。<br>Log4j中将要输出的Log信息定义了5种级别，依次为DEBUG、INFO、WARN、ERROR和FATAL.<br>当输出时，只有级别高过配置中规定的 级别的信息才能真正的输出，这样就很方便的来配置不同情况下要输出的内容，而不需要更改代码</p>
+</li>
+</ul>
+<p>下面我们来看看Log4j是怎么使用这3个组件完成当我们调用logger.debug()方法能在控制台上打印出日志信息的：  </p>
+<ul>
+<li><p>第一步，继承数体系上的门槛检查：首先当调用info()方法后，Log4J会立刻使用该Logger所在的体系结构中设置的门槛去检查当前日志的级别。如果级别不够，立刻作废当前日志请求。</p>
+</li>
+<li><p>第二步，Level级别检查：使用当前Logger上设置的或者继承的Level级别来检查当前的日志级别。如果当前日志级别不够，立刻作废当前日志请求。</p>
+</li>
+<li><p>第三步，创建LoggingEvent对象：当日志审核通过，Log4J就会创建一个LoggingEvent对象（即日志事件对象）。在该对象中，会保存和本次日志相关的所有参数信息，包括日志内容，日志时间等。  </p>
+</li>
+<li><p>第四步，执行Appender：当创建完成LoggingEvent对象时候，会该对象交给当前logger上起作用的所有的Appender对象，并调用这些对象的doAppend方法来处理日志消息。 </p>
+</li>
+<li><p>第五步，格式化日志消息：接下来，会使用每一个Appender绑定的Layout对象（如果有）来格式化日志消息。Layout对象会把LoggingEvent格式化成最终准备输出的String。</p>
+</li>
+<li><p>第六步，输出日志消息：当得到最终要输出的String对象之后，appender会把字符输出到最终的目标上，比如控制台或者文件。</p>
+</li>
+</ul>
+<p>##三，Logger的配置方法：<br>####(1)语法格式<br>首先，是设置root，格式为：</p>
+<pre><code>log4j.rootLogger=[level],appenderName, ...，
+</code></pre>
+<p>其中level就是设置需要输出信息的级别：<br>level可能的值:OFF ,FATAL ,ERROR ,WARN ,INFO ,DEBUG ,ALL<br>后面的appenderName是输出的目的地。appenderName就是指定日志信息输出到哪个地方。您可以同时指定多个输出目的地。</p>
+<p>####(2)og4j.additivity(属性)<br>简单一句话就是logger子类是否继承父类的Appender输出源。默认情况下,子类会默认继承，即子类Logger会同时输出到父类的Appender和子类自己的Appender中去。<br>若是additivity设为false，则，子类Logger只会在自己的Appender里输出，而不会在父类Logger的appender里输出。 </p>
+<p>比如：</p>
+<pre><code>log4j.rootLogger=DEBUG,Main,Console
+log4j.logger.com.lvy.market.service.ConfigService= debug, Main
+log4j.additivity.com.lvy.market.service.ConfigService= false
+</code></pre>
+<p>Logger(Root)父类是要将日志输出到 Main 和 Console的。<br>但是子类Logger(com.lvy.market.service.ConfigService)的additivity设置成了false<br>所以，子类(com.lvy.market.service.ConfigService)的日志只会输出到 Main 中，不会输出到 Console</p>
+<p>下面是配置Logger的完整样例：</p>
+<pre><code>log4j.rootLogger=DEBUG,Main,Console
+
+//其他Logger的设置：(比如打印sql语句的日志)
+log4j.logger.java.sql=DEBUG,Console
+log4j.logger.com.ibatis=DEBUG,Console
+log4j.org.springframework.orm.ibatis=DEBUG,Console
+</code></pre>
+<p>##四，Appender的配置方法：<br>配置日志信息输出目的地Appender，其语法为：</p>
+<pre><code>log4j.appender.appenderName = appender实现类的完全限定名
+log4j.appender.appenderName.option1 = value1
+...
+log4j.appender.appenderName.optionN = valueN 
+</code></pre>
+<p>根据Appender的类型可以分为两种：   </p>
+<ol>
+<li>基于文件系统的(需要配置一个Layout对象)  </li>
+<li>基于网络(Socket)的（不需要配置Layout对象）  </li>
+</ol>
+<p>####(1)基于文件系统的有存在不同的类型：</p>
+<p>#####org.apache.log4j.WriterAppender  </p>
+<p>WriterAppender是一个非常基础的Appender，他可以将LoggingEvent合成的结果直接交给一个Writer对象去处理。<br>通过这个描述，其实我们也能很简单的想到，WriterAppender是不能通过配置脚本来完成配置的，只能允许通过代码的方式指定要输出的Writer。<br>那为什么我们还要学习WriterAppender呢？其实很简单，因为他是后面要讲到的ConsoleAppender，FileAppender的父类。  </p>
+<p><strong>相关属性：</strong><br>encoding：用来规定了输出String的编码格式，如果没有设置编码格式，那么按照系统的默认编码格式输出<br>Threshold：设置日志输出的级别<br>immediateFlush：用来确定是否需要立刻记录。<br>默认情况下，这个选项为true，代表每一次日志请求之后，立刻把这次日志的内容输出到Writer上，<br>如果设置这个选项为false，则在一次日志请求之后，不会立刻的把内容输出到writer上，而会先把日志请求缓存一下，过段时间再发送到Writer上输出。<br>这样做可以提高20%左右的程序性能，但随之而来的问题是，有可能有一小部分的日志请求会丢失。   </p>
+<p><strong>配置样例</strong></p>
+<pre><code>Logger.getRootLogger().setLevel(Level.INFO);
+WriterAppender wa=new WriterAppender(new SimpleLayout(),System.out);
+wa.setImmediateFlush(false);
+Logger.getRootLogger().addAppender(wa);
+
+Logger logger = Logger.getLogger(&quot;cd.lbvs&quot;);
+Logger barLogger = Logger.getLogger(&quot;cd.lbvs.log&quot;);
+
+logger.warn(&quot;logger warn&quot;);
+logger.debug(&quot;logger debug&quot;);
+barLogger.info(&quot;bar logger info&quot;);
+barLogger.debug(&quot;bar logger debug&quot;); 
+</code></pre>
+<p>#####org.apache.log4j.ConsoleAppender<br>ConsoleAppender就是直接把日志内容输出到控制台上面<br>首先ConsoleAppender是继承WriterAppender的，所以不用多说，ConsoleAppender也有encoding和immediateFlush两个配置项<br>使用ConsoleAppender，由于没有需要特殊指定的类似Writer的对象，所以整个ConsoleAppender可以直接在配置脚本中完成  </p>
+<p><strong>相关属性</strong><br>target：设置采用哪种方式将日志输出到控制台。<br>对于Java来说，将内容输出到控制台有两种方式，System.out和System.err   </p>
+<p><strong>配置样例</strong></p>
+<pre><code>log4j.rootLogger=INFO,stdout
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.target=System.err
+log4j.appender.stdout.layout=org.apache.log4j.SimpleLayout
+</code></pre>
+<p>#####org.apache.log4j.FileAppender<br>FileAppender其实也是继承WriterAppender的，只是提供了一个指定的FileWriter而已。<br>自然FileAppender也继承了encoding和immediateFlush两个配置项   </p>
+<p><strong>相关属性</strong><br>append：一个布尔值，默认为true。这个值很好理解。<br>如果append=true，则每次记录的日志是采用追加的方式添加到文件当中，<br>如果append=false，则每次记录日志都是使用覆写的方式，大部分情况下，我们都保持默认值就行了。<br>file：指定要保存日志的文件名称；<br>bufferedIO：一个布尔值，默认为false。这个值也很好理解，<br>当bufferedIO=false的时候，相当于直接打开了一个FileWriter，每次日志都是直接写入到文件里面。<br>如果bufferedIO=true，则FileAppender会为我们在FileWriter之上再包装一个BufferedWriter，在日志量很大的情况下，这会适当提高系统整体性能。<br>bufferSize：如果设置了bufferedIO为true，则可以通过设置BufferSize参数来调整BufferedWriter的缓存大小。  </p>
+<p><strong>配置样例</strong></p>
+<pre><code>    log4j.rootLogger=DEBUG,file
+    log4j.appender.file=org.apache.log4j.FileAppender
+    log4j.appender.file.file=../logs/main.log
+    log4j.appender.file.bufferedIO=true
+    log4j.appender.file.bufferSize=1024
+    log4j.appender.file.layout=org.apache.log4j.SimpleLayout
+    
+    
+</code></pre>
+<p>#####org.apache.log4j.RollingFileAppender<br>RollingFileAppender也能够将日志记录到文件中，并且可以当一个文件到达了指定大小后，把这个日志文件备份并重开一个日志文件。<br>RollingFileAppender是继承自FileAppender，所以FileAppender那些配置项仍然能够使用   </p>
+<p>首先创建file名字的文件：log.log；<br>当log.log到达maxFileSize后，就把log.log备份为log.log.1，并且新开log.log文件；<br>当log.log再次达到maxFileSize后，就依次把log.log.N重命名为log.log.N+1，即log.log.1就变成了log.log.2，log.log就变成了log.log.1；<br>如果log.log.N+1超过了maxBackupIndex大小，就删除备份文件。</p>
+<p><strong>相关属性</strong><br>MaximumFileSize：设置日志文件能达到的最大的容量，超过这个大小，日志文件就会备份并新开。<br>注意，这个maximumFileSize的参数值是文件的大小值，是long型的。<br>MaxFileSize：这个参数项也是用来设置日志文件能达到的最大的容量。<br>但这个参数值传入的参数类型是String；在这个String中，可以允许通过使用KB，MB，或者GB来方便的指定文件的大小，这个参数比maximumFileSize方便的多。<br>MaxBackupIndex：设置备份文件能够存在的最大索引号。他用来设置最大备份文件的序号，如果备份文件的序号超过了这个数，那么更早的日志文件就被删除了。    </p>
+<p><strong>配置样例</strong>   </p>
+<pre><code>log4j.rootLogger=DEBUG,file
+log4j.appender.file=org.apache.log4j.RollingFileAppender
+log4j.appender.file.file=log.log
+log4j.appender.file.maxFileSize=10KB
+log4j.appender.file.maxBackupIndex=100
+log4j.appender.file.layout=org.apache.log4j.PatternLayout
+log4j.appender.file.layout.conversionPattern=%r [%t] %p %c %x - %m%n
+</code></pre>
+<p>#####org.apache.log4j.DailyRollingFileAppender<br>DailyRollingFileAppender提供了按照特定时间生成一份日志文件的方式，这个类的设计比较有灵活。<br>首先，这个类是继承FileAppender的，所以他具有FileAppender相关的所有属性配置   </p>
+<p><strong>相关属性</strong><br>datePattern：设置日期格式。这个日期格式是一个String，其实就是在SimpleDateFormat中允许的日期格式。<br>这个参数有两个作用，1，他设置了分隔日志文件的间隔；2，设置了日志文件的后缀名。<br>我们不能在datePattern中使用’/’；’;’等文件名不允许出现的字符     </p>
+<p>当然也可以指定按月、周、天、时和分。即对应的格式如下：<br>‘.’yyyy-MM: 每月<br>‘.’yyyy-ww: 每周<br>‘.’yyyy-MM-dd: 每天<br>‘.’yyyy-MM-dd-a: 每天两次<br>‘.’yyyy-MM-dd-HH: 每小时<br>‘.’yyyy-MM-dd-HH-mm: 每分钟    </p>
+<p><strong>配置样例</strong></p>
+<pre><code>log4j.rootLogger=DEBUG,file
+log4j.appender.file=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.file.file=log
+log4j.appender.file.datePattern=&#39;.&#39;yyyy-MM-dd-HH-mm‘.log’
+log4j.appender.file.layout=org.apache.log4j.PatternLayout
+log4j.appender.file.layout.conversionPattern=%r [%t] %p %c %x - %m%n
+</code></pre>
+<p>下面这是一个完整的Appender的配置样例：    </p>
+<pre><code>log4j.logger.com.lvy.market.service.UserService= debug, Main
+log4j.additivity.com.lvy.market.service.UserService= false
+log4j.appender.Main=org.apache.log4j.RollingFileAppender
+log4j.appender.Main.File=../logs/main.log
+log4j.appender.Main.MaxFileSize=5000KB 
+log4j.appender.Main.MaxBackupIndex=20
+log4j.appender.Main.layout=org.apache.log4j.PatternLayout
+log4j.appender.Main.layout.ConversionPattern=%p %d&#123;yyyy-MM-dd  HH:mm:ss&#125; %t %c.%M - %m%n     
+</code></pre>
+<p>####(2)基于网络系统的有存在不同的类型：<br>#####org.apache.log4j.net.SocketAppender<br>SocketAppender是基于Socket的Appender，他不会对日志消息做任何的处理，而仅仅是通过Socket将日志请求发送到特定的服务器上。<br>既然是把日志请求发送到特定的服务器上，首先要考虑的就是日志消息使用什么样的方式发送，<br>在SocketAppender中，只是简单的把LoggingEvent对象直接通过序列化的方式发送到Socket的输出流上。<br>所以，要能正常使用SocketAppender，就不单单是使用日志的应用了，还需要一个能统一和接受日志消息的独立的日志服务器应用了。<br>我们下面就简单的把使用日志功能的应用称为Logging Client，把接收和处理日志消息的服务器应用称为Logging Server。    </p>
+<p><strong>相关属性</strong><br>RemoteHost：指定远端的Logging Server的地址。<br>Port：指定远端的Logging Server的端口。默认情况下，SocketAppender就是请求的4560端口。<br>Application：可以设置应用的名称。因为使用SocketAppender，就可以使用同一个专门的Logging Server来统一完成日志记录。那么就有可能会有不同的应用提交日志到Server上<br>reconnectionDelay：如果客户端连接不上服务器端，那么会在reconnectionDelay指定的时间之后重新连接。<br>这里需要注意的一个问题就是，客户端发送日志请求和服务器之间的通信问题。<br>在网络通信正常的情况下，每一条客户端的日志请求都会正常的发送给服务器端处理，这是没有问题的。    </p>
+<p>但是考虑网络的不稳定性，就会出现以下的情况：<br>    1，当网络发送包的频率大于日志频率，会正常的按照日志频率发送信息；<br>    2，当网络发送包的频率低于日志频率，则只会按照网络发送包的频率来发送客户端的日志信息。这里就有可能出现日志消息丢失的问题；<br>    3，当服务器连接断开，SocketAppender会尝试重新连接服务器端，但是在这个断开的过程当中，所有的日志信息将会丢失。        </p>
+<p><strong>配置样例</strong></p>
+<p>本地客户端配置样例：</p>
+<pre><code>log4j.rootLogger=DEBUG,socket
+log4j.appender.socket=org.apache.log4j.net.SocketAppender
+log4j.appender.socket.RemoteHost=localhost
+log4j.appender.socket.port=4560
+log4j.appender.socket.application=localclient 
+   
+</code></pre>
+<p>服务端接收处理样例：org.apache.log4j.net.SimpleSocketServer</p>
+<p>我们也没有必要自己来写这个Server端的应用，因为Log4J为我们实现了一个Server端：SimpleSocketServer。<br>这个SimpleSocketServer的使用非常简单，他相当于把接受到的LoggingEvent作为本地的日志记录事件，再使用在服务器端配置的Log4J环境来记录日志。</p>
+<pre><code>Usage: java org.apache.log4j.net.SimpleSocketServer port configFile
+   where port is a part number where the server listens and
+   configFile is a configuration file fed to the PropertyConfigurator or to DOMConfigurator if an XML file.
+    
+</code></pre>
+<p>#####org.apache.log4j.net.SocketHubAppender<br>#####org.apache.log4j.net.SMTPAppender<br>#####org.apache.log4j.net.TelnetAppender<br>#####org.apache.log4j.net.SyslogAppender<br>#####org.apache.log4j.net.SocketHubAppender<br>#####org.apache.log4j.net.JMSAppender</p>
+<p>##五，Layout的配置方法：<br>配置日志信息的格式（布局），其语法为：</p>
+<pre><code>  log4j.appender.appenderName.layout = 布局实现类的完全限定名
+  log4j.appender.appenderName.layout.option1 = value1
+  ....
+  log4j.appender.appenderName.layout.optionN = valueN 
+</code></pre>
+<p>####Layout种类及配置：<br>#####org.apache.log4j.SimpleLayout<br>SimpleLayout可以说是几乎没有任何复杂度，我们只需要设置对应Appender的layout属性为SimpleLayout即可，这个Layout本身没有任何的配置项。<br>SimpleLayout在测试中可以说是最简单的Layout了，他仅仅输出了Logger级别和日志内容：</p>
+<p><strong>配置样例</strong></p>
+<pre><code>log4j.rootLogger=DEBUG,stdout
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.layout=org.apache.log4j.SimpleLayout  
+</code></pre>
+<p>#####org.apache.log4j.PatternLayout<br>PatternLayout允许我们定义非常多我们需要的输出格式，而我们需要配置的仅仅是告诉PatternLayout我们需要的输出格式而已：</p>
+<p><strong>相关属性</strong><br>conversionPattern:<br>%p: 输出日志信息优先级，即DEBUG，INFO，WARN，ERROR，FATAL。<br>%d: 输出日志时间点的日期或时间，默认格式为ISO8601，也可以在其后指定格式，比如：%d{yyy MMM dd HH:mm:ss,SSS}，输出类似：2002年10月18日 22：10：28，921。<br>%r: 输出自应用启动到输出该log信息耗费的毫秒数。<br>%c: 输出日志信息所属的类目，通常就是所在类的全名。<br>%t: 输出产生该日志事件的线程名。<br>%l: 输出日志事件的发生位置，相当于%C.%M(%F:%L)的组合,包括类目名、发生的线程，以及在代码中的行数。举例：Testlog4.main(TestLog4.java:10)。<br>%x: 输出和当前线程相关联的NDC(嵌套诊断环境),尤其用到像java servlets这样的多客户多线程的应用中。<br>%%: 输出一个”%”字符。<br>%F: 输出日志消息产生时所在的文件名称。<br>%L: 输出代码中的行号。<br>%m: 输出代码中指定的消息,产生的日志具体信息。<br>%n: 输出一个回车换行符，Windows平台为”\r\n”，Unix平台为”\n”输出日志信息换行。可以在%与模式字符之间加上修饰符来控制其最小宽度、最大宽度、和文本的对齐方式。<br>%20c：指定输出类名的名称，最小的宽度是20，如果类名的名称小于20的话，默认的情况下右对齐。<br>%-20c:指定输出类名的名称，最小的宽度是20，如果类名的名称小于20的话，”-“号指定左对齐。<br>%.30c:指定输出类名的名称，最大的宽度是30，如果类名的名称大于30的话，就会将左边多出的字符截掉，但小于30的话也不会有空格。<br>%20.30c:如果类名的名称小于20就补空格，并且右对齐，如果其名称长于30字符，就从左边较远处的字符截掉。  </p>
+<p><strong>配置样例</strong>  </p>
+<pre><code>log4j.rootLogger=DEBUG,stdout
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.conversionPattern=%-4r %-5p %d&#123;yyyy-MM-dd HH:mm:ssS&#125; %c %m%n
+</code></pre>
+<p>#####org.apache.log4j.HTMLLayout  </p>
+<p>##六，使用logger的前提条件：<br>首先 需要将commons-logging.jar和logging-log4j-1.2.9.jar导入到构建路径中。<br>然后 再将log4j.properties放到src根目录下。这样就可以在程序中使用log4j了。  </p>
+<p>在类中使用log4j， 首先声明一个静态变量 private static Logger logger=Logger.getLog(“className”)；<br>现在就可以使用了，用法如下：logger.debug(“debug message”)或者logger.info(“info message”)   </p>
+<p>log4j加载配置文件的流程：<br>如果没有设置log4j.configuration变量，则先尝试使用ClassPath下的log4j.xml文件，<br>如果没有log4j.xml文件，则使用ClassPath下的log4j.properties文件。  </p>
+<p>第一，大部分情况下，把log4j.xml或者log4j.properties文件直接放到对应web应用的webapps/classes/文件夹下面即可。这种情况下，各个web应用会分别使用各自的配置文件来完成log4j的初始化。</p>
+<p>第二，如果需要不用的应用使用统一的log4j配置，只需要单独的把log4j.properties文件或者log4j.xml文件放到一个指定的位置，并且使用环境变量log4j.configuration来完成配置文件的指定。<br>注意，在log4j.configuration的值中，可以使用文件名称或者url的方式。但是如果直接使用文件名，使用的还是各个应用目录下的classes/文件夹中的配置文件。<br>比如log4j.configuration=log4jconfig.properties，那么还是寻找的各个web app目录下的classes/中的log4jconfig.properties文件配置。   </p>
+<p>要想让所有的web app应用实例使用相同的配置文件，需要这样写：<br>log4j.configuration=file:/c:/log4jconfig.xml<br>那么所有的web app都会使用c:/log4jconfig.xml来完成log4j的配置了。    </p>
+<p>第三，注意，如果所有的web app实例都使用同一个log4j配置文件，那么，尽量不要使用FileAppender。<br>因为这个日志文件会被所有的web app线程使用，容易造成极大的性能问题。   </p>
+<pre><code>public class Logger &#123;
+// 输出日志方法:
+    public void debug(Object message);
+    public void info(Object message);
+    public void warn(Object message);
+    public void error(Object message);
+    public void fatal(Object message);
+// 输出带有错误的日志方法：
+    public void debug(Object message, Throwable t);
+    public void info(Object message, Throwable t);
+    public void warn(Object message, Throwable t);
+    public void error(Object message, Throwable t);
+    public void fatal(Object message, Throwable t);
+// 更通用的输出日志方法:
+    public void log(Level p, Object message);
+&#125;
+</code></pre>
+<p>##七，logger的性能问题：</p>
+<p>例如下面的logger cat程序段中：</p>
+<pre><code> logger.debug(&quot;Entry number: &quot; + i + &quot; is &quot; + String.valueOf(entry[i]));
+ 
+</code></pre>
+<p>不管message被日志记录与否，构造message参数的开销还是有的，比如说， 把整数i 和数组entry[i]转化为String，连接中间字串。<br>参数构造的这种开销可能很高，它依赖于所介入的参数数量有多少。  </p>
+<p>为了避免这种参数构造开销，把以上的代码段改写为：</p>
+<pre><code>  if(logger.isDebugEnabled() &#123;
+    logger.debug(&quot;Entry number: &quot; + i + &quot; is &quot; + String.valueOf(entry[i]));
+  &#125;
+  
+</code></pre>
+<p>如果排错功能不被使用，就不会有参数构造上的开销。<br>但是，另一方面，如果logger的排错功能被起用，就会有俩倍的开销用于评估logger是否被起用：<br>一次是判断debugEnabled，一次是判断debug是否被启用。<br>但这不是极重的负担，因为评估logger的时间只有整个log语句执行时间的1%   </p>
+<p>##八，logger配置的完整样例： </p>
+<pre><code># level:OFF ,FATAL ,ERROR ,WARN ,INFO ,DEBUG ,ALL
+log4j.rootLogger=DEBUG,Main,Console
+
+#close c3p0 log
+log4j.logger.com.mchange.v2=off
+
+#整个应用的日志文件输出到控制台
+log4j.logger.java.sql=DEBUG,Console
+log4j.logger.com.ibatis=DEBUG,Console
+log4j.org.springframework.orm.ibatis=DEBUG,Console
+log4j.appender.Console=org.apache.log4j.ConsoleAppender
+log4j.appender.Console.target=System.out
+log4j.appender.Console.layout=org.apache.log4j.PatternLayout
+log4j.appender.Console.layout.ConversionPattern=%p %d&#123;yyyy-MM-dd  HH:mm:ss&#125; %t %c.%M - %m%n
+
+#整个应用的日志文件
+log4j.logger.com.huawei.market.service.ConfigService= debug, Main
+log4j.additivity.com.huawei.market.service.ConfigService= false
+log4j.logger.com.huawei.market.service.MarketService= debug, Main
+log4j.additivity.com.huawei.market.service.MarketService= false
+log4j.logger.com.huawei.market.service.UserService= debug, Main
+log4j.additivity.com.huawei.market.service.UserService= false
+log4j.appender.Main=org.apache.log4j.RollingFileAppender
+log4j.appender.Main.file=../logs/main.log
+log4j.appender.Main.maxFileSize=5000KB
+log4j.appender.Main.maxBackupIndex=20
+log4j.appender.Main.layout=org.apache.log4j.PatternLayout
+log4j.appender.Main.layout.ConversionPattern=%p %d&#123;yyyy-MM-dd  HH:mm:ss&#125; %t %c.%M - %m%n
+
+#Sql语句日志文件
+log4j.logger.com.huawei.market.service.dao=debug, Sql
+log4j.additivity.com.huawei.market.service.dao=false
+log4j.appender.Sql=org.apache.log4j.RollingFileAppender
+log4j.appender.Sql.file=../logs/sql.log
+log4j.appender.Sql.maxFileSize=5000KB
+log4j.appender.Sql.maxBackupIndex=20
+log4j.appender.Sql.layout=org.apache.log4j.PatternLayout
+log4j.appender.Sql.layout.ConversionPattern=%p %d&#123;yyyy-MM-dd  HH:mm:ss&#125; %t %c.%M - %m%n
+
+#短信日志文件
+log4j.logger.com.huawei.market.sms=debug, Sms
+log4j.additivity.com.huawei.market.sms= false
+log4j.appender.Sms=org.apache.log4j.RollingFileAppender
+log4j.appender.Sms.file=../logs/sms.log
+log4j.appender.Sms.maxFileSize=10000KB
+log4j.appender.Sms.maxBackupIndex=200
+log4j.appender.Sms.layout=org.apache.log4j.PatternLayout
+log4j.appender.Sms.layout.ConversionPattern=%p %d&#123;yyyy-MM-dd HH:mm:ss&#125; %t %c.%M - %m%n
+
+#ftp文件导入日志文件
+log4j.logger.FtpAndImportLog=debug,ftpAndImport
+log4j.additivity.FtpAndImportLog=false
+log4j.logger.com.huawei.market.util.FTPUtil=debug, ftpAndImport
+log4j.additivity.com.huawei.market.util.FTPUtil=false
+log4j.appender.ftpAndImport=org.apache.log4j.RollingFileAppender
+log4j.appender.ftpAndImport.file=../logs/ftpAndImport.log
+log4j.appender.ftpAndImport.maxFileSize=5000KB
+log4j.appender.ftpAndImport.maxBackupIndex=20
+log4j.appender.ftpAndImport.layout=org.apache.log4j.PatternLayout
+log4j.appender.ftpAndImport.layout.ConversionPattern=%p %d&#123;yyyy-MM-dd  HH:mm:ss&#125; %t %c.%M - %m%n
+
+#鉴权Token日志文件
+log4j.logger.AuthLog= debug, AuthToken
+log4j.additivity.AuthLog= false
+log4j.appender.AuthToken=org.apache.log4j.RollingFileAppender
+log4j.appender.AuthToken.file=../logs/auth.log
+log4j.appender.AuthToken.maxFileSize=5000KB
+log4j.appender.AuthToken.maxBackupIndex=20
+log4j.appender.AuthToken.layout=org.apache.log4j.PatternLayout
+log4j.appender.AuthToken.layout.ConversionPattern=%p %d&#123;yyyy-MM-dd  HH:mm:ss&#125; %t %c.%M - %m%n
+
+#应用的单元测试日志文件
+log4j.logger.MarketJunit= info, MarketJunit
+log4j.additivity.MarketJunit= false
+log4j.appender.MarketJunit=org.apache.log4j.RollingFileAppender
+log4j.appender.MarketJunit.file=../logs/junit.log
+log4j.appender.MarketJunit.maxFileSize=5000KB
+log4j.appender.MarketJunit.maxBackupIndex=20
+log4j.appender.MarketJunit.layout=org.apache.log4j.PatternLayout
+log4j.appender.MarketJunit.layout.ConversionPattern=%p %d&#123;yyyy-MM-dd  HH:mm:ss&#125; %t %c.%M - %m%n
+
+#A1调查问卷日志文件
+log4j.appender.A1=org.apache.log4j.RollingFileAppender
+log4j.appender.A1.file=../logs/questionnaire.log
+log4j.appender.A1.maxFileSize=5000KB
+log4j.appender.A1.maxBackupIndex=20
+log4j.appender.A1.layout=org.apache.log4j.PatternLayout
+log4j.appender.A1.layout.ConversionPattern=%p %d&#123;yyyy-MM-dd HH:mm:ss&#125; %t %c.%M - %m%n
+
+#A2日志文件
+log4j.logger.market=DEBUG,A2
+log4j.additivity.market = false
+log4j.appender.A2=org.apache.log4j.RollingFileAppender
+log4j.appender.A2.file=../logs/web/market.log
+log4j.appender.A2.maxFileSize=5000KB
+log4j.appender.A2.maxBackupIndex=20
+log4j.appender.A2.layout=org.apache.log4j.PatternLayout
+log4j.appender.A2.layout.ConversionPattern=%-5p  %d&#123;yyyy-MM-dd  HH:mm:ss&#125;  %l%n%m%n
+
+#A3统计登录日志文件
+log4j.logger.marketlogin=DEBUG,A3
+log4j.additivity.marketlogin = false
+log4j.appender.A3=org.apache.log4j.RollingFileAppender
+log4j.appender.A3.file=../logs/web/marketlogin.log
+log4j.appender.A3.maxFileSize=5000KB
+log4j.appender.A3.maxBackupIndex=20
+log4j.appender.A3.layout=org.apache.log4j.PatternLayout
+log4j.appender.A3.layout.ConversionPattern=%-5p  %d&#123;yyyy-MM-dd  HH:mm:ss&#125;  %l%n%m%n
+
+#A4统计PV日志文件
+log4j.logger.PVSTATISTIC=DEBUG,A4
+log4j.additivity.PVSTATISTIC=false
+log4j.appender.A4=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.A4.file=../logs/web/accesslog_tomcat_market
+log4j.appender.A4.DatePattern=&#39;_&#39;yyyy-MM-dd&#39;.log&#39;
+log4j.appender.A4.layout=org.apache.log4j.PatternLayout
+log4j.appender.A4.layout.ConversionPattern=%m%n
+
+#A5统计url请求次数的日志文件
+log4j.logger.URLSTATISTIC=DEBUG,A5
+log4j.additivity.URLSTATISTIC=false
+log4j.appender.A5=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.A5.file=../logs/web/requesturllog_tomcat_market
+log4j.appender.A5.DatePattern=&#39;_&#39;yyyy-MM-dd&#39;.log&#39;
+log4j.appender.A5.layout=org.apache.log4j.PatternLayout
+log4j.appender.A5.layout.ConversionPattern=%p %d&#123;yyyy-MM-dd HH:mm:ss&#125; %t %c.%M - %m%n
+
+#DailyQuest log
+log4j.logger.com.huawei.market.service.DailyQuestService= info, DailyQuest
+log4j.additivity.com.huawei.market.service.DailyQuestService= false
+log4j.appender.DailyQuest=org.apache.log4j.RollingFileAppender
+log4j.appender.DailyQuest.file=../logs/DailyQuest.log
+log4j.appender.DailyQuest.maxFileSize=5000KB
+log4j.appender.DailyQuest.maxBackupIndex=20
+log4j.appender.DailyQuest.layout=org.apache.log4j.PatternLayout
+log4j.appender.DailyQuest.layout.ConversionPattern=%p %d&#123;yyyy-MM-dd  HH:mm:ss&#125; %t %c.%M - %m%n
+
+#caiyunApplyFail
+log4j.appender.caiyunApplyFail=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.caiyunApplyFail.file=../logs/caiyunApplyFail.log
+log4j.appender.caiyunApplyFail.Append=true
+log4j.appender.caiyunApplyFail.Threshold=INFO
+log4j.appender.caiyunApplyFail.DatePattern=&#39;.&#39;yyyy-MM-dd
+log4j.appender.caiyunApplyFail.layout=org.apache.log4j.PatternLayout
+log4j.appender.caiyunApplyFail.layout.ConversionPattern=%m%n
+
+#TRACE
+log4j.logger.TRACE = INFO,TRACE
+log4j.additivity.TRACE = false
+log4j.appender.TRACE=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.TRACE.file=../logs/mrp-trace.log
+log4j.appender.TRACE.Append=true
+log4j.appender.TRACE.Threshold=INFO
+log4j.appender.TRACE.DatePattern=&#39;.&#39;yyyy-MM-dd
+log4j.appender.TRACE.layout=org.apache.log4j.PatternLayout
+log4j.appender.TRACE.layout.ConversionPattern=[%d&#123;yyyy-MM-dd HH:mm:ss&#125;]%m%n
+
+#DIGEST
+log4j.logger.DIGEST = INFO,DIGEST
+log4j.additivity.DIGEST = false
+log4j.appender.DIGEST=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.DIGEST.file=../logs/mrp-digest.log
+log4j.appender.DIGEST.Append=true
+log4j.appender.DIGEST.Threshold=INFO
+log4j.appender.DIGEST.DatePattern=&#39;.&#39;yyyy-MM-dd
+log4j.appender.DIGEST.layout=org.apache.log4j.PatternLayout
+log4j.appender.DIGEST.layout.ConversionPattern=[%d&#123;yyyy-MM-dd HH:mm:ss&#125;]%m%n
+
+#task
+log4j.logger.task=INFO,task
+log4j.additivity.task = false
+log4j.appender.task=org.apache.log4j.RollingFileAppender
+log4j.appender.task.file=../logs/task.log
+log4j.appender.task.maxFileSize=5000KB
+log4j.appender.task.maxBackupIndex=20
+log4j.appender.task.layout=org.apache.log4j.PatternLayout
+log4j.appender.task.layout.ConversionPattern=%p %d&#123;yyyy-MM-dd  HH:mm:ss&#125; %t %c.%M - %m%n
+</code></pre>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 lbvs86823@163.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>log4j.properties配置详解</p>
+    
+    <p><span class="copy-title">本文作者:</span><a  title="lbvs86823">lbvs86823</a></p>
+    <p><span class="copy-title">发布时间:</span>2010-05-14, 20:55:08</p>
+    <p><span class="copy-title">最后更新:</span>2020-03-20, 14:27:43</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2010/05/14/log/log4j-config/" title="log4j.properties配置详解">https://lbvs86823.github.io/2010/05/14/log/log4j-config/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">Copyright 2009 - 2020 lbvs86823 All Rights Reserved</p>
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+<div class="acParent"></div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞, 土豪就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.0.1" ></script>
+
+<script src="/js/script.js?v=1.0.1" ></script>
+<script>
+    var img_resize = 'default';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['#Digester','#Rule','#docker','#centos','#mysql','#redis','#javaScript','#es5','#es6','#promise','#Java','#enum','#thread','#linux','#centOS','#man','#vi','#common-logging','#log4j','#factory','#monitor','#influxdb','#singleton','#kafka','#zookeeper','#uml','#MyBatis','#EAI','#ERP','#OA','#CRM','#jetty','#servlet','#shiro','#Subject','#SecurityManager','#Realms','#Authentication','#Session','#spring','#security','#auth2','#quartz','#cronTrigger','#schedule','#cron','#session','#Jekyll','#blog','#Jekyll-Bootstrap','#git','#github','#gitLab','#homebrew','#tool','#mac os','#boot','#maven','#npm','#nodeJs','#yarn','#Markdown','#jquery','#vue','#axios','#java','#Map','#HashMap','#dtd','#xml','#Authorization','#builder','#proxy','#adapter','#decrator','#facade','#bridge',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length - 1, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: #fafafa;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 492px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 1px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

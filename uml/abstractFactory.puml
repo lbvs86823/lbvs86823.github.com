@@ -1,0 +1,52 @@
+@startuml
+title 抽象工厂模式
+
+abstract BMWCar {
+    + {abstract} driving(): void
+}
+
+abstract BenzCar {
+    + {abstract} sit(): void
+}
+
+class BMW5 extends BMWCar {
+    + driving(): void
+}
+
+class BMW7 extends BMWCar {
+    + driving(): void
+}
+
+class BenzE300 extends BenzCar {
+    + sit(): void
+}
+
+class BenzS400 extends BenzCar {
+    + sit(): void
+}
+
+abstract AbstractCarFactory {
+    + {abstract} createBMW(): BMWCar
+    + {abstract} createBenz(): BenzCar
+}
+
+class LowCarLowFactory extends AbstractCarFactory {
+    + createBMW(): BMWCar
+    + createBenz(): BenzCar
+}
+
+class HighCarFactory extends AbstractCarFactory {
+    + createBMW(): BMWCar
+    + createBenz(): BenzCar
+}
+
+AbstractCarFactory ..> BMWCar
+AbstractCarFactory ..> BenzCar
+
+LowCarLowFactory ..> BMW5
+LowCarLowFactory ..> BenzE300
+
+HighCarFactory ..> BMW7
+HighCarFactory ..> BenzS400
+
+@enduml

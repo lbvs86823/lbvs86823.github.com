@@ -1,0 +1,11 @@
+@startuml
+title 继承关系
+
+class Fruit
+class Apple extends Fruit
+class Banana extends Fruit
+
+class Orange
+Fruit <|-- Orange
+
+@enduml

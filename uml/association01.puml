@@ -1,0 +1,11 @@
+@startuml
+title 关联关系
+class Customer {
+   - addressList : List<Address>
+}
+
+class Address
+
+Customer "1" -right-> "n" Address
+
+@enduml

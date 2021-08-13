@@ -1,0 +1,32 @@
+@startuml
+title 工厂方法模式
+
+interface Fruit {
+    + eat(): void
+}
+
+class Apple implements Fruit {
+    + eat(): void
+}
+
+class Watermelon implements Fruit {
+    + eat(): void
+}
+
+interface FruitFactory {
+    + createFruit(): Fruit
+}
+
+class AppleFactory implements FruitFactory {
+    + createFruit(): Fruit
+}
+
+class WatermelonFactory implements FruitFactory {
+    + createFruit(): Fruit
+}
+
+FruitFactory ..> Fruit
+AppleFactory ..> Apple
+WatermelonFactory ..> Watermelon
+
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+
+title "类图表示法"
+
+abstract abstractA
+abstract class "abstractB"
+annotation annotation
+interface interface
+class classA
+enum enum
+entity entity
+circle circleA
+() "circleB"
+diamond "diamondA(菱形)"
+<> diamondB
+
+@enduml

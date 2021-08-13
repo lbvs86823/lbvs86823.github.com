@@ -1,0 +1,35 @@
+@startuml
+title 装饰者模式
+
+abstract class FastFood {
+    - name: String
+    - num: int
+    - unitPrice: double
+    - totalPrice: double
+    + printOrder(): void
+}
+note top of FastFood: "快餐-抽象构件"
+
+class FriedFood extends FastFood {
+    炒饭-具体构件
+}
+class Pancake extends FastFood {
+    煎饼-具体构件
+}
+
+abstract class Append {
+    - fastFood: FastFood
+    + Append(String name, FastFood fastFood)
+}
+note top of Append: "加配菜-抽象装饰者构件"
+
+Append -left-|> FastFood
+
+class Egg extends Append {
+    鸡蛋-具体装饰者
+}
+class Ham extends Append {
+    火腿-具体装饰者
+}
+
+@enduml

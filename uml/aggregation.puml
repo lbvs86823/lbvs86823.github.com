@@ -1,0 +1,12 @@
+@startuml
+title 聚合关系
+
+class Car {
+    - wheels : List<Wheel>
+}
+
+class Wheel
+
+Car "1" o-right- "n" Wheel : 聚合
+
+@enduml

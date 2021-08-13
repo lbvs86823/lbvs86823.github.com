@@ -1,0 +1,18 @@
+@startuml
+title JDBC驱动器
+
+class 应用程序
+
+应用程序 ..> "JDBC API"
+
+class "JDBC API"
+
+"JDBC API" .right.> DriverManger
+class DriverManger
+
+DriverManger .right.> Driver
+interface Driver
+
+class MysqlDriver implements Driver
+class OracleDriver implements Driver
+@enduml

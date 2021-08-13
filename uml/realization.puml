@@ -1,0 +1,19 @@
+@startuml
+title 实现关系
+
+interface Mouth {
+   + eat() : void
+}
+class Human implements Mouth {
+    + eat() : void
+}
+class Duck implements Mouth {
+   + eat() : void
+}
+
+class Cat {
+  + eat() : void
+}
+Mouth <|..Cat
+
+@enduml

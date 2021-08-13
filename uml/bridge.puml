@@ -1,0 +1,33 @@
+@startuml
+title 桥接模式
+
+abstract class OS {
+    抽象化类
+    # video: Video
+    + {abstract} play(String filePath): void
+}
+
+OS o-right- Video
+
+class MacOS extends OS {
+    实现化类
+}
+class WindowOS extends OS {
+    实现化类
+}
+class LinuxOS extends OS {
+    实现化类
+}
+
+abstract class Video {
+    扩展抽象化类
+   + {abstract} decode(String filePath): String
+}
+class AVI extends Video {
+    具体实现化
+}
+class Rmvb extends Video {
+    具体实现化
+}
+
+@enduml

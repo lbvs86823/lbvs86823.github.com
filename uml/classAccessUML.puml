@@ -1,0 +1,21 @@
+@startuml
+
+title "类属性和方法图"
+
+skinparam classAttributeIconSize 0
+
+class Class {
+    - fieldA : String
+    # fieldB : int
+    ~ fieldC : Double
+    + fieldD : Long
+    {static} String fieldE -- 静态属性
+    - methodA() : void
+    # methodB() : void
+    ~ methodC() : void
+    + methodD() : void
+    {static} methodD() : void --静态方法
+    {abstract} methodE() : void --抽象方法(斜体字)
+}
+
+@enduml

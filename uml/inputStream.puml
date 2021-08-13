@@ -1,0 +1,205 @@
+@startuml
+title 适配器模式应用(InputStream)
+
+abstract class InputStream {
+    IO的输入类，负责读取字节流数据
+    + abstract read():int
+    + read(byte b[]):int
+    + read(byte b[], int off, int len):int
+}
+note left of InputStream: 抽象构件
+
+
+class ByteArrayInputStream extends InputStream {
+    原始流处理器-具体构件
+}
+note bottom of ByteArrayInputStream
+对象型的适配器
+为多线程的通信提供缓冲区操作功能，
+接收一个数组作为流的源
+end note
+
+class FileInputStream extends InputStream{
+    原始流处理器-具体构件
+}
+note bottom of FileInputStream
+对象型的适配器
+建立一个与文件有关的输入流
+接收一个文件作为流的源
+end note
+
+class PipedInputStream extends InputStream {
+  原始流处理器-具体构件
+}
+note bottom of PipedInputStream
+对象型的适配器
+可以与PipedOutputStream配合使用
+用于读取一个数据管道的数据。
+接收一个PipedOutputStream作为流的源
+end note
+
+class StringBufferInputStream extends InputStream {
+    原始流处理器-具体构件
+}
+note bottom of StringBufferInputStream
+对象型的适配器
+将一个字符串缓冲区转换为一个输入流
+接收一个String对象作为流的源
+end note
+
+class ObjectInputStream extends InputStream {
+    链接流处理器
+}
+note top of ObjectInputStream
+可以将使用ObjectOutputStream
+串行化的原始数据类型和对象重新并行化。
+end note
+
+class SequenceInputStream extends InputStream {
+    链接流处理器
+}
+note top of SequenceInputStream
+可以将两个已有的输入流连接起来形成一个输入流
+从而将多个输入流排列构成一个输入流序列
+end note
+
+class FilterInputStream {
+    抽象装饰者类-链接流处理器-过滤输入流
+    # in: InputStream
+    # FilterInputStream(InputStream in)
+}
+note left of FilterInputStream
+它将一个输入流作为流源
+end note
+FilterInputStream --|> InputStream
+
+class BufferedInputStream  {
+    具体装饰者-链接流处理器-过滤输入流
+}
+note top of BufferedInputStream
+用来从硬盘将数据读入到一个内存缓冲区
+并从此缓冲区提供数据
+end note
+BufferedInputStream --|> FilterInputStream
+
+class DataInputStream {
+    具体装饰者-链接流处理器-过滤输入流
+}
+note top of DataInputStream
+提供基于多字节的读取方法
+可以读取原始数据类型的数据
+end note
+DataInputStream --|> FilterInputStream
+
+class PushbackInputStream {
+    具体装饰者-链接流处理器-过滤输入流
+}
+note top of PushbackInputStream
+提供特殊的功能，可以将依据读取的字节推回到输入流中。
+end note
+PushbackInputStream --|> FilterInputStream
+
+class LineNumberInputStream {
+    具体装饰者-链接流处理器-过滤输入流
+}
+note top of LineNumberInputStream
+提供带有行计数功能的过滤输入流
+end note
+LineNumberInputStream --|> FilterInputStream
+
+abstract class Reader {
+    IO的输入类，负责读取字符流数据
+    + read():int
+    + read(char cbuf[]):int
+    + read(char cbuf[], int off, int len):int
+}
+note top of Reader
+抽象构件，为各种的子类型流处理器提供统一的接口
+end note
+
+class StreamDecoder {
+    - InputStream in
+    + read():int
+    + read(char cbuf[]):int
+    + read(char cbuf[], int off, int len):int
+}
+StreamDecoder --|> Reader
+InputStream -* StreamDecoder
+note top of StreamDecoder
+它不是Java SE API 中的内容，是Sun JDK 给出的自身实现
+他们通过对构造方法中字节流进行封装，并通过该类实现了字节流到字符流之间的解码转换
+适配器类： 继承了目标接口类(Reader), 并且聚合了适配者(InputStream)
+标准的对象适配器模式
+end note
+
+class InputStreamReader extends Reader {
+    - StreamDecoder sd
+    + InputStreamReader(InputStream in)
+    + InputStreamReader(InputStream in, String charsetName)
+    + InputStreamReader(InputStream in, Charset cs)
+    + InputStreamReader(InputStream in, CharsetDecoder dec)
+}
+
+InputStreamReader ..|> InputStream
+InputStreamReader *- StreamDecoder
+note bottom of InputStreamReader
+用于将一个字节流中的字节转换成字符
+它是对实现了Reader接口的StreamDecoder类的一个封装
+继承了目标接口 Reader, 用于将一个字节流中的字节转换成字符实际是交给StreamDecoder去完成的
+所有这个类也可以看做是适配器类
+end note
+
+class FileReader extends InputStreamReader {
+    负责处理文件字符
+}
+
+class BufferedReader extends Reader {
+    - in: Reader
+    + BufferedReader(Reader in, int sz)
+    + BufferedReader(Reader in)
+}
+note top of BufferedReader
+抽象装饰构件
+用来从硬盘将数据读入到一个内存缓冲区
+end note
+class LineNumberReader extends BufferedReader {
+    具体装饰者
+}
+class CharArrayReader extends Reader {
+    对象型的适配器-原始流处理器
+}
+note bottom of CharArrayReader
+为多线程的通信提供缓冲区操作功能
+end note
+
+class StringReader extends Reader {
+    对象型的适配器-原始流处理器
+}
+note bottom of StringReader
+建立一个与文件有关的输入流
+end note
+
+class PipedReader extends Reader {
+    对象型的适配器-原始流处理器
+}
+note bottom of PipedReader
+可以与PipedOutputStream配合使用
+用于读取一个数据管道的数据
+end note
+class PushbackReader extends FilterReader {
+    具体装饰者-负责提供把数据读取出来再回写回去
+}
+note top of FilterReader
+抽象装饰构件
+它将一个输入流作为流源
+end note
+
+class FilterReader extends Reader {
+    抽象装饰者类-链接流处理器-过滤输入流
+    # Reader in
+    # FilterReader(Reader in)
+}
+
+
+
+@enduml

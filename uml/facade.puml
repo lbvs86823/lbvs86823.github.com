@@ -1,0 +1,33 @@
+@startuml
+title 门面模式
+
+class Facade01
+class Facade02
+
+class client
+
+client ..> Facade01
+client ..> Facade02
+
+Facade01 ..> subSystem01
+Facade01 ..> subSystem02
+
+Facade02 ..> subSystem02
+Facade02 ..> subSystem03
+Facade02 ..> subSystem04
+
+class subSystem01
+class subSystem02
+class subSystem03
+class subSystem04
+
+subSystem01 ..> subSystem02
+subSystem01 ..> subSystem03
+
+subSystem02 ..> subSystem03
+subSystem02 ..> subSystem01
+
+subSystem03 ..> subSystem01
+subSystem03 ..> subSystem02
+
+@enduml
