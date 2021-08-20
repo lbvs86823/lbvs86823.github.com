@@ -1,0 +1,37 @@
+@startuml
+title 中介者模式
+
+interface Mediator {
+   + contact(Person person, String msg):void
+}
+
+
+class Person {
+    # name: String
+    # mediator: Mediator
+    + Person(String name, Mediator mediator)
+}
+
+class Tenant {
+    + Tenant(String name, Mediator mediator)
+    + say(String msg)： void
+    + listen(String msg)： void
+}
+
+class HouseOwner {
+    + HouseOwner(String name, Mediator mediator)
+    + say(String msg)： void
+    + listen(String msg)： void
+}
+
+Tenant --|> Person
+HouseOwner --|> Person
+
+class MediatorStructure extends Mediator {
+    + contact(Person person, String msg):void
+}
+
+MediatorStructure o-- Tenant
+MediatorStructure o-- HouseOwner
+
+@enduml

@@ -1,0 +1,63 @@
+@startuml
+title 状态模式
+
+abstract class LiftSate {
+    - context: Context
+    + LiftSate(Context context)
+    + {abstract} open(): void
+    + {abstract} close(): void
+    + {abstract} run(): void
+    + {abstract} stop(): void
+}
+
+class OpenState {
+    + open(): void
+    + close(): void
+    + run(): void
+    + stop(): void
+}
+
+class CloseState {
+    + open(): void
+    + close(): void
+    + run(): void
+    + stop(): void
+}
+
+class RunState {
+    + open(): void
+    + close(): void
+    + run(): void
+    + stop(): void
+}
+
+class StopState {
+    + open(): void
+    + close(): void
+    + run(): void
+    + stop(): void
+}
+
+OpenState --|> LiftSate
+CloseState --|> LiftSate
+RunState --|> LiftSate
+StopState --|> LiftSate
+
+
+class Context {
+    - openState: OpenState
+    - closeState: CloseState
+    - runState: RunState
+    - stopState: StopState
+    + open(): void
+    + close(): void
+    + run(): void
+    + stop(): void
+}
+
+Context o-- OpenState
+Context o-- CloseState
+Context o-- RunState
+Context o-- StopState
+
+@enduml

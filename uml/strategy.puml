@@ -1,0 +1,22 @@
+@startuml
+title 策略模式
+
+interface Strategy {
+    + doOperation(int x, int y): int
+}
+
+class Add implements Strategy
+class Substract implements Strategy
+class Multiply implements Strategy
+
+
+class Context {
+    - strategy: Strategy
+    + Context(Strategy strategy)
+    + execute(int x, int y): int
+}
+
+Context .left.> Strategy
+
+
+@enduml

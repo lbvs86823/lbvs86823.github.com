@@ -1,0 +1,24 @@
+@startuml
+title 解释器模式
+
+class Var
+class Value
+
+class Context
+
+Context ..> Var
+Context ..> Value
+
+
+abstract class AbstractExpression
+
+class Plus extends AbstractExpression
+
+class Minus extends AbstractExpression
+
+class Client
+
+Client ..> AbstractExpression
+Client ..> Context
+
+@enduml

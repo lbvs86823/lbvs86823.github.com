@@ -1,0 +1,24 @@
+@startuml
+title 模板方法
+
+abstract class Game {
+   + {abstract} initialize():void
+   + {abstract} startPlay():void
+   + {abstract} endPlay():void
+   + final play():void
+}
+
+class Basketball extends Game {
+   + initialize():void
+   + startPlay():void
+   + endPlay():void
+}
+
+class Football extends Game {
+   + initialize():void
+   + startPlay():void
+   + endPlay():void
+}
+
+
+@enduml

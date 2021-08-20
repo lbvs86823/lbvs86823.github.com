@@ -1,0 +1,48 @@
+@startuml
+title 访问者模式
+
+interface Visitor {
+    + operationA(Element e): void
+    + operationB(Element e): void
+}
+
+class ConcreteVisitorA implements Visitor {
+    + operationA(Element e): void
+    + operationB(Element e): void
+}
+
+class ConcreteVisitorB implements Visitor {
+    + operationA(Element e): void
+    + operationB(Element e): void
+}
+
+abstract class Element {
+    + accept(Visitor visitor): void
+}
+
+Element -right- Visitor : "相互依赖"
+
+class ConcreteElementA extends Element {
+    双重委派
+    + accept(Visitor visitor): void
+}
+
+class ConcreteElementB extends Element {
+    双重委派
+    + accept(Visitor visitor): void
+}
+
+class ObjectStructure {
+    - data: List<Element>
+}
+
+ObjectStructure .--> Element
+
+class Client {
+    - os: ObjectStructure
+    - visitor: Visitor
+}
+
+Client .-left-> ObjectStructure
+Client .-left-> Visitor
+@enduml

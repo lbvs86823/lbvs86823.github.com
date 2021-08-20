@@ -1,0 +1,24 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class Handler {
+
+   + setNextHandler(Handler next): void
+   + {abstract} doHandler(): void
+   + submit(int requestDay): void
+}
+
+Handler o-- Handler
+
+class GroupHandler extends Handler{
+    + doHandler(): void
+}
+
+class ManagerHandler extends Handler{
+    + doHandler(): void
+}
+
+class GeneralHandler extends Handler{
+    + doHandler(): void
+}
+@enduml

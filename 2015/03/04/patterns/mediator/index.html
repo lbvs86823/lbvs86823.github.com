@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <title>中介者模式 | lbvs86823</title>
+  <meta name="keywords" content=" mediator ">
+  <meta name="description" content="中介者模式 | lbvs86823">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="centOS7 安装man中文手册">
+<meta name="keywords" content="linux,centOS,man">
+<meta property="og:type" content="article">
+<meta property="og:title" content="centOS7 安装man中文手册">
+<meta property="og:url" content="https://lbvs86823.github.io/2019/05/09/linux/install_man_CN/index.html">
+<meta property="og:site_name" content="lbvs86823">
+<meta property="og:description" content="centOS7 安装man中文手册">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2020-03-20T06:27:43.649Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="centOS7 安装man中文手册">
+<meta name="twitter:description" content="centOS7 安装man中文手册">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js?v=1.0.1"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<script src="/js/iconfont.js?v=1.0.1"></script>
+
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+  <input class="theme_blog_path" value="">
+</div>
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg">
+</a>
+<div class="author">
+    <span>lbvs86823</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="rss" href="/atom.xml" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-rss"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="github" href="https://github.com/lbvs86823" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="email" href="mailto:lbvs86823@163.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"/>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active">全部文章<small>(94)</small></div></li>
+    
+        
+            
+            <li><div data-rel="javacore">javacore<small>(5)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="Digester">Digester<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="javaScript">javaScript<small>(10)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="docker">docker<small>(5)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="linux">linux<small>(4)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="kafka">kafka<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="patterns">patterns<small>(26)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="log">log<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="others">others<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="redis">redis<small>(3)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="spring">spring<small>(9)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="server">server<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="tools">tools<small>(9)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="database">database<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="shiro">shiro<small>(5)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="vue">vue<small>(9)</small></div>
+                
+            </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="94">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode === 13){return false;}">
+        <input id="local-search-input" class="search" type="text" placeholder="Search...">
+        <i class="cross"></i>
+        <span>
+            <label for="tagswitch">Tags:</label>
+            <input id="tagswitch" type="checkbox" style="display: none">
+            <i id="tagsWitchIcon"></i>
+        </span>
+    </form>
+    <div class="tags-list">
+    
+    <li class="article-tag-list-item">
+        <a class="color5">Java</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">enum</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">Digester</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">Rule</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">java</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">Map</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">HashMap</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">javaScript</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">es6</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">es5</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">axios</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">thread</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">docker</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">centos</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">mysql</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">redis</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">linux</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">centOS</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">man</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">promise</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">vi</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">kafka</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">zookeeper</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">builder</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">commond</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">bridge</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">factory</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">chain</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">decrator</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">mediator</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">composite</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">facade</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">flyweight</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">iterator</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">pattern</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">memento</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">observer</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">proxy</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">state</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">singleton</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">strategy</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">uml</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">templateMethod</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">common-logging</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">log4j</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">visitor</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">EAI</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">ERP</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">OA</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">CRM</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">dtd</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">xml</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">spring</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">security</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">auth2</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">quartz</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">cronTrigger</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">schedule</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">jetty</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">servlet</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">boot</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">MyBatis</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">cron</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">session</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">Jekyll</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">blog</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">Jekyll-Bootstrap</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">git</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">github</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">gitLab</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">Markdown</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">homebrew</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">tool</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">mac os</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">maven</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">monitor</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">influxdb</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">shiro</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">Subject</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">SecurityManager</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">Realms</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">Authentication</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">yarn</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">nodeJs</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">npm</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">Authorization</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">Session</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">interpreter</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">adapter</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">vue</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">jquery</a>
+    </li>
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a class="javacore " href="/2011/06/27/javacore/enum/" data-tag="Java,enum" data-author="">
+            <span class="post-title" title="Java enum 的用法详解">Java enum 的用法详解</span>
+            <span class="post-date" title="2011-06-27 22:03:19">2011/06/27</span>
+        </a>
+        
+        <a class="Digester " href="/2015/01/16/digester/digester_rule/" data-tag="Digester,Rule" data-author="">
+            <span class="post-title" title="Digester 规则介绍">Digester 规则介绍</span>
+            <span class="post-date" title="2015-01-16 12:13:34">2015/01/16</span>
+        </a>
+        
+        <a class="javacore " href="/2011/06/29/javacore/hashMap/" data-tag="java,Map,HashMap" data-author="">
+            <span class="post-title" title="HashMap实现原理解析">HashMap实现原理解析</span>
+            <span class="post-date" title="2011-06-29 12:53:49">2011/06/29</span>
+        </a>
+        
+        <a class="javacore " href="/2015/10/17/javacore/javabean/" data-tag="Java" data-author="">
+            <span class="post-title" title="Java bean 的一些专用名词解释">Java bean 的一些专用名词解释</span>
+            <span class="post-date" title="2015-10-17 21:13:11">2015/10/17</span>
+        </a>
+        
+        <a class="javaScript " href="/2017/02/27/js/es6_new/" data-tag="javaScript,es6" data-author="">
+            <span class="post-title" title="es6 新语法">es6 新语法</span>
+            <span class="post-date" title="2017-02-27 11:27:27">2017/02/27</span>
+        </a>
+        
+        <a class="javaScript " href="/2018/01/16/js/js_destructuring_assignment/" data-tag="javaScript,es6" data-author="">
+            <span class="post-title" title="js 之 解构赋值">js 之 解构赋值</span>
+            <span class="post-date" title="2018-01-16 14:15:35">2018/01/16</span>
+        </a>
+        
+        <a class="javaScript " href="/2016/06/18/js/es5_new/" data-tag="javaScript,es5" data-author="">
+            <span class="post-title" title="es5 新语法">es5 新语法</span>
+            <span class="post-date" title="2016-06-18 15:41:37">2016/06/18</span>
+        </a>
+        
+        <a class="javaScript " href="/2018/10/12/js/js_axios/" data-tag="javaScript,axios" data-author="">
+            <span class="post-title" title="axios 中文文档">axios 中文文档</span>
+            <span class="post-date" title="2018-10-12 10:12:21">2018/10/12</span>
+        </a>
+        
+        <a class="javaScript " href="/2018/01/16/js/js_export/" data-tag="javaScript,es6" data-author="">
+            <span class="post-title" title="js 之 exprot 语法">js 之 exprot 语法</span>
+            <span class="post-date" title="2018-01-16 13:05:35">2018/01/16</span>
+        </a>
+        
+        <a class="javacore " href="/2011/05/16/javacore/thread/" data-tag="Java,thread" data-author="">
+            <span class="post-title" title="Java thread类的用法详解">Java thread类的用法详解</span>
+            <span class="post-date" title="2011-05-16 21:43:29">2011/05/16</span>
+        </a>
+        
+        <a class="javaScript " href="/2018/01/16/js/js_import/" data-tag="javaScript,es6" data-author="">
+            <span class="post-title" title="js 之 import 语法">js 之 import 语法</span>
+            <span class="post-date" title="2018-01-16 12:27:27">2018/01/16</span>
+        </a>
+        
+        <a class="javaScript " href="/2018/01/16/js/js_rest_parameters/" data-tag="javaScript,es6" data-author="">
+            <span class="post-title" title="js 之 ... 剩余参数">js 之 ... 剩余参数</span>
+            <span class="post-date" title="2018-01-16 14:15:35">2018/01/16</span>
+        </a>
+        
+        <a class="docker " href="/2016/09/08/docker/dockerInstallCentos/" data-tag="docker,centos" data-author="">
+            <span class="post-title" title="CentOS Docker 安装">CentOS Docker 安装</span>
+            <span class="post-date" title="2016-09-08 18:30:14">2016/09/08</span>
+        </a>
+        
+        <a class="docker " href="/2016/09/11/docker/dockerCommand/" data-tag="docker" data-author="">
+            <span class="post-title" title="Docker 常用命令">Docker 常用命令</span>
+            <span class="post-date" title="2016-09-11 19:10:44">2016/09/11</span>
+        </a>
+        
+        <a class="docker " href="/2016/09/13/docker/dockerInstallMysql/" data-tag="docker,mysql" data-author="">
+            <span class="post-title" title="Docker 安装 MySql">Docker 安装 MySql</span>
+            <span class="post-date" title="2016-09-13 19:39:24">2016/09/13</span>
+        </a>
+        
+        <a class="docker " href="/2016/09/15/docker/dockerInstallNginx/" data-tag="docker,redis" data-author="">
+            <span class="post-title" title="Docker 安装 Nginx">Docker 安装 Nginx</span>
+            <span class="post-date" title="2016-09-15 15:22:41">2016/09/15</span>
+        </a>
+        
+        <a class="linux " href="/2019/05/09/linux/install_man_CN/" data-tag="linux,centOS,man" data-author="">
+            <span class="post-title" title="centOS7 安装man中文手册">centOS7 安装man中文手册</span>
+            <span class="post-date" title="2019-05-09 18:21:05">2019/05/09</span>
+        </a>
+        
+        <a class="javaScript " href="/2018/01/16/js/js_arrow_functions/" data-tag="javaScript,es6" data-author="">
+            <span class="post-title" title="js 之 箭头函数">js 之 箭头函数</span>
+            <span class="post-date" title="2018-01-16 13:05:35">2018/01/16</span>
+        </a>
+        
+        <a class="javaScript " href="/2018/06/22/js/js_promise/" data-tag="javaScript,promise" data-author="">
+            <span class="post-title" title="js 标准内置对象之 Promise (控制抽象对象)">js 标准内置对象之 Promise (控制抽象对象)</span>
+            <span class="post-date" title="2018-06-22 11:42:51">2018/06/22</span>
+        </a>
+        
+        <a class="docker " href="/2016/09/14/docker/dockerInstallRedis/" data-tag="docker,redis" data-author="">
+            <span class="post-title" title="Docker 安装 Redis">Docker 安装 Redis</span>
+            <span class="post-date" title="2016-09-14 10:30:15">2016/09/14</span>
+        </a>
+        
+        <a class="linux " href="/2010/05/09/linux/linux_version/" data-tag="linux" data-author="">
+            <span class="post-title" title="linux 查看版本">linux 查看版本</span>
+            <span class="post-date" title="2010-05-09 13:11:45">2010/05/09</span>
+        </a>
+        
+        <a class="linux " href="/2010/10/07/linux/linux_vi/" data-tag="linux,vi" data-author="">
+            <span class="post-title" title="Linux VI 命令详解">Linux VI 命令详解</span>
+            <span class="post-date" title="2010-10-07 16:41:24">2010/10/07</span>
+        </a>
+        
+        <a class="kafka " href="/2017/07/17/kafka/kafka/" data-tag="kafka,zookeeper" data-author="">
+            <span class="post-title" title="kafka 入门指南">kafka 入门指南</span>
+            <span class="post-date" title="2017-07-17 12:53:09">2017/07/17</span>
+        </a>
+        
+        <a class="linux " href="/2010/03/09/linux/linux_firewall/" data-tag="linux" data-author="">
+            <span class="post-title" title="linux 防火墙管理">linux 防火墙管理</span>
+            <span class="post-date" title="2010-03-09 10:12:45">2010/03/09</span>
+        </a>
+        
+        <a class="patterns " href="/2015/02/28/patterns/builder/" data-tag="builder" data-author="">
+            <span class="post-title" title="建造者模式">建造者模式</span>
+            <span class="post-date" title="2015-02-28 11:13:12">2015/02/28</span>
+        </a>
+        
+        <a class="patterns " href="/2015/03/04/patterns/commond/" data-tag="commond" data-author="">
+            <span class="post-title" title="命令模式">命令模式</span>
+            <span class="post-date" title="2015-03-04 10:43:22">2015/03/04</span>
+        </a>
+        
+        <a class="patterns " href="/2015/03/02/patterns/bridge/" data-tag="bridge" data-author="">
+            <span class="post-title" title="桥接模式">桥接模式</span>
+            <span class="post-date" title="2015-03-02 14:13:02">2015/03/02</span>
+        </a>
+        
+        <a class="patterns " href="/2015/02/28/patterns/abstractFactory/" data-tag="factory" data-author="">
+            <span class="post-title" title="抽象工厂模式">抽象工厂模式</span>
+            <span class="post-date" title="2015-02-28 20:04:59">2015/02/28</span>
+        </a>
+        
+        <a class="patterns " href="/2015/03/02/patterns/chain/" data-tag="chain" data-author="">
+            <span class="post-title" title="职责链模式">职责链模式</span>
+            <span class="post-date" title="2015-03-02 14:13:02">2015/03/02</span>
+        </a>
+        
+        <a class="patterns " href="/2015/03/02/patterns/decrator/" data-tag="decrator" data-author="">
+            <span class="post-title" title="装饰器模式">装饰器模式</span>
+            <span class="post-date" title="2015-03-02 10:23:02">2015/03/02</span>
+        </a>
+        
+        <a class="patterns " href="/2015/03/04/patterns/mediator/" data-tag="mediator" data-author="">
+            <span class="post-title" title="中介者模式">中介者模式</span>
+            <span class="post-date" title="2015-03-04 11:01:33">2015/03/04</span>
+        </a>
+        
+        <a class="patterns " href="/2015/02/27/patterns/factoryMethod/" data-tag="factory" data-author="">
+            <span class="post-title" title="工厂方法模式">工厂方法模式</span>
+            <span class="post-date" title="2015-02-27 21:43:11">2015/02/27</span>
+        </a>
+        
+        <a class="patterns " href="/2015/03/02/patterns/composite/" data-tag="composite" data-author="">
+            <span class="post-title" title="合成模式">合成模式</span>
+            <span class="post-date" title="2015-03-02 16:55:41">2015/03/02</span>
+        </a>
+        
+        <a class="patterns " href="/2015/03/02/patterns/facade/" data-tag="facade" data-author="">
+            <span class="post-title" title="外观(门面)模式">外观(门面)模式</span>
+            <span class="post-date" title="2015-03-02 11:33:56">2015/03/02</span>
+        </a>
+        
+        <a class="patterns " href="/2015/03/02/patterns/flyweight/" data-tag="flyweight" data-author="">
+            <span class="post-title" title="享元模式">享元模式</span>
+            <span class="post-date" title="2015-03-02 19:33:42">2015/03/02</span>
+        </a>
+        
+        <a class="patterns " href="/2015/03/03/patterns/iterator/" data-tag="iterator" data-author="">
+            <span class="post-title" title="迭代器模式">迭代器模式</span>
+            <span class="post-date" title="2015-03-03 11:33:41">2015/03/03</span>
+        </a>
+        
+        <a class="patterns " href="/2015/03/03/patterns/memento/" data-tag="memento" data-author="">
+            <span class="post-title" title="备忘录模式">备忘录模式</span>
+            <span class="post-date" title="2015-03-03 09:29:59">2015/03/03</span>
+        </a>
+        
+        <a class="patterns " href="/2015/03/03/patterns/observer/" data-tag="observer" data-author="">
+            <span class="post-title" title="观察者模式">观察者模式</span>
+            <span class="post-date" title="2015-03-03 08:53:55">2015/03/03</span>
+        </a>
+        
+        <a class="patterns " href="/2015/02/27/patterns/prototype/" data-tag="factory" data-author="">
+            <span class="post-title" title="原型模式">原型模式</span>
+            <span class="post-date" title="2015-02-27 21:43:11">2015/02/27</span>
+        </a>
+        
+        <a class="patterns " href="/2015/03/01/patterns/proxy/" data-tag="proxy" data-author="">
+            <span class="post-title" title="代理模式">代理模式</span>
+            <span class="post-date" title="2015-03-01 08:13:34">2015/03/01</span>
+        </a>
+        
+        <a class="patterns " href="/2015/03/04/patterns/state/" data-tag="state" data-author="">
+            <span class="post-title" title="状态模式">状态模式</span>
+            <span class="post-date" title="2015-03-04 08:45:12">2015/03/04</span>
+        </a>
+        
+        <a class="patterns " href="/2015/02/27/patterns/singleton/" data-tag="singleton" data-author="">
+            <span class="post-title" title="单例模式">单例模式</span>
+            <span class="post-date" title="2015-02-27 21:43:11">2015/02/27</span>
+        </a>
+        
+        <a class="patterns " href="/2015/03/02/patterns/strategy/" data-tag="strategy" data-author="">
+            <span class="post-title" title="策略模式">策略模式</span>
+            <span class="post-date" title="2015-03-02 14:13:02">2015/03/02</span>
+        </a>
+        
+        <a class="patterns " href="/2015/02/27/patterns/simpleFactory/" data-tag="factory" data-author="">
+            <span class="post-title" title="简单工厂模式">简单工厂模式</span>
+            <span class="post-date" title="2015-02-27 18:22:54">2015/02/27</span>
+        </a>
+        
+        <a class="patterns " href="/2015/02/27/patterns/uml/" data-tag="uml" data-author="">
+            <span class="post-title" title="UML类图">UML类图</span>
+            <span class="post-date" title="2015-02-27 20:53:21">2015/02/27</span>
+        </a>
+        
+        <a class="patterns " href="/2015/03/02/patterns/templateMethod/" data-tag="templateMethod" data-author="">
+            <span class="post-title" title="模板方法模式">模板方法模式</span>
+            <span class="post-date" title="2015-03-02 21:53:12">2015/03/02</span>
+        </a>
+        
+        <a class="log " href="/2010/05/13/log/common-logging/" data-tag="common-logging,log4j" data-author="">
+            <span class="post-title" title="commons-logging 和 log4j 之间的关系">commons-logging 和 log4j 之间的关系</span>
+            <span class="post-date" title="2010-05-13 18:31:54">2010/05/13</span>
+        </a>
+        
+        <a class="patterns " href="/2015/03/03/patterns/visitor/" data-tag="visitor" data-author="">
+            <span class="post-title" title="访问者模式">访问者模式</span>
+            <span class="post-date" title="2015-03-03 09:29:59">2015/03/03</span>
+        </a>
+        
+        <a class="others " href="/2015/01/27/others/eai/" data-tag="EAI,ERP,OA,CRM" data-author="">
+            <span class="post-title" title="EAI简介">EAI简介</span>
+            <span class="post-date" title="2015-01-27 20:53:21">2015/01/27</span>
+        </a>
+        
+        <a class="log " href="/2010/05/14/log/log4j-config/" data-tag="log4j" data-author="">
+            <span class="post-title" title="log4j.properties配置详解">log4j.properties配置详解</span>
+            <span class="post-date" title="2010-05-14 20:55:08">2010/05/14</span>
+        </a>
+        
+        <a class="others " href="/2011/01/14/others/dtd/" data-tag="dtd,xml" data-author="">
+            <span class="post-title" title="DTD文档类型定义简介">DTD文档类型定义简介</span>
+            <span class="post-date" title="2011-01-14 17:11:16">2011/01/14</span>
+        </a>
+        
+        <a class="redis " href="/2010/07/24/redis/redis/" data-tag="redis" data-author="">
+            <span class="post-title" title="redis入门之介绍和安装篇(一)">redis入门之介绍和安装篇(一)</span>
+            <span class="post-date" title="2010-07-24 10:15:45">2010/07/24</span>
+        </a>
+        
+        <a class="redis " href="/2010/07/28/redis/redis_hash/" data-tag="redis" data-author="">
+            <span class="post-title" title="redis入门之hashes数据类型(三)">redis入门之hashes数据类型(三)</span>
+            <span class="post-date" title="2010-07-28 21:11:47">2010/07/28</span>
+        </a>
+        
+        <a class="spring " href="/2011/06/15/spring/oauth2.0/" data-tag="spring,security,auth2" data-author="">
+            <span class="post-title" title="Spring oauth2 相关概念解释">Spring oauth2 相关概念解释</span>
+            <span class="post-date" title="2011-06-15 10:21:20">2011/06/15</span>
+        </a>
+        
+        <a class="redis " href="/2010/07/24/redis/redis_string/" data-tag="redis" data-author="">
+            <span class="post-title" title="redis入门之Strings数据类型(二)">redis入门之Strings数据类型(二)</span>
+            <span class="post-date" title="2010-07-24 23:45:41">2010/07/24</span>
+        </a>
+        
+        <a class="spring " href="/2011/01/10/spring/cron_trigger/" data-tag="spring,quartz,cronTrigger,schedule" data-author="">
+            <span class="post-title" title="cron 表达式">cron 表达式</span>
+            <span class="post-date" title="2011-01-10 21:49:39">2011/01/10</span>
+        </a>
+        
+        <a class="server " href="/2010/12/10/server/jetty/" data-tag="jetty,servlet" data-author="">
+            <span class="post-title" title="Jetty 嵌入式开发">Jetty 嵌入式开发</span>
+            <span class="post-date" title="2010-12-10 11:25:11">2010/12/10</span>
+        </a>
+        
+        <a class="spring " href="/2018/01/11/spring/sping boot reference guide/" data-tag="spring,boot" data-author="">
+            <span class="post-title" title="Spring Boot 参考指南">Spring Boot 参考指南</span>
+            <span class="post-date" title="2018-01-11 20:29:20">2018/01/11</span>
+        </a>
+        
+        <a class="javacore " href="/2015/05/18/mybatis/mybatis_special_char/" data-tag="MyBatis" data-author="">
+            <span class="post-title" title="MyBatis 转义字符处理">MyBatis 转义字符处理</span>
+            <span class="post-date" title="2015-05-18 11:13:19">2015/05/18</span>
+        </a>
+        
+        <a class="spring " href="/2011/01/09/spring/quartz/" data-tag="spring,quartz,cron" data-author="">
+            <span class="post-title" title="quartz整合spring用法详解">quartz整合spring用法详解</span>
+            <span class="post-date" title="2011-01-09 19:49:39">2011/01/09</span>
+        </a>
+        
+        <a class="spring " href="/2018/04/11/spring/sping security reference/" data-tag="spring,security" data-author="">
+            <span class="post-title" title="Spring Security 参考指南">Spring Security 参考指南</span>
+            <span class="post-date" title="2018-04-11 22:09:21">2018/04/11</span>
+        </a>
+        
+        <a class="spring " href="/2011/06/12/spring/spring security/" data-tag="spring,security,auth2" data-author="">
+            <span class="post-title" title="Spring Security 中涉及到的核心类介绍">Spring Security 中涉及到的核心类介绍</span>
+            <span class="post-date" title="2011-06-12 12:59:20">2011/06/12</span>
+        </a>
+        
+        <a class="spring " href="/2011/04/16/spring/spring session/" data-tag="redis,spring,session" data-author="">
+            <span class="post-title" title="spring session 相关代码详解">spring session 相关代码详解</span>
+            <span class="post-date" title="2011-04-16 20:41:20">2011/04/16</span>
+        </a>
+        
+        <a class="spring " href="/2018/05/18/spring/spring_session_api/" data-tag="spring,session" data-author="">
+            <span class="post-title" title="《Spring Session 中文手册》 之 第九章 API 文档">《Spring Session 中文手册》 之 第九章 API 文档</span>
+            <span class="post-date" title="2018-05-18 12:15:12">2018/05/18</span>
+        </a>
+        
+        <a class="tools " href="/2010/04/17/tools/blog01/" data-tag="Jekyll,blog" data-author="">
+            <span class="post-title" title="怎么写自己的博客">怎么写自己的博客</span>
+            <span class="post-date" title="2010-04-17 12:13:29">2010/04/17</span>
+        </a>
+        
+        <a class="tools " href="/2010/04/18/tools/blog02/" data-tag="Jekyll,blog,Jekyll-Bootstrap" data-author="">
+            <span class="post-title" title="采用Jekyll “增强版” 写博客">采用Jekyll “增强版” 写博客</span>
+            <span class="post-date" title="2010-04-18 10:23:39">2010/04/18</span>
+        </a>
+        
+        <a class="tools " href="/2012/03/08/tools/git_command/" data-tag="git,github,gitLab" data-author="">
+            <span class="post-title" title="git 命令手册">git 命令手册</span>
+            <span class="post-date" title="2012-03-08 14:25:31">2012/03/08</span>
+        </a>
+        
+        <a class="tools " href="/2010/04/25/tools/markdown/" data-tag="blog,Markdown" data-author="">
+            <span class="post-title" title="Markdown 语法说明">Markdown 语法说明</span>
+            <span class="post-date" title="2010-04-25 12:08:20">2010/04/25</span>
+        </a>
+        
+        <a class="tools " href="/2015/06/07/tools/homebrew/" data-tag="homebrew,tool,mac os" data-author="">
+            <span class="post-title" title="Homebrew Mac OS 系统软件包管理利器">Homebrew Mac OS 系统软件包管理利器</span>
+            <span class="post-date" title="2015-06-07 22:13:29">2015/06/07</span>
+        </a>
+        
+        <a class="spring " href="/2018/05/18/spring/spring_session_redis/" data-tag="spring,session" data-author="">
+            <span class="post-title" title="Spring Session 之 Redis 实现">Spring Session 之 Redis 实现</span>
+            <span class="post-date" title="2018-05-18 12:15:12">2018/05/18</span>
+        </a>
+        
+        <a class="tools " href="/2010/05/18/tools/maven02/" data-tag="maven" data-author="">
+            <span class="post-title" title="maven的入门">maven的入门</span>
+            <span class="post-date" title="2010-05-18 22:25:01">2010/05/18</span>
+        </a>
+        
+        <a class="tools " href="/2010/05/18/tools/maven01/" data-tag="maven" data-author="">
+            <span class="post-title" title="maven的安装与配置">maven的安装与配置</span>
+            <span class="post-date" title="2010-05-18 10:25:01">2010/05/18</span>
+        </a>
+        
+        <a class="database " href="/2018/07/11/monitor/influxdb/" data-tag="monitor,influxdb" data-author="">
+            <span class="post-title" title="influxDB 入门指南">influxDB 入门指南</span>
+            <span class="post-date" title="2018-07-11 10:03:27">2018/07/11</span>
+        </a>
+        
+        <a class="shiro " href="/2010/12/15/shiro/shiro_01/" data-tag="shiro,Subject,SecurityManager,Realms" data-author="">
+            <span class="post-title" title="Shiro 第一章 简介">Shiro 第一章 简介</span>
+            <span class="post-date" title="2010-12-15 12:25:17">2010/12/15</span>
+        </a>
+        
+        <a class="shiro " href="/2010/12/16/shiro/shiro_02/" data-tag="shiro,Subject,SecurityManager,Realms,Authentication" data-author="">
+            <span class="post-title" title="Shiro 第二章 身份认证">Shiro 第二章 身份认证</span>
+            <span class="post-date" title="2010-12-16 16:05:29">2010/12/16</span>
+        </a>
+        
+        <a class="tools " href="/2017/11/27/tools/yarn/" data-tag="tool,yarn,nodeJs" data-author="">
+            <span class="post-title" title="Yarn 依赖管理工具">Yarn 依赖管理工具</span>
+            <span class="post-date" title="2017-11-27 12:43:59">2017/11/27</span>
+        </a>
+        
+        <a class="tools " href="/2017/02/12/tools/npm/" data-tag="tool,nodeJs,npm" data-author="">
+            <span class="post-title" title="npm 包管理工具">npm 包管理工具</span>
+            <span class="post-date" title="2017-02-12 20:13:39">2017/02/12</span>
+        </a>
+        
+        <a class="shiro " href="/2010/12/17/shiro/shiro_03/" data-tag="shiro,SecurityManager,Realms,Authentication,Authorization" data-author="">
+            <span class="post-title" title="Shiro 第三章 身份授权">Shiro 第三章 身份授权</span>
+            <span class="post-date" title="2010-12-17 19:02:22">2010/12/17</span>
+        </a>
+        
+        <a class="shiro " href="/2010/12/20/shiro/shiro_05/" data-tag="shiro,SecurityManager,Session" data-author="">
+            <span class="post-title" title="Shiro 第五章 Session Management">Shiro 第五章 Session Management</span>
+            <span class="post-date" title="2010-12-20 19:31:58">2010/12/20</span>
+        </a>
+        
+        <a class="patterns " href="/2015/03/03/patterns/interpreter/" data-tag="interpreter" data-author="">
+            <span class="post-title" title="解释器模式">解释器模式</span>
+            <span class="post-date" title="2015-03-03 09:29:59">2015/03/03</span>
+        </a>
+        
+        <a class="patterns " href="/2015/03/02/patterns/adapter/" data-tag="adapter" data-author="">
+            <span class="post-title" title="适配器模式">适配器模式</span>
+            <span class="post-date" title="2015-03-02 09:43:14">2015/03/02</span>
+        </a>
+        
+        <a class="shiro " href="/2010/12/18/shiro/shiro_04/" data-tag="shiro,SecurityManager,Realms" data-author="">
+            <span class="post-title" title="Shiro 第四章 Realms">Shiro 第四章 Realms</span>
+            <span class="post-date" title="2010-12-18 09:41:09">2010/12/18</span>
+        </a>
+        
+        <a class="Digester " href="/2015/01/15/digester/digester/" data-tag="Digester,Rule" data-author="">
+            <span class="post-title" title="Digester框架简介">Digester框架简介</span>
+            <span class="post-date" title="2015-01-15 22:53:21">2015/01/15</span>
+        </a>
+        
+        <a class="vue " href="/2017/12/17/js/vue/vueComputed/" data-tag="yarn,nodeJs,npm,vue" data-author="">
+            <span class="post-title" title="vue 实例属性之 computed">vue 实例属性之 computed</span>
+            <span class="post-date" title="2017-12-17 15:13:21">2017/12/17</span>
+        </a>
+        
+        <a class="vue " href="/2017/12/17/js/vue/vueLifeCycle/" data-tag="yarn,nodeJs,npm,vue" data-author="">
+            <span class="post-title" title="vue 实例的生命周期">vue 实例的生命周期</span>
+            <span class="post-date" title="2017-12-17 11:04:11">2017/12/17</span>
+        </a>
+        
+        <a class="javaScript " href="/2010/09/27/js/jquery/jueryPlugin/" data-tag="javaScript,jquery" data-author="">
+            <span class="post-title" title="JQuery开发插件的机种方式讨论">JQuery开发插件的机种方式讨论</span>
+            <span class="post-date" title="2010-09-27 20:43:44">2010/09/27</span>
+        </a>
+        
+        <a class="vue " href="/2017/12/17/js/vue/vueHook/" data-tag="yarn,nodeJs,npm,vue" data-author="">
+            <span class="post-title" title="vue 实例生命周期钩子">vue 实例生命周期钩子</span>
+            <span class="post-date" title="2017-12-17 12:41:21">2017/12/17</span>
+        </a>
+        
+        <a class="vue " href="/2017/12/17/js/vue/vuePropsData/" data-tag="yarn,nodeJs,npm,vue" data-author="">
+            <span class="post-title" title="vue 实例属性之 propsData">vue 实例属性之 propsData</span>
+            <span class="post-date" title="2017-12-17 15:13:21">2017/12/17</span>
+        </a>
+        
+        <a class="vue " href="/2017/12/17/js/vue/vueData/" data-tag="yarn,nodeJs,npm,vue" data-author="">
+            <span class="post-title" title="vue 实例属性之 data">vue 实例属性之 data</span>
+            <span class="post-date" title="2017-12-17 14:57:15">2017/12/17</span>
+        </a>
+        
+        <a class="vue " href="/2017/12/17/js/vue/vueProps/" data-tag="yarn,nodeJs,npm,vue" data-author="">
+            <span class="post-title" title="vue 实例属性之 props">vue 实例属性之 props</span>
+            <span class="post-date" title="2017-12-17 14:53:31">2017/12/17</span>
+        </a>
+        
+        <a class="vue " href="/2017/12/17/js/vue/vueMethods/" data-tag="yarn,nodeJs,npm,vue" data-author="">
+            <span class="post-title" title="vue 实例属性之 methods">vue 实例属性之 methods</span>
+            <span class="post-date" title="2017-12-17 15:13:21">2017/12/17</span>
+        </a>
+        
+        <a class="vue " href="/2017/12/17/js/vue/vueStart/" data-tag="yarn,nodeJs,npm,vue" data-author="">
+            <span class="post-title" title="vue 入门">vue 入门</span>
+            <span class="post-date" title="2017-12-17 10:03:41">2017/12/17</span>
+        </a>
+        
+        <a class="vue " href="/2017/12/17/js/vue/vueWatch/" data-tag="yarn,nodeJs,npm,vue" data-author="">
+            <span class="post-title" title="vue 实例属性之 watch">vue 实例属性之 watch</span>
+            <span class="post-date" title="2017-12-17 15:13:21">2017/12/17</span>
+        </a>
+        
+        <a class="patterns " href="/2015/02/26/patterns/pattern/" data-tag="pattern" data-author="">
+            <span class="post-title" title="设计模式">设计模式</span>
+            <span class="post-date" title="2015-02-26 09:29:59">2015/02/26</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-patterns/mediator" class="article article-type-post" itemscope="" itemprop="blogPost">
+    
+        <h1 class="article-title">中介者模式</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+                <a data-rel="patterns">patterns</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a class="color4">mediator</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title="更新时间: 2021-08-20 16:46:49">2015-03-04 11:01</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#一-简介"><span class="toc-text">一.简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二-结构"><span class="toc-text">二.结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三-实现"><span class="toc-text">三.实现</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一-简介"><a href="#一-简介" class="headerlink" title="一.简介"></a>一.简介</h4><p>中介者模式是定义一个中介者角色来封装一系列对象之间的交互，使原有对象之间的耦合松散，且可以独立地改变他们之间的交互。</p>
+<h4 id="二-结构"><a href="#二-结构" class="headerlink" title="二.结构"></a>二.结构</h4><p>中介者模式包含以下角色：</p>
+<ul>
+<li>抽象中介者(Mediator)类 ：提供了注册与转发同事对象信息的抽象方法。</li>
+<li>具体的中介者(Concrete Mediator)类：实现抽象中介者，定义一个容器来管理同事对象，协调各个同事之间的交互关系。</li>
+<li>抽象同事(Colleague)类: 定义保存中介者对象，提供同事对象交互的抽象方法，实现所有相互影响的同事类的公共功能</li>
+<li>具体同事(Concrete Colleague)类: 抽象同事类的实现者， 当需要与其他同事对象交互时，由中介者对象赋值后续的交互。</li>
+</ul>
+<p><img src="http://www.plantuml.com/plantuml/proxy?cache=no&amp;src=https://lbvs86823.github.io/uml/mediator.puml" alt="UML类关系表示"></p>
+<h4 id="三-实现"><a href="#三-实现" class="headerlink" title="三.实现"></a>三.实现</h4><pre><code>public interface Mediator {
+    void contact(Person person, String msg);
+}
+
+public abstract class Person {
+    protected String name;
+    protected Mediator mediator;
+
+    public Person(String name, Mediator mediator) {
+        this.name = name;
+        this.mediator = mediator;
+    }
+}
+
+public class Tenant extends Person {
+
+    public Tenant(String name, Mediator mediator) {
+        super(name, mediator);
+    }
+
+    public void say(String msg) {
+        mediator.contact(this, msg);
+    }
+
+    public void listen(String msg) {
+        System.out.println(&quot;租客 &quot; + name + &quot; 收到消息：&quot; + msg);
+    }
+}
+
+public class HouseOwner extends Person {
+
+    public HouseOwner(String name, Mediator mediator) {
+        super(name, mediator);
+    }
+
+    public void say(String msg) {
+        mediator.contact(this, msg);
+    }
+
+    public void listen(String msg) {
+        System.out.println(&quot;房主 &quot; + name + &quot; 收到消息：&quot; + msg);
+    }
+}
+
+public class MediatorCompany implements Mediator {
+
+    private HouseOwner houseOwner;
+
+    private Tenant tenant;
+
+    @Override
+    public void contact(Person person, String msg) {
+        if (person == houseOwner){
+            tenant.listen(msg);
+        }else {
+            houseOwner.listen(msg);
+        }
+    }
+
+    public void setHouseOwner(HouseOwner houseOwner) {
+        this.houseOwner = houseOwner;
+    }
+
+
+    public void setTenant(Tenant tenant) {
+        this.tenant = tenant;
+    }
+}
+
+public static void main(String[] args) {
+    MediatorCompany company = new MediatorCompany();
+
+    Tenant tenant = new Tenant(&quot;张三&quot;, company);
+    HouseOwner owner = new HouseOwner(&quot;李四&quot;, company);
+
+    company.setTenant(tenant);
+    company.setHouseOwner(owner);
+
+    tenant.say(&quot;我要租房子&quot;);
+    owner.say(&quot;我有一套房子要出租&quot;);
+}
+
+// =============输出结果==================
+房主 李四 收到消息：我要租房子
+租客 张三 收到消息：我有一套房子要出租
+</code></pre>
+      
+       <hr><span style="font-style: italic;color: gray;"> 欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 lbvs86823@163.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>中介者模式</p>
+    
+    <p><span class="copy-title">本文作者:</span><a title="lbvs86823">lbvs86823</a></p>
+    <p><span class="copy-title">发布时间:</span>2015-03-04, 11:01:33</p>
+    <p><span class="copy-title">最后更新:</span>2021-08-20, 16:46:49</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2015/03/04/patterns/mediator/" title="中介者模式">https://lbvs86823.github.io/2015/03/04/patterns/mediator/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">Copyright 2009 - 2020 lbvs86823 All Rights Reserved</p>
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class="" id="rocket"></a>
+
+    </div>
+</div>
+<div class="acParent"></div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close" onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞, 土豪就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.0.1"></script>
+
+<script src="/js/script.js?v=1.0.1"></script>
+<script>
+    var img_resize = 'default';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['#Java','#enum','#Digester','#Rule','#java','#Map','#HashMap','#javaScript','#es6','#es5','#axios','#thread','#docker','#centos','#mysql','#redis','#linux','#centOS','#man','#promise','#vi','#kafka','#zookeeper','#builder','#commond','#bridge','#factory','#chain','#decrator','#mediator','#composite','#facade','#flyweight','#iterator','#pattern','#memento','#observer','#proxy','#state','#singleton','#strategy','#uml','#templateMethod','#common-logging','#log4j','#visitor','#EAI','#ERP','#OA','#CRM','#dtd','#xml','#spring','#security','#auth2','#quartz','#cronTrigger','#schedule','#jetty','#servlet','#boot','#MyBatis','#cron','#session','#Jekyll','#blog','#Jekyll-Bootstrap','#git','#github','#gitLab','#Markdown','#homebrew','#tool','#mac os','#maven','#monitor','#influxdb','#shiro','#Subject','#SecurityManager','#Realms','#Authentication','#yarn','#nodeJs','#npm','#Authorization','#Session','#interpreter','#adapter','#vue','#jquery',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length - 1, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: #fafafa;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 492px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 1px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

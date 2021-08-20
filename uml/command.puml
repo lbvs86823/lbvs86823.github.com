@@ -1,0 +1,40 @@
+@startuml
+
+title 命令模式
+
+abstract class Command {
+    + {abstract} exec(): void
+    + {abstract} undo(): void
+}
+
+class LightReceiver {
+    + on(): void
+    + off(): void
+}
+
+class LightOn extends Command {
+    + exec(): void
+    + undo(): void
+}
+LightOn o-- LightReceiver
+
+class LightOff extends Command {
+    + exec(): void
+    + undo(): void
+}
+LightOff o-- LightReceiver
+
+class Invoker
+
+Invoker o-left- Command
+
+class Client {
+
+}
+
+Client .left.> Invoker
+Client .left.> LightReceiver
+Client .left.> LightOn
+Client .left.> LightOff
+
+@enduml

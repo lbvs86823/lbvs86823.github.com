@@ -1,0 +1,12 @@
+@startmindmap
+title 抽象语法树（Abstract Syntax Tree AST）
+* -
+	* 5
+	* +
+		* 4
+		* +
+			* 3
+			* +
+				* 2
+				* 1
+@endmindmap

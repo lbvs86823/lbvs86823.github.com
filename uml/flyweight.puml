@@ -1,0 +1,27 @@
+@startuml
+title 享元模式
+
+abstract class Shape {
+   + getShape: String
+   + display(String color): void
+}
+
+class IShape extends Shape
+class LShape extends Shape
+class TShape extends Shape
+class ZShape extends Shape
+
+class ShapeFactory {
+    - map: HashMap<String, Shape>
+    + getInstance(): ShapeFactory
+    + getShape(String type): Shape
+}
+
+ShapeFactory o- Shape
+
+class Client
+
+Client ..> Shape
+Client .right.> ShapeFactory
+
+@enduml

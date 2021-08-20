@@ -1,0 +1,38 @@
+@startuml
+title 迭代器模式
+
+interface Iterator {
+   + hasNext(): boolean
+   + next(): Object
+}
+
+interface Aggregate {
+   + iterator(): Iterator
+}
+
+Aggregate .-left-> Iterator
+
+class ArrayIterator implements Iterator {
+   + hasNext(): boolean
+   + next(): Object
+}
+
+class ListIterator implements Iterator {
+      + hasNext(): boolean
+      + next(): Object
+}
+
+class ArrayAggregate implements Aggregate {
+    - element: []
+    + iterator(): Iterator
+}
+ArrayAggregate .--> ArrayIterator
+
+class ListAggregate implements Aggregate {
+    - element: List
+    + iterator(): Iterator
+}
+ListAggregate .--> ListIterator
+
+
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+title 合成模式
+
+
+interface Component {
+    + operation(): void
+    + getComposite(): Composite
+}
+
+Composite o-- Component
+
+class Composite implements Component
+
+class Leaf implements Component
+
+@enduml

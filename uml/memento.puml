@@ -1,0 +1,29 @@
+@startuml
+
+title 备忘录模式
+
+interface Memento {
+    - state: String
+}
+
+class Caretaker {
+    - mementos: List<Memento>
+    + add(Memento memento): void
+    + get(int index): Memento
+}
+
+Caretaker o-- Memento
+
+class Originator {
+    - state: String
+    + save(): Memento
+    + recover(Memento memento): void
+}
+Originator .left.> Memento
+
+class Client
+
+Client ..> Originator
+Client ..> Memento
+
+@enduml

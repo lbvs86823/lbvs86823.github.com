@@ -1,0 +1,34 @@
+@startuml
+title 观察者模式
+
+abstract class Subject {
+    - list: List<Observer>
+    + attach(Observer observer): void
+    + detach(Observer observer): void
+    + notifyObservers(String newState): void
+}
+
+class ConcreteSubject extends Subject {
+    - state : String
+    + getState(): String
+    + change(String state): void
+}
+
+interface Observer {
+    + update(String state): void
+}
+
+class ConcreteObserver implements Observer {
+    - observerState: String
+    + void update(String state): void
+}
+
+class client {
+    - subject: ConcreteSubject
+    - observer: Observer
+}
+
+client ..> Observer
+client ..> ConcreteSubject
+
+@enduml
